@@ -1,3 +1,3 @@
-const increase_counter = 'INCREASE_COUNTER';
+const increaseCounter = 'INCREASE_COUNTER';
 
-export { increase_counter };
+export { increaseCounter };
