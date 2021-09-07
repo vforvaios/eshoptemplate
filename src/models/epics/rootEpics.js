@@ -1,8 +1,6 @@
-import { combineEpics } from 'redux-observable'
-import { counterIncreaseEpic } from './counterEpics'
+import { combineEpics } from 'redux-observable';
+import { counterIncreaseEpic } from './counterEpics';
 
-const rootEpics = combineEpics(
-  counterIncreaseEpic,
-)
+const rootEpics = combineEpics(counterIncreaseEpic);
 
-export default rootEpics
+export default rootEpics;
