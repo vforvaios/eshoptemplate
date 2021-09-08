@@ -1,6 +1,13 @@
 import React from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
+
+import styles from './styles';
 import './home.scss';
 
-const Home = () => <div className="homeBG">Home</div>;
+const Home = ({ classes }) => (
+  <div className="homeBG">
+    <span className={classes?.homeFontColor}>Home</span>
+  </div>
+);
 
-export default Home;
+export default withStyles(styles)(Home);
