@@ -1,7 +1,11 @@
 import React from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
 
-const Header = () => {
+import styles from './styles';
+
+const Header = ({ classes }) => {
+  console.log(classes);
   return <div>header</div>;
 };
 
-export default Header;
+export default withStyles(styles)(Header);
