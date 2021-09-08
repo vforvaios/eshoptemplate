@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import theme from './theme';
+import theme from './resources/mui/theme';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
