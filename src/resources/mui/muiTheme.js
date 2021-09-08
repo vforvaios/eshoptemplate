@@ -4,43 +4,6 @@ import { createTheme } from '@material-ui/core/styles';
 import palette from './palette';
 import typography from './typography';
 
-// import CFAstyStdBoldWoff from '../fonts/CFAstyStd-Bold.woff';
-// import CFAstyStdBookWoff from '../fonts/CFAstyStd-Book.woff';
-// import CFAstyStdBookOblique from '../fonts/CFAstyStd-BookOblique.woff';
-// import CFAstyStdLight from '../fonts/CFAstyStd-Light.woff';
-// import CFAstyStdMedium from '../fonts/CFAstyStd-Medium.woff';
-// import CFAstyStdMediumOblique from '../fonts/CFAstyStd-MediumOblique.woff';
-
-// const cfAstyStdBold = {
-//   fontFamily: 'CFAstyStd-Bold',
-//   src: `local('CFAstyStd-Bold'), url(${CFAstyStdBoldWoff}) format('woff')`,
-// };
-
-// const cfAstyStdBook = {
-//   fontFamily: 'CFAstyStd-Book',
-//   src: `local('CFAstyStd-Book'), url(${CFAstyStdBookWoff}) format('woff')`,
-// };
-
-// const cfAstyStdBookOblique = {
-//   fontFamily: 'CFAstyStd-BookOblique',
-//   src: `local('CFAstyStd-BookOblique'), url(${CFAstyStdBookOblique}) format('woff')`,
-// };
-
-// const cfAstyStdLight = {
-//   fontFamily: 'CFAstyStd-Light',
-//   src: `local('CFAstyStd-Light'), url(${CFAstyStdLight}) format('woff')`,
-// };
-
-// const cfAstyStdMedium = {
-//   fontFamily: 'CFAstyStd-Medium',
-//   src: `local('CFAstyStd-Medium'), url(${CFAstyStdMedium}) format('woff')`,
-// };
-
-// const cfAstyStdMediumOblique = {
-//   fontFamily: 'CFAstyStd-MediumOblique',
-//   src: `local('CFAstyStd-MediumOblique'), url(${CFAstyStdMediumOblique}) format('woff')`,
-// };
-
 const muiTheme = createTheme({
   props: {
     MuiWithWidth: {
@@ -95,18 +58,6 @@ const muiTheme = createTheme({
 
 // Overrides
 muiTheme.overrides = {
-  // MuiCssBaseline: {
-  //   '@global': {
-  //     '@font-face': [
-  //       cfAstyStdBold,
-  //       cfAstyStdBook,
-  //       cfAstyStdBookOblique,
-  //       cfAstyStdLight,
-  //       cfAstyStdMedium,
-  //       cfAstyStdMediumOblique,
-  //     ],
-  //   },
-  // },
   MuiDialog: {
     root: {
       zIndex: '10000 !important',

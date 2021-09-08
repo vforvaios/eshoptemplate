@@ -1,55 +1,55 @@
 const typography = () => ({
   fontSize: 16,
   h1: {
-    fontFamily: 'CFAstyStd-Medium',
+    fontFamily: 'Roboto',
     fontSize: '28px',
     lineHeight: '40px',
     letterSpacing: 0.3,
   },
   h2: {
-    fontFamily: 'CFAstyStd-Medium',
+    fontFamily: 'Roboto',
     fontSize: '22px',
     lineHeight: '24px',
     letterSpacing: 0.2,
   },
   h3: {
-    fontFamily: 'CFAstyStd-Book',
+    fontFamily: 'Roboto',
     fontSize: '20px',
     lineHeight: '24px',
     letterSpacing: 0.2,
   },
   h4: {
-    fontFamily: 'CFAstyStd-Bold',
+    fontFamily: 'Roboto',
     fontSize: '16px',
     lineHeight: '24px',
     letterSpacing: 0.3,
   },
   h5: {
-    fontFamily: 'CFAstyStd-Book',
+    fontFamily: 'Roboto',
     fontSize: '16px',
     lineHeight: '24px',
     letterSpacing: 0.2,
   },
   h6: {
-    fontFamily: 'CFAstyStd-Medium',
+    fontFamily: 'Roboto',
     fontSize: '14px',
     lineHeight: '16px',
     letterSpacing: 0.2,
   },
   body1: {
-    fontFamily: 'CFAstyStd-Book',
+    fontFamily: 'Roboto',
     fontSize: '16px',
     lineHeight: '32px',
     letterSpacing: 0.3,
   },
   body2: {
-    fontFamily: 'CFAstyStd-Book',
+    fontFamily: 'Roboto',
     fontSize: '13px',
     lineHeight: '20px',
     letterSpacing: 0.3,
   },
   button: {
-    fontFamily: 'CFAstyStd-Medium',
+    fontFamily: 'Roboto',
     fontSize: '14px',
     lineHeight: '16px',
     letterSpacing: 0.2,
@@ -57,27 +57,27 @@ const typography = () => ({
   },
   // when link, use overline as well
   overline: {
-    fontFamily: 'CFAstyStd-Medium',
+    fontFamily: 'Roboto',
     fontSize: '12px',
     lineHeight: '16px',
     letterSpacing: 0.4,
   },
   caption: {
-    fontFamily: 'CFAstyStd-Book',
+    fontFamily: 'Roboto',
     fontSize: '14px',
     lineHeight: '16px',
     letterSpacing: 0,
   },
   // captionSmall: {
   subtitle2: {
-    fontFamily: 'CFAstyStd-Medium',
+    fontFamily: 'Roboto',
     fontSize: '11px',
     lineHeight: '16px',
     letterSpacing: 0.3,
   },
   // label: {
   subtitle1: {
-    fontFamily: 'CFAstyStd-Book',
+    fontFamily: 'Roboto',
     fontSize: '12px',
     lineHeight: '16px',
     letterSpacing: 0.3,
