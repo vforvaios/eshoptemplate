@@ -14,7 +14,9 @@ const Home = ({ classes }) => (
       <Grid item xs={12}>
         <HomeSlider />
       </Grid>
-      <Grid item xs={12} className={classes?.homeOffersTabsContainer}>
+    </Grid>
+    <Grid container>
+      <Grid item xs={12}>
         <HomeOffersTabs />
       </Grid>
     </Grid>
