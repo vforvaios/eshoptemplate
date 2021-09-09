@@ -1,6 +1,6 @@
 const palette = {
   white: '#FFFFFF',
-  black: '#312F2F',
+  black: '#000000',
   red: {
     main: '#D51317',
     hover: '#C70004',
