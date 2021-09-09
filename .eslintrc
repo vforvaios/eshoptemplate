@@ -30,6 +30,7 @@
     "import/prefer-default-export": 0,
     "import/no-webpack-loader-syntax": 0,
     "no-console": 0,
+    "react/jsx-closing-bracket-location": 0,
     "react/prop-types": 0,
     "no-debugger": 0,
     "react/jsx-props-no-spreading": "off",

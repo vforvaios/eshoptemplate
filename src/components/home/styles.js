@@ -1,5 +1,10 @@
 const styles = () => ({
-  homeFontColor: { color: 'white' },
+  homeFontColor: { color: 'black' },
+  homeOffersTabsContainer: {
+    textAlign: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+  },
 });
 
 export default styles;

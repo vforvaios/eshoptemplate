@@ -1,18 +1,25 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
+
 import withStyles from '@material-ui/core/styles/withStyles';
 import HomeSlider from './home-slider/HomeSlider';
+import HomeOffersTabs from './home-offer-tabs/HomeOffersTabs';
 
 import styles from './styles';
 import './home.scss';
 
-const Home = ({ classes }) => {
-  return (
-    <div className="homeBG">
-      <HomeSlider />
-
-      <div className={classes?.homeFontColor}>Home</div>
-    </div>
-  );
-};
+const Home = ({ classes }) => (
+  <div className="homeBG">
+    <Grid container>
+      <Grid item xs={12}>
+        <HomeSlider />
+      </Grid>
+      <Grid item xs={12} className={classes?.homeOffersTabsContainer}>
+        <HomeOffersTabs />
+      </Grid>
+    </Grid>
+    <div className={classes?.homeFontColor}>Home</div>
+  </div>
+);
 
 export default withStyles(styles)(Home);
