@@ -1,0 +1,14 @@
+.homeSlickSlide {
+  img {
+    width: 100%;
+    outline: none;
+  }
+}
+.slick-next {
+  right: 0;
+  z-index: 1;
+}
+.slick-prev {
+  left: 0;
+  z-index: 1;
+}
