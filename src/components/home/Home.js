@@ -1,43 +1,15 @@
 import React from 'react';
-
-import Slider from 'react-slick';
-
 import withStyles from '@material-ui/core/styles/withStyles';
+import HomeSlider from './home-slider/HomeSlider';
 
 import styles from './styles';
 import './home.scss';
 
 const Home = ({ classes }) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   return (
     <div className="homeBG">
-      <Slider {...settings}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
-      </Slider>
+      <HomeSlider />
+
       <div className={classes?.homeFontColor}>Home</div>
     </div>
   );
