@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import withStyles from '@material-ui/core/styles/withStyles';
+import MainMenu from 'components/main-menu/MainMenu';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
@@ -14,7 +15,7 @@ const Header = ({ classes, toggleValue, setToggleValue }) => (
     <Grid item>
       <MenuIcon onClick={setToggleValue('left', true)} className={classes?.menuIcon} />
       <Drawer anchor="left" open={toggleValue?.left} onClose={setToggleValue('left', false)}>
-        Hi
+        <MainMenu setToggleValue={setToggleValue} />
       </Drawer>
     </Grid>
     <Grid item>LOGO</Grid>
