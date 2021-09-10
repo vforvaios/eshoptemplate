@@ -19,6 +19,16 @@
     "sourceType": "module"
   },
   "rules": {
+    "prettier/prettier": "error",
+    "no-undef": 0,
+    "no-unused-expressions": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/no-danger": 0,
+    "react/jsx-space-before-closing": 0,
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "linebreak-style": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "arrow-parens": 0,
     "import/no-named-as-default": 0,
@@ -34,6 +44,9 @@
     "react/prop-types": 0,
     "no-debugger": 0,
     "react/jsx-props-no-spreading": "off",
-    "no-use-before-define": ["error", { "variables": false, "functions": false }]
+    "no-use-before-define": [
+      "error",
+      { "variables": false, "functions": false }
+    ]
   }
 }
