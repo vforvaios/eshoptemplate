@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": ["standard", "airbnb", "prettier"],
-  "plugins": ["babel", "promise", "prettier", "react"],
+  "plugins": ["babel", "promise", "prettier", "react", "react-hooks"],
   "env": {
     "browser": true,
     "es6": true

@@ -13,7 +13,11 @@ const theme = {
   // your components
 };
 
-if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development' && process.env.NODE_ENV !== 'test') {
+if (
+  typeof window !== 'undefined' &&
+  process.env.NODE_ENV === 'development' &&
+  process.env.NODE_ENV !== 'test'
+) {
   /* eslint-disable no-console */
   console.log('--- THEME ---', theme);
 }

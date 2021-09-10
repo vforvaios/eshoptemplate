@@ -13,8 +13,14 @@ import styles from './styles';
 const Header = ({ classes, toggleValue, setToggleValue }) => (
   <Grid container className={classes?.headerContainer}>
     <Grid item>
-      <MenuIcon onClick={setToggleValue('left', true)} className={classes?.menuIcon} />
-      <Drawer anchor="left" open={toggleValue?.left} onClose={setToggleValue('left', false)}>
+      <MenuIcon
+        onClick={setToggleValue('left', true)}
+        className={classes?.menuIcon}
+      />
+      <Drawer
+        anchor="left"
+        open={toggleValue?.left}
+        onClose={setToggleValue('left', false)}>
         <MainMenu setToggleValue={setToggleValue} />
       </Drawer>
     </Grid>

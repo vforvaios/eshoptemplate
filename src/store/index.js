@@ -6,6 +6,9 @@ import rootEpics from 'models/epics/rootEpics';
 
 const epicMiddleWare = createEpicMiddleware();
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(epicMiddleWare)));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(epicMiddleWare)),
+);
 epicMiddleWare.run(rootEpics);
 export default store;
