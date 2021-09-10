@@ -13,24 +13,20 @@ const HomeSlider = () => {
   };
   return (
     <Slider {...settings}>
-      <div className="homeSlickSlide">
-        <img src="https://via.placeholder.com/1920x600" alt="slider" />
-      </div>
-      <div className="homeSlickSlide">
-        <img src="https://via.placeholder.com/1920x600" alt="slider" />
-      </div>
-      <div className="homeSlickSlide">
-        <img src="https://via.placeholder.com/1920x600" alt="slider" />
-      </div>
-      <div className="homeSlickSlide">
-        <img src="https://via.placeholder.com/1920x600" alt="slider" />
-      </div>
-      <div className="homeSlickSlide">
-        <img src="https://via.placeholder.com/1920x600" alt="slider" />
-      </div>
-      <div className="homeSlickSlide">
-        <img src="https://via.placeholder.com/1920x600" alt="slider" />
-      </div>
+      {[1, 2, 3, 4]?.map((item) => (
+        <div className="homeSlickSlide" key={item}>
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcSet="https://via.placeholder.com/767x500"
+            />
+            <img
+              src="https://via.placeholder.com/1920x600"
+              alt="Chris standing up holding his daughter Elva"
+            />
+          </picture>
+        </div>
+      ))}
     </Slider>
   );
 };

@@ -1,5 +1,5 @@
-const styles = () => ({
-  root: { flexBasis: '33.33%' },
+const styles = ({ breakpoints }) => ({
+  root: { width: '100%', [breakpoints.up('sm')]: { width: '33.33%' } },
   media: { width: '100%', height: 400 },
 });
 
