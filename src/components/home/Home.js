@@ -8,7 +8,7 @@ import HomeOffersTabs from './home-offer-tabs/HomeOffersTabs';
 import styles from './styles';
 import './home.scss';
 
-const Home = ({ classes }) => (
+const Home = () => (
   <div className="homeBG">
     <Grid container>
       <Grid item xs={12}>
@@ -20,7 +20,6 @@ const Home = ({ classes }) => (
         <HomeOffersTabs />
       </Grid>
     </Grid>
-    <div className={classes?.homeFontColor}>Home</div>
   </div>
 );
 

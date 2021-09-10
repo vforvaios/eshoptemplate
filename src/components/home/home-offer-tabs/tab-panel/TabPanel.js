@@ -1,4 +1,5 @@
 import React from 'react';
+import './tabpanel.scss';
 
 const TabPanel = ({ children, value, index, ...other }) => (
   <div
@@ -7,7 +8,7 @@ const TabPanel = ({ children, value, index, ...other }) => (
     id={`full-width-tabpanel-${index}`}
     aria-labelledby={`full-width-tab-${index}`}
     {...other}>
-    {value === index && <div>{children}</div>}
+    {value === index && <div className="tabPanel">{children}</div>}
   </div>
 );
 
