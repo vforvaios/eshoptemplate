@@ -1,5 +1,6 @@
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { NavLink } from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -10,12 +11,14 @@ import CardContent from '@material-ui/core/CardContent';
 
 import styles from './styles';
 
-const Product = ({ classes }) => (
+const Product = ({ classes, id }) => (
   <Card className={classes?.root}>
-    <CardHeader
-      title="Shrimp and Chorizo Paella"
-      subheader="September 14, 2016"
-    />
+    <NavLink className="navlink" to={`/product/${id}`}>
+      <CardHeader
+        title="Shrimp and Chorizo Paella"
+        subheader="September 14, 2016"
+      />
+    </NavLink>
     <CardMedia
       className={classes.media}
       image="https://via.placeholder.com/400x400"

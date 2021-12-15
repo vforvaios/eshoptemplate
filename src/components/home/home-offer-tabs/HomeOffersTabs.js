@@ -25,20 +25,20 @@ const HomeOffersTabs = ({ handleChange, value }) => (
     <div>
       <TabPanel value={value} index={0}>
         <div className="productContainer">
-          <Product />
-          <Product />
+          <Product id={1} />
+          <Product id={2} />
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div className="productContainer">
-          <Product />
-          <Product />
+          <Product id={3} />
+          <Product id={4} />
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div className="productContainer">
-          <Product />
-          <Product />
+          <Product id={5} />
+          <Product id={6} />
         </div>
       </TabPanel>
     </div>
