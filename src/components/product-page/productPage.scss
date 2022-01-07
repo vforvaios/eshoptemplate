@@ -7,9 +7,12 @@
 }
 
 .mainProductPhotosContainer {
-  width: 50%;
+  img {
+    max-width: 100%;
+  }
 }
 
-.mainProductMainContentContainer {
-  flex-grow: 1;
-}
+// .mainProductMainContentContainer {
+//   flex-grow: 1;
+//   padding-left: 10px;
+// }

@@ -85,6 +85,9 @@ muiTheme.overrides = {
       border: `14px solid ${palette.black}`,
     },
   },
+  MuiGrid: {
+    item: { padding: '0 16px' },
+  },
   // MuiPickersClockNumber: {
   //   clockNumber: {},
   //   clockNumberSelected: {
