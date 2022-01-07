@@ -1,0 +1,15 @@
+.mainProductRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.mainProductPhotosContainer {
+  width: 50%;
+}
+
+.mainProductMainContentContainer {
+  flex-grow: 1;
+}

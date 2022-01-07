@@ -1,0 +1,15 @@
+.row {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  &.nopadding {
+    padding: 0;
+  }
+}
