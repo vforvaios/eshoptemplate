@@ -10,7 +10,7 @@ const About = () => {
     <div>
       <div>About</div>
       {returnedCounter}
-      <button type="button" onClick={() => dispatch(increaseCounterAction())}>
+      <button type="button" onClick={() => dispatch(increaseCounterAction(1))}>
         IncreaseCounter
       </button>
     </div>

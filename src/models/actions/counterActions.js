@@ -1,8 +1,5 @@
-import { increaseCounter } from './types';
+import { createAction } from '@reduxjs/toolkit';
 
-const increaseCounterAction = () => ({
-  type: increaseCounter,
-  payload: 1,
-});
+const increaseCounterAction = createAction('counter/increaseCounter');
 
 export { increaseCounterAction };

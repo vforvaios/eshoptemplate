@@ -1,3 +1,3 @@
-const counter = ({ counterReducer }) => counterReducer?.counter;
+const counter = ({ rootReducer }) => rootReducer?.counterReducer?.counter;
 
 export { counter };

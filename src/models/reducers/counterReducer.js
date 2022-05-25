@@ -1,4 +1,5 @@
-import { increaseCounter } from 'models/actions/types';
+import { createReducer } from '@reduxjs/toolkit';
+import { increaseCounterAction } from 'models/actions';
 
 const initialState = {
   counter: 0,
@@ -6,17 +7,11 @@ const initialState = {
   users: [],
   todos: [],
 };
-
-const counterReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case increaseCounter:
-      return {
-        ...state,
-        counter: state.counter + action.payload,
-      };
-    default:
-      return state;
-  }
-};
+const counterReducer = createReducer(initialState, {
+  [increaseCounterAction.type]: (state, action) => ({
+    ...state,
+    counter: state?.counter + action.payload,
+  }),
+});
 
 export default counterReducer;
