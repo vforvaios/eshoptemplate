@@ -1,3 +1,3 @@
-import { increaseCounterAction } from './counterActions';
+import { increaseCounterAction, decreaseCounterAction } from './counterActions';
 
-export { increaseCounterAction };
+export { increaseCounterAction, decreaseCounterAction };

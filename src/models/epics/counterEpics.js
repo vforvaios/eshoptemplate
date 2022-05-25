@@ -1,13 +1,14 @@
 // import axios from 'axios'
 import { ofType } from 'redux-observable';
-import { mapTo, delay } from 'rxjs/operators';
+import { decreaseCounterAction } from 'models/actions';
+import { tap, delay, ignoreElements } from 'rxjs/operators';
 
 const counterIncreaseEpic = (action$) =>
   action$.pipe(
-    // or  = action$ = action$.pipe(
-    ofType('INCREASE'),
-    delay(1000),
-    mapTo({ type: 'COUNTER_INCREASED' }),
+    ofType(decreaseCounterAction),
+    delay(3000),
+    tap(console.log),
+    ignoreElements(),
   );
 
 // const counterDecreaseEpic = pipe( // or  = action$ = action$.pipe(
