@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 // import axios from 'axios'
 import { decreaseCounterAction } from 'models/actions';
 import { ofType } from 'redux-observable';

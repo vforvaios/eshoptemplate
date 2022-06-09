@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import React from 'react';
 import ReactDOM from 'react-dom';
