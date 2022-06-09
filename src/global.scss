@@ -27,8 +27,13 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+.MuiDrawer-paperAnchorLeft {
+  right: 50px !important;
+}
+
 @import 'src/styles/slick.scss';
 @import 'src/styles/catalog.scss';
+@import 'src/styles/product.scss';
 @media only screen and (min-width: 769px) {
   @import 'src/styles/responsive.scss';
 }

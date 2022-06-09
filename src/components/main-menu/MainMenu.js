@@ -1,7 +1,5 @@
-import React from 'react';
-
 import CloseIcon from '@material-ui/icons/Close';
-
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MainMenu = ({ setToggleValue }) => (
@@ -10,13 +8,19 @@ const MainMenu = ({ setToggleValue }) => (
     <div>Menu</div>
     <ul>
       <li>
-        <Link to="/">Home</Link>
+        <Link onClick={setToggleValue('left', false)} to="/">
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <Link onClick={setToggleValue('left', false)} to="/about">
+          About
+        </Link>
       </li>
       <li>
-        <Link to="/catalog">Catalog</Link>
+        <Link onClick={setToggleValue('left', false)} to="/catalog">
+          Catalog
+        </Link>
       </li>
     </ul>
   </div>
