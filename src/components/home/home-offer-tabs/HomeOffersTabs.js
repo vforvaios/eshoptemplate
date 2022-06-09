@@ -24,22 +24,34 @@ const HomeOffersTabs = ({ handleChange, value }) => (
     </div>
     <div>
       <TabPanel value={value} index={0}>
-        <div className="productContainer">
-          <Product id={1} />
-          <Product id={2} />
-        </div>
+        <ul className="products-grid">
+          <li>
+            <Product id={1} />
+          </li>
+          <li>
+            <Product id={2} />
+          </li>
+        </ul>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div className="productContainer">
-          <Product id={3} />
-          <Product id={4} />
-        </div>
+        <ul className="products-grid">
+          <li>
+            <Product id={3} />
+          </li>
+          <li>
+            <Product id={4} />
+          </li>
+        </ul>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div className="productContainer">
-          <Product id={5} />
-          <Product id={6} />
-        </div>
+        <ul className="products-grid">
+          <li>
+            <Product id={5} />
+          </li>
+          <li>
+            <Product id={6} />
+          </li>
+        </ul>
       </TabPanel>
     </div>
   </>

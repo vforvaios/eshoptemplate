@@ -1,8 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import './homeSlider.scss';
-
 const HomeSlider = () => {
   const settings = {
     dots: true,

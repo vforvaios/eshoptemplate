@@ -1,5 +1,4 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import HomeSlider from './home-slider/HomeSlider';
@@ -10,16 +9,14 @@ import './home.scss';
 
 const Home = () => (
   <div className="homeBG">
-    <Grid container>
-      <Grid item xs={12}>
-        <HomeSlider />
-      </Grid>
-    </Grid>
-    <Grid container>
-      <Grid item xs={12}>
+    <div className="row">
+      <HomeSlider />
+    </div>
+    <div className="row">
+      <div className="wrapper">
         <HomeOffersTabs />
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   </div>
 );
 

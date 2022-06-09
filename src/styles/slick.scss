@@ -1,3 +1,8 @@
+.slick-prev,
+.slick-next {
+  margin-top: -10px;
+}
+
 .homeSlickSlide {
   img {
     width: 100%;
@@ -5,11 +10,11 @@
   }
 }
 .slick-next {
-  right: 0;
+  right: 20px;
   z-index: 1;
 }
 .slick-prev {
-  left: 0;
+  left: 20px;
   z-index: 1;
 }
 .slick-dots {
