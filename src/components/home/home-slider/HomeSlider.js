@@ -9,6 +9,7 @@ const HomeSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <Slider {...settings}>
       {[1, 2, 3, 4]?.map((item) => (
@@ -28,4 +29,5 @@ const HomeSlider = () => {
     </Slider>
   );
 };
+
 export default HomeSlider;

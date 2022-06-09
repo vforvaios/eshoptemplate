@@ -1,9 +1,8 @@
+import withStyles from '@material-ui/core/styles/withStyles';
 import React from 'react';
 
-import withStyles from '@material-ui/core/styles/withStyles';
-import HomeSlider from './home-slider/HomeSlider';
 import HomeOffersTabs from './home-offer-tabs/HomeOffersTabs';
-
+import HomeSlider from './home-slider/HomeSlider';
 import styles from './styles';
 import './home.scss';
 

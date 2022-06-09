@@ -1,12 +1,11 @@
-import React from 'react';
-import { compose } from 'redux';
-import withStyles from '@material-ui/core/styles/withStyles';
-import MainMenu from 'components/main-menu/MainMenu';
-
-import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
+import withStyles from '@material-ui/core/styles/withStyles';
+import MenuIcon from '@material-ui/icons/Menu';
+import MainMenu from 'components/main-menu/MainMenu';
 import { withToggle } from 'library';
+import React from 'react';
+import { compose } from 'redux';
 
 import styles from './styles';
 

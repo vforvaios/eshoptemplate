@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   increaseCounterAction,
   decreaseCounterAction,
 } from 'models/actions/counterActions';
 import { counter } from 'models/selectors/counterSelectors';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const About = () => {
   const dispatch = useDispatch();

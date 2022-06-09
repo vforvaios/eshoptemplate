@@ -1,8 +1,8 @@
+/* eslint-disable comma-dangle */
+import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import theme from './resources/mui/theme';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -10,6 +10,7 @@ import 'global.scss';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import theme from './resources/mui/theme';
 import store from './store';
 
 ReactDOM.render(

@@ -1,6 +1,7 @@
+/* eslint-disable comma-dangle */
 // import axios from 'axios'
-import { ofType } from 'redux-observable';
 import { decreaseCounterAction } from 'models/actions';
+import { ofType } from 'redux-observable';
 import { tap, delay, ignoreElements } from 'rxjs/operators';
 
 const counterIncreaseEpic = (action$) =>

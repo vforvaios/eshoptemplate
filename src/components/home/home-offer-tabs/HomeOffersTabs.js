@@ -1,8 +1,8 @@
-import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { withActiveTab } from 'library';
+import Tabs from '@material-ui/core/Tabs';
 import Product from 'components/product/Product';
+import { withActiveTab } from 'library';
+import React from 'react';
 
 import TabPanel from './tab-panel/TabPanel';
 

@@ -1,10 +1,10 @@
+import About from 'components/about/About';
+import Catalog from 'components/catalog/Catalog';
+import Header from 'components/header/Header';
+import Home from 'components/home/Home';
+import ProductPage from 'components/product-page/ProductPage';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from 'components/home/Home';
-import About from 'components/about/About';
-import Header from 'components/header/Header';
-import Catalog from 'components/catalog/Catalog';
-import ProductPage from 'components/product-page/ProductPage';
 import 'resources/styles/general.scss';
 
 const App = () => (
