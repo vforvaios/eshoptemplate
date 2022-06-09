@@ -5,7 +5,7 @@ import Select from '@material-ui/core/Select';
 import React, { useState } from 'react';
 
 const SortingCatalog = () => {
-  const [sorting, setSorting] = useState(null);
+  const [sorting, setSorting] = useState('');
 
   return (
     <div className="sorting-container">
