@@ -31,6 +31,10 @@
   right: 50px !important;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .pagination {
   margin: 0 auto;
 
@@ -39,7 +43,20 @@
   }
 }
 
+// ACTIONS
+.actions {
+  display: flex;
+  justify-content: flex-end;
+
+  &.separate {
+    justify-content: space-between;
+  }
+}
+
+@import 'src/styles/buttons.scss';
 @import 'src/styles/slick.scss';
+@import 'src/styles/table.scss';
+@import 'src/styles/cart.scss';
 @import 'src/styles/catalog.scss';
 @import 'src/styles/product.scss';
 @media only screen and (min-width: 769px) {

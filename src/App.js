@@ -1,4 +1,5 @@
 import About from 'components/about/About';
+import Cart from 'components/cart/Cart';
 import Catalog from 'components/catalog/Catalog';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
@@ -14,6 +15,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/catalog" component={Catalog} />
+      <Route path="/cart" component={Cart} />
       <Route path="/product/:id" component={ProductPage} />
     </Switch>
   </Router>

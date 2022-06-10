@@ -22,6 +22,11 @@ const MainMenu = ({ setToggleValue }) => (
           Catalog
         </Link>
       </li>
+      <li>
+        <Link onClick={setToggleValue('left', false)} to="/cart">
+          Cart
+        </Link>
+      </li>
     </ul>
   </div>
 );
