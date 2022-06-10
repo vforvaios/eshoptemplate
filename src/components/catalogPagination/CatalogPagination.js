@@ -1,9 +1,14 @@
 import Pagination from '@material-ui/lab/Pagination';
 import React from 'react';
 
-const CatalogPagination = () => (
+const CatalogPagination = ({ pagination }) => (
   <div className="catalog-pagination pagination">
-    <Pagination count={10} showFirstButton showLastButton />
+    <Pagination
+      page={pagination.currentPage}
+      count={pagination.total}
+      showFirstButton
+      showLastButton
+    />
   </div>
 );
 

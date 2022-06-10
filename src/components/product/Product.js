@@ -12,39 +12,47 @@ import { Link } from 'react-router-dom';
 
 import styles from './styles';
 
-const Product = ({ classes, id }) => (
-  <Link className="navlink product" to={`/product/${id}`}>
-    <Card className={classes?.root}>
-      <CardHeader
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
-        classes={{
-          title: classes.headerTitle,
-          subheader: classes.subHeader,
-        }}
-      />
-      <CardMedia className={classes.media} title="Paella dish">
-        <div
-          className={classes.productImage}
-          style={{
-            backgroundImage: `url('https://via.placeholder.com/400x400')`,
+const Product = ({ classes, product }) => {
+  const {
+    productId,
+    productTitle,
+    productSubHeader,
+    imgHref,
+    productDescription,
+  } = product;
+
+  return (
+    <Link className="navlink product" to={`/product/${productId}`}>
+      <Card className={classes?.root}>
+        <CardHeader
+          title={productTitle}
+          subheader={productSubHeader}
+          classes={{
+            title: classes.headerTitle,
+            subheader: classes.subHeader,
           }}
         />
-      </CardMedia>
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing className="card-actions">
-        <IconButton className="product-action" aria-label="add to favorites">
-          <FavoriteBorderIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
-  </Link>
-);
+        <CardMedia className={classes.media} title={productTitle}>
+          <div
+            className={classes.productImage}
+            style={{
+              backgroundImage: `url(${imgHref})`,
+            }}
+          />
+        </CardMedia>
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {productDescription}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing className="card-actions">
+          <IconButton className="product-action" aria-label="add to favorites">
+            <FavoriteBorderIcon />
+          </IconButton>
+        </CardActions>
+      </Card>
+    </Link>
+  );
+};
 
 export default withStyles(styles)(Product);

@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import React from 'react';
 
-const CartItem = ({ updateable }) => (
+const CartItem = ({ updateable, item }) => (
   <TableRow>
     <TableCell>
       <div className="cart-description">
@@ -15,19 +15,19 @@ const CartItem = ({ updateable }) => (
             alt="product description"
           />
         </span>
-        <span>afsdfadsfds fasd afsd fasd</span>
+        <span>{item.productDescription}</span>
       </div>
     </TableCell>
     <TableCell>
       {!updateable ? (
-        2
+        item.total
       ) : (
         <TextField
           type="number"
           InputProps={{
             inputProps: { min: 0 },
           }}
-          defaultValue={2}
+          defaultValue={item.total}
         />
       )}
     </TableCell>
