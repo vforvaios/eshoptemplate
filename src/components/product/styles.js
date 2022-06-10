@@ -1,4 +1,4 @@
-const styles = () => ({
+const styles = ({ breakpoints }) => ({
   root: {
     position: 'relative',
     width: '100%',
@@ -10,8 +10,11 @@ const styles = () => ({
   },
   media: {
     width: '100%',
-    height: 400,
+    height: 200,
     overflow: 'hidden',
+    [breakpoints.up('sm')]: {
+      height: 400,
+    },
   },
   headerTitle: {
     fontSize: 18,

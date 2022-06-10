@@ -2,6 +2,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MenuIcon from '@material-ui/icons/Menu';
+import MiniCart from 'components/cart/MiniCart';
 import MainMenu from 'components/main-menu/MainMenu';
 import Search from 'components/searchHeader/Search';
 import { withToggle } from 'library';
@@ -26,7 +27,10 @@ const Header = ({ classes, toggleValue, setToggleValue }) => (
     </Grid>
     <Grid item>LOGO</Grid>
     <Grid item>
-      <Search />
+      <div className={classes.headerActions}>
+        <Search />
+        <MiniCart />
+      </div>
     </Grid>
   </Grid>
 );

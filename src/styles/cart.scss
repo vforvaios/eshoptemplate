@@ -7,3 +7,26 @@
     margin-right: 10px;
   }
 }
+
+.mini-cart {
+  text-decoration: none;
+  position: relative;
+
+  span {
+    position: absolute;
+    font-size: 9px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    line-height: 14px;
+    top: 0;
+    right: -8px;
+  }
+
+  svg {
+    fill: #fff;
+  }
+}

@@ -12,6 +12,10 @@ const styles = ({ spacing, palette }) => ({
     height: 30,
     cursor: 'pointer',
   },
+  headerActions: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 });
 
 export default styles;
