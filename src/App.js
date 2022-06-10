@@ -1,6 +1,7 @@
 import About from 'components/about/About';
 import Cart from 'components/cart/Cart';
 import Catalog from 'components/catalog/Catalog';
+import Contact from 'components/contact/Contact';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import ProductPage from 'components/product-page/ProductPage';
@@ -16,6 +17,7 @@ const App = () => (
       <Route path="/about" component={About} />
       <Route path="/catalog" component={Catalog} />
       <Route path="/cart" component={Cart} />
+      <Route path="/contact" component={Contact} />
       <Route path="/product/:id" component={ProductPage} />
     </Switch>
   </Router>

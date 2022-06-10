@@ -27,6 +27,11 @@ const MainMenu = ({ setToggleValue }) => (
           Cart
         </Link>
       </li>
+      <li>
+        <Link onClick={setToggleValue('left', false)} to="/contact">
+          Contact
+        </Link>
+      </li>
     </ul>
   </div>
 );
