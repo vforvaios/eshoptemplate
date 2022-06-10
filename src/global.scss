@@ -31,6 +31,14 @@
   right: 50px !important;
 }
 
+.pagination {
+  margin: 0 auto;
+
+  .MuiPagination-ul {
+    justify-content: center;
+  }
+}
+
 @import 'src/styles/slick.scss';
 @import 'src/styles/catalog.scss';
 @import 'src/styles/product.scss';

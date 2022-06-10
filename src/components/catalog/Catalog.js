@@ -1,3 +1,4 @@
+import CatalogPagination from 'components/catalogPagination/CatalogPagination';
 import Product from 'components/product/Product';
 import SortingCatalog from 'components/sortingCatalog/SortingCatalog';
 import React from 'react';
@@ -11,6 +12,7 @@ const Catalog = () => (
         <section className="col-left filters">Filters</section>
         <section className="col-right products-section">
           <div className="sorting-section">
+            <CatalogPagination />
             <SortingCatalog />
           </div>
           <div className="products">
@@ -21,6 +23,9 @@ const Catalog = () => (
                 </li>
               ))}
             </ul>
+          </div>
+          <div className="pagination">
+            <CatalogPagination />
           </div>
         </section>
       </div>
