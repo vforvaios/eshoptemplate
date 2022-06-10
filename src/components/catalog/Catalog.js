@@ -15,7 +15,7 @@ const Catalog = () => {
   return (
     <div className="row catalog content">
       <div className="wrapper">
-        <div className="grid-container">
+        <div className="grid-container catalog-container">
           <section className="col-left filters">Filters</section>
           <section className="col-right products-section">
             <div className="sorting-section">

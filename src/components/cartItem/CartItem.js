@@ -19,6 +19,7 @@ const CartItem = ({ updateable, item }) => (
       </div>
     </TableCell>
     <TableCell>
+      <span className="hidden">Quantity</span>
       {!updateable ? (
         item.total
       ) : (

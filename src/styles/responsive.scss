@@ -1,3 +1,69 @@
+// GENERAL
+.hidden {
+  display: none;
+}
+
+// CATALOG
+.filters {
+  flex-basis: 33.33%;
+  min-width: 300px;
+  margin-right: 20px;
+}
+
+.catalog-container {
+  flex-direction: row;
+}
+
+// TABLE
+.table {
+  display: table;
+  tr {
+    display: table-row;
+  }
+  thead {
+    display: table-header-group;
+    th {
+      display: table-cell;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  tbody {
+    display: table-row-group;
+
+    td {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+
+      &:first-child {
+        padding-right: 0;
+      }
+
+      &:last-child {
+        position: static;
+      }
+    }
+  }
+
+  .hidden {
+    text-align: left;
+  }
+}
+
+// CART
+
+//
 .products-grid > li {
   flex-basis: 33.33%;
 }
