@@ -32,6 +32,11 @@ const MainMenu = ({ setToggleValue }) => (
           Contact
         </Link>
       </li>
+      <li>
+        <Link onClick={setToggleValue('left', false)} to="/categories">
+          Categories Landing
+        </Link>
+      </li>
     </ul>
   </div>
 );
