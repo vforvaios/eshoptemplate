@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MenuIcon from '@material-ui/icons/Menu';
 import MainMenu from 'components/main-menu/MainMenu';
+import Search from 'components/searchHeader/Search';
 import { withToggle } from 'library';
 import React from 'react';
 import { compose } from 'redux';
@@ -24,7 +25,9 @@ const Header = ({ classes, toggleValue, setToggleValue }) => (
       </Drawer>
     </Grid>
     <Grid item>LOGO</Grid>
-    <Grid item>Search area</Grid>
+    <Grid item>
+      <Search />
+    </Grid>
   </Grid>
 );
 

@@ -3,7 +3,7 @@ const styles = ({ spacing, palette }) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: spacing(1),
-    background: palette?.black,
+    background: palette?.action.success.main,
     '& > div': { color: palette?.white },
   },
   menuIcon: {
