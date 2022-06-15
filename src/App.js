@@ -2,6 +2,7 @@ import About from 'components/about/About';
 import Cart from 'components/cart/Cart';
 import Catalog from 'components/catalog/Catalog';
 import CategoriesLanding from 'components/categoriesLanging/CategoriesLanding';
+import CheckoutSuccess from 'components/checkout/CheckoutSuccess';
 import Confirm from 'components/checkout/Confirm';
 import Contact from 'components/contact/Contact';
 import Header from 'components/header/Header';
@@ -23,6 +24,7 @@ const App = () => (
       <Route path="/categories" component={CategoriesLanding} />
       <Route path="/product/:id" component={ProductPage} />
       <Route path="/checkout/confirm" component={Confirm} />
+      <Route path="/checkout/success" component={CheckoutSuccess} />
     </Switch>
   </Router>
 );

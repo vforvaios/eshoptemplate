@@ -42,6 +42,11 @@ const MainMenu = ({ setToggleValue }) => (
           Confirm
         </Link>
       </li>
+      <li>
+        <Link onClick={setToggleValue('left', false)} to="/checkout/success">
+          Checkout Success
+        </Link>
+      </li>
     </ul>
   </div>
 );
