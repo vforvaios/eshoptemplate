@@ -8,6 +8,7 @@ import Contact from 'components/contact/Contact';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import ProductPage from 'components/product-page/ProductPage';
+import Wishlist from 'components/wishlist/Wishlist';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'resources/styles/general.scss';
@@ -25,6 +26,7 @@ const App = () => (
       <Route path="/product/:id" component={ProductPage} />
       <Route path="/checkout/confirm" component={Confirm} />
       <Route path="/checkout/success" component={CheckoutSuccess} />
+      <Route path="/wishlist" component={Wishlist} />
     </Switch>
   </Router>
 );

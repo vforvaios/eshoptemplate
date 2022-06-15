@@ -47,6 +47,11 @@ const MainMenu = ({ setToggleValue }) => (
           Checkout Success
         </Link>
       </li>
+      <li>
+        <Link onClick={setToggleValue('left', false)} to="/wishlist">
+          Wishlist
+        </Link>
+      </li>
     </ul>
   </div>
 );
