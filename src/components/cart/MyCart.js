@@ -13,7 +13,8 @@ const MyCart = ({ cart, updateable }) => (
         <TableRow>
           <TableCell>Description</TableCell>
           <TableCell>Quantity</TableCell>
-          <TableCell />
+          <TableCell>Price</TableCell>
+          {updateable && <TableCell />}
         </TableRow>
       </TableHead>
       <TableBody>

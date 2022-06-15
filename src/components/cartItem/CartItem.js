@@ -33,12 +33,19 @@ const CartItem = ({ updateable, item }) => (
       )}
     </TableCell>
     <TableCell>
-      {updateable && (
+      <span className="hidden">Price</span>
+      <span>
+        <strong className="totalPrice">{item.totalPrice} </strong>
+        {`(${item.total}x${item.price})`}
+      </span>
+    </TableCell>
+    {updateable && (
+      <TableCell>
         <IconButton>
           <DeleteForeverIcon />
         </IconButton>
-      )}
-    </TableCell>
+      </TableCell>
+    )}
   </TableRow>
 );
 

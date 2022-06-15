@@ -38,6 +38,16 @@ const Confirm = () => {
           <MyCart cart={myCart} updateable={false} />
         </div>
       </div>
+      <div className="row">
+        <div className="wrapper">
+          <div className="actions separate">
+            <Button className="button standard">
+              <Link to="/catalog">Back to step 2</Link>
+            </Button>
+            <Button className="button green">Place the order</Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
