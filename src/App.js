@@ -2,6 +2,7 @@ import About from 'components/about/About';
 import Cart from 'components/cart/Cart';
 import Catalog from 'components/catalog/Catalog';
 import CategoriesLanding from 'components/categoriesLanging/CategoriesLanding';
+import Confirm from 'components/checkout/Confirm';
 import Contact from 'components/contact/Contact';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
@@ -21,6 +22,7 @@ const App = () => (
       <Route path="/contact" component={Contact} />
       <Route path="/categories" component={CategoriesLanding} />
       <Route path="/product/:id" component={ProductPage} />
+      <Route path="/checkout/confirm" component={Confirm} />
     </Switch>
   </Router>
 );

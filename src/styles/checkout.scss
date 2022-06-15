@@ -1,0 +1,26 @@
+.checkout-stepper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      padding: 10px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      line-height: 30px;
+      text-align: center;
+      margin: 0 10px;
+
+      &.active {
+        background-color: green;
+      }
+    }
+  }
+}

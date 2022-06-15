@@ -37,6 +37,11 @@ const MainMenu = ({ setToggleValue }) => (
           Categories Landing
         </Link>
       </li>
+      <li>
+        <Link onClick={setToggleValue('left', false)} to="/checkout/confirm">
+          Confirm
+        </Link>
+      </li>
     </ul>
   </div>
 );

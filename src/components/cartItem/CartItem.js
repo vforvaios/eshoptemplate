@@ -33,9 +33,11 @@ const CartItem = ({ updateable, item }) => (
       )}
     </TableCell>
     <TableCell>
-      <IconButton>
-        <DeleteForeverIcon />
-      </IconButton>
+      {updateable && (
+        <IconButton>
+          <DeleteForeverIcon />
+        </IconButton>
+      )}
     </TableCell>
   </TableRow>
 );
