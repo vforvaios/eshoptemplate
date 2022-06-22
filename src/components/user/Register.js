@@ -12,7 +12,7 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
-  const submitLoginForm = () => {
+  const submitRegisterForm = () => {
     if (email === '') {
       setEmailError('Blank email is not permitted!');
     } else {
@@ -107,8 +107,8 @@ const Register = () => {
             </div>
             <div className="form-control">
               <div className="actions separate">
-                <Button className="button green" onClick={submitLoginForm}>
-                  LOGIN
+                <Button className="button green" onClick={submitRegisterForm}>
+                  REGISTER
                 </Button>
               </div>
             </div>
