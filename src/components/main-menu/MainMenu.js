@@ -52,6 +52,16 @@ const MainMenu = ({ setToggleValue }) => (
           Wishlist
         </Link>
       </li>
+      <li>
+        <Link onClick={setToggleValue('left', false)} to="/login">
+          Login
+        </Link>
+      </li>
+      <li>
+        <Link onClick={setToggleValue('left', false)} to="/register">
+          Register
+        </Link>
+      </li>
     </ul>
   </div>
 );

@@ -8,6 +8,8 @@ import Contact from 'components/contact/Contact';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import ProductPage from 'components/product-page/ProductPage';
+import Login from 'components/user/Login';
+import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -27,6 +29,8 @@ const App = () => (
       <Route path="/checkout/confirm" component={Confirm} />
       <Route path="/checkout/success" component={CheckoutSuccess} />
       <Route path="/wishlist" component={Wishlist} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
     </Switch>
   </Router>
 );
