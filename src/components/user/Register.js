@@ -48,7 +48,7 @@ const Register = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">
-            <h1>Login</h1>
+            <h1>Register</h1>
           </div>
         </div>
       </div>
