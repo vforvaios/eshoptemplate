@@ -12,26 +12,26 @@ import Login from 'components/user/Login';
 import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'resources/styles/general.scss';
 
 const App = () => (
   <Router>
     <Header />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/catalog" component={Catalog} />
-      <Route path="/cart" component={Cart} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/categories" component={CategoriesLanding} />
-      <Route path="/product/:id" component={ProductPage} />
-      <Route path="/checkout/confirm" component={Confirm} />
-      <Route path="/checkout/success" component={CheckoutSuccess} />
-      <Route path="/wishlist" component={Wishlist} />
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-    </Switch>
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/catalog" element={<Catalog />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/categories" element={<CategoriesLanding />} />
+      <Route path="/product/:id" element={<ProductPage />} />
+      <Route path="/checkout/confirm" element={<Confirm />} />
+      <Route path="/checkout/success" element={<CheckoutSuccess />} />
+      <Route path="/wishlist" element={<Wishlist />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   </Router>
 );
 

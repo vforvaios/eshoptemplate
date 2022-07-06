@@ -1,6 +1,6 @@
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import 'slick-carousel/slick/slick.css';
@@ -12,13 +12,16 @@ import reportWebVitals from './reportWebVitals';
 import theme from './resources/mui/theme';
 import store from './store';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+  // <React.StrictMode>
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
   </Provider>,
-  document.getElementById('root'),
+  // </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
