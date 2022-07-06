@@ -2,6 +2,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import bcrypt from 'bcryptjs';
 import React, { useState } from 'react';
 
 const Login = () => {
@@ -10,7 +11,7 @@ const Login = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const submitLoginForm = () => {
+  const submitLoginForm = async () => {
     if (email === '') {
       setEmailError('Blank email is not permitted!');
     } else {
@@ -24,7 +25,14 @@ const Login = () => {
     }
 
     if (email !== '' && password !== '') {
-      alert('Login successful');
+      const data = { username: email, password };
+      const user = await fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
     }
   };
 
