@@ -2,13 +2,20 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import React, { useState } from 'react';
+import { setLoggedInUser } from 'models/actions/userActions';
+import { user } from 'models/selectors/userSelector';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userSelector = useSelector(user);
 
   const submitLoginForm = async () => {
     if (email === '') {
@@ -25,15 +32,23 @@ const Login = () => {
 
     if (email !== '' && password !== '') {
       const data = { username: email, password };
-      const user = await fetch('http://localhost:8000/api/login', {
+      const userFetched = await fetch('http://localhost:8000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
+
+      const user = await userFetched.json();
+
+      dispatch(setLoggedInUser(user));
     }
   };
+
+  useEffect(() => {
+    userSelector?.token && navigate('/');
+  }, [userSelector.token, navigate]);
 
   return (
     <div className="content user">

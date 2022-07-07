@@ -8,31 +8,80 @@ import Contact from 'components/contact/Contact';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import ProductPage from 'components/product-page/ProductPage';
+import ProtectedRoute from 'components/protected-route/ProtectedRoute';
 import Login from 'components/user/Login';
 import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
+import { user } from 'models/selectors/userSelector';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'resources/styles/general.scss';
 
-const App = () => (
-  <Router>
-    <Header />
-    <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/catalog" element={<Catalog />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/categories" element={<CategoriesLanding />} />
-      <Route path="/product/:id" element={<ProductPage />} />
-      <Route path="/checkout/confirm" element={<Confirm />} />
-      <Route path="/checkout/success" element={<CheckoutSuccess />} />
-      <Route path="/wishlist" element={<Wishlist />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
-  </Router>
-);
+const App = () => {
+  const userSelector = useSelector(user);
+
+  return (
+    <Router>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute isAllowed={userSelector?.token}>
+              <About />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute isAllowed={userSelector?.token}>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute isAllowed={userSelector?.token}>
+              <CategoriesLanding />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/product/:id" element={<ProductPage />} />
+        <Route
+          path="/checkout/confirm"
+          element={
+            <ProtectedRoute isAllowed={userSelector?.token}>
+              <Confirm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/checkout/success"
+          element={
+            <ProtectedRoute isAllowed={userSelector?.token}>
+              <CheckoutSuccess />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <ProtectedRoute isAllowed={userSelector?.token}>
+              <Wishlist />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
