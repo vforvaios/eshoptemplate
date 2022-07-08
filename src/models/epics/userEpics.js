@@ -1,22 +1,16 @@
+import makeRequest from 'library/makeRequest';
 import { loginUser, setLoggedInUser } from 'models/actions/userActions';
 import { ofType, combineEpics } from 'redux-observable';
-import { from } from 'rxjs';
-import { mergeMap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 const loginUserEpic = (action$) =>
   action$.pipe(
     ofType(loginUser.type),
-    mergeMap(({ payload }) =>
-      from(
-        fetch('http://localhost:8000/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-        }).then((response) => response.json()),
-      ),
-    ),
+    makeRequest(({ payload }) => ({
+      url: 'http://localhost:8000/api/login',
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })),
     map((payload) => setLoggedInUser(payload)),
   );
 
