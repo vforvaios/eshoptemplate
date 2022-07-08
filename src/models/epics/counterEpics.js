@@ -7,6 +7,7 @@ const counterIncreaseEpic = (action$) =>
   action$.pipe(
     ofType(decreaseCounterAction),
     delay(3000),
+    // eslint-disable-next-line no-console
     tap(console.log),
     ignoreElements(),
   );
