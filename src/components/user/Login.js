@@ -2,7 +2,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import { setLoggedInUser } from 'models/actions/userActions';
+import { loginUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ const Login = () => {
   const navigate = useNavigate();
   const userSelector = useSelector(user);
 
-  const submitLoginForm = async () => {
+  const submitLoginForm = () => {
     if (email === '') {
       setEmailError('Blank email is not permitted!');
     } else {
@@ -32,17 +32,8 @@ const Login = () => {
 
     if (email !== '' && password !== '') {
       const data = { username: email, password };
-      const userFetched = await fetch('http://localhost:8000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
 
-      const user = await userFetched.json();
-
-      dispatch(setLoggedInUser(user));
+      dispatch(loginUser(data));
     }
   };
 
