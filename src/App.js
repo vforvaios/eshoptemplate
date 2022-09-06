@@ -14,14 +14,20 @@ import ProtectedRoute from 'components/protected-route/ProtectedRoute';
 import Login from 'components/user/Login';
 import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
+import { getCart } from 'models/actions/cartActions';
 import { user } from 'models/selectors/userSelector';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'resources/styles/general.scss';
 
 const App = () => {
   const userSelector = useSelector(user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, []);
 
   return (
     <>
