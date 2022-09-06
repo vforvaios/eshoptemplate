@@ -2,6 +2,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import { toggleLoader } from 'models/actions/loaderActions';
 import { loginUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
 import React, { useState, useEffect } from 'react';
@@ -33,6 +34,7 @@ const Login = () => {
     if (email !== '' && password !== '') {
       const data = { username: email, password };
 
+      dispatch(toggleLoader(true));
       dispatch(loginUser(data));
     }
   };

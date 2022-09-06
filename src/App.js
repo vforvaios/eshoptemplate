@@ -8,6 +8,7 @@ import Confirm from 'components/checkout/Confirm';
 import Contact from 'components/contact/Contact';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
+import Loader from 'components/loader/Loader';
 import ProductPage from 'components/product-page/ProductPage';
 import ProtectedRoute from 'components/protected-route/ProtectedRoute';
 import Login from 'components/user/Login';
@@ -84,6 +85,7 @@ const App = () => {
         </Routes>
       </Router>
       <Alert />
+      <Loader />
     </>
   );
 };

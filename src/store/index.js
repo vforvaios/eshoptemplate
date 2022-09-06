@@ -5,6 +5,7 @@ import cartReducer from 'models/reducers/cartReducer';
 import catalogReducer from 'models/reducers/catalogReducer';
 import counterReducer from 'models/reducers/counterReducer';
 import homeReducer from 'models/reducers/homeReducer';
+import loaderReducer from 'models/reducers/loaderReducer';
 import userReducer from 'models/reducers/userReducer';
 import wishlistReducer from 'models/reducers/wishlistReducer';
 import { combineReducers } from 'redux';
@@ -25,6 +26,7 @@ const persistedReducer = persistReducer(
     cartReducer,
     catalogReducer,
     homeReducer,
+    loaderReducer,
     wishlistReducer,
     userReducer,
   }),

@@ -1,5 +1,6 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
+import { toggleLoader } from 'models/actions/loaderActions';
 import { loginUser, setLoggedInUser } from 'models/actions/userActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -11,6 +12,7 @@ const loginUserEpic = (action$) =>
     mergeMap(({ payload }) =>
       from(makeRequest('login', 'POST', JSON.stringify(payload))).pipe(
         concatMap((payload) => [
+          toggleLoader(false),
           setLoggedInUser(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
@@ -21,6 +23,7 @@ const loginUserEpic = (action$) =>
               type: 'error',
               show: true,
             }),
+            toggleLoader(false),
           ),
         ),
       ),
