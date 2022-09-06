@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { toggleShowAlert } from 'models/actions/alertActions';
 
 const initialState = {
   message: 'Alert',
@@ -6,10 +7,12 @@ const initialState = {
   type: 'success',
 };
 const alertReducer = createReducer(initialState, {
-  // [setLoggedInUser.type]: (state, action) => ({
-  //   ...state,
-  //   user: action.payload,
-  // }),
+  [toggleShowAlert.type]: (state, action) => ({
+    ...state,
+    show: action.payload.show,
+    message: action.payload.message,
+    type: action.payload.type,
+  }),
 });
 
 export default alertReducer;

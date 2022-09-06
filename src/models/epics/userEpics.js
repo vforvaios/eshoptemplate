@@ -1,17 +1,30 @@
 import makeRequest from 'library/makeRequest';
+import { toggleShowAlert } from 'models/actions/alertActions';
 import { loginUser, setLoggedInUser } from 'models/actions/userActions';
 import { ofType, combineEpics } from 'redux-observable';
-import { map } from 'rxjs/operators';
+import { from, of } from 'rxjs';
+import { mergeMap, concatMap, catchError } from 'rxjs/operators';
 
 const loginUserEpic = (action$) =>
   action$.pipe(
     ofType(loginUser.type),
-    makeRequest(({ payload }) => ({
-      url: 'http://localhost:8000/api/login',
-      method: 'POST',
-      body: JSON.stringify(payload),
-    })),
-    map((payload) => setLoggedInUser(payload)),
+    mergeMap(({ payload }) =>
+      from(makeRequest('login', 'POST', JSON.stringify(payload))).pipe(
+        concatMap((payload) => [
+          setLoggedInUser(payload),
+          toggleShowAlert({ message: '', show: false, type: 'error' }),
+        ]),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
   );
 
 export { loginUserEpic };
