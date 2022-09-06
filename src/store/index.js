@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootEpics from 'models/epics/rootEpics';
+import alertReducer from 'models/reducers/alertReducer';
 import cartReducer from 'models/reducers/cartReducer';
 import catalogReducer from 'models/reducers/catalogReducer';
 import counterReducer from 'models/reducers/counterReducer';
@@ -19,6 +20,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({
+    alertReducer,
     counterReducer,
     cartReducer,
     catalogReducer,
