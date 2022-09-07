@@ -1,0 +1,25 @@
+.headerContainer {
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: #39b54a;
+  & > div {
+    color: #fff;
+  }
+}
+
+.menuIcon {
+  fill: #fff;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+}
+
+.usermenu-container {
+  padding-left: 16px;
+}

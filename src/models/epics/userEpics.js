@@ -1,10 +1,14 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import { toggleLoader } from 'models/actions/loaderActions';
-import { loginUser, setLoggedInUser } from 'models/actions/userActions';
+import {
+  loginUser,
+  setLoggedInUser,
+  logoutUser,
+} from 'models/actions/userActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
-import { mergeMap, concatMap, catchError } from 'rxjs/operators';
+import { mergeMap, concatMap, catchError, map } from 'rxjs/operators';
 
 const loginUserEpic = (action$) =>
   action$.pipe(
@@ -30,8 +34,14 @@ const loginUserEpic = (action$) =>
     ),
   );
 
-export { loginUserEpic };
+const logoutUserEpic = (action$) =>
+  action$.pipe(
+    ofType(logoutUser.type),
+    map(() => setLoggedInUser({})),
+  );
 
-const epics = combineEpics(loginUserEpic);
+export { loginUserEpic, logoutUserEpic };
+
+const epics = combineEpics(loginUserEpic, logoutUserEpic);
 
 export default epics;

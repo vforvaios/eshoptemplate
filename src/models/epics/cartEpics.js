@@ -9,7 +9,7 @@ const getCartEpic = (action$) =>
   action$.pipe(
     ofType(getCart.type),
     mergeMap(() =>
-      from(makeRequest('cart', 'GET')).pipe(
+      from(makeRequest('cart', 'GET', '')).pipe(
         concatMap((payload) => [
           // toggleLoader(false),
           setCart(payload),
