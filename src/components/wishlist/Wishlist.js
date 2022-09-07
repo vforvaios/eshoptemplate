@@ -1,10 +1,18 @@
 import Product from 'components/product/Product';
+import { toggleLoader } from 'models/actions/loaderActions';
+import { getWishlist } from 'models/actions/wishlistActions';
 import { wishlistProducts } from 'models/selectors/wishlistSelectors';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Wishlist = () => {
   const products = useSelector(wishlistProducts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(toggleLoader(true));
+    dispatch(getWishlist());
+  }, []);
 
   return (
     <div className="content wishlist">
