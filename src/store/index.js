@@ -3,6 +3,7 @@ import rootEpics from 'models/epics/rootEpics';
 import alertReducer from 'models/reducers/alertReducer';
 import cartReducer from 'models/reducers/cartReducer';
 import catalogReducer from 'models/reducers/catalogReducer';
+import categoriesReducer from 'models/reducers/categoriesReducer';
 import counterReducer from 'models/reducers/counterReducer';
 import homeReducer from 'models/reducers/homeReducer';
 import loaderReducer from 'models/reducers/loaderReducer';
@@ -29,6 +30,7 @@ const persistedReducer = persistReducer(
     loaderReducer,
     wishlistReducer,
     userReducer,
+    categoriesReducer,
   }),
 );
 
