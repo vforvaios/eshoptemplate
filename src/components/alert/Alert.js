@@ -17,6 +17,14 @@ const Alert = () => {
     dispatch(toggleShowAlert({ message: '', show: false }));
   }, []);
 
+  useEffect(() => {
+    if (show) {
+      setTimeout(() => {
+        dispatch(toggleShowAlert({ message: '', show: false }));
+      }, process.env.REACT_APP_CLOSE_ALERT);
+    }
+  }, [show]);
+
   return <div className={`alert ${type} ${show && 'show'}`}>{message}</div>;
 };
 
