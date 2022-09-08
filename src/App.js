@@ -39,14 +39,7 @@ const App = () => {
             }
           />
           <Route path="/catalog" element={<Catalog />} />
-          <Route
-            path="/cart"
-            element={
-              <ProtectedRoute isAllowed={userSelector?.token}>
-                <Cart />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<Contact />} />
           <Route
             path="/categories"

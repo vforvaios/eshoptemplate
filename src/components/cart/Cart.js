@@ -15,36 +15,40 @@ const Cart = () => {
           <div className="page-title text-center">
             <h1>My Cart</h1>
             <div className="total-cart-items">
-              {myCart.items.length} items in cart
+              {myCart?.length} items in cart
             </div>
           </div>
         </div>
       </div>
-      <div className="row">
-        <div className="wrapper">
-          <div className="actions separate">
-            <Button className="button standard">
-              <Link to="/catalog">Back to catalog...</Link>
-            </Button>
-            <Button className="button green">Proceed to checkout...</Button>
+      {myCart?.length > 0 && (
+        <>
+          <div className="row">
+            <div className="wrapper">
+              <div className="actions separate">
+                <Button className="button standard">
+                  <Link to="/catalog">Back to catalog...</Link>
+                </Button>
+                <Button className="button green">Proceed to checkout...</Button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="wrapper">
-          <MyCart cart={myCart} updateable />
-        </div>
-      </div>
-      <div className="row">
-        <div className="wrapper">
-          <div className="actions separate">
-            <Button className="button standard">
-              <Link to="/catalog">Back to catalog...</Link>
-            </Button>
-            <Button className="button green">Proceed to checkout...</Button>
+          <div className="row">
+            <div className="wrapper">
+              <MyCart cart={myCart} updateable />
+            </div>
           </div>
-        </div>
-      </div>
+          <div className="row">
+            <div className="wrapper">
+              <div className="actions separate">
+                <Button className="button standard">
+                  <Link to="/catalog">Back to catalog...</Link>
+                </Button>
+                <Button className="button green">Proceed to checkout...</Button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -6,20 +6,12 @@ import MainMenu from 'components/main-menu/MainMenu';
 import Search from 'components/searchHeader/Search';
 import UserMenu from 'components/usermenu/UserMenu';
 import { withToggle } from 'library';
-import { getCart } from 'models/actions/cartActions';
 import { token } from 'models/selectors/userSelector';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Header = ({ toggleValue, setToggleValue }) => {
-  const location = useLocation();
-  const dispatch = useDispatch();
   const userToken = useSelector(token);
-
-  useEffect(() => {
-    dispatch(getCart());
-  }, [location]);
 
   return (
     <Grid container className="headerContainer">

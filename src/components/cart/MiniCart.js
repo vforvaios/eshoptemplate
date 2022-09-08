@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const MiniCart = () => {
-  const itemsLength = useSelector(cart)?.items?.length;
+  const itemsLength = useSelector(cart)?.length;
 
   return (
     <Link to="/cart" className="mini-cart">

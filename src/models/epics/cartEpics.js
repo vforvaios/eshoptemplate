@@ -1,6 +1,11 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
-import { getCart, setCart } from 'models/actions/cartActions';
+import {
+  getCart,
+  setCart,
+  updateCartItemTotal,
+} from 'models/actions/cartActions';
+import { token } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { mergeMap, concatMap, catchError } from 'rxjs/operators';
@@ -11,7 +16,6 @@ const getCartEpic = (action$) =>
     mergeMap(() =>
       from(makeRequest('cart', 'GET', '')).pipe(
         concatMap((payload) => [
-          // toggleLoader(false),
           setCart(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
@@ -22,15 +26,47 @@ const getCartEpic = (action$) =>
               type: 'error',
               show: true,
             }),
-            // toggleLoader(false),
           ),
         ),
       ),
     ),
   );
 
-export { getCartEpic };
+const updateCartItemTotalEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(updateCartItemTotal.type),
+    mergeMap(({ payload }) =>
+      from(
+        makeRequest(
+          'cart/update',
+          'POST',
+          JSON.stringify({
+            total: Number(payload.total),
+            cartId: payload.cartId,
+          }),
+          token(state$.value),
+        ),
+      ).pipe(
+        concatMap((payload) => {
+          debugger;
 
-const epics = combineEpics(getCartEpic);
+          return [];
+        }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
+  );
+
+export { getCartEpic, updateCartItemTotalEpic };
+
+const epics = combineEpics(getCartEpic, updateCartItemTotalEpic);
 
 export default epics;
