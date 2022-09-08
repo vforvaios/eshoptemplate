@@ -18,6 +18,7 @@ const initialState = {
         productSubHeader: 'Sub Header 1',
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
+        price: 20,
       },
       {
         productId: 2,
@@ -27,6 +28,7 @@ const initialState = {
         productSubHeader: 'Sub Header 2',
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
+        price: 20,
       },
       {
         productId: 3,
@@ -36,6 +38,7 @@ const initialState = {
         productSubHeader: 'Sub Header 3',
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
+        price: 20,
       },
       {
         productId: 4,
@@ -45,6 +48,7 @@ const initialState = {
         productSubHeader: 'Sub Header 4',
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
+        price: 20,
       },
     ],
   },

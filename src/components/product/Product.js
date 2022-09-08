@@ -7,7 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import { addToCart } from 'models/actions/cartActions';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styles from './styles';
@@ -20,6 +22,8 @@ const Product = ({ classes, product }) => {
     imgHref,
     productDescription,
   } = product;
+
+  const dispatch = useDispatch();
 
   return (
     <Link className="navlink product" to={`/product/${productId}`}>
@@ -50,6 +54,14 @@ const Product = ({ classes, product }) => {
             <FavoriteBorderIcon />
           </IconButton>
         </CardActions>
+        <button
+          className="add-to-cart"
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(addToCart(product));
+          }}>
+          Add to Cart
+        </button>
       </Card>
     </Link>
   );

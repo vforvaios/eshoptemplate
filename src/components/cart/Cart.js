@@ -15,7 +15,12 @@ const Cart = () => {
           <div className="page-title text-center">
             <h1>My Cart</h1>
             <div className="total-cart-items">
-              {myCart?.length} items in cart
+              {myCart?.reduce((acc, curr) => {
+                acc = acc + curr?.total;
+
+                return acc;
+              }, 0)}{' '}
+              items in cart
             </div>
           </div>
         </div>

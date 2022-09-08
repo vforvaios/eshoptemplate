@@ -1,15 +1,18 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
-import {
-  getCart,
-  setCart,
-  updateCartItemTotal,
-} from 'models/actions/cartActions';
-import { token } from 'models/selectors/userSelector';
+import { getCart, setCart, addToCart } from 'models/actions/cartActions';
+// import { token } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
-import { mergeMap, concatMap, catchError } from 'rxjs/operators';
+import {
+  mergeMap,
+  concatMap,
+  catchError,
+  map,
+  withLatestFrom,
+} from 'rxjs/operators';
 
+// TODO - NOT USED AT THE MOMENT
 const getCartEpic = (action$) =>
   action$.pipe(
     ofType(getCart.type),
@@ -32,41 +35,55 @@ const getCartEpic = (action$) =>
     ),
   );
 
-const updateCartItemTotalEpic = (action$, state$) =>
+const addToCartEpic = (action$, state$) =>
   action$.pipe(
-    ofType(updateCartItemTotal.type),
-    mergeMap(({ payload }) =>
-      from(
-        makeRequest(
-          'cart/update',
-          'POST',
-          JSON.stringify({
-            total: Number(payload.total),
-            cartId: payload.cartId,
-          }),
-          token(state$.value),
-        ),
-      ).pipe(
-        concatMap((payload) => {
-          debugger;
+    ofType(addToCart.type),
+    withLatestFrom(state$),
+    map(
+      ([
+        { payload },
+        {
+          cartReducer: { cart },
+        },
+      ]) => {
+        const { productDescription, productId, price } = payload;
 
-          return [];
-        }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
-      ),
+        const productAlreadyExistsInCart =
+          cart?.findIndex((item) => item?.productId === productId) >= 0;
+
+        let newCart = [];
+
+        if (!productAlreadyExistsInCart) {
+          newCart = [
+            ...cart,
+            {
+              productId,
+              productDescription,
+              total: 1,
+              price,
+              totalPrice: price,
+            },
+          ];
+        } else {
+          newCart = cart?.map((cartItem) => {
+            return cartItem.productId !== productId
+              ? { ...cartItem }
+              : {
+                  ...cartItem,
+                  price,
+                  total: cartItem.total + 1,
+                  totalPrice: (cartItem?.total + 1) * cartItem?.price,
+                };
+          });
+        }
+
+        return setCart(newCart);
+      },
     ),
   );
 
-export { getCartEpic, updateCartItemTotalEpic };
+export { getCartEpic, addToCartEpic };
 
-const epics = combineEpics(getCartEpic, updateCartItemTotalEpic);
+const epics = combineEpics(getCartEpic, addToCartEpic);
 
 export default epics;
