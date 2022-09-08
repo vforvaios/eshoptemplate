@@ -18,6 +18,7 @@ import { user } from 'models/selectors/userSelector';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import 'fontello/css/fontello.css';
 import 'resources/styles/general.scss';
 
 const App = () => {

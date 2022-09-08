@@ -1,0 +1,15 @@
+.submenu-container {
+  display: none;
+
+  &.open {
+    display: block;
+  }
+}
+
+.submenu-item {
+  cursor: pointer;
+  display: inline-block;
+  &.rotate {
+    transform: rotate(180deg);
+  }
+}

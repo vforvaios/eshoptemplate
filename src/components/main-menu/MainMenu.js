@@ -1,13 +1,14 @@
 import CloseIcon from '@material-ui/icons/Close';
 import { getCategories } from 'models/actions/categoriesActions';
 import { categories } from 'models/selectors/categoriesSelectors';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const MainMenu = ({ setToggleValue }) => {
   const allCategories = useSelector(categories);
   const dispatch = useDispatch();
+  const [openSubMenu, setOpenSubMenu] = useState(undefined);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -19,7 +20,30 @@ const MainMenu = ({ setToggleValue }) => {
       <div>Menu</div>
       <ul>
         {allCategories?.map((category) => (
-          <li key={category?.id}>{category?.name}</li>
+          <li className="menu-item" key={category?.id}>
+            {category?.name}
+            {category?.subCategories?.length && (
+              <>
+                <span
+                  className={`submenu-item ${
+                    openSubMenu === category?.id && 'rotate'
+                  }`}>
+                  <i
+                    className="icon-down-dir"
+                    onClick={() => setOpenSubMenu(category?.id)}
+                  />
+                </span>
+                <div
+                  className={`submenu-container ${
+                    openSubMenu === category?.id && 'open'
+                  }`}>
+                  {category?.subCategories?.map((subCategory) => (
+                    <div key={subCategory.id}>{subCategory?.name}</div>
+                  ))}
+                </div>
+              </>
+            )}
+          </li>
         ))}
         <li>
           <Link onClick={setToggleValue('left', false)} to="/">
