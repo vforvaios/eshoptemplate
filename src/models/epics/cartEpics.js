@@ -124,7 +124,7 @@ const updateCartItemTotalEpic = (action$, state$) =>
         const newCart = cart?.map((item) => {
           return item?.productId !== productId
             ? { ...item }
-            : { ...item, total };
+            : { ...item, total, totalPrice: total * item.price };
         });
 
         return setCart(newCart);
