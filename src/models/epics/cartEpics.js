@@ -77,8 +77,8 @@ const addToCartEpic = (action$, state$) =>
               : {
                   ...cartItem,
                   price,
-                  total: cartItem.total + 1,
-                  totalPrice: (cartItem?.total + 1) * cartItem?.price,
+                  total: Number(cartItem.total) + 1,
+                  totalPrice: (Number(cartItem?.total) + 1) * cartItem?.price,
                 };
           });
         }
