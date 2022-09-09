@@ -6,6 +6,11 @@ const styles = ({ breakpoints }) => ({
       paddingRight: 64,
       display: 'flex',
       alignItems: 'center',
+      padding: 8,
+    },
+    '& .MuiCardContent-root': {
+      position: 'relative',
+      paddingTop: 24,
     },
   },
   media: {

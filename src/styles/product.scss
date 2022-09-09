@@ -1,6 +1,6 @@
 .card-actions {
   position: absolute;
-  top: 0;
+  top: -5px;
   right: 0;
 }
 
@@ -20,6 +20,16 @@
       -webkit-box-orient: vertical;
       box-orient: vertical;
       margin-bottom: 10px;
+
+      &.product-code {
+        font-size: 11px;
+        display: block;
+        line-clamp: unset;
+        overflow: auto;
+        color: #ccc;
+        margin-bottom: 0;
+        padding-right: 4px;
+      }
     }
 
     &:hover {
@@ -62,11 +72,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
 
     & > span {
-      margin-left: 10px;
+      margin-right: 10px;
       font-size: 14px;
       text-decoration: line-through;
       color: #b3aeae;
@@ -74,8 +84,14 @@
   }
 
   .discount {
-    color: red;
+    color: #fff;
     font-size: 20px;
     font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
+    background: red;
+    margin-top: -16px;
   }
 }

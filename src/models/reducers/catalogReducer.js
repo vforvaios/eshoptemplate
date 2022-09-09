@@ -20,6 +20,7 @@ const initialState = {
         imgHref: 'https://via.placeholder.com/400x400',
         price: 20,
         initialPrice: 30,
+        code: '24e387bfsd',
       },
       {
         productId: 2,
@@ -31,6 +32,7 @@ const initialState = {
         imgHref: 'https://via.placeholder.com/400x400',
         price: 30,
         initialPrice: 40,
+        code: 'fasdlj79fs',
       },
       {
         productId: 3,
@@ -42,6 +44,7 @@ const initialState = {
         imgHref: 'https://via.placeholder.com/400x400',
         price: 40,
         initialPrice: 50,
+        code: 'lfjsd7fshsfd',
       },
       {
         productId: 4,
@@ -53,6 +56,7 @@ const initialState = {
         imgHref: 'https://via.placeholder.com/400x400',
         price: 50,
         initialPrice: 60,
+        code: 'fgdfh6fg',
       },
     ],
   },

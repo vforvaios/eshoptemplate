@@ -25,6 +25,7 @@ const Product = ({ classes, product }) => {
     productDescription,
     price,
     initialPrice,
+    code,
   } = product;
 
   const dispatch = useDispatch();
@@ -57,8 +58,12 @@ const Product = ({ classes, product }) => {
             {productDescription}
           </Typography>
           <div className="price-container">
+            <Typography variant="body2" component="p" className="product-code">
+              <span>{code}</span>
+            </Typography>
             <div>
-              {price}€<span>{initialPrice}€</span>
+              <span>{initialPrice}€</span>
+              {price}€
             </div>
             <span className="discount">
               {getPercentage(initialPrice, price)}%
