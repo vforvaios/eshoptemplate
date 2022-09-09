@@ -8,6 +8,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { addToCart } from 'models/actions/cartActions';
+import { addProductWishlist } from 'models/actions/wishlistActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -52,7 +53,13 @@ const Product = ({ classes, product }) => {
           <div className="price-container">Price: {price}€</div>
         </CardContent>
         <CardActions disableSpacing className="card-actions">
-          <IconButton className="product-action" aria-label="add to favorites">
+          <IconButton
+            className="product-action"
+            aria-label="add to favorites"
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(addProductWishlist());
+            }}>
             <FavoriteBorderIcon />
           </IconButton>
         </CardActions>
