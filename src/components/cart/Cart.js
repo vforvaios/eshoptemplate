@@ -16,7 +16,7 @@ const Cart = () => {
             <h1>My Cart</h1>
             <div className="total-cart-items">
               {myCart?.reduce((acc, curr) => {
-                acc = acc + curr?.total;
+                acc = Number(acc) + Number(curr?.total);
 
                 return acc;
               }, 0)}{' '}

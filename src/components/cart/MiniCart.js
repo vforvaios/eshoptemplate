@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const MiniCart = () => {
   const itemsLength = useSelector(cart)?.reduce((acc, curr) => {
-    acc = acc + curr?.total;
+    acc = Number(acc) + Number(curr?.total);
 
     return acc;
   }, 0);

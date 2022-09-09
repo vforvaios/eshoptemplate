@@ -5,6 +5,7 @@ import {
   setCart,
   addToCart,
   removeItemFromCart,
+  updateCartItemTotal,
 } from 'models/actions/cartActions';
 // import { token } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
@@ -107,8 +108,42 @@ const removeItemFromCartEpic = (action$, state$) =>
     ),
   );
 
-export { getCartEpic, addToCartEpic, removeItemFromCartEpic };
+const updateCartItemTotalEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(updateCartItemTotal.type),
+    withLatestFrom(state$),
+    map(
+      ([
+        { payload },
+        {
+          cartReducer: { cart },
+        },
+      ]) => {
+        const { total, productId } = payload;
 
-const epics = combineEpics(getCartEpic, addToCartEpic, removeItemFromCartEpic);
+        const newCart = cart?.map((item) => {
+          return item?.productId !== productId
+            ? { ...item }
+            : { ...item, total };
+        });
+
+        return setCart(newCart);
+      },
+    ),
+  );
+
+export {
+  getCartEpic,
+  addToCartEpic,
+  removeItemFromCartEpic,
+  updateCartItemTotalEpic,
+};
+
+const epics = combineEpics(
+  getCartEpic,
+  addToCartEpic,
+  removeItemFromCartEpic,
+  updateCartItemTotalEpic,
+);
 
 export default epics;

@@ -3,7 +3,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { removeItemFromCart } from 'models/actions/cartActions';
+import {
+  removeItemFromCart,
+  updateCartItemTotal,
+} from 'models/actions/cartActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -34,6 +37,14 @@ const CartItem = ({ updateable, item }) => {
               inputProps: { min: 0 },
             }}
             value={item.total}
+            onChange={(e) =>
+              dispatch(
+                updateCartItemTotal({
+                  total: e.target.value,
+                  productId: item?.productId,
+                }),
+              )
+            }
           />
         )}
       </TableCell>
