@@ -19,6 +19,7 @@ const initialState = {
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
         price: 20,
+        initialPrice: 30,
       },
       {
         productId: 2,
@@ -29,6 +30,7 @@ const initialState = {
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
         price: 30,
+        initialPrice: 40,
       },
       {
         productId: 3,
@@ -39,6 +41,7 @@ const initialState = {
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
         price: 40,
+        initialPrice: 50,
       },
       {
         productId: 4,
@@ -49,6 +52,7 @@ const initialState = {
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
         price: 50,
+        initialPrice: 60,
       },
     ],
   },

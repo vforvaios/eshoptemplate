@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
 import { addProductWishlist } from 'models/actions/wishlistActions';
 import React from 'react';
@@ -23,6 +24,7 @@ const Product = ({ classes, product }) => {
     imgHref,
     productDescription,
     price,
+    initialPrice,
   } = product;
 
   const dispatch = useDispatch();
@@ -50,7 +52,14 @@ const Product = ({ classes, product }) => {
           <Typography variant="body2" color="textSecondary" component="p">
             {productDescription}
           </Typography>
-          <div className="price-container">Price: {price}€</div>
+          <div className="price-container">
+            <div>
+              {price}€<span>{initialPrice}€</span>
+            </div>
+            <span className="discount">
+              {getPercentage(initialPrice, price)}%
+            </span>
+          </div>
         </CardContent>
         <CardActions disableSpacing className="card-actions">
           <IconButton

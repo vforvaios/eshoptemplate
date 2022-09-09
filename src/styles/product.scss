@@ -51,3 +51,30 @@
     opacity: 0.7;
   }
 }
+
+.price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+
+    & > span {
+      margin-left: 10px;
+      font-size: 14px;
+      text-decoration: line-through;
+      color: #b3aeae;
+    }
+  }
+
+  .discount {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
