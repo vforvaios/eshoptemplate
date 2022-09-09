@@ -20,6 +20,11 @@ const styles = ({ breakpoints }) => ({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#000',
+    lineClamp: 1,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    boxOrient: 'vertical',
   },
   subHeader: {
     fontSize: 12,

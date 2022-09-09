@@ -12,13 +12,14 @@
     text-decoration: none;
 
     p {
-      -webkit-line-clamp: 3; /* number of lines to show */
-      line-clamp: 3;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-clamp: 2;
       display: -webkit-box;
       overflow: hidden;
       text-overflow: ellipsis;
       -webkit-box-orient: vertical;
       box-orient: vertical;
+      margin-bottom: 10px;
     }
 
     &:hover {

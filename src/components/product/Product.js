@@ -49,7 +49,11 @@ const Product = ({ classes, product }) => {
           />
         </CardMedia>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className="product-description">
             {productDescription}
           </Typography>
           <div className="price-container">
