@@ -21,6 +21,7 @@ const Product = ({ classes, product }) => {
     productSubHeader,
     imgHref,
     productDescription,
+    price,
   } = product;
 
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const Product = ({ classes, product }) => {
           <Typography variant="body2" color="textSecondary" component="p">
             {productDescription}
           </Typography>
+          <div className="price-container">Price: {price}€</div>
         </CardContent>
         <CardActions disableSpacing className="card-actions">
           <IconButton className="product-action" aria-label="add to favorites">

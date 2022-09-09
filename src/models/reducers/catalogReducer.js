@@ -28,7 +28,7 @@ const initialState = {
         productSubHeader: 'Sub Header 2',
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
-        price: 20,
+        price: 30,
       },
       {
         productId: 3,
@@ -38,7 +38,7 @@ const initialState = {
         productSubHeader: 'Sub Header 3',
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
-        price: 20,
+        price: 40,
       },
       {
         productId: 4,
@@ -48,7 +48,7 @@ const initialState = {
         productSubHeader: 'Sub Header 4',
         stock: 5,
         imgHref: 'https://via.placeholder.com/400x400',
-        price: 20,
+        price: 50,
       },
     ],
   },

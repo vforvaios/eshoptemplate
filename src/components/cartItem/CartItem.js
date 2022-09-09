@@ -3,9 +3,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { removeItemFromCart } from 'models/actions/cartActions';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 const CartItem = ({ updateable, item }) => {
+  const dispatch = useDispatch();
+
   return (
     <TableRow>
       <TableCell>
@@ -42,7 +46,8 @@ const CartItem = ({ updateable, item }) => {
       </TableCell>
       {updateable && (
         <TableCell>
-          <IconButton>
+          <IconButton
+            onClick={() => dispatch(removeItemFromCart(item.productId))}>
             <DeleteForeverIcon />
           </IconButton>
         </TableCell>

@@ -18,13 +18,8 @@ const MyCart = ({ cart, updateable }) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {cart?.map((item) => (
-          <CartItem
-            key={item.id}
-            updateable={updateable}
-            item={item}
-            cartId={cart.id}
-          />
+        {cart?.map((item, index) => (
+          <CartItem key={index} updateable={updateable} item={item} />
         ))}
       </TableBody>
     </Table>

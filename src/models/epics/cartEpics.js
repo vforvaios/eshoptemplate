@@ -1,6 +1,11 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
-import { getCart, setCart, addToCart } from 'models/actions/cartActions';
+import {
+  getCart,
+  setCart,
+  addToCart,
+  removeItemFromCart,
+} from 'models/actions/cartActions';
 // import { token } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -82,8 +87,28 @@ const addToCartEpic = (action$, state$) =>
     ),
   );
 
-export { getCartEpic, addToCartEpic };
+const removeItemFromCartEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(removeItemFromCart.type),
+    withLatestFrom(state$),
+    map(
+      ([
+        { payload },
+        {
+          cartReducer: { cart },
+        },
+      ]) => {
+        const productId = payload;
 
-const epics = combineEpics(getCartEpic, addToCartEpic);
+        const newCart = cart?.filter((item) => item?.productId !== productId);
+
+        return setCart(newCart);
+      },
+    ),
+  );
+
+export { getCartEpic, addToCartEpic, removeItemFromCartEpic };
+
+const epics = combineEpics(getCartEpic, addToCartEpic, removeItemFromCartEpic);
 
 export default epics;
