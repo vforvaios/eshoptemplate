@@ -1,12 +1,14 @@
 import Button from '@material-ui/core/Button';
 import MyCart from 'components/cart/MyCart';
 import { cart } from 'models/selectors/cartSelectors';
+import { token } from 'models/selectors/userSelector';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const myCart = useSelector(cart);
+  const userToken = useSelector(token);
 
   return (
     <div className="content cart-page">
@@ -33,7 +35,15 @@ const Cart = () => {
                 <Button className="button standard">
                   <Link to="/catalog">Back to catalog...</Link>
                 </Button>
-                <Button className="button green">Proceed to checkout...</Button>
+                {!userToken ? (
+                  <Link to="/checkout/step1" className="button green">
+                    PROCEED TO CHECKOUT...
+                  </Link>
+                ) : (
+                  <Link to="/checkout/step2" className="button green">
+                    PROCEED TO CHECKOUT...
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -48,7 +58,15 @@ const Cart = () => {
                 <Button className="button standard">
                   <Link to="/catalog">Back to catalog...</Link>
                 </Button>
-                <Button className="button green">Proceed to checkout...</Button>
+                {!userToken ? (
+                  <Link to="/checkout/step1" className="button green">
+                    PROCEED TO CHECKOUT...
+                  </Link>
+                ) : (
+                  <Link to="/checkout/step2" className="button green">
+                    PROCEED TO CHECKOUT...
+                  </Link>
+                )}
               </div>
             </div>
           </div>

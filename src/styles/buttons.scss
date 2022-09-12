@@ -13,3 +13,17 @@
     color: inherit;
   }
 }
+
+a {
+  line-height: 1.75;
+
+  &.green {
+    font-size: 14px;
+    background-color: green;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 8px;
+    border: 1px solid #000;
+    border-radius: 4px;
+  }
+}
