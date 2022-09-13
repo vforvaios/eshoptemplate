@@ -3,7 +3,7 @@ import Login from 'components/user/Login';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CheckoutStep1 = () => {
+const CheckoutLogin = () => {
   return (
     <div className="content checkout step3">
       <div className="row">
@@ -32,4 +32,4 @@ const CheckoutStep1 = () => {
   );
 };
 
-export default CheckoutStep1;
+export default CheckoutLogin;

@@ -1,7 +1,7 @@
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
 import React from 'react';
 
-const CheckoutStep2 = () => {
+const CheckoutEdit = () => {
   return (
     <div className="content checkout step3">
       <div className="row">
@@ -20,4 +20,4 @@ const CheckoutStep2 = () => {
   );
 };
 
-export default CheckoutStep2;
+export default CheckoutEdit;

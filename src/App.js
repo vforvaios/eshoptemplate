@@ -3,8 +3,8 @@ import Alert from 'components/alert/Alert';
 import Cart from 'components/cart/Cart';
 import Catalog from 'components/catalog/Catalog';
 import CategoriesLanding from 'components/categoriesLanging/CategoriesLanding';
-import CheckoutStep1 from 'components/checkout/CheckoutStep1';
-import CheckoutStep2 from 'components/checkout/CheckoutStep2';
+import CheckoutEdit from 'components/checkout/CheckoutEdit';
+import CheckoutLogin from 'components/checkout/CheckoutLogin';
 import CheckoutSuccess from 'components/checkout/CheckoutSuccess';
 import Confirm from 'components/checkout/Confirm';
 import Contact from 'components/contact/Contact';
@@ -52,8 +52,8 @@ const App = () => {
             }
           />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/checkout/step1" element={<CheckoutStep1 />} />
-          <Route path="/checkout/step2" element={<CheckoutStep2 />} />
+          <Route path="/checkout/step1" element={<CheckoutLogin />} />
+          <Route path="/checkout/step2" element={<CheckoutEdit />} />
           <Route
             path="/checkout/confirm"
             element={
