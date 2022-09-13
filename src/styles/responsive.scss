@@ -86,3 +86,21 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+// CHECKOUT
+.checkout-stepper-container {
+  ul {
+    flex-direction: row;
+  }
+}
+
+.billing-inputs {
+  max-width: 50%;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  & > div {
+    padding: 0 4px;
+    flex-basis: 50%;
+  }
+}
