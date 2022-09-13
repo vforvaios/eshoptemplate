@@ -1,7 +1,8 @@
-import CheckoutStepper from 'components/checkout/CheckoutStepper';
 import React from 'react';
 
 import Billing from './Billing';
+import CheckoutStepper from './CheckoutStepper';
+import PaymentMethods from './PaymentMethods';
 
 const CheckoutEdit = () => {
   return (
@@ -22,6 +23,13 @@ const CheckoutEdit = () => {
         <div className="wrapper">
           <div className="billing-shipping-container">
             <Billing />
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="wrapper">
+          <div className="billing-shipping-container">
+            <PaymentMethods />
           </div>
         </div>
       </div>
