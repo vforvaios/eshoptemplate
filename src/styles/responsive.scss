@@ -99,8 +99,11 @@
   flex-direction: row;
   flex-wrap: wrap;
 
-  & > div {
-    padding: 0 4px;
-    flex-basis: 50%;
+  & .MuiFormControl-root {
+    flex-basis: 100%;
   }
+}
+
+.flex-billing-shipping {
+  flex-wrap: nowrap;
 }
