@@ -29,6 +29,7 @@ const PaymentMethods = () => {
           name="payment-methods">
           {currentPaymentMethods?.map((paymentmethod) => (
             <FormControlLabel
+              key={paymentmethod?.id}
               value={paymentmethod?.name}
               control={<Radio />}
               label={paymentmethod?.name}

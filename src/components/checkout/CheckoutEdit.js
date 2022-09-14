@@ -1,10 +1,22 @@
-import React from 'react';
+import { cart } from 'models/selectors/cartSelectors';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Billing from './Billing';
 import CheckoutStepper from './CheckoutStepper';
 import PaymentMethods from './PaymentMethods';
 
 const CheckoutEdit = () => {
+  const navigate = useNavigate();
+  const cartItems = useSelector(cart);
+
+  useEffect(() => {
+    if (cartItems?.length === 0) {
+      navigate('/');
+    }
+  });
+
   return (
     <div className="content checkout step3">
       <div className="row">
