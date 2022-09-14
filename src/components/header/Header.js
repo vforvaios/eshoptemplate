@@ -9,6 +9,7 @@ import { withToggle } from 'library';
 import { token } from 'models/selectors/userSelector';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import logo from 'resources/images/logo.jpg';
 
 const Header = ({ toggleValue, setToggleValue }) => {
   const userToken = useSelector(token);
@@ -24,7 +25,9 @@ const Header = ({ toggleValue, setToggleValue }) => {
           <MainMenu setToggleValue={setToggleValue} />
         </Drawer>
       </Grid>
-      <Grid item>LOGO</Grid>
+      <Grid item>
+        <img src={logo} alt="fasdf" className="logo-image" />
+      </Grid>
       <Grid item>
         <div className="headerActions">
           <Search />

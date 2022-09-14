@@ -1,7 +1,8 @@
-import CheckoutStepper from 'components/checkout/CheckoutStepper';
 import Login from 'components/user/Login';
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import CheckoutStepper from './CheckoutStepper';
+import GuestCheckout from './GuestCheckout';
 
 const CheckoutLogin = () => {
   return (
@@ -22,9 +23,7 @@ const CheckoutLogin = () => {
         <div className="wrapper">
           <Login />
           <div className="login-container">
-            <Link className="button green" to="/checkout/step2">
-              ή προχωρήστε στην αγορά σαν επισκέπτης
-            </Link>
+            <GuestCheckout />
           </div>
         </div>
       </div>

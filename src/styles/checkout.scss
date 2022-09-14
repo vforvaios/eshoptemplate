@@ -68,3 +68,22 @@
     z-index: 1;
   }
 }
+
+.guest-login-container {
+  text-align: center;
+  border: 1px solid #ccc;
+
+  .guest-title {
+    background: #eee;
+    font-weight: bold;
+    padding: 10px;
+  }
+
+  .guest-content {
+    padding: 40px;
+
+    & > div {
+      margin-bottom: 20px;
+    }
+  }
+}
