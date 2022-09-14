@@ -19,7 +19,7 @@ const Wishlist = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">
-            <h1>Wishlist</h1>
+            <h1>ΑΓΑΠΗΜΕΝΑ</h1>
           </div>
         </div>
       </div>

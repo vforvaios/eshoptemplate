@@ -7,7 +7,7 @@ const UserMenu = () => {
 
   return (
     <div className="usermenu-container">
-      <button onClick={() => dispatch(logoutUser())}>Logout</button>
+      <button onClick={() => dispatch(logoutUser())}>ΕΞΟΔΟΣ</button>
     </div>
   );
 };

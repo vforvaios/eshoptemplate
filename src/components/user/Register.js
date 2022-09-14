@@ -14,20 +14,20 @@ const Register = () => {
 
   const submitRegisterForm = () => {
     if (email === '') {
-      setEmailError('Blank email is not permitted!');
+      setEmailError('Πρέπει να συμπληρώσετε email!');
     } else {
       setEmailError('');
     }
 
     if (password === '') {
-      setPasswordError('Blank password is not permitted!');
+      setPasswordError('Πρέπει να συμπληρώσετε κωδικό!');
     } else {
       setPasswordError('');
     }
 
     if (confirmPassword === '' || confirmPassword !== password) {
       setConfirmPasswordError(
-        'Blank password is not permitted or confirm is not the same!',
+        'Πρέπει να συμπληρώσετε κωδικό ή δεν ταιριάζουν οι 2 κωδικοί!',
       );
     } else {
       setConfirmPasswordError('');
@@ -39,7 +39,7 @@ const Register = () => {
       confirmPassword !== '' &&
       password === confirmPassword
     ) {
-      alert('Register successful');
+      alert('ΕΠΙΤΥΧΗΣ ΕΓΓΡΑΦΗ');
     }
   };
 
@@ -48,7 +48,7 @@ const Register = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">
-            <h1>Register</h1>
+            <h1>ΕΓΓΡΑΦΗ</h1>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@ const Register = () => {
           <div className="login-container">
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">Username</InputLabel>
+                <InputLabel htmlFor="login-email">ΟΝΟΜΑ ΧΡΗΣΤΗ</InputLabel>
                 <Input
                   fullWidth
                   id="login-email"
@@ -73,7 +73,7 @@ const Register = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">Password</InputLabel>
+                <InputLabel htmlFor="login-password">ΚΩΔΙΚΟΣ</InputLabel>
                 <Input
                   fullWidth
                   error={passwordError !== ''}
@@ -90,7 +90,7 @@ const Register = () => {
             <div className="form-control">
               <FormControl fullWidth>
                 <InputLabel htmlFor="login-confirmpassword">
-                  Confirm Password
+                  ΕΠΙΒΕΒΑΙΩΣΗ ΚΩΔΙΚΟΥ
                 </InputLabel>
                 <Input
                   fullWidth
@@ -108,7 +108,7 @@ const Register = () => {
             <div className="form-control">
               <div className="actions separate">
                 <Button className="button green" onClick={submitRegisterForm}>
-                  REGISTER
+                  ΕΓΓΡΑΦΗ
                 </Button>
               </div>
             </div>

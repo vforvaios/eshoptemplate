@@ -47,57 +47,57 @@ const MainMenu = ({ setToggleValue }) => {
         ))}
         <li>
           <Link onClick={setToggleValue('left', false)} to="/">
-            Home
+            ΑΡΧΙΚΗ
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/about">
-            About
+            ΓΙΑ ΕΜΑΣ
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/catalog">
-            Catalog
+            ΠΡΟΙΟΝΤΑ
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/cart">
-            Cart
+            ΚΑΛΑΘΙ
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/contact">
-            Contact
+            ΕΠΙΚΟΙΝΩΝΙΑ
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/categories">
-            Categories Landing
+            ΚΑΤΗΓΟΡΙΕΣ
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/checkout/confirm">
-            Confirm
+            CHECKOUT CONFIRM
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/checkout/success">
-            Checkout Success
+            CHECKOUT SUCCESS
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/wishlist">
-            Wishlist
+            ΑΓΑΠΗΜΕΝΑ
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/login">
-            Login
+            ΕΙΣΟΔΟΣ
           </Link>
         </li>
         <li>
           <Link onClick={setToggleValue('left', false)} to="/register">
-            Register
+            ΕΓΓΡΑΦΗ
           </Link>
         </li>
       </ul>

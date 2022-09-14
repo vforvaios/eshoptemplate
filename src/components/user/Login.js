@@ -20,13 +20,13 @@ const Login = () => {
 
   const submitLoginForm = () => {
     if (email === '') {
-      setEmailError('Blank email is not permitted!');
+      setEmailError('Πρέπει να συμπληρώσετε email!');
     } else {
       setEmailError('');
     }
 
     if (password === '') {
-      setPasswordError('Blank password is not permitted!');
+      setPasswordError('Πρέπει να συμπληρώσετε κωδικό!');
     } else {
       setPasswordError('');
     }
@@ -48,7 +48,7 @@ const Login = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">
-            <h1>Login</h1>
+            <h1>ΕΙΣΟΔΟΣ</h1>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@ const Login = () => {
           <div className="login-container">
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">Username</InputLabel>
+                <InputLabel htmlFor="login-email">ΟΝΟΜΑ ΧΡΗΣΤΗ</InputLabel>
                 <Input
                   fullWidth
                   id="login-email"
@@ -73,7 +73,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">Password</InputLabel>
+                <InputLabel htmlFor="login-password">ΚΩΔΙΚΟΣ</InputLabel>
                 <Input
                   fullWidth
                   error={passwordError !== ''}
@@ -90,7 +90,7 @@ const Login = () => {
             <div className="form-control">
               <div className="actions separate">
                 <Button className="button green" onClick={submitLoginForm}>
-                  LOGIN
+                  ΕΙΣΟΔΟΣ
                 </Button>
               </div>
             </div>

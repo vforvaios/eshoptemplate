@@ -87,7 +87,7 @@ const Product = ({ classes, product }) => {
             e.preventDefault();
             dispatch(addToCart(product));
           }}>
-          Add to Cart
+          ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ
         </button>
       </Card>
     </Link>
