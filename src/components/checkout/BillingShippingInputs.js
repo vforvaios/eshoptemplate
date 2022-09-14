@@ -26,7 +26,7 @@ const BillingShippingInputs = ({
 
   return (
     <div>
-      <h3>{billing ? 'Billing Address' : 'Shipping Address'}</h3>
+      <h3>{billing ? 'BILLING ADDRESS' : 'SHIPPING ADDRESS'}</h3>
       {!billing && (
         <>
           <FormControlLabel
