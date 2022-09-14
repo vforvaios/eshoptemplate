@@ -107,3 +107,11 @@
 .flex-billing-shipping {
   flex-wrap: nowrap;
 }
+
+.payment-shipping-container {
+  flex-direction: row;
+}
+
+.shipping-methods {
+  padding-left: 16px;
+}

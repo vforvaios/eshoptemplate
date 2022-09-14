@@ -92,8 +92,5 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-}
-
-.shipping-methods {
-  padding-left: 16px;
+  flex-direction: column;
 }
