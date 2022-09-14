@@ -33,7 +33,7 @@ const Cart = () => {
             <div className="wrapper">
               <div className="actions separate">
                 <Button className="button standard">
-                  <Link to="/catalog">Πίσω στον κατάλογο...</Link>
+                  <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
                 </Button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="button green">
@@ -56,15 +56,15 @@ const Cart = () => {
             <div className="wrapper">
               <div className="actions separate">
                 <Button className="button standard">
-                  <Link to="/catalog">Back to catalog...</Link>
+                  <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
                 </Button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="button green">
-                    PROCEED TO CHECKOUT...
+                    ΑΓΟΡΑ...
                   </Link>
                 ) : (
                   <Link to="/checkout/step2" className="button green">
-                    PROCEED TO CHECKOUT...
+                    ΑΓΟΡΑ...
                   </Link>
                 )}
               </div>

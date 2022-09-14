@@ -26,7 +26,7 @@ const BillingShippingInputs = ({
 
   return (
     <div>
-      <h3>{billing ? 'BILLING ADDRESS' : 'SHIPPING ADDRESS'}</h3>
+      <h3>{billing ? 'ΔΙΕΥΘΥΝΣΗ ΑΠΟΣΤΟΛΗΣ' : 'ΔΙΕΥΘΥΝΣΗ ΠΛΗΡΩΜΗΣ'}</h3>
       {!billing && (
         <>
           <FormControlLabel
@@ -97,7 +97,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="address">ADDRESS</InputLabel>
+          <InputLabel htmlFor="address">ΔΙΕΥΘΥΝΣΗ</InputLabel>
           <Input
             fullWidth
             id="address"
