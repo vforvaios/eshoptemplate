@@ -4,6 +4,9 @@ import {
   getPaymentMethods,
   setPaymentMethods,
   checkPaymentMethod,
+  getShippingMethods,
+  setShippingMethods,
+  checkShippingMethod,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -67,8 +70,70 @@ const checkPaymentMethodEpic = (action$, state$) =>
     ),
   );
 
-export { getPaymentMethodsEpic, checkPaymentMethodEpic };
+const getShippingMethodsEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getShippingMethods.type),
+    mergeMap(() =>
+      from(makeRequest('shippingmethods', 'GET', '')).pipe(
+        concatMap((payload) => {
+          const newPayload = payload?.map((shippingmethod, index) => {
+            return index === 0
+              ? { ...shippingmethod, checked: true }
+              : { ...shippingmethod };
+          });
 
-const epics = combineEpics(getPaymentMethodsEpic, checkPaymentMethodEpic);
+          return [
+            setShippingMethods(newPayload),
+            toggleShowAlert({ message: '', show: false, type: 'error' }),
+          ];
+        }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
+  );
+
+const checkShippingMethodEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(checkShippingMethod.type),
+    withLatestFrom(state$),
+    map(
+      ([
+        { payload },
+        {
+          checkoutReducer: { shippingMethods },
+        },
+      ]) => {
+        const newShippingMethods = shippingMethods?.map((sm) => {
+          return payload === sm?.name
+            ? { ...sm, checked: true }
+            : { ...sm, checked: false };
+        });
+
+        return setShippingMethods(newShippingMethods);
+      },
+    ),
+  );
+
+export {
+  getPaymentMethodsEpic,
+  checkPaymentMethodEpic,
+  getShippingMethodsEpic,
+  checkShippingMethodEpic,
+};
+
+const epics = combineEpics(
+  getPaymentMethodsEpic,
+  checkPaymentMethodEpic,
+  getShippingMethodsEpic,
+  checkShippingMethodEpic,
+);
 
 export default epics;

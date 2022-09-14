@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Billing from './Billing';
 import CheckoutStepper from './CheckoutStepper';
 import PaymentMethods from './PaymentMethods';
+import ShippingMethods from './ShippingMethods';
 
 const CheckoutEdit = () => {
   const navigate = useNavigate();
@@ -40,8 +41,9 @@ const CheckoutEdit = () => {
       </div>
       <div className="row">
         <div className="wrapper">
-          <div className="billing-shipping-container">
+          <div className="payment-shipping-container">
             <PaymentMethods />
+            <ShippingMethods />
           </div>
         </div>
       </div>

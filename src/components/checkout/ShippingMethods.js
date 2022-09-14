@@ -3,36 +3,36 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import {
-  getPaymentMethods,
-  checkPaymentMethod,
+  getShippingMethods,
+  checkShippingMethod,
 } from 'models/actions/checkoutActions';
-import { paymentMethods } from 'models/selectors/checkoutSelectors';
+import { shippingMethods } from 'models/selectors/checkoutSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const PaymentMethods = () => {
+const ShippingMethods = () => {
   const dispatch = useDispatch();
-  const currentPaymentMethods = useSelector(paymentMethods);
+  const currentShippingMethods = useSelector(shippingMethods);
 
   useEffect(() => {
-    dispatch(getPaymentMethods());
+    dispatch(getShippingMethods());
   }, []);
 
   return (
-    <div className="payment-methods">
-      <h3>ΤΡΟΠΟΙ ΠΛΗΡΩΜΗΣ</h3>
+    <div className="shipping-methods">
+      <h3>ΤΡΟΠΟΙ ΑΠΟΣΤΟΛΗΣ</h3>
       <FormControl>
         <RadioGroup
           aria-labelledby="payment-methods"
-          value={currentPaymentMethods?.find((pm) => pm?.checked)?.name || ''}
-          onChange={(e) => dispatch(checkPaymentMethod(e.target.value))}
+          value={currentShippingMethods?.find((sm) => sm?.checked)?.name || ''}
+          onChange={(e) => dispatch(checkShippingMethod(e.target.value))}
           name="payment-methods">
-          {currentPaymentMethods?.map((paymentmethod) => (
+          {currentShippingMethods?.map((shippingmethod) => (
             <FormControlLabel
-              key={paymentmethod?.id}
-              value={paymentmethod?.name}
+              key={shippingmethod?.id}
+              value={shippingmethod?.name}
               control={<Radio />}
-              label={paymentmethod?.name}
+              label={shippingmethod?.name}
             />
           ))}
         </RadioGroup>
@@ -41,4 +41,4 @@ const PaymentMethods = () => {
   );
 };
 
-export default PaymentMethods;
+export default ShippingMethods;
