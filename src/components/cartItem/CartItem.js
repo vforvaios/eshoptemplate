@@ -27,7 +27,7 @@ const CartItem = ({ updateable, item }) => {
         </div>
       </TableCell>
       <TableCell>
-        <span className="hidden">Quantity</span>
+        <span className="hidden">ΠΟΣΟΤΗΤΑ</span>
         {!updateable ? (
           item.total
         ) : (
@@ -49,7 +49,7 @@ const CartItem = ({ updateable, item }) => {
         )}
       </TableCell>
       <TableCell>
-        <span className="hidden">Price</span>
+        <span className="hidden">ΤΙΜΗ</span>
         <span>
           <strong className="totalPrice">{item.totalPrice} </strong>
           {`(${item.total}x${item.price})`}

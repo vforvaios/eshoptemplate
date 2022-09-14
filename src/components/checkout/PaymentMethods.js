@@ -20,7 +20,7 @@ const PaymentMethods = () => {
 
   return (
     <div>
-      <h3>PAYMENT METHODS</h3>
+      <h3>ΤΡΟΠΟΙ ΠΛΗΡΩΜΗΣ</h3>
       <FormControl>
         <RadioGroup
           aria-labelledby="payment-methods"

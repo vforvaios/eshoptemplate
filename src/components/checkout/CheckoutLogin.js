@@ -23,7 +23,7 @@ const CheckoutLogin = () => {
           <Login />
           <div className="login-container">
             <Link className="button green" to="/checkout/step2">
-              or proceed as a guest
+              ή προχωρήστε στην αγορά σαν επισκέπτης
             </Link>
           </div>
         </div>

@@ -14,7 +14,7 @@ const Confirm = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">
-            <h1>Confirm</h1>
+            <h1>ΕΠΙΒΕΒΑΙΩΣΗ</h1>
           </div>
         </div>
       </div>
@@ -27,9 +27,9 @@ const Confirm = () => {
         <div className="wrapper">
           <div className="actions separate">
             <Button className="button standard">
-              <Link to="/catalog">Back to step 2</Link>
+              <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ</Link>
             </Button>
-            <Button className="button green">Place the order</Button>
+            <Button className="button green">ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ</Button>
           </div>
         </div>
       </div>
@@ -42,9 +42,9 @@ const Confirm = () => {
         <div className="wrapper">
           <div className="actions separate">
             <Button className="button standard">
-              <Link to="/catalog">Back to step 2</Link>
+              <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ</Link>
             </Button>
-            <Button className="button green">Place the order</Button>
+            <Button className="button green">ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ</Button>
           </div>
         </div>
       </div>

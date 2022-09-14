@@ -54,12 +54,12 @@ const Billing = () => {
             <FormControlLabel
               value="receipt"
               control={<Radio />}
-              label="Receipt"
+              label="Απόδειξη"
             />
             <FormControlLabel
               value="invoice"
               control={<Radio />}
-              label="Invoice"
+              label="Τιμολόγιο"
             />
           </RadioGroup>
         </FormControl>

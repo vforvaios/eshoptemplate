@@ -30,7 +30,7 @@ const BillingShippingInputs = ({
       {!billing && (
         <>
           <FormControlLabel
-            label="Same as billing"
+            label="Ίδιο με πληρωμή"
             control={
               <Checkbox
                 checked={sameAsBilling}
@@ -42,7 +42,7 @@ const BillingShippingInputs = ({
       )}
       <div className={`${!billing && sameAsBilling ? 'same-as-billing' : ''}`}>
         <FormControl fullWidth>
-          <InputLabel htmlFor="name">NAME</InputLabel>
+          <InputLabel htmlFor="name">ΟΝΟΜΑ</InputLabel>
           <Input
             fullWidth
             id="name"
@@ -53,7 +53,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="lastName">LAST NAME</InputLabel>
+          <InputLabel htmlFor="lastName">ΕΠΩΝΥΜΟ</InputLabel>
           <Input
             fullWidth
             id="lastName"
@@ -75,7 +75,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="phone">PHONE</InputLabel>
+          <InputLabel htmlFor="phone">ΤΗΛΕΦΩΝΟ</InputLabel>
           <Input
             fullWidth
             id="phone"
@@ -86,7 +86,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="mobile">MOBILE</InputLabel>
+          <InputLabel htmlFor="mobile">ΚΙΝΗΤΟ</InputLabel>
           <Input
             fullWidth
             id="mobile"
@@ -108,7 +108,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="postCode">POST CODE</InputLabel>
+          <InputLabel htmlFor="postCode">Τ.Κ.</InputLabel>
           <Input
             fullWidth
             id="postCode"
@@ -119,7 +119,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="city">CITY</InputLabel>
+          <InputLabel htmlFor="city">ΠΟΛΗ</InputLabel>
           <Input
             fullWidth
             id="city"
@@ -130,7 +130,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="region">REGION</InputLabel>
+          <InputLabel htmlFor="region">ΠΕΡΙΟΧΗ</InputLabel>
           <Input
             fullWidth
             id="region"

@@ -11,9 +11,9 @@ const MyCart = ({ cart, updateable }) => (
     <Table className="table">
       <TableHead>
         <TableRow>
-          <TableCell>Description</TableCell>
-          <TableCell>Quantity</TableCell>
-          <TableCell>Price</TableCell>
+          <TableCell>ΠΕΡΙΓΡΑΦΗ</TableCell>
+          <TableCell>ΠΟΣΟΤΗΤΑ</TableCell>
+          <TableCell>ΤΙΜΗ</TableCell>
           {updateable && <TableCell />}
         </TableRow>
       </TableHead>

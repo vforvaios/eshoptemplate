@@ -22,7 +22,7 @@ const CheckoutEdit = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">
-            <h1>Billing/Shipping</h1>
+            <h1>ΠΛΗΡΩΜΗ - ΠΑΡΑΔΟΣΗ</h1>
           </div>
         </div>
       </div>
