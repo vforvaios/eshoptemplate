@@ -11,7 +11,6 @@ import {
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import {
-  map,
   mergeMap,
   concatMap,
   catchError,

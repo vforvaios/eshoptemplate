@@ -38,3 +38,12 @@
     margin-right: 20px;
   }
 }
+
+.step3 .table tbody td:last-child {
+  position: static;
+  text-align: left;
+}
+
+.step3 .table tbody td:first-child {
+  padding-right: 0;
+}

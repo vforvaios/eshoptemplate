@@ -79,6 +79,9 @@
 }
 
 // CART
+.cart-description {
+  align-items: center;
+}
 
 //
 .products-grid > li {
@@ -114,4 +117,9 @@
 
 .shipping-methods {
   padding-left: 16px;
+}
+
+// ACTIONS
+.actions {
+  flex-direction: row;
 }

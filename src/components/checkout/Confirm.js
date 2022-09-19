@@ -27,7 +27,7 @@ const Confirm = () => {
         <div className="wrapper">
           <div className="actions separate">
             <Button className="button standard">
-              <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ</Link>
+              <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
             </Button>
             <Button className="button green">ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ</Button>
           </div>
@@ -42,7 +42,7 @@ const Confirm = () => {
         <div className="wrapper">
           <div className="actions separate">
             <Button className="button standard">
-              <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ</Link>
+              <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
             </Button>
             <Button className="button green">ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ</Button>
           </div>

@@ -54,14 +54,7 @@ const App = () => {
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/checkout/step1" element={<CheckoutLogin />} />
           <Route path="/checkout/step2" element={<CheckoutEdit />} />
-          <Route
-            path="/checkout/confirm"
-            element={
-              <ProtectedRoute isAllowed={userSelector?.token}>
-                <Confirm />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/checkout/confirm" element={<Confirm />} />
           <Route
             path="/checkout/success"
             element={
