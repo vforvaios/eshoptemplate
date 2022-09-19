@@ -4,6 +4,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 const BillingShippingInputs = ({
   billing,
@@ -24,6 +25,8 @@ const BillingShippingInputs = ({
     region,
   } = inputs;
 
+  const dispatch = useDispatch();
+
   return (
     <div>
       <h3>{billing ? 'ΔΙΕΥΘΥΝΣΗ ΑΠΟΣΤΟΛΗΣ' : 'ΔΙΕΥΘΥΝΣΗ ΠΛΗΡΩΜΗΣ'}</h3>
@@ -34,7 +37,7 @@ const BillingShippingInputs = ({
             control={
               <Checkbox
                 checked={sameAsBilling}
-                onChange={() => setSameAsBilling(!sameAsBilling)}
+                onChange={() => dispatch(setSameAsBilling(!sameAsBilling))}
               />
             }
           />
@@ -49,7 +52,9 @@ const BillingShippingInputs = ({
             type="text"
             value={name}
             error={false}
-            onChange={(e) => setInfo('name', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'name', name: e.target.value }))
+            }
           />
         </FormControl>
         <FormControl fullWidth>
@@ -60,7 +65,9 @@ const BillingShippingInputs = ({
             type="text"
             value={lastName}
             error={false}
-            onChange={(e) => setInfo('lastName', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'lastName', name: e.target.value }))
+            }
           />
         </FormControl>
         <FormControl fullWidth>
@@ -71,7 +78,9 @@ const BillingShippingInputs = ({
             type="email"
             value={email}
             error={false}
-            onChange={(e) => setInfo('email', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'email', name: e.target.value }))
+            }
           />
         </FormControl>
         <FormControl fullWidth>
@@ -82,7 +91,9 @@ const BillingShippingInputs = ({
             type="text"
             value={phone}
             error={false}
-            onChange={(e) => setInfo('phone', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'phone', name: e.target.value }))
+            }
           />
         </FormControl>
         <FormControl fullWidth>
@@ -93,7 +104,9 @@ const BillingShippingInputs = ({
             type="text"
             value={mobile}
             error={false}
-            onChange={(e) => setInfo('mobile', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'mobile', name: e.target.value }))
+            }
           />
         </FormControl>
         <FormControl fullWidth>
@@ -104,7 +117,9 @@ const BillingShippingInputs = ({
             type="text"
             value={address}
             error={false}
-            onChange={(e) => setInfo('address', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'address', name: e.target.value }))
+            }
           />
         </FormControl>
         <FormControl fullWidth>
@@ -115,7 +130,9 @@ const BillingShippingInputs = ({
             type="text"
             value={postCode}
             error={false}
-            onChange={(e) => setInfo('postCode', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'postCode', name: e.target.value }))
+            }
           />
         </FormControl>
         <FormControl fullWidth>
@@ -126,7 +143,9 @@ const BillingShippingInputs = ({
             type="text"
             value={city}
             error={false}
-            onChange={(e) => setInfo('city', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'city', name: e.target.value }))
+            }
           />
         </FormControl>
         <FormControl fullWidth>
@@ -137,7 +156,9 @@ const BillingShippingInputs = ({
             type="text"
             value={region}
             error={false}
-            onChange={(e) => setInfo('region', e.target.value)}
+            onChange={(e) =>
+              dispatch(setInfo({ key: 'region', name: e.target.value }))
+            }
           />
         </FormControl>
       </div>

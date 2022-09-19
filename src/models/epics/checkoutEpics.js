@@ -52,11 +52,11 @@ const checkPaymentMethodEpic = (action$, state$) =>
   action$.pipe(
     ofType(checkPaymentMethod.type),
     withLatestFrom(state$),
-    map(
+    concatMap(
       ([
         { payload },
         {
-          checkoutReducer: { paymentMethods },
+          checkoutReducer: { paymentMethods, shippingMethods },
         },
       ]) => {
         const newPaymentMethods = paymentMethods?.map((pm) => {
@@ -65,7 +65,25 @@ const checkPaymentMethodEpic = (action$, state$) =>
             : { ...pm, checked: false };
         });
 
-        return setPaymentMethods(newPaymentMethods);
+        // ΠΑΡΑΛΑΒΗ ΣΤΟ ΚΑΤΑΣΤΗΜΑ id=2
+        const paralaviChecked = shippingMethods.find((sm) => sm?.id === 2)
+          .checked;
+
+        if (
+          paralaviChecked &&
+          paymentMethods.find((pm) => pm.name === payload)?.id !== 2
+        ) {
+          const newShippingMethods = shippingMethods?.map((sm, index) => {
+            return index === 0 ? { ...sm, checked: true } : { ...sm };
+          });
+
+          return [
+            setPaymentMethods(newPaymentMethods),
+            setShippingMethods(newShippingMethods),
+          ];
+        }
+
+        return [setPaymentMethods(newPaymentMethods)];
       },
     ),
   );
@@ -104,11 +122,11 @@ const checkShippingMethodEpic = (action$, state$) =>
   action$.pipe(
     ofType(checkShippingMethod.type),
     withLatestFrom(state$),
-    map(
+    concatMap(
       ([
         { payload },
         {
-          checkoutReducer: { shippingMethods },
+          checkoutReducer: { shippingMethods, paymentMethods },
         },
       ]) => {
         const newShippingMethods = shippingMethods?.map((sm) => {
@@ -117,7 +135,26 @@ const checkShippingMethodEpic = (action$, state$) =>
             : { ...sm, checked: false };
         });
 
-        return setShippingMethods(newShippingMethods);
+        // ΠΛΗΡΩΜΗ ΣΤΟ ΚΑΤΑΣΤΗΜΑ id=2
+        const pliromiKatastimaChecked = paymentMethods.find(
+          (pm) => pm?.id === 2,
+        ).checked;
+
+        if (
+          pliromiKatastimaChecked &&
+          shippingMethods.find((sm) => sm.name === payload)?.id !== 2
+        ) {
+          const newPaymentMethods = paymentMethods?.map((pm, index) => {
+            return index === 0 ? { ...pm, checked: true } : { ...pm };
+          });
+
+          return [
+            setPaymentMethods(newPaymentMethods),
+            setShippingMethods(newShippingMethods),
+          ];
+        }
+
+        return [setShippingMethods(newShippingMethods)];
       },
     ),
   );

@@ -2,44 +2,29 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import React, { useState } from 'react';
+import {
+  setBillingInfo,
+  setShippingInfo,
+  setReceipt,
+  setSameAsBilling,
+} from 'models/actions/checkoutActions';
+import {
+  billingInfo,
+  shippingInfo,
+  sameAsBilling,
+  receipt,
+} from 'models/selectors/checkoutSelectors';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import BillingShippingInputs from './BillingShippingInputs';
 
 const Billing = () => {
-  const [receipt, setReceipt] = useState('receipt');
-  const [sameAsBilling, setSameAsBilling] = useState(true);
-  const [billingInfo, setBillingInfo] = useState({
-    name: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    mobile: '',
-    address: '',
-    postCode: '',
-    city: '',
-    region: '',
-  });
-
-  const [shippingInfo, setShippingInfo] = useState({
-    name: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    mobile: '',
-    address: '',
-    postCode: '',
-    city: '',
-    region: '',
-  });
-
-  const setBillingInformation = (key, value) => {
-    setBillingInfo({ ...billingInfo, [key]: value });
-  };
-
-  const setShippingInformation = (key, value) => {
-    setShippingInfo({ ...shippingInfo, [key]: value });
-  };
+  const dispatch = useDispatch();
+  const myBillingInfo = useSelector(billingInfo);
+  const myReceipt = useSelector(receipt);
+  const myShippingInfo = useSelector(shippingInfo);
+  const mySameAsBilling = useSelector(sameAsBilling);
 
   return (
     <div className="billing-shipping billing">
@@ -48,8 +33,8 @@ const Billing = () => {
           <RadioGroup
             row
             aria-labelledby="receipt-or-invoice"
-            value={receipt}
-            onChange={(e) => setReceipt(e.target.value)}
+            value={myReceipt}
+            onChange={(e) => dispatch(setReceipt(e.target.value))}
             name="receipt-buttons-group">
             <FormControlLabel
               value="receipt"
@@ -68,17 +53,17 @@ const Billing = () => {
         <div className="billing-inputs">
           <BillingShippingInputs
             billing
-            inputs={billingInfo}
+            inputs={myBillingInfo}
             sameAsBilling={false}
-            setInfo={setBillingInformation}
+            setInfo={setBillingInfo}
           />
         </div>
         <div className="billing-inputs">
           <BillingShippingInputs
             billing={false}
-            sameAsBilling={sameAsBilling}
-            inputs={shippingInfo}
-            setInfo={setShippingInformation}
+            sameAsBilling={mySameAsBilling}
+            inputs={myShippingInfo}
+            setInfo={setShippingInfo}
             setSameAsBilling={setSameAsBilling}
           />
         </div>

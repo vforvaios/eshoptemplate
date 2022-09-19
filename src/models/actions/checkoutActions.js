@@ -8,6 +8,11 @@ const getShippingMethods = createAction('checkout/getShippingMethods');
 const setShippingMethods = createAction('checkout/setShippingMethods');
 const checkShippingMethod = createAction('checkout/checkShippingMethod');
 
+const setBillingInfo = createAction('checkout/setBillingInfo');
+const setShippingInfo = createAction('checkout/setShippingInfo');
+const setReceipt = createAction('checkout/setReceipt');
+const setSameAsBilling = createAction('checkout/setSameAsBilling');
+
 export {
   getPaymentMethods,
   setPaymentMethods,
@@ -15,4 +20,8 @@ export {
   getShippingMethods,
   setShippingMethods,
   checkShippingMethod,
+  setBillingInfo,
+  setShippingInfo,
+  setReceipt,
+  setSameAsBilling,
 };
