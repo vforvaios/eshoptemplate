@@ -6,6 +6,7 @@ import {
   setShippingInfo,
   setReceipt,
   setSameAsBilling,
+  clearOrder,
 } from 'models/actions/checkoutActions';
 
 const initialState = {
@@ -67,6 +68,9 @@ const checkoutReducer = createReducer(initialState, {
       ...state?.shippingInfo,
       [action.payload.key]: action.payload.name,
     },
+  }),
+  [clearOrder.type]: (state) => ({
+    ...initialState,
   }),
 });
 

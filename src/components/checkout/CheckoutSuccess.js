@@ -1,6 +1,14 @@
-import React from 'react';
+import { clearOrder } from 'models/actions/checkoutActions';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 const CheckoutSuccess = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearOrder());
+  }, []);
+
   return (
     <div className="content checkout step4">
       <div className="row">

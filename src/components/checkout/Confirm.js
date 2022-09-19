@@ -1,13 +1,15 @@
 import Button from '@material-ui/core/Button';
 import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
+import { sendOrder } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Confirm = () => {
   const myCart = useSelector(cart);
+  const dispatch = useDispatch();
 
   return (
     <div className="content checkout step3">
@@ -29,7 +31,11 @@ const Confirm = () => {
             <Button className="button standard">
               <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
             </Button>
-            <Button className="button green">ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ</Button>
+            <Button
+              onClick={() => dispatch(sendOrder())}
+              className="button green">
+              ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
+            </Button>
           </div>
         </div>
       </div>
@@ -44,7 +50,11 @@ const Confirm = () => {
             <Button className="button standard">
               <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
             </Button>
-            <Button className="button green">ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ</Button>
+            <Button
+              onClick={() => dispatch(sendOrder())}
+              className="button green">
+              ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
+            </Button>
           </div>
         </div>
       </div>

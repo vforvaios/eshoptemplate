@@ -55,14 +55,7 @@ const App = () => {
           <Route path="/checkout/step1" element={<CheckoutLogin />} />
           <Route path="/checkout/step2" element={<CheckoutEdit />} />
           <Route path="/checkout/confirm" element={<Confirm />} />
-          <Route
-            path="/checkout/success"
-            element={
-              <ProtectedRoute isAllowed={userSelector?.token}>
-                <CheckoutSuccess />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/checkout/success" element={<CheckoutSuccess />} />
           <Route
             path="/wishlist"
             element={

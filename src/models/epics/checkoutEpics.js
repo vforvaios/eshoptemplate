@@ -1,4 +1,5 @@
 import makeRequest from 'library/makeRequest';
+import transformErrorMessages from 'library/transformErrorMessages';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import {
   getPaymentMethods,
@@ -7,6 +8,8 @@ import {
   getShippingMethods,
   setShippingMethods,
   checkShippingMethod,
+  sendOrder,
+  navigateToSuccessCheckout,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -15,6 +18,8 @@ import {
   concatMap,
   catchError,
   withLatestFrom,
+  tap,
+  ignoreElements,
 } from 'rxjs/operators';
 
 const getPaymentMethodsEpic = (action$, state$) =>
@@ -194,11 +199,58 @@ const checkShippingMethodEpic = (action$, state$) =>
     ),
   );
 
+const sendOrderEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(sendOrder.type),
+    withLatestFrom(state$),
+    mergeMap(([, { checkoutReducer, cartReducer }]) =>
+      from(
+        makeRequest(
+          'order/sendorder',
+          'POST',
+          JSON.stringify({ checkoutReducer, cartReducer }),
+        ),
+      ).pipe(
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              toggleShowAlert({
+                message: transformErrorMessages(payload?.error?.details),
+                type: 'error',
+                show: true,
+              }),
+            ];
+          }
+
+          return [navigateToSuccessCheckout()];
+        }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
+  );
+
+const navigateToSuccessCheckoutEpic = (action$) =>
+  action$.pipe(
+    ofType(navigateToSuccessCheckout.type),
+    tap(() => (window.location = './success')),
+    ignoreElements(),
+  );
+
 export {
   getPaymentMethodsEpic,
   checkPaymentMethodEpic,
   getShippingMethodsEpic,
   checkShippingMethodEpic,
+  sendOrderEpic,
+  navigateToSuccessCheckoutEpic,
 };
 
 const epics = combineEpics(
@@ -206,6 +258,8 @@ const epics = combineEpics(
   checkPaymentMethodEpic,
   getShippingMethodsEpic,
   checkShippingMethodEpic,
+  sendOrderEpic,
+  navigateToSuccessCheckoutEpic,
 );
 
 export default epics;
