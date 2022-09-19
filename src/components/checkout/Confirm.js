@@ -3,13 +3,22 @@ import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
 import { sendOrder } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Confirm = () => {
   const myCart = useSelector(cart);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (myCart?.length === 0) {
+      navigate('/');
+    }
+  });
 
   return (
     <div className="content checkout step3">
