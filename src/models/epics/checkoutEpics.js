@@ -74,7 +74,25 @@ const checkPaymentMethodEpic = (action$, state$) =>
           paymentMethods.find((pm) => pm.name === payload)?.id !== 2
         ) {
           const newShippingMethods = shippingMethods?.map((sm, index) => {
-            return index === 0 ? { ...sm, checked: true } : { ...sm };
+            return index === 0
+              ? { ...sm, checked: true }
+              : { ...sm, checked: false };
+          });
+
+          return [
+            setPaymentMethods(newPaymentMethods),
+            setShippingMethods(newShippingMethods),
+          ];
+        }
+
+        if (
+          !paralaviChecked &&
+          paymentMethods.find((pm) => pm.name === payload)?.id === 2
+        ) {
+          const newShippingMethods = shippingMethods?.map((sm) => {
+            return sm.id === 2
+              ? { ...sm, checked: true }
+              : { ...sm, checked: false };
           });
 
           return [
@@ -145,7 +163,25 @@ const checkShippingMethodEpic = (action$, state$) =>
           shippingMethods.find((sm) => sm.name === payload)?.id !== 2
         ) {
           const newPaymentMethods = paymentMethods?.map((pm, index) => {
-            return index === 0 ? { ...pm, checked: true } : { ...pm };
+            return index === 0
+              ? { ...pm, checked: true }
+              : { ...pm, checked: false };
+          });
+
+          return [
+            setPaymentMethods(newPaymentMethods),
+            setShippingMethods(newShippingMethods),
+          ];
+        }
+
+        if (
+          !pliromiKatastimaChecked &&
+          shippingMethods.find((sm) => sm.name === payload)?.id === 2
+        ) {
+          const newPaymentMethods = paymentMethods?.map((pm) => {
+            return pm.id === 2
+              ? { ...pm, checked: true }
+              : { ...pm, checked: false };
           });
 
           return [
