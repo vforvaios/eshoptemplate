@@ -8,10 +8,13 @@ import {
   setSameAsBilling,
   clearOrder,
   setCheckoutError,
+  setOrderOk,
+  setCanSeeSuccessPage,
 } from 'models/actions/checkoutActions';
 
 const initialState = {
   billingErrors: [],
+  shippingErrors: [],
   paymentMethods: [],
   shippingMethods: [],
   billingInfo: {
@@ -38,6 +41,8 @@ const initialState = {
   },
   receipt: 'receipt',
   sameAsBilling: true,
+  orderOK: false,
+  canSeeSuccessPage: false,
 };
 
 const checkoutReducer = createReducer(initialState, {
@@ -78,6 +83,14 @@ const checkoutReducer = createReducer(initialState, {
     ...state,
     billingErrors: action.payload.billingErrors,
     shippingErrors: action.payload.shippingErrors,
+  }),
+  [setOrderOk.type]: (state, action) => ({
+    ...state,
+    orderOK: true,
+  }),
+  [setCanSeeSuccessPage.type]: (state, action) => ({
+    ...state,
+    canSeeSuccessPage: true,
   }),
 });
 

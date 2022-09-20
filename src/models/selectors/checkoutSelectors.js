@@ -13,6 +13,9 @@ const sameAsBilling = ({ checkoutReducer }) => checkoutReducer.sameAsBilling;
 
 const billingErrors = ({ checkoutReducer }) => checkoutReducer.billingErrors;
 const shippingErrors = ({ checkoutReducer }) => checkoutReducer.shippingErrors;
+const orderOK = ({ checkoutReducer }) => checkoutReducer.orderOK;
+const canSeeSuccessPage = ({ checkoutReducer }) =>
+  checkoutReducer.canSeeSuccessPage;
 
 export {
   paymentMethods,
@@ -23,4 +26,6 @@ export {
   sameAsBilling,
   billingErrors,
   shippingErrors,
+  orderOK,
+  canSeeSuccessPage,
 };

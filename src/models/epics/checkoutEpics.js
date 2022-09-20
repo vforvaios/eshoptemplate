@@ -13,6 +13,8 @@ import {
   checkOrderInfo,
   setCheckoutError,
   navigateToConfirmPage,
+  setOrderOk,
+  setCanSeeSuccessPage,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -225,7 +227,7 @@ const sendOrderEpic = (action$, state$) =>
             ];
           }
 
-          return [navigateToSuccessCheckout()];
+          return [setCanSeeSuccessPage(), navigateToSuccessCheckout()];
         }),
         catchError((error) =>
           of(
@@ -289,6 +291,7 @@ const checkOrderInfoEpic = (action$, state$) =>
         if (billingErrors.length === 0 && shippingErrors.length === 0) {
           return [
             setCheckoutError({ billingErrors, shippingErrors }),
+            setOrderOk(),
             navigateToConfirmPage(),
           ];
         }
