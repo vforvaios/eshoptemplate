@@ -71,8 +71,10 @@ const CheckoutEdit = () => {
             <Button className="button standard">
               <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
             </Button>
-            <Button className="button green">
-              <Link to="/checkout/confirm">ΕΠΙΒΕΒΑΙΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
+            <Button
+              className="button green"
+              onClick={() => dispatch(checkOrderInfo())}>
+              ΕΠΙΒΕΒΑΙΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
             </Button>
           </div>
         </div>
