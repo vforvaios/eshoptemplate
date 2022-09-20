@@ -7,9 +7,11 @@ import {
   setReceipt,
   setSameAsBilling,
   clearOrder,
+  setCheckoutError,
 } from 'models/actions/checkoutActions';
 
 const initialState = {
+  billingErrors: [],
   paymentMethods: [],
   shippingMethods: [],
   billingInfo: {
@@ -71,6 +73,11 @@ const checkoutReducer = createReducer(initialState, {
   }),
   [clearOrder.type]: (state) => ({
     ...initialState,
+  }),
+  [setCheckoutError.type]: (state, action) => ({
+    ...state,
+    billingErrors: action.payload.billingErrors,
+    shippingErrors: action.payload.shippingErrors,
   }),
 });
 

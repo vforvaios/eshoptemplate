@@ -1,7 +1,8 @@
 import Button from '@material-ui/core/Button';
+import { checkOrderInfo } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ import ShippingMethods from './ShippingMethods';
 const CheckoutEdit = () => {
   const navigate = useNavigate();
   const cartItems = useSelector(cart);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (cartItems?.length === 0) {
@@ -40,8 +42,10 @@ const CheckoutEdit = () => {
             <Button className="button standard">
               <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
             </Button>
-            <Button className="button green">
-              <Link to="/checkout/confirm">ΕΠΙΒΕΒΑΙΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
+            <Button
+              className="button green"
+              onClick={() => dispatch(checkOrderInfo())}>
+              ΕΠΙΒΕΒΑΙΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
             </Button>
           </div>
         </div>

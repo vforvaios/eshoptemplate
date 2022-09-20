@@ -3,6 +3,10 @@ import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
 import { sendOrder } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
+import {
+  billingErrors,
+  shippingErrors,
+} from 'models/selectors/checkoutSelectors';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -10,6 +14,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Confirm = () => {
   const myCart = useSelector(cart);
+  const myBillingErrors = useSelector(billingErrors);
+  const myShippingErrors = useSelector(shippingErrors);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -18,7 +24,10 @@ const Confirm = () => {
     if (myCart?.length === 0) {
       navigate('/');
     }
-  });
+    if (myBillingErrors.length > 0 || myShippingErrors.length > 0) {
+      navigate('../checkout/step2');
+    }
+  }, []);
 
   return (
     <div className="content checkout step3">

@@ -13,6 +13,8 @@ import {
   shippingInfo,
   sameAsBilling,
   receipt,
+  billingErrors,
+  shippingErrors,
 } from 'models/selectors/checkoutSelectors';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +27,8 @@ const Billing = () => {
   const myReceipt = useSelector(receipt);
   const myShippingInfo = useSelector(shippingInfo);
   const mySameAsBilling = useSelector(sameAsBilling);
+  const myBillingErrors = useSelector(billingErrors);
+  const myShippingErrors = useSelector(shippingErrors);
 
   return (
     <div className="billing-shipping billing">
@@ -56,6 +60,7 @@ const Billing = () => {
             inputs={myBillingInfo}
             sameAsBilling={false}
             setInfo={setBillingInfo}
+            errors={myBillingErrors}
           />
         </div>
         <div className="billing-inputs">
@@ -65,6 +70,7 @@ const Billing = () => {
             inputs={myShippingInfo}
             setInfo={setShippingInfo}
             setSameAsBilling={setSameAsBilling}
+            errors={myShippingErrors}
           />
         </div>
       </div>

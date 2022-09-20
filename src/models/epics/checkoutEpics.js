@@ -10,6 +10,9 @@ import {
   checkShippingMethod,
   sendOrder,
   navigateToSuccessCheckout,
+  checkOrderInfo,
+  setCheckoutError,
+  navigateToConfirmPage,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -244,6 +247,64 @@ const navigateToSuccessCheckoutEpic = (action$) =>
     ignoreElements(),
   );
 
+const checkOrderInfoEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(checkOrderInfo.type),
+    withLatestFrom(state$),
+    concatMap(
+      ([
+        ,
+        {
+          checkoutReducer: { billingInfo, shippingInfo, sameAsBilling },
+        },
+      ]) => {
+        const requiredFields = [
+          'name',
+          'lastName',
+          'mobile',
+          'address',
+          'email',
+          'postCode',
+        ];
+
+        const billingErrors = requiredFields
+          .reduce(
+            (acc, curr) => [...acc, billingInfo[curr] === '' ? curr : null],
+            [],
+          )
+          .filter((x) => x !== null);
+
+        const shippingErrors = sameAsBilling
+          ? []
+          : requiredFields
+              .reduce(
+                (acc, curr) => [
+                  ...acc,
+                  shippingInfo[curr] === '' ? curr : null,
+                ],
+                [],
+              )
+              .filter((x) => x !== null);
+
+        if (billingErrors.length === 0 && shippingErrors.length === 0) {
+          return [
+            setCheckoutError({ billingErrors, shippingErrors }),
+            navigateToConfirmPage(),
+          ];
+        }
+
+        return [setCheckoutError({ billingErrors, shippingErrors })];
+      },
+    ),
+  );
+
+const navigateToConfirmPageEpic = (action$) =>
+  action$.pipe(
+    ofType(navigateToConfirmPage.type),
+    tap(() => (window.location = './confirm')),
+    ignoreElements(),
+  );
+
 export {
   getPaymentMethodsEpic,
   checkPaymentMethodEpic,
@@ -251,6 +312,8 @@ export {
   checkShippingMethodEpic,
   sendOrderEpic,
   navigateToSuccessCheckoutEpic,
+  checkOrderInfoEpic,
+  navigateToConfirmPageEpic,
 };
 
 const epics = combineEpics(
@@ -260,6 +323,8 @@ const epics = combineEpics(
   checkShippingMethodEpic,
   sendOrderEpic,
   navigateToSuccessCheckoutEpic,
+  checkOrderInfoEpic,
+  navigateToConfirmPageEpic,
 );
 
 export default epics;

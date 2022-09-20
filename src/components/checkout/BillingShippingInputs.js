@@ -12,6 +12,7 @@ const BillingShippingInputs = ({
   setInfo,
   sameAsBilling,
   setSameAsBilling,
+  errors,
 }) => {
   const {
     name,
@@ -44,7 +45,9 @@ const BillingShippingInputs = ({
         </>
       )}
       <div className={`${!billing && sameAsBilling ? 'same-as-billing' : ''}`}>
-        <FormControl fullWidth>
+        <FormControl
+          fullWidth
+          className={errors?.includes('name') ? 'error' : ''}>
           <InputLabel htmlFor="name">ΟΝΟΜΑ</InputLabel>
           <Input
             fullWidth
@@ -57,7 +60,9 @@ const BillingShippingInputs = ({
             }
           />
         </FormControl>
-        <FormControl fullWidth>
+        <FormControl
+          fullWidth
+          className={errors?.includes('lastName') ? 'error' : ''}>
           <InputLabel htmlFor="lastName">ΕΠΩΝΥΜΟ</InputLabel>
           <Input
             fullWidth
@@ -70,7 +75,9 @@ const BillingShippingInputs = ({
             }
           />
         </FormControl>
-        <FormControl fullWidth>
+        <FormControl
+          fullWidth
+          className={errors?.includes('email') ? 'error' : ''}>
           <InputLabel htmlFor="email">EMAIL</InputLabel>
           <Input
             fullWidth
@@ -96,7 +103,9 @@ const BillingShippingInputs = ({
             }
           />
         </FormControl>
-        <FormControl fullWidth>
+        <FormControl
+          fullWidth
+          className={errors?.includes('mobile') ? 'error' : ''}>
           <InputLabel htmlFor="mobile">ΚΙΝΗΤΟ</InputLabel>
           <Input
             fullWidth
@@ -109,7 +118,9 @@ const BillingShippingInputs = ({
             }
           />
         </FormControl>
-        <FormControl fullWidth>
+        <FormControl
+          fullWidth
+          className={errors?.includes('address') ? 'error' : ''}>
           <InputLabel htmlFor="address">ΔΙΕΥΘΥΝΣΗ</InputLabel>
           <Input
             fullWidth
@@ -122,7 +133,9 @@ const BillingShippingInputs = ({
             }
           />
         </FormControl>
-        <FormControl fullWidth>
+        <FormControl
+          fullWidth
+          className={errors?.includes('postCode') ? 'error' : ''}>
           <InputLabel htmlFor="postCode">Τ.Κ.</InputLabel>
           <Input
             fullWidth
