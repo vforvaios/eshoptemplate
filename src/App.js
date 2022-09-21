@@ -8,6 +8,7 @@ import CheckoutLogin from 'components/checkout/CheckoutLogin';
 import CheckoutSuccess from 'components/checkout/CheckoutSuccess';
 import Confirm from 'components/checkout/Confirm';
 import Contact from 'components/contact/Contact';
+import Footer from 'components/footer/Footer';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import Loader from 'components/loader/Loader';
@@ -67,6 +68,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
+        <Footer />
       </Router>
       <Alert />
       <Loader />

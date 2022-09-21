@@ -123,3 +123,21 @@
 .actions {
   flex-direction: row;
 }
+
+// FOOTER
+.footer-columns {
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.footer-newsletter {
+  padding-right: 20px;
+  flex-basis: 40%;
+  width: auto;
+}
+
+.footer-row {
+  flex-direction: row;
+}
