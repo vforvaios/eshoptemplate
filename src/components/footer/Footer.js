@@ -1,3 +1,6 @@
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +11,27 @@ const Footer = () => {
         <div className="row">
           <div className="wrapper">
             <div className="footer-row">
-              <div className="footer-newsletter">Newsletter</div>
+              <div className="footer-newsletter">
+                <div className="title">Newsletter</div>
+                <div>
+                  <FormControl fullWidth>
+                    <InputLabel htmlFor="newsletter">
+                      Εγγραφή στο newsletter...
+                    </InputLabel>
+                    <Input
+                      fullWidth
+                      id="newsletter"
+                      type="email"
+                      value=""
+                      // error={}
+                      onChange={() => {}}
+                    />
+                    {/* {emailError !== '' && (
+                      <span className="error-span">{emailError}</span>
+                    )} */}
+                  </FormControl>
+                </div>
+              </div>
               <div className="footer-columns">
                 <div>
                   <p className="title">ΓΙΑ ΕΜΑΣ</p>

@@ -51,6 +51,28 @@
 .footer-newsletter {
   margin-bottom: 20px;
   width: 100%;
+
+  input {
+    background: #222029;
+    color: #fff;
+  }
+
+  label {
+    color: #fff;
+    z-index: 1;
+    left: 4px;
+    font-size: 14px;
+    top: 1px;
+
+    &.MuiFormLabel-root.Mui-focused {
+      color: #fff;
+    }
+  }
+
+  .MuiInput-underline:after {
+    border-color: #fff;
+    border-width: 1px;
+  }
 }
 
 .copyright {
