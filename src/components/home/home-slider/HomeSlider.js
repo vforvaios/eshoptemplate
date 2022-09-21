@@ -1,7 +1,11 @@
+import { homeBanners } from 'models/selectors/homeSelectors';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 
 const HomeSlider = () => {
+  const banners = useSelector(homeBanners);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -12,15 +16,12 @@ const HomeSlider = () => {
 
   return (
     <Slider {...settings}>
-      {[1, 2, 3, 4]?.map((item) => (
-        <div className="homeSlickSlide" key={item}>
+      {banners?.map((banner) => (
+        <div className="homeSlickSlide" key={banner.id}>
           <picture>
-            <source
-              media="(max-width: 767px)"
-              srcSet="https://via.placeholder.com/767x500"
-            />
+            <source media="(max-width: 767px)" srcSet={banner.respimg} />
             <img
-              src="https://via.placeholder.com/1920x600"
+              src={banner.img}
               alt="Chris standing up holding his daughter Elva"
             />
           </picture>

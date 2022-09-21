@@ -4,6 +4,7 @@ import cartEpics from './cartEpics';
 import categoriesEpics from './categoriesEpics';
 import checkoutEpics from './checkoutEpics';
 import { counterIncreaseEpic } from './counterEpics';
+import homeEpics from './homeEpics';
 import userEpics from './userEpics';
 import wishlistEpics from './wishlistEpics';
 
@@ -14,6 +15,7 @@ const rootEpics = combineEpics(
   wishlistEpics,
   categoriesEpics,
   checkoutEpics,
+  homeEpics,
 );
 
 export default rootEpics;

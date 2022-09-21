@@ -1,7 +1,9 @@
 /* eslint-disable max-len */
 import { createReducer } from '@reduxjs/toolkit';
+import { setHomePageData } from 'models/actions/homeActions';
 
 const initialState = {
+  homeSlider: [],
   offers: {
     results: [
       {
@@ -32,10 +34,10 @@ const initialState = {
   },
 };
 const homeReducer = createReducer(initialState, {
-  // [increaseCounterAction.type]: (state, action) => ({
-  //   ...state,
-  //   counter: state?.counter + action.payload,
-  // }),
+  [setHomePageData.type]: (state, action) => ({
+    ...state,
+    homeSlider: action.payload.banners,
+  }),
 });
 
 export default homeReducer;
