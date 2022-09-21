@@ -72,7 +72,14 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="footer-row">Social and Copyrights</div>
+            <div className="footer-row">
+              <div className="copyright">Copyright (C) By Vaios</div>
+              <div className="footer-social-icons">
+                <i className="footer-icon icon-facebook" />
+                <i className="footer-icon icon-instagram" />
+                <i className="footer-icon icon-twitter" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

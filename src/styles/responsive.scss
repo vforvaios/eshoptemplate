@@ -140,4 +140,17 @@
 
 .footer-row {
   flex-direction: row;
+
+  &:last-child {
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.copyright {
+  margin-bottom: 0;
+}
+
+.footer-social-icons {
+  padding: 0;
 }
