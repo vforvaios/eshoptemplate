@@ -1,7 +1,9 @@
 /* eslint-disable max-len */
 import { createReducer } from '@reduxjs/toolkit';
+import { setProductPage } from 'models/actions/catalogActions';
 
 const initialState = {
+  singleProduct: {},
   catalog: {
     pagination: {
       total: 20,
@@ -62,10 +64,10 @@ const initialState = {
   },
 };
 const catalogReducer = createReducer(initialState, {
-  // [increaseCounterAction.type]: (state, action) => ({
-  //   ...state,
-  //   counter: state?.counter + action.payload,
-  // }),
+  [setProductPage.type]: (state, action) => ({
+    ...state,
+    singleProduct: action.payload,
+  }),
 });
 
 export default catalogReducer;

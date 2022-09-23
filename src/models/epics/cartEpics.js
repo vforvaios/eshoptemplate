@@ -7,7 +7,6 @@ import {
   removeItemFromCart,
   updateCartItemTotal,
 } from 'models/actions/cartActions';
-// import { token } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import {

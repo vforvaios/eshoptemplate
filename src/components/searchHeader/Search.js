@@ -7,7 +7,7 @@ import React from 'react';
 
 const Search = () => (
   <FormControl>
-    <InputLabel htmlFor="header-search">Search</InputLabel>
+    <InputLabel htmlFor="header-search">ΑΝΑΖΗΤΗΣΗ...</InputLabel>
     <Input
       id="header-search"
       type="search"

@@ -10,7 +10,7 @@ const CheckoutLogin = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">
-            <h1>Proceed as guest or user</h1>
+            <h1>ΣΥΝΔΕΣΗ</h1>
           </div>
         </div>
       </div>

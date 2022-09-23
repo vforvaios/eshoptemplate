@@ -1,32 +1,41 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Grid from '@material-ui/core/Grid';
-import React from 'react';
+import { getProductDetails } from 'models/actions/catalogActions';
+import { singleProduct } from 'models/selectors/catalogSelectors';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import './productPage.scss';
 
-const ProductPage = () => (
-  <div className="productPage">
-    <div className="row">
-      <div className="wrapper">
-        <Grid container>
-          <Grid item xs={6} className="mainProductPhotosContainer">
-            <picture>
-              <source
-                media="(max-width: 767px)"
-                srcSet="https://via.placeholder.com/400x400"
-              />
+const ProductPage = () => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const product = useSelector(singleProduct);
+
+  useEffect(() => {
+    dispatch(getProductDetails(id));
+  }, []);
+
+  return (
+    <div className="productPage content">
+      <div className="row">
+        <div className="wrapper">
+          <Grid container>
+            <Grid item xs={6} className="mainProductPhotosContainer">
               <img
-                src="https://via.placeholder.com/800x800"
+                src={product.imgHref}
                 alt="Chris standing up holding his daughter Elva"
               />
-            </picture>
+            </Grid>
+            <Grid item xs={6}>
+              {product?.productTitle}
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            Main Product Content
-          </Grid>
-        </Grid>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ProductPage;

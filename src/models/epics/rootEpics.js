@@ -1,6 +1,7 @@
 import { combineEpics } from 'redux-observable';
 
 import cartEpics from './cartEpics';
+import catalogEpics from './catalogEpics';
 import categoriesEpics from './categoriesEpics';
 import checkoutEpics from './checkoutEpics';
 import { counterIncreaseEpic } from './counterEpics';
@@ -16,6 +17,7 @@ const rootEpics = combineEpics(
   categoriesEpics,
   checkoutEpics,
   homeEpics,
+  catalogEpics,
 );
 
 export default rootEpics;
