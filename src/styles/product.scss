@@ -95,3 +95,32 @@
     margin-top: -16px;
   }
 }
+
+.productPage {
+  .price-container {
+    p {
+      color: #ccc;
+    }
+  }
+
+  .product-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .discount {
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 4px;
+    background: red;
+  }
+}
+
+.product-page-actions {
+  margin-top: 20px;
+}
