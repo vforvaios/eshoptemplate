@@ -1,10 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import RelevantProducts from 'components/relevant-products/RelevantProducts';
 import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
-import { getProductDetails } from 'models/actions/catalogActions';
-import { singleProduct } from 'models/selectors/catalogSelectors';
+import {
+  getProductDetails,
+  getRelatedProducts,
+} from 'models/actions/catalogActions';
+import {
+  singleProduct,
+  relatedProducts,
+} from 'models/selectors/catalogSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -17,6 +24,7 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const product = useSelector(singleProduct);
+  const relProducts = useSelector(relatedProducts);
   const {
     productTitle,
     productDescription,
@@ -29,6 +37,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     dispatch(getProductDetails(id));
+    dispatch(getRelatedProducts(id));
   }, []);
 
   return (
@@ -81,6 +90,11 @@ const ProductPage = () => {
       <div className="row">
         <div className="wrapper">
           <ProductMoreDetails tabs={tabs} />
+        </div>
+      </div>
+      <div className="row">
+        <div className="wrapper">
+          <RelevantProducts products={relProducts} />
         </div>
       </div>
     </div>
