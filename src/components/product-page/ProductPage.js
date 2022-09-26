@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RelevantProducts from 'components/relevant-products/RelevantProducts';
 import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
@@ -8,6 +10,7 @@ import {
   getProductDetails,
   getRelatedProducts,
 } from 'models/actions/catalogActions';
+import { addProductWishlist } from 'models/actions/wishlistActions';
 import {
   singleProduct,
   relatedProducts,
@@ -80,6 +83,15 @@ const ProductPage = () => {
                   }}>
                   ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ
                 </button>
+                <IconButton
+                  className="product-action"
+                  aria-label="add to favorites"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(addProductWishlist());
+                  }}>
+                  <FavoriteBorderIcon />
+                </IconButton>
               </div>
             </Grid>
           </Grid>
