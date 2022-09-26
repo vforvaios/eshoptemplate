@@ -94,7 +94,7 @@ const ProductPage = () => {
       </div>
       <div className="row">
         <div className="wrapper">
-          <RelevantProducts products={relProducts} />
+          <RelevantProducts title="ΣΧΕΤΙΚΑ ΠΡΟΪΟΝΤΑ" products={relProducts} />
         </div>
       </div>
     </div>

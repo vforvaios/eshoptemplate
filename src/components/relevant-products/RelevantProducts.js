@@ -2,7 +2,7 @@ import Product from 'components/product/Product';
 import React from 'react';
 import Slider from 'react-slick';
 
-const RelevantProducts = ({ products }) => {
+const RelevantProducts = ({ title, products }) => {
   const settings = {
     dots: true,
     infinite: false,
@@ -21,7 +21,7 @@ const RelevantProducts = ({ products }) => {
 
   return (
     <div className="relevant-products">
-      <h2>ΣΧΕΤΙΚΑ ΠΡΟΪΟΝΤΑ</h2>
+      <h2>{title}</h2>
       <div className="products">
         <ul className="products-grid">
           <Slider {...settings}>
