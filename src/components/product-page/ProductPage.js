@@ -36,7 +36,7 @@ const ProductPage = () => {
   useEffect(() => {
     dispatch(getProductDetails(id));
     dispatch(getRelatedProducts(id));
-  }, []);
+  }, [id]);
 
   return (
     <div className="productPage content">
