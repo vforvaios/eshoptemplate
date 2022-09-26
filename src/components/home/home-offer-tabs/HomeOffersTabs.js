@@ -1,10 +1,9 @@
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Product from 'components/product/Product';
+import TabPanel from 'components/tab-panel/TabPanel';
 import { withActiveTab } from 'library';
 import React from 'react';
-
-import TabPanel from './tab-panel/TabPanel';
 
 import './homeOffersTabs.scss';
 

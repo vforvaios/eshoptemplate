@@ -63,6 +63,11 @@ ul {
   }
 }
 
+// PADDINGS
+.pr0 {
+  padding-right: 0 !important;
+}
+
 @import 'src/styles/buttons.scss';
 @import 'src/styles/slick.scss';
 @import 'src/styles/table.scss';

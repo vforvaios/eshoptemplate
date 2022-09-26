@@ -9,6 +9,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import ProductMoreDetails from './ProductMoreDetails';
+
 import './productPage.scss';
 
 const ProductPage = () => {
@@ -22,6 +24,7 @@ const ProductPage = () => {
     price,
     imgHref,
     code,
+    tabs,
   } = product;
 
   useEffect(() => {
@@ -39,7 +42,7 @@ const ProductPage = () => {
                 alt="Chris standing up holding his daughter Elva"
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={6} className="pr0">
               <div className="product-title">
                 <h1>{productTitle}</h1>
                 <span className="discount">
@@ -73,6 +76,11 @@ const ProductPage = () => {
               </div>
             </Grid>
           </Grid>
+        </div>
+      </div>
+      <div className="row">
+        <div className="wrapper">
+          <ProductMoreDetails tabs={tabs} />
         </div>
       </div>
     </div>
