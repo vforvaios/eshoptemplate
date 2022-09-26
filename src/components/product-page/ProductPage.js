@@ -18,8 +18,6 @@ import { useParams } from 'react-router-dom';
 
 import ProductMoreDetails from './ProductMoreDetails';
 
-import './productPage.scss';
-
 const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -45,13 +43,13 @@ const ProductPage = () => {
       <div className="row">
         <div className="wrapper">
           <Grid container>
-            <Grid item xs={6} className="mainProductPhotosContainer">
+            <Grid item sm={6} xs={12} className="mainProductPhotosContainer">
               <img
                 src={imgHref}
                 alt="Chris standing up holding his daughter Elva"
               />
             </Grid>
-            <Grid item xs={6} className="pr0">
+            <Grid item sm={6} xs={12} className="pr0">
               <div className="product-title">
                 <h1>{productTitle}</h1>
                 <span className="discount">

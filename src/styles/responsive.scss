@@ -23,6 +23,13 @@
   flex-direction: row;
 }
 
+// PRODUCT PAGE
+.mainProductPhotosContainer {
+  + div {
+    padding-left: 16px;
+  }
+}
+
 // CATEGORIES
 .categories-list {
   li {

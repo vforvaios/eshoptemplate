@@ -15,7 +15,7 @@ const muiTheme = createTheme({
   },
   breakpoints: {
     keys: ['xs', 'sm', 'md', 'lg', 'xl'],
-    values: { xs: 360, sm: 768, md: 960, lg: 1366, xl: 1920 },
+    values: { xs: 360, sm: 769, md: 960, lg: 1366, xl: 1920 },
   },
   typography: {
     useNextVariants: true,

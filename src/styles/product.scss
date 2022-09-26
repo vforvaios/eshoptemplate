@@ -132,14 +132,31 @@
 .productPage .products-grid {
   display: block;
 
-  // li {
-  //   padding: 0 6px;
-  // }
-
   .slick-list {
     margin: 0 -10px;
   }
   .slick-slide > div {
     padding: 0 10px;
+  }
+}
+
+.mainProductRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.mainProductPhotosContainer {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  img {
+    width: 100%;
+  }
+
+  + div {
+    padding-left: 0;
   }
 }
