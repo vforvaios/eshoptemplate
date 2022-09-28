@@ -12,6 +12,7 @@ import Footer from 'components/footer/Footer';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import Loader from 'components/loader/Loader';
+import PageNotFound from 'components/pagenotfound/PageNotFound';
 import ProductPage from 'components/product-page/ProductPage';
 import ProtectedRoute from 'components/protected-route/ProtectedRoute';
 import Login from 'components/user/Login';
@@ -67,6 +68,7 @@ const App = () => {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </Router>
