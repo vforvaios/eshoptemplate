@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="wrapper">
             <div className="footer-row">
               <div className="footer-newsletter">
-                <div className="title">Newsletter</div>
+                <div className="title">NEWSLETTER</div>
                 <div>
                   <FormControl fullWidth>
                     <InputLabel htmlFor="newsletter">
