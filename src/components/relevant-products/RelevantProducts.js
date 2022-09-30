@@ -21,7 +21,7 @@ const RelevantProducts = ({ title, products }) => {
 
   return (
     <div className="relevant-products">
-      <h2>{title}</h2>
+      <h2 className="section-title">{title}</h2>
       <div className="products">
         <ul className="products-grid">
           <Slider {...settings}>
