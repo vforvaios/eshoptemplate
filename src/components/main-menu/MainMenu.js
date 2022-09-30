@@ -15,7 +15,7 @@ const MainMenu = ({ setToggleValue }) => {
   }, []);
 
   return (
-    <div>
+    <div className="main-menu">
       <CloseIcon onClick={setToggleValue('left', false)} />
       <div>Menu</div>
       <ul>

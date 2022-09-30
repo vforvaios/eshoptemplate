@@ -7,8 +7,8 @@
   transition: all 0.2s ease-in-out;
   transition-delay: 0.1s;
   transform: translate(200px, 0);
-  color: #fff;
-  box-shadow: 0px 0px 6px 0px #000;
+  color: $white;
+  box-shadow: 0px 0px 6px 0px $color-7;
   z-index: 10000;
 
   &.show {
@@ -16,14 +16,14 @@
   }
 
   &.success {
-    background-color: green;
+    background-color: $success;
   }
 
   &.error {
-    background-color: red;
+    background-color: $alert;
   }
 
   &.info {
-    background-color: blue;
+    background-color: $warning;
   }
 }

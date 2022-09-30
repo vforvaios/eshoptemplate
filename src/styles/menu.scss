@@ -9,7 +9,26 @@
 .submenu-item {
   cursor: pointer;
   display: inline-block;
+  color: $color-1;
   &.rotate {
     transform: rotate(180deg);
+  }
+}
+
+.menu-item {
+  color: $color-1;
+}
+
+.MuiDrawer-paper {
+  background-color: $color-7 !important;
+
+  & .MuiSvgIcon-root {
+    color: $white;
+  }
+}
+
+.main-menu {
+  a {
+    color: $color-1;
   }
 }
