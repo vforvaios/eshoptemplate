@@ -7,7 +7,7 @@ const GuestCheckout = () => {
       <div className="guest-title">ΕΠΙΣΚΕΠΤΗΣ</div>
       <div className="guest-content">
         <div>ή προχωρήστε στην αγορά σαν επισκέπτης</div>
-        <Link className="button green" to="/checkout/step2">
+        <Link className="button next" to="/checkout/step2">
           ΕΙΣΟΔΟΣ
         </Link>
       </div>

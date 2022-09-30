@@ -48,7 +48,7 @@ const CartItem = ({ updateable, item }) => {
           />
         )}
       </TableCell>
-      <TableCell>
+      <TableCell className={!updateable ? 'not-updateable' : null}>
         <span className="hidden">ΤΙΜΗ</span>
         <span>
           <strong className="totalPrice">{item.totalPrice} </strong>

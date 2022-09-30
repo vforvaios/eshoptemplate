@@ -3,7 +3,7 @@
   tr {
     display: block;
     position: relative;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid $color-7;
     margin-bottom: 10px;
   }
   thead {
@@ -42,6 +42,10 @@
 .step3 .table tbody td:last-child {
   position: static;
   text-align: left;
+
+  &.not-updateable {
+    text-align: left;
+  }
 }
 
 .step3 .table tbody td:first-child {
