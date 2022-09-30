@@ -29,7 +29,7 @@
         display: block;
         line-clamp: unset;
         overflow: auto;
-        color: $color-4;
+        color: $color-4 !important;
         margin-bottom: 0;
         padding-right: 4px;
       }
@@ -100,36 +100,27 @@
 }
 
 .productPage {
-  .price-container {
-    p {
-      color: #ccc;
-    }
-  }
-
   .slick-track {
     margin-left: 0;
   }
 
+  .MuiGrid-container .price-container {
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .MuiGrid-container .product-code {
+    margin-bottom: 20px;
+  }
+
   .product-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    .headerTitle {
+      text-align: left;
+      font-size: 30px !important;
+      margin: 0;
+      margin-bottom: 20px;
+    }
   }
-
-  .discount {
-    position: static;
-    display: flex;
-    justify-content: flex-end;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 4px;
-    background: red;
-  }
-}
-
-.productPage .relevant-products .discount {
-  position: absolute;
 }
 
 .productPage .products-grid {
@@ -202,4 +193,10 @@
   background-position: center center;
   width: 100%;
   height: 100%;
+}
+
+.product-description {
+  margin-bottom: 10px;
+  text-align: left;
+  color: $color-6 !important;
 }

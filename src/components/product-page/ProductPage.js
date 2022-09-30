@@ -54,24 +54,27 @@ const ProductPage = () => {
             </Grid>
             <Grid item sm={6} xs={12} className="pr0">
               <div className="product-title">
-                <h1>{productTitle}</h1>
-                <span className="discount">
-                  {getPercentage(initialPrice, price)}%
-                </span>
+                <h1 className="headerTitle">{productTitle}</h1>
               </div>
+              <Typography
+                variant="body2"
+                component="p"
+                className="product-code">
+                <span>Κωδικός: {code}</span>
+              </Typography>
               <div className="price-container">
-                <Typography
-                  variant="body2"
-                  component="p"
-                  className="product-code">
-                  <span>{code}</span>
-                </Typography>
                 <div>
                   <span>{initialPrice}€</span>
                   {price}€
                 </div>
+                <span className="discount">
+                  {getPercentage(initialPrice, price)}%
+                </span>
               </div>
-              <Typography component="p" variant="body1">
+              <Typography
+                className="product-description"
+                component="p"
+                variant="body1">
                 {productDescription}
               </Typography>
               <div className="product-page-actions">
@@ -81,7 +84,7 @@ const ProductPage = () => {
                     e.preventDefault();
                     dispatch(addToCart(product));
                   }}>
-                  ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ
+                  ΑΓΟΡΑ
                 </button>
                 <IconButton
                   className="product-action"
