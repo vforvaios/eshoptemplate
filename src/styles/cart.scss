@@ -11,23 +11,28 @@
 .mini-cart {
   text-decoration: none;
   position: relative;
+  margin-left: 20px;
+  line-height: 0;
 
   span {
     position: absolute;
-    font-size: 9px;
-    width: 14px;
-    height: 14px;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background-color: red;
+    background-color: $alert;
     color: #fff;
     text-align: center;
-    line-height: 14px;
+    line-height: 16px;
     top: 0;
-    right: -8px;
+    right: -9px;
+    border: 1px solid $white;
+    letter-spacing: -1px;
   }
 
   svg {
     fill: #fff;
+    font-size: 32px;
   }
 }
 

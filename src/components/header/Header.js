@@ -16,7 +16,7 @@ const Header = ({ toggleValue, setToggleValue }) => {
 
   return (
     <Grid container className="headerContainer">
-      <Grid item>
+      <Grid item sm={3}>
         <MenuIcon onClick={setToggleValue('left', true)} className="menuIcon" />
         <Drawer
           anchor="left"
@@ -25,10 +25,10 @@ const Header = ({ toggleValue, setToggleValue }) => {
           <MainMenu setToggleValue={setToggleValue} />
         </Drawer>
       </Grid>
-      <Grid item>
+      <Grid item sm={6} className="logo">
         <img src={logo} alt="fasdf" className="logo-image" />
       </Grid>
-      <Grid item>
+      <Grid item sm={3}>
         <div className="headerActions">
           <Search />
           <MiniCart />

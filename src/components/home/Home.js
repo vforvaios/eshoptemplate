@@ -9,8 +9,6 @@ import HomeOffersTabs from './home-offer-tabs/HomeOffersTabs';
 import HomeSlider from './home-slider/HomeSlider';
 import styles from './styles';
 
-import './home.scss';
-
 const Home = () => {
   const offers = useSelector(homeOffers);
   const dispatch = useDispatch();
