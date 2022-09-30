@@ -1,4 +1,3 @@
-import Button from '@material-ui/core/Button';
 import { checkOrderInfo } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
 import React, { useEffect } from 'react';
@@ -39,14 +38,14 @@ const CheckoutEdit = () => {
       <div className="row">
         <div className="wrapper">
           <div className="actions separate">
-            <Button className="button standard">
+            <button className="button back">
               <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
-            </Button>
-            <Button
-              className="button green"
+            </button>
+            <button
+              className="button next"
               onClick={() => dispatch(checkOrderInfo())}>
               ΕΠΙΒΕΒΑΙΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
-            </Button>
+            </button>
           </div>
         </div>
       </div>
@@ -68,14 +67,14 @@ const CheckoutEdit = () => {
       <div className="row">
         <div className="wrapper">
           <div className="actions separate">
-            <Button className="button standard">
+            <button className="button back">
               <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
-            </Button>
-            <Button
-              className="button green"
+            </button>
+            <button
+              className="button next"
               onClick={() => dispatch(checkOrderInfo())}>
               ΕΠΙΒΕΒΑΙΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
-            </Button>
+            </button>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -78,7 +77,7 @@ const Contact = () => {
       <div className="row">
         <div className="wrapper">
           <div className="actions">
-            <Button className="button green">ΑΠΟΣΤΟΛΗ</Button>
+            <button className="button next">ΑΠΟΣΤΟΛΗ</button>
           </div>
         </div>
       </div>

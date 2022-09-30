@@ -1,4 +1,3 @@
-import Button from '@material-ui/core/Button';
 import MyCart from 'components/cart/MyCart';
 import { cart } from 'models/selectors/cartSelectors';
 import { token } from 'models/selectors/userSelector';
@@ -32,15 +31,15 @@ const Cart = () => {
           <div className="row">
             <div className="wrapper">
               <div className="actions separate">
-                <Button className="button standard">
+                <button className="button back">
                   <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
-                </Button>
+                </button>
                 {!userToken ? (
-                  <Link to="/checkout/step1" className="button green">
+                  <Link to="/checkout/step1" className="navigation next">
                     ΑΓΟΡΑ...
                   </Link>
                 ) : (
-                  <Link to="/checkout/step2" className="button green">
+                  <Link to="/checkout/step2" className="navigation next">
                     ΑΓΟΡΑ...
                   </Link>
                 )}
@@ -55,15 +54,15 @@ const Cart = () => {
           <div className="row">
             <div className="wrapper">
               <div className="actions separate">
-                <Button className="button standard">
+                <button className="button back">
                   <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
-                </Button>
+                </button>
                 {!userToken ? (
-                  <Link to="/checkout/step1" className="button green">
+                  <Link to="/checkout/step1" className="navigation next">
                     ΑΓΟΡΑ...
                   </Link>
                 ) : (
-                  <Link to="/checkout/step2" className="button green">
+                  <Link to="/checkout/step2" className="navigation next">
                     ΑΓΟΡΑ...
                   </Link>
                 )}

@@ -1,4 +1,3 @@
-import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -89,9 +88,9 @@ const Login = () => {
             </div>
             <div className="form-control">
               <div className="actions separate">
-                <Button className="button green" onClick={submitLoginForm}>
+                <button className="button next" onClick={submitLoginForm}>
                   ΕΙΣΟΔΟΣ
-                </Button>
+                </button>
               </div>
             </div>
           </div>

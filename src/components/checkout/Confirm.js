@@ -1,4 +1,3 @@
-import Button from '@material-ui/core/Button';
 import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
 import { sendOrder } from 'models/actions/checkoutActions';
@@ -42,14 +41,14 @@ const Confirm = () => {
       <div className="row">
         <div className="wrapper">
           <div className="actions separate">
-            <Button className="button standard">
+            <button className="button back">
               <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
-            </Button>
-            <Button
+            </button>
+            <button
               onClick={() => dispatch(sendOrder())}
-              className="button green">
+              className="button next">
               ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
-            </Button>
+            </button>
           </div>
         </div>
       </div>
@@ -61,14 +60,14 @@ const Confirm = () => {
       <div className="row">
         <div className="wrapper">
           <div className="actions separate">
-            <Button className="button standard">
+            <button className="button back">
               <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
-            </Button>
-            <Button
+            </button>
+            <button
               onClick={() => dispatch(sendOrder())}
-              className="button green">
+              className="button next">
               ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
-            </Button>
+            </button>
           </div>
         </div>
       </div>

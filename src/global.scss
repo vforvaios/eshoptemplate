@@ -53,6 +53,10 @@ ul {
   }
 }
 
+.MuiPaper-elevation1 {
+  box-shadow: none !important;
+}
+
 // ACTIONS
 .actions {
   display: flex;
@@ -71,7 +75,16 @@ ul {
 
 // TITLES
 .section-title {
-  font-size: 32px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 20px;
+  color: $color-2;
+  letter-spacing: 2px;
+}
+
+.page-title {
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
   margin: 0 0 20px;
