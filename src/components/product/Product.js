@@ -37,13 +37,22 @@ const Product = ({ classes, product }) => {
           title={productTitle}
           subheader={productSubHeader}
           classes={{
-            title: classes.headerTitle,
-            subheader: classes.subHeader,
+            title: 'headerTitle',
+            subheader: 'subHeader',
           }}
         />
+        <div className="price-container">
+          <div>
+            <span>{initialPrice}€</span>
+            {price}€
+          </div>
+          <span className="discount">
+            {getPercentage(initialPrice, price)}%
+          </span>
+        </div>
         <CardMedia className={classes.media} title={productTitle}>
           <div
-            className={classes.productImage}
+            className="productImage"
             style={{
               backgroundImage: `url(${imgHref})`,
             }}
@@ -57,20 +66,19 @@ const Product = ({ classes, product }) => {
             className="product-description">
             {productDescription}
           </Typography>
-          <div className="price-container">
-            <Typography variant="body2" component="p" className="product-code">
-              <span>{code}</span>
-            </Typography>
-            <div>
-              <span>{initialPrice}€</span>
-              {price}€
-            </div>
-            <span className="discount">
-              {getPercentage(initialPrice, price)}%
-            </span>
-          </div>
+          <Typography variant="body2" component="p" className="product-code">
+            <span>{code}</span>
+          </Typography>
         </CardContent>
         <CardActions disableSpacing className="card-actions">
+          <button
+            className="add-to-cart"
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(addToCart(product));
+            }}>
+            ΑΓΟΡΑ
+          </button>
           <IconButton
             className="product-action"
             aria-label="add to favorites"
@@ -81,14 +89,6 @@ const Product = ({ classes, product }) => {
             <FavoriteBorderIcon />
           </IconButton>
         </CardActions>
-        <button
-          className="add-to-cart"
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch(addToCart(product));
-          }}>
-          ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ
-        </button>
       </Card>
     </Link>
   );

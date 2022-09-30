@@ -9,6 +9,7 @@ import './homeOffersTabs.scss';
 
 const HomeOffersTabs = ({ handleChange, value, offers }) => (
   <>
+    <h2 className="section-title">OFFERS</h2>
     <div className="tabsContainer">
       <Tabs
         value={value}
