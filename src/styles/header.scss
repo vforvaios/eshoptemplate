@@ -11,8 +11,21 @@
     fill: $white;
   }
 
+  & .MuiInputAdornment-root {
+    background-color: $color-1;
+    height: 100%;
+    border-radius: 4px;
+    padding: 1px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
   & .MuiInput-underline:before {
-    border-color: $color-1;
+    border-color: $white;
   }
 
   & .MuiInput-underline:after {
@@ -28,7 +41,7 @@
   }
 
   & .MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-color: $white;
+    border-color: $color-1;
   }
 }
 
