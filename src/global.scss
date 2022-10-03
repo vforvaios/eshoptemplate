@@ -99,7 +99,7 @@ ul {
 }
 
 .page-title {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
   margin: 0 0 20px;
@@ -125,6 +125,7 @@ ul {
 @import 'src/styles/inputs.scss';
 @import 'src/styles/footer.scss';
 @import 'src/styles/notfound.scss';
+@import 'src/styles/filters.scss';
 @media only screen and (min-width: 769px) {
   @import 'src/styles/responsive.scss';
 }

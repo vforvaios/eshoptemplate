@@ -3,11 +3,13 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   setProductPage,
   setRelatedProducts,
+  setFilterCategories,
 } from 'models/actions/catalogActions';
 
 const initialState = {
   relatedProducts: [],
   singleProduct: {},
+  filterCategories: [],
   catalog: {
     pagination: {
       total: 20,
@@ -75,6 +77,10 @@ const catalogReducer = createReducer(initialState, {
   [setRelatedProducts.type]: (state, action) => ({
     ...state,
     relatedProducts: action.payload,
+  }),
+  [setFilterCategories.type]: (state, action) => ({
+    ...state,
+    filterCategories: action.payload,
   }),
 });
 

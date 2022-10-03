@@ -100,11 +100,13 @@ const ProductPage = () => {
           </Grid>
         </div>
       </div>
-      <div className="row">
-        <div className="wrapper">
-          <ProductMoreDetails tabs={tabs} />
+      {tabs && (
+        <div className="row">
+          <div className="wrapper">
+            <ProductMoreDetails tabs={tabs} />
+          </div>
         </div>
-      </div>
+      )}
       <div className="row">
         <div className="wrapper">
           <RelevantProducts title="ΣΧΕΤΙΚΑ ΠΡΟΪΟΝΤΑ" products={relProducts} />

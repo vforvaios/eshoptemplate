@@ -5,6 +5,8 @@ import {
   setProductPage,
   getRelatedProducts,
   setRelatedProducts,
+  getFilterCategories,
+  setFilterCategories,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -46,8 +48,38 @@ const getRelatedProductsEpic = (action$) =>
     ),
   );
 
-export { getProductDetailsEpic, getRelatedProductsEpic };
+const getFilterCategoriesEpic = (action$) =>
+  action$.pipe(
+    ofType(getFilterCategories.type),
+    mergeMap(() =>
+      from(makeRequest('categories', 'GET', '')).pipe(
+        concatMap((payload) => [
+          setFilterCategories(payload),
+          toggleShowAlert({ message: '', show: false, type: 'error' }),
+        ]),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
+  );
 
-const epics = combineEpics(getProductDetailsEpic, getRelatedProductsEpic);
+export {
+  getProductDetailsEpic,
+  getRelatedProductsEpic,
+  getFilterCategoriesEpic,
+};
+
+const epics = combineEpics(
+  getProductDetailsEpic,
+  getRelatedProductsEpic,
+  getFilterCategoriesEpic,
+);
 
 export default epics;

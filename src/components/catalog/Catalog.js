@@ -1,4 +1,5 @@
 import CatalogPagination from 'components/catalogPagination/CatalogPagination';
+import Filters from 'components/filters/Filters';
 import Product from 'components/product/Product';
 import SortingCatalog from 'components/sortingCatalog/SortingCatalog';
 import {
@@ -16,7 +17,9 @@ const Catalog = () => {
     <div className="row catalog content">
       <div className="wrapper">
         <div className="grid-container catalog-container">
-          <section className="col-left filters">Filters</section>
+          <section className="col-left filters">
+            <Filters />
+          </section>
           <section className="col-right products-section">
             <div className="sorting-section">
               <CatalogPagination pagination={pagination} />

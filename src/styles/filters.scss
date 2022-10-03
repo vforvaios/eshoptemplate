@@ -1,0 +1,52 @@
+.filter-box {
+  border: 1px solid $shadow;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.filter-title {
+  padding: 12px 8px;
+  background: $shadow;
+  color: $black;
+  font-size: 18px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.filter-list {
+  margin: 0;
+  padding: 12px;
+  list-style-type: none;
+}
+
+.filter-option {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 0;
+    top: 50%;
+    margin-top: -9px;
+    border: 1px solid $color-6;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover {
+    color: $color-1;
+
+    &:before {
+      border-color: $color-1;
+    }
+  }
+}
