@@ -3,6 +3,7 @@ const catalogPagination = ({ catalogReducer }) =>
   catalogReducer.catalog.pagination;
 const singleProduct = ({ catalogReducer }) => catalogReducer.singleProduct;
 const relatedProducts = ({ catalogReducer }) => catalogReducer.relatedProducts;
+const filters = ({ catalogReducer }) => catalogReducer.filters;
 const filterCategories = ({ catalogReducer }) =>
   catalogReducer.filterCategories;
 
@@ -12,4 +13,5 @@ export {
   singleProduct,
   relatedProducts,
   filterCategories,
+  filters,
 };

@@ -4,12 +4,16 @@ import {
   setProductPage,
   setRelatedProducts,
   setFilterCategories,
+  setSelectedCategoryFilter,
 } from 'models/actions/catalogActions';
 
 const initialState = {
   relatedProducts: [],
   singleProduct: {},
   filterCategories: [],
+  filters: {
+    selectedCategory: null,
+  },
   catalog: {
     pagination: {
       total: 20,
@@ -81,6 +85,13 @@ const catalogReducer = createReducer(initialState, {
   [setFilterCategories.type]: (state, action) => ({
     ...state,
     filterCategories: action.payload,
+  }),
+  [setSelectedCategoryFilter.type]: (state, action) => ({
+    ...state,
+    filters: {
+      ...state.filters,
+      selectedCategory: action.payload,
+    },
   }),
 });
 

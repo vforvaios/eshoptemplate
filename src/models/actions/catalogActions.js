@@ -6,6 +6,9 @@ const setProductPage = createAction('catalog/setProductPage');
 const setRelatedProducts = createAction('catalog/setRelatedProducts');
 const getFilterCategories = createAction('catalog/getFilterCategories');
 const setFilterCategories = createAction('catalog/setFilterCategories');
+const setSelectedCategoryFilter = createAction(
+  'catalog/setSelectedCategoryFilter',
+);
 
 export {
   getProductDetails,
@@ -14,4 +17,5 @@ export {
   setRelatedProducts,
   getFilterCategories,
   setFilterCategories,
+  setSelectedCategoryFilter,
 };

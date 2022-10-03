@@ -42,11 +42,35 @@
     transition: all 0.2s ease-in-out;
   }
 
+  &:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 3px;
+    top: 50%;
+    margin-top: -6px;
+    background: $color-1;
+    display: none;
+  }
+
   &:hover {
     color: $color-1;
 
     &:before {
       border-color: $color-1;
+    }
+  }
+
+  &.active {
+    color: $color-1;
+
+    &:before {
+      border-color: $color-1;
+    }
+
+    &:after {
+      display: block;
     }
   }
 }
