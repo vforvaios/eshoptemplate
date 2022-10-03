@@ -7,6 +7,7 @@ import {
   setSelectedCategoryFilter,
   setCatalogProducts,
   setCatalogLoading,
+  removeCatalogFilter,
 } from 'models/actions/catalogActions';
 
 const initialState = {
@@ -57,7 +58,14 @@ const catalogReducer = createReducer(initialState, {
   }),
   [setCatalogLoading.type]: (state, action) => ({
     ...state,
-    loading: !state.loading,
+    loading: action.payload,
+  }),
+  [removeCatalogFilter.type]: (state, action) => ({
+    ...state,
+    filters: {
+      ...state?.filters,
+      selectedCategory: null,
+    },
   }),
 });
 

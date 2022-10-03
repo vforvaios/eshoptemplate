@@ -11,6 +11,7 @@ import {
   setCatalogProducts,
   getInitialCatalog,
   setCatalogLoading,
+  removeCatalogFilter,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -81,7 +82,11 @@ const getFilterCategoriesEpic = (action$) =>
 
 const getCatalogEpic = (action$, state$) =>
   action$.pipe(
-    ofType(setSelectedCategoryFilter.type, getInitialCatalog.type),
+    ofType(
+      setSelectedCategoryFilter.type,
+      getInitialCatalog.type,
+      removeCatalogFilter.type,
+    ),
     withLatestFrom(state$),
     mergeMap(
       ([
@@ -90,15 +95,20 @@ const getCatalogEpic = (action$, state$) =>
           catalogReducer: { filters },
         },
       ]) => {
+        let requestCategory = '';
         const { selectedCategory } = filters;
 
+        if (selectedCategory) {
+          requestCategory = selectedCategory;
+        }
+
         return from(
-          makeRequest(`products?category=${selectedCategory}`, 'GET', ''),
+          makeRequest(`products?category=${requestCategory}`, 'GET', ''),
         ).pipe(
           concatMap((payload) => [
             setCatalogProducts(payload.results),
             toggleShowAlert({ message: '', show: false, type: 'error' }),
-            setCatalogLoading(),
+            setCatalogLoading(false),
           ]),
           catchError((error) =>
             of(
@@ -107,7 +117,7 @@ const getCatalogEpic = (action$, state$) =>
                 type: 'error',
                 show: true,
               }),
-              setCatalogLoading(),
+              setCatalogLoading(false),
             ),
           ),
         );

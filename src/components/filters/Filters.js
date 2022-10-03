@@ -33,7 +33,7 @@ const Filters = () => {
             {categoriesFilters?.map((category) => (
               <li
                 onClick={() => {
-                  dispatch(setCatalogLoading());
+                  dispatch(setCatalogLoading(true));
                   dispatch(
                     setSelectedCategoryFilter({ category: category?.id }),
                   );

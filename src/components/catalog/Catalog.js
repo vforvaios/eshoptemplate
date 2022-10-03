@@ -24,7 +24,7 @@ const Catalog = () => {
   const pagination = useSelector(catalogPagination);
 
   useEffect(() => {
-    dispatch(setCatalogLoading());
+    dispatch(setCatalogLoading(true));
     dispatch(getInitialCatalog());
   }, []);
 
