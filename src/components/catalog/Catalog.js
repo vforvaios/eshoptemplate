@@ -2,17 +2,23 @@ import CatalogPagination from 'components/catalogPagination/CatalogPagination';
 import Filters from 'components/filters/Filters';
 import Product from 'components/product/Product';
 import SortingCatalog from 'components/sortingCatalog/SortingCatalog';
+import { getInitialCatalog } from 'models/actions/catalogActions';
 import {
   catalogProducts,
   catalogPagination,
 } from 'models/selectors/catalogSelectors';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Catalog = () => {
+  const dispatch = useDispatch();
   const products = useSelector(catalogProducts);
 
   const pagination = useSelector(catalogPagination);
+
+  useEffect(() => {
+    dispatch(getInitialCatalog());
+  }, []);
 
   return (
     <div className="row catalog content">

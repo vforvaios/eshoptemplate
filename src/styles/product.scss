@@ -24,6 +24,39 @@
       text-align: center;
       color: $color-6 !important;
 
+      &.in-stock {
+        margin: 12px 0 0;
+        text-align: center;
+        padding: 0;
+        -webkit-box-orient: unset;
+        box-orient: unset;
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+        overflow: unset;
+        display: block;
+
+        span {
+          position: relative;
+          display: inline-block;
+          padding: 0 0 0 10px;
+
+          &:before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            left: 0;
+            top: 50%;
+            margin-top: -3px;
+            background: $success;
+            border-radius: 20px;
+          }
+        }
+        &.not span:before {
+          background: $alert;
+        }
+      }
+
       &.product-code {
         font-size: 11px;
         display: block;

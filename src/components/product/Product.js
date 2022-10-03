@@ -26,6 +26,7 @@ const Product = ({ classes, product }) => {
     price,
     initialPrice,
     code,
+    stock,
   } = product;
 
   const dispatch = useDispatch();
@@ -69,6 +70,9 @@ const Product = ({ classes, product }) => {
           <Typography variant="body2" component="p" className="product-code">
             <span>{code}</span>
           </Typography>
+          <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
+            <span>{stock > 0 ? 'Διαθέσιμο' : 'Μη διαθέσιμο'}</span>
+          </p>
         </CardContent>
         <CardActions disableSpacing className="card-actions">
           <button

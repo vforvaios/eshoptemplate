@@ -9,6 +9,7 @@ import {
   setFilterCategories,
   setSelectedCategoryFilter,
   setCatalogProducts,
+  getInitialCatalog,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -79,7 +80,7 @@ const getFilterCategoriesEpic = (action$) =>
 
 const getCatalogEpic = (action$, state$) =>
   action$.pipe(
-    ofType(setSelectedCategoryFilter.type),
+    ofType(setSelectedCategoryFilter.type, getInitialCatalog.type),
     withLatestFrom(state$),
     mergeMap(
       ([
