@@ -6,6 +6,7 @@ import {
   setFilterCategories,
   setSelectedCategoryFilter,
   setCatalogProducts,
+  setCatalogLoading,
 } from 'models/actions/catalogActions';
 
 const initialState = {
@@ -24,7 +25,9 @@ const initialState = {
     },
     results: [],
   },
+  loading: false,
 };
+
 const catalogReducer = createReducer(initialState, {
   [setProductPage.type]: (state, action) => ({
     ...state,
@@ -51,6 +54,10 @@ const catalogReducer = createReducer(initialState, {
       ...state.catalog,
       results: action.payload,
     },
+  }),
+  [setCatalogLoading.type]: (state, action) => ({
+    ...state,
+    loading: !state.loading,
   }),
 });
 

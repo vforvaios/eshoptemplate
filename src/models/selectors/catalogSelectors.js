@@ -4,6 +4,7 @@ const catalogPagination = ({ catalogReducer }) =>
 const singleProduct = ({ catalogReducer }) => catalogReducer.singleProduct;
 const relatedProducts = ({ catalogReducer }) => catalogReducer.relatedProducts;
 const filters = ({ catalogReducer }) => catalogReducer.filters;
+const catalogIsLoading = ({ catalogReducer }) => catalogReducer.loading;
 const filterCategories = ({ catalogReducer }) =>
   catalogReducer.filterCategories;
 
@@ -14,4 +15,5 @@ export {
   relatedProducts,
   filterCategories,
   filters,
+  catalogIsLoading,
 };

@@ -1,6 +1,7 @@
 import {
   getFilterCategories,
   setSelectedCategoryFilter,
+  setCatalogLoading,
 } from 'models/actions/catalogActions';
 import { filterCategories, filters } from 'models/selectors/catalogSelectors';
 import React, { useEffect } from 'react';
@@ -22,9 +23,10 @@ const Filters = () => {
         <ul className="filter-list">
           {categoriesFilters?.map((category) => (
             <li
-              onClick={() =>
-                dispatch(setSelectedCategoryFilter({ category: category?.id }))
-              }
+              onClick={() => {
+                dispatch(setCatalogLoading());
+                dispatch(setSelectedCategoryFilter({ category: category?.id }));
+              }}
               className={`filter-option ${
                 allFilters?.selectedCategory === category.id ? 'active' : ''
               }`}

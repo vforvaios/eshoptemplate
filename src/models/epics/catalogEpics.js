@@ -10,6 +10,7 @@ import {
   setSelectedCategoryFilter,
   setCatalogProducts,
   getInitialCatalog,
+  setCatalogLoading,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -97,6 +98,7 @@ const getCatalogEpic = (action$, state$) =>
           concatMap((payload) => [
             setCatalogProducts(payload.results),
             toggleShowAlert({ message: '', show: false, type: 'error' }),
+            setCatalogLoading(),
           ]),
           catchError((error) =>
             of(
@@ -105,6 +107,7 @@ const getCatalogEpic = (action$, state$) =>
                 type: 'error',
                 show: true,
               }),
+              setCatalogLoading(),
             ),
           ),
         );
