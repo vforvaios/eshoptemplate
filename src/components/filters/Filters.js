@@ -22,7 +22,9 @@ const Filters = () => {
         <ul className="filter-list">
           {categoriesFilters?.map((category) => (
             <li
-              onClick={() => dispatch(setSelectedCategoryFilter(category?.id))}
+              onClick={() =>
+                dispatch(setSelectedCategoryFilter({ category: category?.id }))
+              }
               className={`filter-option ${
                 allFilters?.selectedCategory === category.id ? 'active' : ''
               }`}

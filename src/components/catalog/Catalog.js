@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 
 const Catalog = () => {
   const products = useSelector(catalogProducts);
+
   const pagination = useSelector(catalogPagination);
 
   return (

@@ -9,6 +9,7 @@ const setFilterCategories = createAction('catalog/setFilterCategories');
 const setSelectedCategoryFilter = createAction(
   'catalog/setSelectedCategoryFilter',
 );
+const setCatalogProducts = createAction('catalog/setCatalogProducts');
 
 export {
   getProductDetails,
@@ -18,4 +19,5 @@ export {
   getFilterCategories,
   setFilterCategories,
   setSelectedCategoryFilter,
+  setCatalogProducts,
 };
