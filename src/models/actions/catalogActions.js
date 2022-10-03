@@ -6,13 +6,11 @@ const setProductPage = createAction('catalog/setProductPage');
 const setRelatedProducts = createAction('catalog/setRelatedProducts');
 const getFilterCategories = createAction('catalog/getFilterCategories');
 const setFilterCategories = createAction('catalog/setFilterCategories');
-const setSelectedCategoryFilter = createAction(
-  'catalog/setSelectedCategoryFilter',
-);
+const setSelectedFilter = createAction('catalog/setSelectedFilter');
 const setCatalogProducts = createAction('catalog/setCatalogProducts');
 const getInitialCatalog = createAction('catalog/getInitialCatalog');
 const setCatalogLoading = createAction('catalog/setCatalogLoading');
-const removeCatalogFilter = createAction('catalog/removeCatalogFilter');
+const removeSelectedFilter = createAction('catalog/removeSelectedFilter');
 
 export {
   getProductDetails,
@@ -21,9 +19,9 @@ export {
   setRelatedProducts,
   getFilterCategories,
   setFilterCategories,
-  setSelectedCategoryFilter,
+  setSelectedFilter,
   setCatalogProducts,
   getInitialCatalog,
   setCatalogLoading,
-  removeCatalogFilter,
+  removeSelectedFilter,
 };

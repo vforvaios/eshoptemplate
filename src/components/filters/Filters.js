@@ -1,6 +1,6 @@
 import {
   getFilterCategories,
-  setSelectedCategoryFilter,
+  setSelectedFilter,
   setCatalogLoading,
 } from 'models/actions/catalogActions';
 import { filterCategories, filters } from 'models/selectors/catalogSelectors';
@@ -35,7 +35,10 @@ const Filters = () => {
                 onClick={() => {
                   dispatch(setCatalogLoading(true));
                   dispatch(
-                    setSelectedCategoryFilter({ category: category?.id }),
+                    setSelectedFilter({
+                      type: 'selectedCategory',
+                      value: category?.id,
+                    }),
                   );
                 }}
                 className={`filter-option ${

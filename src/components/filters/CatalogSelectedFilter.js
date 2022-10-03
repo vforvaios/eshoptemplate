@@ -1,4 +1,4 @@
-import { removeCatalogFilter } from 'models/actions/catalogActions';
+import { removeSelectedFilter } from 'models/actions/catalogActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -12,7 +12,9 @@ const CatalogSelectedFilter = ({ selectedFilters, categories }) => {
         {selectedFilters?.selectedCategory && (
           <li
             className="selected-filter-option"
-            onClick={() => dispatch(removeCatalogFilter('selectedCategory'))}>
+            onClick={() =>
+              dispatch(removeSelectedFilter({ type: 'selectedCategory' }))
+            }>
             <span>
               {
                 categories.find(

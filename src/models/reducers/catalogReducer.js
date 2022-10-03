@@ -4,10 +4,10 @@ import {
   setProductPage,
   setRelatedProducts,
   setFilterCategories,
-  setSelectedCategoryFilter,
+  setSelectedFilter,
   setCatalogProducts,
   setCatalogLoading,
-  removeCatalogFilter,
+  removeSelectedFilter,
 } from 'models/actions/catalogActions';
 
 const initialState = {
@@ -42,11 +42,11 @@ const catalogReducer = createReducer(initialState, {
     ...state,
     filterCategories: action.payload,
   }),
-  [setSelectedCategoryFilter.type]: (state, action) => ({
+  [setSelectedFilter.type]: (state, action) => ({
     ...state,
     filters: {
       ...state.filters,
-      selectedCategory: action.payload.category,
+      [action.payload.type]: action.payload.value,
     },
   }),
   [setCatalogProducts.type]: (state, action) => ({
@@ -60,11 +60,11 @@ const catalogReducer = createReducer(initialState, {
     ...state,
     loading: action.payload,
   }),
-  [removeCatalogFilter.type]: (state, action) => ({
+  [removeSelectedFilter.type]: (state, action) => ({
     ...state,
     filters: {
       ...state?.filters,
-      selectedCategory: null,
+      [action.payload.type]: null,
     },
   }),
 });
