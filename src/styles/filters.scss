@@ -15,6 +15,11 @@
   font-weight: 900;
   text-align: center;
   letter-spacing: 1px;
+
+  &.orange {
+    background: $color-1;
+    color: $white;
+  }
 }
 
 .filter-list {
@@ -71,6 +76,43 @@
 
     &:after {
       display: block;
+    }
+  }
+}
+
+.selected-filters-list {
+  margin: 0;
+  padding: 12px;
+  list-style-type: none;
+}
+
+.selected-filter-option {
+  padding: 8px 0;
+  line-height: 1;
+  cursor: pointer;
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    padding-right: 24px;
+    line-height: 1;
+    font-weight: 700;
+
+    &:after {
+      content: 'x';
+      position: absolute;
+      line-height: 1;
+      right: 4px;
+      top: 50%;
+      transform: translate(0, -50%);
+      font-size: 16px;
+      color: $alert;
+      font-weight: 900;
     }
   }
 }
