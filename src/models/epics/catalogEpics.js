@@ -12,6 +12,8 @@ import {
   getInitialCatalog,
   setCatalogLoading,
   removeSelectedFilter,
+  getFilterSubCategories,
+  setFilterSubCategories,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -80,6 +82,28 @@ const getFilterCategoriesEpic = (action$) =>
     ),
   );
 
+const getFilterSubCategoriesEpic = (action$) =>
+  action$.pipe(
+    ofType(getFilterSubCategories.type),
+    mergeMap(() =>
+      from(makeRequest('subcategories', 'GET', '')).pipe(
+        concatMap((payload) => [
+          setFilterSubCategories(payload),
+          toggleShowAlert({ message: '', show: false, type: 'error' }),
+        ]),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
+  );
+
 const getCatalogEpic = (action$, state$) =>
   action$.pipe(
     ofType(
@@ -130,6 +154,7 @@ export {
   getRelatedProductsEpic,
   getFilterCategoriesEpic,
   getCatalogEpic,
+  getFilterSubCategoriesEpic,
 };
 
 const epics = combineEpics(
@@ -137,6 +162,7 @@ const epics = combineEpics(
   getRelatedProductsEpic,
   getFilterCategoriesEpic,
   getCatalogEpic,
+  getFilterSubCategoriesEpic,
 );
 
 export default epics;

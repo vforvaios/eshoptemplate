@@ -1,9 +1,14 @@
 import {
   getFilterCategories,
+  getFilterSubCategories,
   setSelectedFilter,
   setCatalogLoading,
 } from 'models/actions/catalogActions';
-import { filterCategories, filters } from 'models/selectors/catalogSelectors';
+import {
+  filterCategories,
+  filters,
+  filterSubCategories,
+} from 'models/selectors/catalogSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,17 +17,20 @@ import CatalogSelectedFilter from './CatalogSelectedFilter';
 const Filters = () => {
   const dispatch = useDispatch();
   const categoriesFilters = useSelector(filterCategories);
+  const subCategoriesFilters = useSelector(filterSubCategories);
   const allFilters = useSelector(filters);
 
   useEffect(() => {
     dispatch(getFilterCategories());
+    dispatch(getFilterSubCategories());
   }, []);
 
   return (
     <div className="filters-container">
-      {allFilters?.selectedCategory && (
+      {(allFilters?.selectedCategory || allFilters?.selectedSubCategory) && (
         <CatalogSelectedFilter
           categories={categoriesFilters}
+          subCategories={subCategoriesFilters}
           selectedFilters={allFilters}
         />
       )}
@@ -46,6 +54,33 @@ const Filters = () => {
                 }`}
                 key={category?.id}>
                 {category?.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* SUB CATEGORIES */}
+        <div className="filter-box">
+          <div className="filter-title">ΥΠΟΚΑΤΗΓΟΡΙΕΣ</div>
+          <ul className="filter-list">
+            {subCategoriesFilters?.map((subCategory) => (
+              <li
+                onClick={() => {
+                  dispatch(setCatalogLoading(true));
+                  dispatch(
+                    setSelectedFilter({
+                      type: 'selectedSubCategory',
+                      value: subCategory?.id,
+                    }),
+                  );
+                }}
+                className={`filter-option ${
+                  allFilters?.selectedSubCategory === subCategory.id
+                    ? 'active'
+                    : ''
+                }`}
+                key={subCategory?.id}>
+                {subCategory?.name}
               </li>
             ))}
           </ul>

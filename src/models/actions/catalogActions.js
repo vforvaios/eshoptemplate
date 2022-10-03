@@ -11,6 +11,8 @@ const setCatalogProducts = createAction('catalog/setCatalogProducts');
 const getInitialCatalog = createAction('catalog/getInitialCatalog');
 const setCatalogLoading = createAction('catalog/setCatalogLoading');
 const removeSelectedFilter = createAction('catalog/removeSelectedFilter');
+const getFilterSubCategories = createAction('catalog/getFilterSubCategories');
+const setFilterSubCategories = createAction('catalog/setFilterSubCategories');
 
 export {
   getProductDetails,
@@ -24,4 +26,6 @@ export {
   getInitialCatalog,
   setCatalogLoading,
   removeSelectedFilter,
+  getFilterSubCategories,
+  setFilterSubCategories,
 };

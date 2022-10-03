@@ -8,14 +8,17 @@ import {
   setCatalogProducts,
   setCatalogLoading,
   removeSelectedFilter,
+  setFilterSubCategories,
 } from 'models/actions/catalogActions';
 
 const initialState = {
   relatedProducts: [],
   singleProduct: {},
   filterCategories: [],
+  filterSubCategories: [],
   filters: {
     selectedCategory: null,
+    selectedSubCategory: null,
   },
   catalog: {
     pagination: {
@@ -66,6 +69,10 @@ const catalogReducer = createReducer(initialState, {
       ...state?.filters,
       [action.payload.type]: null,
     },
+  }),
+  [setFilterSubCategories.type]: (state, action) => ({
+    ...state,
+    filterSubCategories: action.payload,
   }),
 });
 

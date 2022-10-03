@@ -2,7 +2,11 @@ import { removeSelectedFilter } from 'models/actions/catalogActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-const CatalogSelectedFilter = ({ selectedFilters, categories }) => {
+const CatalogSelectedFilter = ({
+  selectedFilters,
+  categories,
+  subCategories,
+}) => {
   const dispatch = useDispatch();
 
   return (
@@ -19,6 +23,21 @@ const CatalogSelectedFilter = ({ selectedFilters, categories }) => {
               {
                 categories.find(
                   (cat) => cat?.id === selectedFilters?.selectedCategory,
+                ).name
+              }
+            </span>
+          </li>
+        )}
+        {selectedFilters?.selectedSubCategory && (
+          <li
+            className="selected-filter-option"
+            onClick={() =>
+              dispatch(removeSelectedFilter({ type: 'selectedSubCategory' }))
+            }>
+            <span>
+              {
+                subCategories.find(
+                  (cat) => cat?.id === selectedFilters?.selectedSubCategory,
                 ).name
               }
             </span>
