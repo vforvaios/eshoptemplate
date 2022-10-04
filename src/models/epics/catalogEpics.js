@@ -14,6 +14,9 @@ import {
   removeSelectedFilter,
   getFilterSubCategories,
   setFilterSubCategories,
+  getPricesRange,
+  setInitialPricesRange,
+  getCatalogWithPrices,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -104,12 +107,35 @@ const getFilterSubCategoriesEpic = (action$) =>
     ),
   );
 
+const getPricesRangeEpic = (action$) =>
+  action$.pipe(
+    ofType(getPricesRange.type),
+    mergeMap(() =>
+      from(makeRequest('prices', 'GET', '')).pipe(
+        concatMap((payload) => [
+          setInitialPricesRange(payload),
+          toggleShowAlert({ message: '', show: false, type: 'error' }),
+        ]),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
+  );
+
 const getCatalogEpic = (action$, state$) =>
   action$.pipe(
     ofType(
       setSelectedFilter.type,
       getInitialCatalog.type,
       removeSelectedFilter.type,
+      getCatalogWithPrices.type,
     ),
     withLatestFrom(state$),
     mergeMap(
@@ -121,7 +147,13 @@ const getCatalogEpic = (action$, state$) =>
       ]) => {
         let requestCategory = '';
         let requestSubCategory = '';
-        const { selectedCategory, selectedSubCategory } = filters;
+        let requestPriceRange = '';
+
+        const {
+          selectedCategory,
+          selectedSubCategory,
+          selectedPriceRange,
+        } = filters;
 
         if (selectedCategory) {
           requestCategory = selectedCategory;
@@ -131,9 +163,13 @@ const getCatalogEpic = (action$, state$) =>
           requestSubCategory = selectedSubCategory;
         }
 
+        if (selectedPriceRange.length > 0) {
+          requestPriceRange = selectedPriceRange.join();
+        }
+
         return from(
           makeRequest(
-            `products?category=${requestCategory}&subCategory=${requestSubCategory}`,
+            `products?category=${requestCategory}&subCategory=${requestSubCategory}&prices=${requestPriceRange}`,
             'GET',
             '',
           ),
@@ -164,6 +200,7 @@ export {
   getFilterCategoriesEpic,
   getCatalogEpic,
   getFilterSubCategoriesEpic,
+  getPricesRangeEpic,
 };
 
 const epics = combineEpics(
@@ -172,6 +209,7 @@ const epics = combineEpics(
   getFilterCategoriesEpic,
   getCatalogEpic,
   getFilterSubCategoriesEpic,
+  getPricesRangeEpic,
 );
 
 export default epics;

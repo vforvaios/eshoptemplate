@@ -26,6 +26,12 @@
   margin: 0;
   padding: 12px;
   list-style-type: none;
+
+  &.prices {
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 54px;
+  }
 }
 
 .filter-option {

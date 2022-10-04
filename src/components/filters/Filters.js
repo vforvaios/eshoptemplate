@@ -1,28 +1,38 @@
+import Slider from '@material-ui/core/Slider';
 import {
   getFilterCategories,
   getFilterSubCategories,
   setSelectedFilter,
   setCatalogLoading,
+  getPricesRange,
+  getCatalogWithPrices,
+  setSelectedFilterPriceRange,
 } from 'models/actions/catalogActions';
 import {
   filterCategories,
   filters,
   filterSubCategories,
+  filterPricesRange,
 } from 'models/selectors/catalogSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CatalogSelectedFilter from './CatalogSelectedFilter';
 
+const valuetext = (value) => `${value}€`;
+
 const Filters = () => {
   const dispatch = useDispatch();
   const categoriesFilters = useSelector(filterCategories);
   const subCategoriesFilters = useSelector(filterSubCategories);
   const allFilters = useSelector(filters);
+  const pricesRange = useSelector(filterPricesRange);
+  const { minprice, maxprice } = pricesRange;
 
   useEffect(() => {
     dispatch(getFilterCategories());
     dispatch(getFilterSubCategories());
+    dispatch(getPricesRange());
   }, []);
 
   return (
@@ -84,6 +94,45 @@ const Filters = () => {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* PRICES */}
+        <div className="filter-box">
+          <div className="filter-title">ΕΥΡΟΣ ΤΙΜΩΝ</div>
+          <div className="filter-list prices">
+            <Slider
+              getAriaLabel={() => 'ευρώ'}
+              value={[
+                allFilters?.selectedPriceRange[0] || minprice,
+                allFilters?.selectedPriceRange[1] || maxprice,
+              ]}
+              min={minprice}
+              max={maxprice}
+              onChange={(event, newValue) => {
+                dispatch(
+                  setSelectedFilterPriceRange({
+                    type: 'selectedPriceRange',
+                    value: newValue,
+                  }),
+                );
+              }}
+              onChangeCommitted={(event, value) => {
+                dispatch(getCatalogWithPrices());
+              }}
+              valueLabelDisplay="on"
+              getAriaValueText={valuetext}
+              marks={[
+                {
+                  value: minprice,
+                  label: `${minprice}€`,
+                },
+                {
+                  value: maxprice,
+                  label: `${maxprice}€`,
+                },
+              ]}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -13,6 +13,12 @@ const setCatalogLoading = createAction('catalog/setCatalogLoading');
 const removeSelectedFilter = createAction('catalog/removeSelectedFilter');
 const getFilterSubCategories = createAction('catalog/getFilterSubCategories');
 const setFilterSubCategories = createAction('catalog/setFilterSubCategories');
+const getPricesRange = createAction('catalog/getPricesRange');
+const setInitialPricesRange = createAction('catalog/setInitialPricesRange');
+const getCatalogWithPrices = createAction('catalog/getCatalogWithPrices');
+const setSelectedFilterPriceRange = createAction(
+  'catalog/setSelectedFilterPriceRange',
+);
 
 export {
   getProductDetails,
@@ -28,4 +34,8 @@ export {
   removeSelectedFilter,
   getFilterSubCategories,
   setFilterSubCategories,
+  getPricesRange,
+  setInitialPricesRange,
+  getCatalogWithPrices,
+  setSelectedFilterPriceRange,
 };

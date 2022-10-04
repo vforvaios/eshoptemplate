@@ -5,6 +5,8 @@ const singleProduct = ({ catalogReducer }) => catalogReducer.singleProduct;
 const relatedProducts = ({ catalogReducer }) => catalogReducer.relatedProducts;
 const filters = ({ catalogReducer }) => catalogReducer.filters;
 const catalogIsLoading = ({ catalogReducer }) => catalogReducer.loading;
+const filterPricesRange = ({ catalogReducer }) =>
+  catalogReducer.filterPricesRange;
 const filterCategories = ({ catalogReducer }) =>
   catalogReducer.filterCategories;
 const filterSubCategories = ({ catalogReducer }) =>
@@ -19,4 +21,5 @@ export {
   filters,
   catalogIsLoading,
   filterSubCategories,
+  filterPricesRange,
 };

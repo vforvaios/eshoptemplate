@@ -9,6 +9,8 @@ import {
   setCatalogLoading,
   removeSelectedFilter,
   setFilterSubCategories,
+  setInitialPricesRange,
+  setSelectedFilterPriceRange,
 } from 'models/actions/catalogActions';
 
 const initialState = {
@@ -16,9 +18,11 @@ const initialState = {
   singleProduct: {},
   filterCategories: [],
   filterSubCategories: [],
+  filterPricesRange: {},
   filters: {
     selectedCategory: null,
     selectedSubCategory: null,
+    selectedPriceRange: [],
   },
   catalog: {
     pagination: {
@@ -52,6 +56,16 @@ const catalogReducer = createReducer(initialState, {
       [action.payload.type]: action.payload.value,
     },
   }),
+  // THIS IS DOUBLED AS THE ABOVE ONLY
+  // BECAUSE I DONT WANT TO TRIGGER THE EPIC
+  // EVERY TIME I CHANGE THE PRICE SLIDER
+  [setSelectedFilterPriceRange.type]: (state, action) => ({
+    ...state,
+    filters: {
+      ...state.filters,
+      [action.payload.type]: action.payload.value,
+    },
+  }),
   [setCatalogProducts.type]: (state, action) => ({
     ...state,
     catalog: {
@@ -73,6 +87,10 @@ const catalogReducer = createReducer(initialState, {
   [setFilterSubCategories.type]: (state, action) => ({
     ...state,
     filterSubCategories: action.payload,
+  }),
+  [setInitialPricesRange.type]: (state, action) => ({
+    ...state,
+    filterPricesRange: action.payload,
   }),
 });
 
