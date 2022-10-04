@@ -120,14 +120,23 @@ const getCatalogEpic = (action$, state$) =>
         },
       ]) => {
         let requestCategory = '';
-        const { selectedCategory } = filters;
+        let requestSubCategory = '';
+        const { selectedCategory, selectedSubCategory } = filters;
 
         if (selectedCategory) {
           requestCategory = selectedCategory;
         }
 
+        if (selectedSubCategory) {
+          requestSubCategory = selectedSubCategory;
+        }
+
         return from(
-          makeRequest(`products?category=${requestCategory}`, 'GET', ''),
+          makeRequest(
+            `products?category=${requestCategory}&subCategory=${requestSubCategory}`,
+            'GET',
+            '',
+          ),
         ).pipe(
           concatMap((payload) => [
             setCatalogProducts(payload.results),

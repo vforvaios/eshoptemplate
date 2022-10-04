@@ -38,22 +38,32 @@ const Catalog = () => {
               <Filters />
             </section>
             <section className="col-right products-section">
-              <div className="sorting-section">
-                <CatalogPagination pagination={pagination} />
-                <SortingCatalog />
-              </div>
-              <div className="products">
-                <ul className="products-grid">
-                  {products?.map((product) => (
-                    <li key={product.productId}>
-                      <Product product={product} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="pagination">
-                <CatalogPagination pagination={pagination} />
-              </div>
+              {products?.length > 0 ? (
+                <>
+                  <div className="sorting-section">
+                    <CatalogPagination pagination={pagination} />
+                    <SortingCatalog />
+                  </div>
+                  <div className="products">
+                    <ul className="products-grid">
+                      {products?.map((product) => (
+                        <li key={product.productId}>
+                          <Product product={product} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="pagination">
+                    <CatalogPagination pagination={pagination} />
+                  </div>
+                </>
+              ) : (
+                <div className="products">
+                  <h3 className="no-products">
+                    Δεν βρέθηκε προϊόν. Αλλάξτε την αναζήτησή σας!
+                  </h3>
+                </div>
+              )}
             </section>
           </div>
         </div>
