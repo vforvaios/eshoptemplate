@@ -14,7 +14,7 @@ import {
   filterSubCategories,
   filterPricesRange,
 } from 'models/selectors/catalogSelectors';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CatalogSelectedFilter from './CatalogSelectedFilter';
@@ -29,6 +29,8 @@ const Filters = () => {
   const pricesRange = useSelector(filterPricesRange);
   const { minprice, maxprice } = pricesRange;
 
+  const [toggleFilters, setToggleFilters] = useState(false);
+
   useEffect(() => {
     dispatch(getFilterCategories());
     dispatch(getFilterSubCategories());
@@ -36,106 +38,118 @@ const Filters = () => {
   }, []);
 
   return (
-    <div className="filters-container">
-      {(allFilters?.selectedCategory || allFilters?.selectedSubCategory) && (
-        <CatalogSelectedFilter
-          categories={categoriesFilters}
-          subCategories={subCategoriesFilters}
-          selectedFilters={allFilters}
-        />
-      )}
-      <div className="filter-boxes">
-        <div className="filter-box">
-          <div className="filter-title">ΚΑΤΗΓΟΡΙΕΣ</div>
-          <ul className="filter-list">
-            {categoriesFilters?.map((category) => (
-              <li
-                onClick={() => {
-                  dispatch(setCatalogLoading(true));
+    <>
+      <button
+        onClick={() => setToggleFilters(!toggleFilters)}
+        className="hidden button next filter-toggle">
+        ΦΙΛΤΡΑ
+      </button>
+      <div className={`filters-container ${toggleFilters ? 'open' : ''}`}>
+        <button
+          className="hidden button next filter-toggle"
+          onClick={() => setToggleFilters(!toggleFilters)}>
+          ΚΛΕΙΣΙΜΟ
+        </button>
+        {(allFilters?.selectedCategory || allFilters?.selectedSubCategory) && (
+          <CatalogSelectedFilter
+            categories={categoriesFilters}
+            subCategories={subCategoriesFilters}
+            selectedFilters={allFilters}
+          />
+        )}
+        <div className="filter-boxes">
+          <div className="filter-box">
+            <div className="filter-title">ΚΑΤΗΓΟΡΙΕΣ</div>
+            <ul className="filter-list">
+              {categoriesFilters?.map((category) => (
+                <li
+                  onClick={() => {
+                    dispatch(setCatalogLoading(true));
+                    dispatch(
+                      setSelectedFilter({
+                        type: 'selectedCategory',
+                        value: category?.id,
+                      }),
+                    );
+                  }}
+                  className={`filter-option ${
+                    allFilters?.selectedCategory === category.id ? 'active' : ''
+                  }`}
+                  key={category?.id}>
+                  {category?.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* SUB CATEGORIES */}
+          <div className="filter-box">
+            <div className="filter-title">ΥΠΟΚΑΤΗΓΟΡΙΕΣ</div>
+            <ul className="filter-list">
+              {subCategoriesFilters?.map((subCategory) => (
+                <li
+                  onClick={() => {
+                    dispatch(setCatalogLoading(true));
+                    dispatch(
+                      setSelectedFilter({
+                        type: 'selectedSubCategory',
+                        value: subCategory?.id,
+                      }),
+                    );
+                  }}
+                  className={`filter-option ${
+                    allFilters?.selectedSubCategory === subCategory.id
+                      ? 'active'
+                      : ''
+                  }`}
+                  key={subCategory?.id}>
+                  {subCategory?.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* PRICES */}
+          <div className="filter-box">
+            <div className="filter-title">ΕΥΡΟΣ ΤΙΜΩΝ</div>
+            <div className="filter-list prices">
+              <Slider
+                getAriaLabel={() => 'ευρώ'}
+                value={[
+                  allFilters?.selectedPriceRange[0] || minprice,
+                  allFilters?.selectedPriceRange[1] || maxprice,
+                ]}
+                min={minprice}
+                max={maxprice}
+                onChange={(event, newValue) => {
                   dispatch(
-                    setSelectedFilter({
-                      type: 'selectedCategory',
-                      value: category?.id,
+                    setSelectedFilterPriceRange({
+                      type: 'selectedPriceRange',
+                      value: newValue,
                     }),
                   );
                 }}
-                className={`filter-option ${
-                  allFilters?.selectedCategory === category.id ? 'active' : ''
-                }`}
-                key={category?.id}>
-                {category?.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* SUB CATEGORIES */}
-        <div className="filter-box">
-          <div className="filter-title">ΥΠΟΚΑΤΗΓΟΡΙΕΣ</div>
-          <ul className="filter-list">
-            {subCategoriesFilters?.map((subCategory) => (
-              <li
-                onClick={() => {
-                  dispatch(setCatalogLoading(true));
-                  dispatch(
-                    setSelectedFilter({
-                      type: 'selectedSubCategory',
-                      value: subCategory?.id,
-                    }),
-                  );
+                onChangeCommitted={(event, value) => {
+                  dispatch(getCatalogWithPrices());
                 }}
-                className={`filter-option ${
-                  allFilters?.selectedSubCategory === subCategory.id
-                    ? 'active'
-                    : ''
-                }`}
-                key={subCategory?.id}>
-                {subCategory?.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* PRICES */}
-        <div className="filter-box">
-          <div className="filter-title">ΕΥΡΟΣ ΤΙΜΩΝ</div>
-          <div className="filter-list prices">
-            <Slider
-              getAriaLabel={() => 'ευρώ'}
-              value={[
-                allFilters?.selectedPriceRange[0] || minprice,
-                allFilters?.selectedPriceRange[1] || maxprice,
-              ]}
-              min={minprice}
-              max={maxprice}
-              onChange={(event, newValue) => {
-                dispatch(
-                  setSelectedFilterPriceRange({
-                    type: 'selectedPriceRange',
-                    value: newValue,
-                  }),
-                );
-              }}
-              onChangeCommitted={(event, value) => {
-                dispatch(getCatalogWithPrices());
-              }}
-              valueLabelDisplay="on"
-              getAriaValueText={valuetext}
-              marks={[
-                {
-                  value: minprice,
-                  label: `${minprice}€`,
-                },
-                {
-                  value: maxprice,
-                  label: `${maxprice}€`,
-                },
-              ]}
-            />
+                valueLabelDisplay="on"
+                getAriaValueText={valuetext}
+                marks={[
+                  {
+                    value: minprice,
+                    label: `${minprice}€`,
+                  },
+                  {
+                    value: maxprice,
+                    label: `${maxprice}€`,
+                  },
+                ]}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
