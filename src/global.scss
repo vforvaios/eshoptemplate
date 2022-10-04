@@ -132,7 +132,8 @@ ul {
 
 // SLIDER
 [class^='PrivateValueLabel-circle'],
-.MuiSlider-thumb {
+.MuiSlider-thumb,
+.MuiSlider-mark {
   background: $color-1 !important;
 }
 
