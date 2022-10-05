@@ -19,6 +19,7 @@ const getCatalogWithPrices = createAction('catalog/getCatalogWithPrices');
 const setSelectedFilterPriceRange = createAction(
   'catalog/setSelectedFilterPriceRange',
 );
+const setCatalogSorting = createAction('catalog/setCatalogSorting');
 
 export {
   getProductDetails,
@@ -38,4 +39,5 @@ export {
   setInitialPricesRange,
   getCatalogWithPrices,
   setSelectedFilterPriceRange,
+  setCatalogSorting,
 };

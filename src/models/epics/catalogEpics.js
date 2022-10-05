@@ -17,6 +17,7 @@ import {
   getPricesRange,
   setInitialPricesRange,
   getCatalogWithPrices,
+  setCatalogSorting,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -136,13 +137,14 @@ const getCatalogEpic = (action$, state$) =>
       getInitialCatalog.type,
       removeSelectedFilter.type,
       getCatalogWithPrices.type,
+      setCatalogSorting.type,
     ),
     withLatestFrom(state$),
     mergeMap(
       ([
         ,
         {
-          catalogReducer: { filters },
+          catalogReducer: { filters, sorting },
         },
       ]) => {
         let requestCategory = '';
@@ -169,7 +171,7 @@ const getCatalogEpic = (action$, state$) =>
 
         return from(
           makeRequest(
-            `products?category=${requestCategory}&subCategory=${requestSubCategory}&prices=${requestPriceRange}`,
+            `products?category=${requestCategory}&subCategory=${requestSubCategory}&prices=${requestPriceRange}&sort=${sorting}`,
             'GET',
             '',
           ),
