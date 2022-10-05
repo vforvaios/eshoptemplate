@@ -28,10 +28,9 @@ const initialState = {
   },
   catalog: {
     pagination: {
-      total: 20,
-      currentPage: 2,
-      perPage: 4,
-      nextPage: 3,
+      total: 0,
+      currentPage: 1,
+      perPage: process.env.REACT_APP_PER_PAGE,
     },
     results: [],
   },
@@ -57,6 +56,14 @@ const catalogReducer = createReducer(initialState, {
       ...state.filters,
       [action.payload.type]: action.payload.value,
     },
+    catalog: {
+      ...state.catalog,
+      pagination: {
+        ...state.catalog.pagination,
+        currentPage: 1,
+        total: 0,
+      },
+    },
   }),
   // THIS IS DOUBLED AS THE ABOVE ONLY
   // BECAUSE I DONT WANT TO TRIGGER THE EPIC
@@ -67,12 +74,24 @@ const catalogReducer = createReducer(initialState, {
       ...state.filters,
       [action.payload.type]: action.payload.value,
     },
+    catalog: {
+      ...state.catalog,
+      pagination: {
+        ...state.catalog.pagination,
+        currentPage: 1,
+        total: 0,
+      },
+    },
   }),
   [setCatalogProducts.type]: (state, action) => ({
     ...state,
     catalog: {
       ...state.catalog,
-      results: action.payload,
+      results: action.payload.results,
+      pagination: {
+        ...state.catalog.pagination,
+        total: action.payload.total,
+      },
     },
   }),
   [setCatalogLoading.type]: (state, action) => ({
@@ -84,6 +103,14 @@ const catalogReducer = createReducer(initialState, {
     filters: {
       ...state?.filters,
       [action.payload.type]: null,
+    },
+    catalog: {
+      ...state.catalog,
+      pagination: {
+        ...state.catalog.pagination,
+        currentPage: 1,
+        total: 0,
+      },
     },
   }),
   [setFilterSubCategories.type]: (state, action) => ({
@@ -97,6 +124,14 @@ const catalogReducer = createReducer(initialState, {
   [setCatalogSorting.type]: (state, action) => ({
     ...state,
     sorting: action.payload,
+    catalog: {
+      ...state.catalog,
+      pagination: {
+        ...state.catalog.pagination,
+        currentPage: 1,
+        total: 0,
+      },
+    },
   }),
 });
 

@@ -5,7 +5,7 @@ const CatalogPagination = ({ pagination }) => (
   <div className="catalog-pagination pagination">
     <Pagination
       page={pagination.currentPage}
-      count={pagination.total}
+      count={Math.ceil(pagination.total / process.env.REACT_APP_PER_PAGE)}
       showFirstButton
       showLastButton
     />

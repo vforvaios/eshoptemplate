@@ -144,12 +144,13 @@ const getCatalogEpic = (action$, state$) =>
       ([
         ,
         {
-          catalogReducer: { filters, sorting },
+          catalogReducer: { filters, sorting, catalog },
         },
       ]) => {
         let requestCategory = '';
         let requestSubCategory = '';
         let requestPriceRange = '';
+        const requestPage = catalog.pagination.currentPage;
 
         const {
           selectedCategory,
@@ -171,13 +172,13 @@ const getCatalogEpic = (action$, state$) =>
 
         return from(
           makeRequest(
-            `products?category=${requestCategory}&subCategory=${requestSubCategory}&prices=${requestPriceRange}&sort=${sorting}`,
+            `products?category=${requestCategory}&subCategory=${requestSubCategory}&prices=${requestPriceRange}&sort=${sorting}&page=${requestPage}`,
             'GET',
             '',
           ),
         ).pipe(
           concatMap((payload) => [
-            setCatalogProducts(payload.results),
+            setCatalogProducts(payload),
             toggleShowAlert({ message: '', show: false, type: 'error' }),
             setCatalogLoading(false),
           ]),
