@@ -12,6 +12,7 @@ import {
   setInitialPricesRange,
   setSelectedFilterPriceRange,
   setCatalogSorting,
+  setCurrentCatalogPage,
 } from 'models/actions/catalogActions';
 
 const initialState = {
@@ -130,6 +131,16 @@ const catalogReducer = createReducer(initialState, {
         ...state.catalog.pagination,
         currentPage: 1,
         total: 0,
+      },
+    },
+  }),
+  [setCurrentCatalogPage.type]: (state, action) => ({
+    ...state,
+    catalog: {
+      ...state.catalog,
+      pagination: {
+        ...state.catalog.pagination,
+        currentPage: action.payload,
       },
     },
   }),

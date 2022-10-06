@@ -18,6 +18,7 @@ import {
   setInitialPricesRange,
   getCatalogWithPrices,
   setCatalogSorting,
+  setCurrentCatalogPage,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -138,6 +139,7 @@ const getCatalogEpic = (action$, state$) =>
       removeSelectedFilter.type,
       getCatalogWithPrices.type,
       setCatalogSorting.type,
+      setCurrentCatalogPage.type,
     ),
     withLatestFrom(state$),
     mergeMap(
