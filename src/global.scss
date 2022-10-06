@@ -61,7 +61,7 @@ ul {
 }
 
 .pagination {
-  margin: 0 auto;
+  margin: 0 0 20px;
 
   .MuiPagination-ul {
     justify-content: center;
@@ -139,6 +139,14 @@ ul {
 
 .MuiSlider-track {
   background: $color-3 !important;
+}
+
+.mr0 {
+  margin-right: 0 !important;
+
+  & .catalog-pagination {
+    margin-right: 0;
+  }
 }
 
 @import 'src/styles/buttons.scss';

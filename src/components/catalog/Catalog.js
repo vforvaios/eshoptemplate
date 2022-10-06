@@ -53,7 +53,7 @@ const Catalog = () => {
                       ))}
                     </ul>
                   </div>
-                  <div className="pagination">
+                  <div className="pagination mr0">
                     <CatalogPagination pagination={pagination} />
                   </div>
                 </>
