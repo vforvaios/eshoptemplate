@@ -1,5 +1,5 @@
 import CloseIcon from '@material-ui/icons/Close';
-import { getCategories } from 'models/actions/categoriesActions';
+import { getCategoriesMenu } from 'models/actions/categoriesActions';
 import { categories } from 'models/selectors/categoriesSelectors';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom';
 
 const MainMenu = ({ setToggleValue }) => {
   const allCategories = useSelector(categories);
+
   const dispatch = useDispatch();
   const [openSubMenu, setOpenSubMenu] = useState(undefined);
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(getCategoriesMenu());
   }, []);
 
   return (
@@ -19,10 +20,10 @@ const MainMenu = ({ setToggleValue }) => {
       <CloseIcon onClick={setToggleValue('left', false)} />
       <div>Menu</div>
       <ul>
-        {allCategories?.map((category) => (
+        {allCategories?.map((category, index) => (
           <li className="menu-item" key={category?.id}>
             {category?.name}
-            {category?.subCategories?.length && (
+            {category?.subCategories?.length > 0 && (
               <>
                 <span
                   className={`submenu-item ${
@@ -45,7 +46,7 @@ const MainMenu = ({ setToggleValue }) => {
             )}
           </li>
         ))}
-        <li>
+        {/* <li>
           <Link onClick={setToggleValue('left', false)} to="/">
             ΑΡΧΙΚΗ
           </Link>
@@ -99,7 +100,7 @@ const MainMenu = ({ setToggleValue }) => {
           <Link onClick={setToggleValue('left', false)} to="/register">
             ΕΓΓΡΑΦΗ
           </Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

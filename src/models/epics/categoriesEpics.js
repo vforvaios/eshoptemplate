@@ -1,19 +1,49 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
-import { getCategories, setCategories } from 'models/actions/categoriesActions';
+import {
+  getCategoriesMenu,
+  setCategoriesMenu,
+} from 'models/actions/categoriesActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { mergeMap, concatMap, catchError } from 'rxjs/operators';
 
-const getCartEpic = (action$) =>
+const getCategoriesMenuEpic = (action$) =>
   action$.pipe(
-    ofType(getCategories.type),
+    ofType(getCategoriesMenu.type),
     mergeMap(() =>
-      from(makeRequest('categories', 'GET', '')).pipe(
-        concatMap((payload) => [
-          setCategories(payload),
-          toggleShowAlert({ message: '', show: false, type: 'error' }),
-        ]),
+      from(makeRequest('menu', 'GET', '')).pipe(
+        concatMap((payload) => {
+          const { menu } = payload;
+          const distinctCategories = [
+            ...new Set(menu?.map((m) => m.category_id)),
+          ];
+
+          const newMenu = distinctCategories?.reduce(
+            (acc, curr) => [
+              ...acc,
+              {
+                id: menu?.find((m) => m?.category_id === curr)?.category_id,
+                name: menu?.find((m) => m?.category_id === curr)?.category_name,
+                subCategories: menu?.find((m) => m?.category_id === curr)
+                  ?.subcategory_id
+                  ? menu
+                      .filter((m) => m.category_id === curr)
+                      ?.map((s) => ({
+                        id: s.subcategory_id,
+                        name: s.subcategory_name,
+                      }))
+                  : [],
+              },
+            ],
+            [],
+          );
+
+          return [
+            setCategoriesMenu(newMenu),
+            toggleShowAlert({ message: '', show: false, type: 'error' }),
+          ];
+        }),
         catchError((error) =>
           of(
             toggleShowAlert({
@@ -27,8 +57,8 @@ const getCartEpic = (action$) =>
     ),
   );
 
-export { getCartEpic };
+export { getCategoriesMenuEpic };
 
-const epics = combineEpics(getCartEpic);
+const epics = combineEpics(getCategoriesMenuEpic);
 
 export default epics;

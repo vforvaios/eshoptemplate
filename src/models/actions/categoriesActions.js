@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const getCategories = createAction('categories/getCategories');
-const setCategories = createAction('categories/setCategories');
+const getCategoriesMenu = createAction('categories/getCategoriesMenu');
+const setCategoriesMenu = createAction('categories/setCategoriesMenu');
 
-export { getCategories, setCategories };
+export { getCategoriesMenu, setCategoriesMenu };
