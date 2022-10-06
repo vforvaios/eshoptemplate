@@ -1,9 +1,11 @@
 import CloseIcon from '@material-ui/icons/Close';
+import Search from 'components/searchHeader/Search';
 import { getCategoriesMenu } from 'models/actions/categoriesActions';
 import { categories } from 'models/selectors/categoriesSelectors';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import logo from 'resources/images/logo.jpg';
 
 const MainMenu = ({ setToggleValue }) => {
   const allCategories = useSelector(categories);
@@ -17,36 +19,44 @@ const MainMenu = ({ setToggleValue }) => {
 
   return (
     <div className="main-menu">
-      <CloseIcon onClick={setToggleValue('left', false)} />
-      <div>Menu</div>
-      <ul>
-        {allCategories?.map((category, index) => (
-          <li className="menu-item" key={category?.id}>
-            {category?.name}
-            {category?.subCategories?.length > 0 && (
-              <>
-                <span
-                  className={`submenu-item ${
-                    openSubMenu === category?.id && 'rotate'
-                  }`}>
-                  <i
-                    className="icon-down-dir"
-                    onClick={() => setOpenSubMenu(category?.id)}
-                  />
-                </span>
-                <div
-                  className={`submenu-container ${
-                    openSubMenu === category?.id && 'open'
-                  }`}>
-                  {category?.subCategories?.map((subCategory) => (
-                    <div key={subCategory.id}>{subCategory?.name}</div>
-                  ))}
-                </div>
-              </>
-            )}
-          </li>
-        ))}
-        {/* <li>
+      <div className="main-menu-header">
+        <img src={logo} alt="fasdf" className="logo-image" />
+        <CloseIcon onClick={setToggleValue('left', false)} />
+      </div>
+      <div className="main-menu-search-container">
+        <Search />
+      </div>
+      <div>
+        <ul className="menu-list">
+          {allCategories?.map((category) => (
+            <li className="menu-item" key={category?.id}>
+              <span className="menu-item-category">{category?.name}</span>
+              {category?.subCategories?.length > 0 && (
+                <>
+                  <span
+                    className={`submenu-item ${
+                      openSubMenu === category?.id && 'rotate'
+                    }`}>
+                    <i
+                      className="icon-down-dir"
+                      onClick={() => setOpenSubMenu(category?.id)}
+                    />
+                  </span>
+                  <div
+                    className={`submenu-container ${
+                      openSubMenu === category?.id && 'open'
+                    }`}>
+                    {category?.subCategories?.map((subCategory) => (
+                      <div key={subCategory.id}>{subCategory?.name}</div>
+                    ))}
+                  </div>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      {/* <li>
           <Link onClick={setToggleValue('left', false)} to="/">
             ΑΡΧΙΚΗ
           </Link>
@@ -101,7 +111,6 @@ const MainMenu = ({ setToggleValue }) => {
             ΕΓΓΡΑΦΗ
           </Link>
         </li> */}
-      </ul>
     </div>
   );
 };
