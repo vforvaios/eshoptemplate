@@ -6,7 +6,7 @@ import { loginUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -87,10 +87,13 @@ const Login = () => {
               </FormControl>
             </div>
             <div className="form-control">
-              <div className="actions separate">
+              <div className="actions">
                 <button className="button next" onClick={submitLoginForm}>
                   ΕΙΣΟΔΟΣ
                 </button>
+                <Link className="button next mrl12" to="/register">
+                  ΕΓΓΡΑΦΗ
+                </Link>
               </div>
             </div>
           </div>

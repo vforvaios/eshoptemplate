@@ -2,6 +2,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -105,10 +106,13 @@ const Register = () => {
               </FormControl>
             </div>
             <div className="form-control">
-              <div className="actions separate">
+              <div className="actions">
                 <button className="button next" onClick={submitRegisterForm}>
                   ΕΓΓΡΑΦΗ
                 </button>
+                <Link className="button next mrl12" to="/login">
+                  ΕΙΣΟΔΟΣ
+                </Link>
               </div>
             </div>
           </div>

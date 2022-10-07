@@ -57,14 +57,6 @@ ul {
   text-align: center;
 }
 
-.pagination {
-  margin: 0 0 20px;
-
-  .MuiPagination-ul {
-    justify-content: center;
-  }
-}
-
 .MuiPaper-elevation1 {
   box-shadow: none !important;
 }
@@ -80,9 +72,13 @@ ul {
   }
 }
 
-// PADDINGS
+// PADDINGS, MARGINS
 .pr0 {
   padding-right: 0 !important;
+}
+.mrl12 {
+  margin-left: 12px !important;
+  font-weight: 400;
 }
 
 // TITLES

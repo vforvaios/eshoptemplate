@@ -30,7 +30,7 @@ const Header = ({ toggleValue, setToggleValue }) => {
       <Grid item sm={3}>
         <div className="headerActions">
           <MiniCart />
-          {userToken && <UserMenu />}
+          <UserMenu token={userToken} />
         </div>
       </Grid>
     </Grid>
