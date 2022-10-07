@@ -51,7 +51,7 @@ const addToCartEpic = (action$, state$) =>
           cartReducer: { cart },
         },
       ]) => {
-        const { productDescription, productId, price } = payload;
+        const { productDescription, productId, price, productTitle } = payload;
 
         const productAlreadyExistsInCart =
           cart?.findIndex((item) => item?.productId === productId) >= 0;
@@ -62,6 +62,7 @@ const addToCartEpic = (action$, state$) =>
           newCart = [
             ...cart,
             {
+              productTitle,
               productId,
               productDescription,
               total: 1,

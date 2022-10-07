@@ -23,7 +23,7 @@ const CartItem = ({ updateable, item }) => {
               alt="product description"
             />
           </span>
-          <span>{item.productDescription}</span>
+          <span>{item.productTitle}</span>
         </div>
       </TableCell>
       <TableCell>
