@@ -1,7 +1,7 @@
 import Slider from '@material-ui/core/Slider';
 import {
   getFilterCategories,
-  getFilterSubCategories,
+  getFilterBrands,
   setSelectedFilter,
   setCatalogLoading,
   getPricesRange,
@@ -11,7 +11,7 @@ import {
 import {
   filterCategories,
   filters,
-  filterSubCategories,
+  filterBrands,
   filterPricesRange,
 } from 'models/selectors/catalogSelectors';
 import React, { useEffect, useState } from 'react';
@@ -24,7 +24,7 @@ const valuetext = (value) => `${value}€`;
 const Filters = () => {
   const dispatch = useDispatch();
   const categoriesFilters = useSelector(filterCategories);
-  const subCategoriesFilters = useSelector(filterSubCategories);
+  const brandsFilters = useSelector(filterBrands);
   const allFilters = useSelector(filters);
   const pricesRange = useSelector(filterPricesRange);
   const { minprice, maxprice } = pricesRange;
@@ -33,7 +33,7 @@ const Filters = () => {
 
   useEffect(() => {
     dispatch(getFilterCategories());
-    dispatch(getFilterSubCategories());
+    dispatch(getFilterBrands());
     dispatch(getPricesRange());
   }, []);
 
@@ -53,7 +53,7 @@ const Filters = () => {
         {(allFilters?.selectedCategory || allFilters?.selectedSubCategory) && (
           <CatalogSelectedFilter
             categories={categoriesFilters}
-            subCategories={subCategoriesFilters}
+            subCategories={brandsFilters}
             selectedFilters={allFilters}
           />
         )}
@@ -86,7 +86,7 @@ const Filters = () => {
           <div className="filter-box">
             <div className="filter-title">ΥΠΟΚΑΤΗΓΟΡΙΕΣ</div>
             <ul className="filter-list">
-              {subCategoriesFilters?.map((subCategory) => (
+              {brandsFilters?.map((subCategory) => (
                 <li
                   onClick={() => {
                     dispatch(setCatalogLoading(true));

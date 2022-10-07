@@ -11,8 +11,7 @@ const setCatalogProducts = createAction('catalog/setCatalogProducts');
 const getInitialCatalog = createAction('catalog/getInitialCatalog');
 const setCatalogLoading = createAction('catalog/setCatalogLoading');
 const removeSelectedFilter = createAction('catalog/removeSelectedFilter');
-const getFilterSubCategories = createAction('catalog/getFilterSubCategories');
-const setFilterSubCategories = createAction('catalog/setFilterSubCategories');
+const setFilterBrands = createAction('catalog/setFilterBrands');
 const getPricesRange = createAction('catalog/getPricesRange');
 const setInitialPricesRange = createAction('catalog/setInitialPricesRange');
 const getCatalogWithPrices = createAction('catalog/getCatalogWithPrices');
@@ -21,6 +20,7 @@ const setSelectedFilterPriceRange = createAction(
 );
 const setCatalogSorting = createAction('catalog/setCatalogSorting');
 const setCurrentCatalogPage = createAction('catalog/setCurrentCatalogPage');
+const getFilterBrands = createAction('catalog/getFilterBrands');
 
 export {
   getProductDetails,
@@ -34,12 +34,12 @@ export {
   getInitialCatalog,
   setCatalogLoading,
   removeSelectedFilter,
-  getFilterSubCategories,
-  setFilterSubCategories,
+  setFilterBrands,
   getPricesRange,
   setInitialPricesRange,
   getCatalogWithPrices,
   setSelectedFilterPriceRange,
   setCatalogSorting,
   setCurrentCatalogPage,
+  getFilterBrands,
 };

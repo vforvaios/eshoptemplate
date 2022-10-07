@@ -12,8 +12,8 @@ import {
   getInitialCatalog,
   setCatalogLoading,
   removeSelectedFilter,
-  getFilterSubCategories,
-  setFilterSubCategories,
+  getFilterBrands,
+  setFilterBrands,
   getPricesRange,
   setInitialPricesRange,
   getCatalogWithPrices,
@@ -87,13 +87,13 @@ const getFilterCategoriesEpic = (action$) =>
     ),
   );
 
-const getFilterSubCategoriesEpic = (action$) =>
+const getFilterBrandsEpic = (action$) =>
   action$.pipe(
-    ofType(getFilterSubCategories.type),
+    ofType(getFilterBrands.type),
     mergeMap(() =>
-      from(makeRequest('subcategories', 'GET', '')).pipe(
+      from(makeRequest('brands', 'GET', '')).pipe(
         concatMap((payload) => [
-          setFilterSubCategories(payload),
+          setFilterBrands(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
         catchError((error) =>
@@ -204,7 +204,7 @@ export {
   getRelatedProductsEpic,
   getFilterCategoriesEpic,
   getCatalogEpic,
-  getFilterSubCategoriesEpic,
+  getFilterBrandsEpic,
   getPricesRangeEpic,
 };
 
@@ -213,7 +213,7 @@ const epics = combineEpics(
   getRelatedProductsEpic,
   getFilterCategoriesEpic,
   getCatalogEpic,
-  getFilterSubCategoriesEpic,
+  getFilterBrandsEpic,
   getPricesRangeEpic,
 );
 

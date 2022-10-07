@@ -8,7 +8,7 @@ import {
   setCatalogProducts,
   setCatalogLoading,
   removeSelectedFilter,
-  setFilterSubCategories,
+  setFilterBrands,
   setInitialPricesRange,
   setSelectedFilterPriceRange,
   setCatalogSorting,
@@ -19,7 +19,7 @@ const initialState = {
   relatedProducts: [],
   singleProduct: {},
   filterCategories: [],
-  filterSubCategories: [],
+  filterBrands: [],
   filterPricesRange: {},
   sorting: 1, // price asc, then price desc equals 2
   filters: {
@@ -114,9 +114,9 @@ const catalogReducer = createReducer(initialState, {
       },
     },
   }),
-  [setFilterSubCategories.type]: (state, action) => ({
+  [setFilterBrands.type]: (state, action) => ({
     ...state,
-    filterSubCategories: action.payload,
+    filterBrands: action.payload,
   }),
   [setInitialPricesRange.type]: (state, action) => ({
     ...state,
