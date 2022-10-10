@@ -46,8 +46,8 @@ const Login = () => {
     <div className="content user">
       <div className="row">
         <div className="wrapper">
-          <div className="page-title text-center">
-            <h1>ΕΙΣΟΔΟΣ</h1>
+          <div className=" text-center">
+            <h1 className="page-title">ΕΙΣΟΔΟΣ</h1>
           </div>
         </div>
       </div>

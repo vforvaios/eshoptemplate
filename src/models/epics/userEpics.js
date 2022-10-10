@@ -5,6 +5,7 @@ import {
   loginUser,
   setLoggedInUser,
   logoutUser,
+  registerUser,
 } from 'models/actions/userActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -40,8 +41,18 @@ const logoutUserEpic = (action$) =>
     map(() => setLoggedInUser({})),
   );
 
-export { loginUserEpic, logoutUserEpic };
+const registerUserEpic = (action$) =>
+  action$.pipe(
+    ofType(registerUser.type),
+    mergeMap(({ payload }) =>
+      from(makeRequest('register', 'POST', JSON.stringify(payload))).pipe(
+        map((payload) => {}),
+      ),
+    ),
+  );
 
-const epics = combineEpics(loginUserEpic, logoutUserEpic);
+export { loginUserEpic, logoutUserEpic, registerUserEpic };
+
+const epics = combineEpics(loginUserEpic, logoutUserEpic, registerUserEpic);
 
 export default epics;

@@ -1,7 +1,9 @@
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import { registerUser } from 'models/actions/userActions';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
@@ -11,6 +13,7 @@ const Register = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const dispatch = useDispatch();
 
   const submitRegisterForm = () => {
     if (email === '') {
@@ -39,7 +42,7 @@ const Register = () => {
       confirmPassword !== '' &&
       password === confirmPassword
     ) {
-      alert('ΕΠΙΤΥΧΗΣ ΕΓΓΡΑΦΗ');
+      dispatch(registerUser({ email, password, confirmPassword }));
     }
   };
 
@@ -47,8 +50,8 @@ const Register = () => {
     <div className="content user">
       <div className="row">
         <div className="wrapper">
-          <div className="page-title text-center">
-            <h1>ΕΓΓΡΑΦΗ</h1>
+          <div className="text-center">
+            <h1 className="page-title">ΕΓΓΡΑΦΗ</h1>
           </div>
         </div>
       </div>
