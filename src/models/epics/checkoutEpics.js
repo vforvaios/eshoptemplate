@@ -16,6 +16,7 @@ import {
   setOrderOk,
   setCanSeeSuccessPage,
 } from 'models/actions/checkoutActions';
+import { shippingMethods } from 'models/selectors/checkoutSelectors';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import {
@@ -208,37 +209,66 @@ const sendOrderEpic = (action$, state$) =>
   action$.pipe(
     ofType(sendOrder.type),
     withLatestFrom(state$),
-    mergeMap(([, { checkoutReducer, cartReducer }]) =>
-      from(
-        makeRequest(
-          'order/sendorder',
-          'POST',
-          JSON.stringify({ checkoutReducer, cartReducer }),
-        ),
-      ).pipe(
-        concatMap((payload) => {
-          if (payload?.error) {
-            return [
+    mergeMap(
+      ([
+        ,
+        {
+          checkoutReducer,
+          cartReducer: { cart },
+          userReducer: { user },
+        },
+      ]) => {
+        const {
+          paymentMethods,
+          shippingMethods,
+          billingInfo,
+          shippingInfo,
+          receipt,
+          sameAsBilling,
+        } = checkoutReducer;
+
+        return from(
+          makeRequest(
+            'order/sendorder',
+            'POST',
+            JSON.stringify({
+              products: cart,
+              checkoutInfo: {
+                paymentMethod: paymentMethods.find((pm) => pm.checked).id,
+                shippingMethod: shippingMethods.find((sm) => sm.checked).id,
+                billingInfo,
+                shippingInfo,
+                receipt,
+                sameAsBilling,
+              },
+              user,
+            }),
+          ),
+        ).pipe(
+          concatMap((payload) => {
+            if (payload?.error) {
+              return [
+                toggleShowAlert({
+                  message: transformErrorMessages(payload?.error?.details),
+                  type: 'error',
+                  show: true,
+                }),
+              ];
+            }
+
+            return [setCanSeeSuccessPage(), navigateToSuccessCheckout()];
+          }),
+          catchError((error) =>
+            of(
               toggleShowAlert({
-                message: transformErrorMessages(payload?.error?.details),
+                message: `${error}`,
                 type: 'error',
                 show: true,
               }),
-            ];
-          }
-
-          return [setCanSeeSuccessPage(), navigateToSuccessCheckout()];
-        }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     ),
   );
 
