@@ -91,7 +91,7 @@ const ProductPage = () => {
                   aria-label="add to favorites"
                   onClick={(e) => {
                     e.preventDefault();
-                    dispatch(addProductWishlist());
+                    dispatch(addProductWishlist(id));
                   }}>
                   <FavoriteBorderIcon />
                 </IconButton>

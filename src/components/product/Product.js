@@ -88,7 +88,7 @@ const Product = ({ classes, product }) => {
             aria-label="add to favorites"
             onClick={(e) => {
               e.preventDefault();
-              dispatch(addProductWishlist());
+              dispatch(addProductWishlist(productId));
             }}>
             <FavoriteBorderIcon />
           </IconButton>

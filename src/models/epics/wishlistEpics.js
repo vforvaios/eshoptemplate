@@ -15,7 +15,6 @@ import {
   concatMap,
   catchError,
   withLatestFrom,
-  map,
 } from 'rxjs/operators';
 
 const getWishlistEpic = (action$, state$) =>
@@ -46,11 +45,13 @@ const addProductWishlistEpic = (action$, state$) =>
   action$.pipe(
     ofType(addProductWishlist.type),
     withLatestFrom(state$),
-    map(
+    mergeMap(
       ([
-        ,
+        { payload },
         {
-          userReducer: { token },
+          userReducer: {
+            user: { token },
+          },
         },
       ]) => {
         if (!token) {
@@ -61,8 +62,35 @@ const addProductWishlistEpic = (action$, state$) =>
           });
         }
 
-        // TODO - ADD TO WISHLIST WHEN USER IS LOGGEDIN
-        return {};
+        const productId = payload;
+
+        return from(
+          makeRequest(
+            'addwishlist',
+            'POST',
+            JSON.stringify({ productId }),
+            token,
+          ),
+        ).pipe(
+          concatMap((payload) => {
+            debugger;
+
+            return [
+              toggleLoader(false),
+              toggleShowAlert({ message: '', show: false, type: 'error' }),
+            ];
+          }),
+          catchError((error) =>
+            of(
+              toggleShowAlert({
+                message: `${error}`,
+                type: 'error',
+                show: true,
+              }),
+              toggleLoader(false),
+            ),
+          ),
+        );
       },
     ),
   );
