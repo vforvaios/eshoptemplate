@@ -1,4 +1,7 @@
-import { removeSelectedFilter } from 'models/actions/catalogActions';
+import {
+  removeSelectedFilter,
+  setGeneralLoading,
+} from 'models/actions/catalogActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -16,9 +19,10 @@ const CatalogSelectedFilter = ({
         {selectedFilters?.selectedCategory && (
           <li
             className="selected-filter-option"
-            onClick={() =>
-              dispatch(removeSelectedFilter({ type: 'selectedCategory' }))
-            }>
+            onClick={() => {
+              dispatch(setGeneralLoading(true));
+              dispatch(removeSelectedFilter({ type: 'selectedCategory' }));
+            }}>
             <span>
               {
                 categories.find(
@@ -31,9 +35,10 @@ const CatalogSelectedFilter = ({
         {selectedFilters?.selectedSubCategory && (
           <li
             className="selected-filter-option"
-            onClick={() =>
-              dispatch(removeSelectedFilter({ type: 'selectedSubCategory' }))
-            }>
+            onClick={() => {
+              dispatch(setGeneralLoading(true));
+              dispatch(removeSelectedFilter({ type: 'selectedSubCategory' }));
+            }}>
             <span>
               {
                 subCategories.find(

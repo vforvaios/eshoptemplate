@@ -59,8 +59,6 @@ const addToCartEpic = (action$, state$) =>
           initialPrice,
         } = payload;
 
-        debugger;
-
         const productAlreadyExistsInCart =
           cart?.findIndex((item) => item?.productId === productId) >= 0;
 

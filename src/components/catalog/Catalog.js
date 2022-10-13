@@ -14,7 +14,7 @@ import {
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import GeneralLoading from './GeneralLoading';
+import GeneralLoading from '../loader/GeneralLoading';
 
 const Catalog = () => {
   const dispatch = useDispatch();

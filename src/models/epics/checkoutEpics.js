@@ -257,7 +257,11 @@ const sendOrderEpic = (action$, state$) =>
               ];
             }
 
-            return [setCanSeeSuccessPage(), navigateToSuccessCheckout()];
+            return [
+              setGeneralLoading(false),
+              setCanSeeSuccessPage(),
+              navigateToSuccessCheckout(),
+            ];
           }),
           catchError((error) =>
             of(
