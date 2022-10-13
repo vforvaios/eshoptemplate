@@ -3,7 +3,7 @@ import {
   getFilterCategories,
   getFilterBrands,
   setSelectedFilter,
-  setCatalogLoading,
+  setGeneralLoading,
   getPricesRange,
   getCatalogWithPrices,
   setSelectedFilterPriceRange,
@@ -64,7 +64,7 @@ const Filters = () => {
               {categoriesFilters?.map((category) => (
                 <li
                   onClick={() => {
-                    dispatch(setCatalogLoading(true));
+                    dispatch(setGeneralLoading(true));
                     dispatch(
                       setSelectedFilter({
                         type: 'selectedCategory',
@@ -89,7 +89,7 @@ const Filters = () => {
               {brandsFilters?.map((subCategory) => (
                 <li
                   onClick={() => {
-                    dispatch(setCatalogLoading(true));
+                    dispatch(setGeneralLoading(true));
                     dispatch(
                       setSelectedFilter({
                         type: 'selectedSubCategory',

@@ -1,5 +1,6 @@
 import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import { sendOrder } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
 import { orderOK } from 'models/selectors/checkoutSelectors';
@@ -45,7 +46,10 @@ const Confirm = () => {
               <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
             </button>
             <button
-              onClick={() => dispatch(sendOrder())}
+              onClick={() => {
+                dispatch(setGeneralLoading(true));
+                dispatch(sendOrder());
+              }}
               className="button next">
               ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
             </button>

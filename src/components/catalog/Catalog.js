@@ -4,7 +4,7 @@ import Product from 'components/product/Product';
 import SortingCatalog from 'components/sortingCatalog/SortingCatalog';
 import {
   getInitialCatalog,
-  setCatalogLoading,
+  setGeneralLoading,
 } from 'models/actions/catalogActions';
 import {
   catalogProducts,
@@ -14,7 +14,7 @@ import {
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import CatalogLoading from './CatalogLoading';
+import GeneralLoading from './GeneralLoading';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -24,13 +24,13 @@ const Catalog = () => {
   const pagination = useSelector(catalogPagination);
 
   useEffect(() => {
-    dispatch(setCatalogLoading(true));
+    dispatch(setGeneralLoading(true));
     dispatch(getInitialCatalog());
   }, []);
 
   return (
     <>
-      {loading && <CatalogLoading />}
+      {loading && <GeneralLoading />}
       <div className="row catalog content">
         <div className="wrapper">
           <div className="grid-container catalog-container">

@@ -6,7 +6,7 @@ import {
   setFilterCategories,
   setSelectedFilter,
   setCatalogProducts,
-  setCatalogLoading,
+  setGeneralLoading,
   removeSelectedFilter,
   setFilterBrands,
   setInitialPricesRange,
@@ -95,7 +95,7 @@ const catalogReducer = createReducer(initialState, {
       },
     },
   }),
-  [setCatalogLoading.type]: (state, action) => ({
+  [setGeneralLoading.type]: (state, action) => ({
     ...state,
     loading: action.payload,
   }),

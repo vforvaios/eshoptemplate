@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CatalogLoading = () => {
+const GeneralLoading = () => {
   return (
     <div className="loading full">
       <span>Περιμένετε...</span>
@@ -8,4 +8,4 @@ const CatalogLoading = () => {
   );
 };
 
-export default CatalogLoading;
+export default GeneralLoading;

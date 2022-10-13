@@ -10,7 +10,7 @@ import {
   setSelectedFilter,
   setCatalogProducts,
   getInitialCatalog,
-  setCatalogLoading,
+  setGeneralLoading,
   removeSelectedFilter,
   getFilterBrands,
   setFilterBrands,
@@ -182,7 +182,7 @@ const getCatalogEpic = (action$, state$) =>
           concatMap((payload) => [
             setCatalogProducts(payload),
             toggleShowAlert({ message: '', show: false, type: 'error' }),
-            setCatalogLoading(false),
+            setGeneralLoading(false),
           ]),
           catchError((error) =>
             of(
@@ -191,7 +191,7 @@ const getCatalogEpic = (action$, state$) =>
                 type: 'error',
                 show: true,
               }),
-              setCatalogLoading(false),
+              setGeneralLoading(false),
             ),
           ),
         );

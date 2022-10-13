@@ -4,7 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import {
   setCatalogSorting,
-  setCatalogLoading,
+  setGeneralLoading,
 } from 'models/actions/catalogActions';
 import { catalogSorting } from 'models/selectors/catalogSelectors';
 import React from 'react';
@@ -25,7 +25,7 @@ const SortingCatalog = () => {
           value={sorting}
           label="Ταξινόμηση"
           onChange={(e) => {
-            dispatch(setCatalogLoading(true));
+            dispatch(setGeneralLoading(true));
             dispatch(setCatalogSorting(e.target.value));
           }}>
           <MenuItem value={1}>Ανά τιμή (αύξουσα)</MenuItem>

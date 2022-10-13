@@ -1,6 +1,7 @@
 import makeRequest from 'library/makeRequest';
 import transformErrorMessages from 'library/transformErrorMessages';
 import { toggleShowAlert } from 'models/actions/alertActions';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   getPaymentMethods,
   setPaymentMethods,
@@ -16,7 +17,6 @@ import {
   setOrderOk,
   setCanSeeSuccessPage,
 } from 'models/actions/checkoutActions';
-import { shippingMethods } from 'models/selectors/checkoutSelectors';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import {
@@ -248,6 +248,7 @@ const sendOrderEpic = (action$, state$) =>
           concatMap((payload) => {
             if (payload?.error) {
               return [
+                setGeneralLoading(false),
                 toggleShowAlert({
                   message: transformErrorMessages(payload?.error?.details),
                   type: 'error',

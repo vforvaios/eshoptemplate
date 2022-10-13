@@ -9,7 +9,7 @@ const setFilterCategories = createAction('catalog/setFilterCategories');
 const setSelectedFilter = createAction('catalog/setSelectedFilter');
 const setCatalogProducts = createAction('catalog/setCatalogProducts');
 const getInitialCatalog = createAction('catalog/getInitialCatalog');
-const setCatalogLoading = createAction('catalog/setCatalogLoading');
+const setGeneralLoading = createAction('catalog/setGeneralLoading');
 const removeSelectedFilter = createAction('catalog/removeSelectedFilter');
 const setFilterBrands = createAction('catalog/setFilterBrands');
 const getPricesRange = createAction('catalog/getPricesRange');
@@ -32,7 +32,7 @@ export {
   setSelectedFilter,
   setCatalogProducts,
   getInitialCatalog,
-  setCatalogLoading,
+  setGeneralLoading,
   removeSelectedFilter,
   setFilterBrands,
   getPricesRange,

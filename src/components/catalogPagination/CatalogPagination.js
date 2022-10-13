@@ -1,7 +1,7 @@
 import Pagination from '@material-ui/lab/Pagination';
 import {
   setCurrentCatalogPage,
-  setCatalogLoading,
+  setGeneralLoading,
 } from 'models/actions/catalogActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -17,7 +17,7 @@ const CatalogPagination = ({ pagination, setPage }) => {
         showFirstButton
         showLastButton
         onChange={(e, value) => {
-          dispatch(setCatalogLoading(true));
+          dispatch(setGeneralLoading(true));
           dispatch(setCurrentCatalogPage(Number(value)));
         }}
       />
