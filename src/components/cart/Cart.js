@@ -13,8 +13,8 @@ const Cart = () => {
     <div className="content cart-page">
       <div className="row">
         <div className="wrapper">
-          <div className="page-title text-center">
-            <h1>Το καλάθι μου</h1>
+          <div className="text-center">
+            <h1 className="page-title">Το καλάθι μου</h1>
             <div className="total-cart-items">
               {myCart?.reduce((acc, curr) => {
                 acc = Number(acc) + Number(curr?.total);

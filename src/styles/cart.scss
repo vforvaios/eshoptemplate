@@ -70,30 +70,3 @@
     right: 0;
   }
 }
-
-.usermenu-list {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: -140px;
-  background: $white;
-  min-width: 200px;
-  padding: 20px;
-  z-index: 1;
-  margin: 0;
-  list-style-type: none;
-  cursor: pointer;
-
-  li {
-    color: $color-4;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      color: $color-1;
-    }
-  }
-
-  &.show {
-    display: block;
-  }
-}

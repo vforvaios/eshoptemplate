@@ -13,3 +13,42 @@
   color: $alert;
   margin-top: 8px;
 }
+
+.usermenu-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -140px;
+  background: $white;
+  min-width: 200px;
+  padding: 20px;
+  z-index: 1;
+  margin: 0;
+  list-style-type: none;
+  cursor: pointer;
+
+  li,
+  li a {
+    color: $color-4 !important;
+    transition: all 0.2s ease-in-out !important;
+    margin-bottom: 12px !important;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 0;
+
+    &.userLoggedIn {
+      font-weight: 700;
+      font-size: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $shadow;
+    }
+
+    &:hover {
+      color: $color-1 !important;
+    }
+  }
+
+  &.show {
+    display: block;
+  }
+}
