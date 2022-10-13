@@ -66,20 +66,20 @@ const addProductWishlistEpic = (action$, state$) =>
 
         return from(
           makeRequest(
-            'addwishlist',
+            'wishlist/add',
             'POST',
             JSON.stringify({ productId }),
             token,
           ),
         ).pipe(
-          concatMap((payload) => {
-            debugger;
-
-            return [
-              toggleLoader(false),
-              toggleShowAlert({ message: '', show: false, type: 'error' }),
-            ];
-          }),
+          concatMap((payload) => [
+            toggleLoader(false),
+            toggleShowAlert({
+              message: payload.message,
+              show: true,
+              type: 'success',
+            }),
+          ]),
           catchError((error) =>
             of(
               toggleShowAlert({
