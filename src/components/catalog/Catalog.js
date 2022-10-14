@@ -1,6 +1,7 @@
 import CatalogPagination from 'components/catalogPagination/CatalogPagination';
 import Filters from 'components/filters/Filters';
 import Product from 'components/product/Product';
+import SEO from 'components/seo/SEO';
 import SortingCatalog from 'components/sortingCatalog/SortingCatalog';
 import {
   getInitialCatalog,
@@ -30,6 +31,12 @@ const Catalog = () => {
 
   return (
     <>
+      <SEO
+        title="Shoppy catalog"
+        description="Shoppy catalog with filters"
+        name="Shoppy"
+        type="article"
+      />
       {loading && <GeneralLoading />}
       <div className="row catalog content">
         <div className="wrapper">

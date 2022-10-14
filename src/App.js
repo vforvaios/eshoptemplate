@@ -20,6 +20,7 @@ import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
 import { user } from 'models/selectors/userSelector';
 import React from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'fontello/css/fontello.css';
@@ -28,7 +29,7 @@ const App = () => {
   const userSelector = useSelector(user);
 
   return (
-    <>
+    <HelmetProvider>
       <Router>
         <Header />
         <Routes>
@@ -73,7 +74,7 @@ const App = () => {
       </Router>
       <Alert />
       <Loader />
-    </>
+    </HelmetProvider>
   );
 };
 
