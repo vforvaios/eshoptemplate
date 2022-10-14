@@ -1,4 +1,5 @@
 import MyCart from 'components/cart/MyCart';
+import SEO from 'components/seo/SEO';
 import { cart } from 'models/selectors/cartSelectors';
 import { token } from 'models/selectors/userSelector';
 import React from 'react';
@@ -11,6 +12,12 @@ const Cart = () => {
 
   return (
     <div className="content cart-page">
+      <SEO
+        title="Shoppy cart"
+        description="Shoppy cart page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="text-center">

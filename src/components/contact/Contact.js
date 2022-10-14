@@ -1,6 +1,7 @@
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import SEO from 'components/seo/SEO';
 import React, { useState } from 'react';
 
 const Contact = () => {
@@ -17,6 +18,12 @@ const Contact = () => {
 
   return (
     <div className="content contact-page">
+      <SEO
+        title="Shoppy contact"
+        description="Shoppy contact page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">

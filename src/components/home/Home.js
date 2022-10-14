@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import withStyles from '@material-ui/core/styles/withStyles';
+import SEO from 'components/seo/SEO';
 import { getHomePageData } from 'models/actions/homeActions';
 import { homeOffers } from 'models/selectors/homeSelectors';
 import React, { useEffect } from 'react';
@@ -18,16 +19,24 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="homeBG">
-      <div className="row">
-        <HomeSlider />
-      </div>
-      <div className="row">
-        <div className="wrapper">
-          <HomeOffersTabs offers={offers} />
+    <>
+      <SEO
+        title="Shoppy home page"
+        description="Shoppy home page"
+        name="Shoppy"
+        type="article"
+      />
+      <div className="homeBG">
+        <div className="row">
+          <HomeSlider />
+        </div>
+        <div className="row">
+          <div className="wrapper">
+            <HomeOffersTabs offers={offers} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

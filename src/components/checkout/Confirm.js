@@ -1,5 +1,6 @@
 import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
+import SEO from 'components/seo/SEO';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import { sendOrder } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
@@ -33,6 +34,12 @@ const Confirm = () => {
     <>
       {loading && <GeneralLoading />}
       <div className="content checkout step3">
+        <SEO
+          title="Shoppy checkout step 3"
+          description="Shoppy checkout step 3 page"
+          name="Shoppy"
+          type="article"
+        />
         <div className="row">
           <div className="wrapper">
             <div className="text-center">

@@ -1,6 +1,7 @@
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import SEO from 'components/seo/SEO';
 import { toggleLoader } from 'models/actions/loaderActions';
 import { loginUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
@@ -44,6 +45,12 @@ const Login = () => {
 
   return (
     <div className="content user">
+      <SEO
+        title="Shoppy login"
+        description="Shoppy login page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className=" text-center">

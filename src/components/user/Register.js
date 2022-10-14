@@ -1,6 +1,7 @@
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import SEO from 'components/seo/SEO';
 import { registerUser } from 'models/actions/userActions';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -48,6 +49,12 @@ const Register = () => {
 
   return (
     <div className="content user">
+      <SEO
+        title="Shoppy register"
+        description="Shoppy register page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="text-center">

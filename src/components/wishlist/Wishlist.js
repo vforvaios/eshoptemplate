@@ -1,4 +1,5 @@
 import Product from 'components/product/Product';
+import SEO from 'components/seo/SEO';
 import { toggleLoader } from 'models/actions/loaderActions';
 import { getWishlist } from 'models/actions/wishlistActions';
 import { wishlistProducts } from 'models/selectors/wishlistSelectors';
@@ -16,6 +17,12 @@ const Wishlist = () => {
 
   return (
     <div className="content wishlist">
+      <SEO
+        title="Shoppy wishlist"
+        description="Shoppy wishlist page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="text-center">

@@ -1,9 +1,16 @@
+import SEO from 'components/seo/SEO';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PageNotFound = () => {
   return (
     <div className="notfound content">
+      <SEO
+        title="Shoppy not-found"
+        description="Shoppy not-found page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="page-not-found-countainer">

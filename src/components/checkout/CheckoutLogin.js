@@ -1,3 +1,4 @@
+import SEO from 'components/seo/SEO';
 import Login from 'components/user/Login';
 import React from 'react';
 
@@ -7,6 +8,12 @@ import GuestCheckout from './GuestCheckout';
 const CheckoutLogin = () => {
   return (
     <div className="content checkout step3">
+      <SEO
+        title="Shoppy checkout step 1"
+        description="Shoppy checkout step 1 page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="text-center">

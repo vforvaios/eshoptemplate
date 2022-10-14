@@ -1,3 +1,4 @@
+import SEO from 'components/seo/SEO';
 import React from 'react';
 
 const arr = [1, 2, 3, 4, 5, 6, 7];
@@ -5,6 +6,12 @@ const arr = [1, 2, 3, 4, 5, 6, 7];
 const CategoriesLanding = () => {
   return (
     <div className="content categories-page">
+      <SEO
+        title="Shoppy categories landing"
+        description="Shoppy categories landing page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">

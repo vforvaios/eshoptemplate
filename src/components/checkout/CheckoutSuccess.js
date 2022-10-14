@@ -1,3 +1,4 @@
+import SEO from 'components/seo/SEO';
 import { clearOrder } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
 import { canSeeSuccessPage } from 'models/selectors/checkoutSelectors';
@@ -23,6 +24,12 @@ const CheckoutSuccess = () => {
 
   return (
     <div className="content checkout step4">
+      <SEO
+        title="Shoppy checkout step 4"
+        description="Shoppy checkout step 4 page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="checkout-success">

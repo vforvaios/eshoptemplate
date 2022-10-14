@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RelevantProducts from 'components/relevant-products/RelevantProducts';
+import SEO from 'components/seo/SEO';
 import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
 import {
@@ -43,6 +44,12 @@ const ProductPage = () => {
 
   return (
     <div className="productPage content">
+      <SEO
+        title="Shoppy product"
+        description="Shoppy product page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <Grid container>

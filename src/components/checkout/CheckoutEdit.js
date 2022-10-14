@@ -1,3 +1,4 @@
+import SEO from 'components/seo/SEO';
 import { checkOrderInfo } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
 import React, { useEffect } from 'react';
@@ -23,6 +24,12 @@ const CheckoutEdit = () => {
 
   return (
     <div className="content checkout step3">
+      <SEO
+        title="Shoppy checkout step 3"
+        description="Shoppy checkout step 3 page"
+        name="Shoppy"
+        type="article"
+      />
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
