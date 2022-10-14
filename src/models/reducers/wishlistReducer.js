@@ -3,12 +3,12 @@ import { createReducer } from '@reduxjs/toolkit';
 import { setWishlist } from 'models/actions/wishlistActions';
 
 const initialState = {
-  wishlist: {},
+  wishlist: [],
 };
 const wishlistReducer = createReducer(initialState, {
   [setWishlist.type]: (state, action) => ({
     ...state,
-    wishlist: action.payload,
+    wishlist: action.payload.results,
   }),
 });
 

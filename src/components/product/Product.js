@@ -6,17 +6,21 @@ import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
-import { addProductWishlist } from 'models/actions/wishlistActions';
+import {
+  addProductWishlist,
+  removeProductWishlist,
+} from 'models/actions/wishlistActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styles from './styles';
 
-const Product = ({ classes, product }) => {
+const Product = ({ classes, product, isWishlist }) => {
   const {
     productId,
     productTitle,
@@ -83,15 +87,27 @@ const Product = ({ classes, product }) => {
             }}>
             ΑΓΟΡΑ
           </button>
-          <IconButton
-            className="product-action"
-            aria-label="add to favorites"
-            onClick={(e) => {
-              e.preventDefault();
-              dispatch(addProductWishlist(productId));
-            }}>
-            <FavoriteBorderIcon />
-          </IconButton>
+          {!isWishlist ? (
+            <IconButton
+              className="product-action"
+              aria-label="add to favorites"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(addProductWishlist(productId));
+              }}>
+              <FavoriteBorderIcon />
+            </IconButton>
+          ) : (
+            <IconButton
+              className="product-action"
+              aria-label="remove from favorites"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(removeProductWishlist(productId));
+              }}>
+              <DeleteForeverIcon />
+            </IconButton>
+          )}
         </CardActions>
       </Card>
     </Link>

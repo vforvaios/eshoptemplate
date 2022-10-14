@@ -1,4 +1,3 @@
-const wishlistProducts = ({ wishlistReducer }) =>
-  wishlistReducer.wishlist.results;
+const wishlistProducts = ({ wishlistReducer }) => wishlistReducer.wishlist;
 
 export { wishlistProducts };

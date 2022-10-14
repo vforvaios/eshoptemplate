@@ -18,23 +18,31 @@ const Wishlist = () => {
     <div className="content wishlist">
       <div className="row">
         <div className="wrapper">
-          <div className="page-title text-center">
-            <h1>ΑΓΑΠΗΜΕΝΑ</h1>
+          <div className="text-center">
+            <h1 className="page-title">ΑΓΑΠΗΜΕΝΑ</h1>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="wrapper">
           <div className="grid-container catalog-container">
-            <div className="products">
-              <ul className="products-grid">
-                {products?.map((product) => (
-                  <li key={product.productId}>
-                    <Product product={product} />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {products?.length > 0 ? (
+              <div className="products">
+                <ul className="products-grid">
+                  {products?.map((product) => (
+                    <li key={product.productId}>
+                      <Product isWishlist product={product} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <div className="products">
+                <h3 className="no-products">
+                  Δεν έχετε αγαπημένα προϊόντα στη λίστα!
+                </h3>
+              </div>
+            )}
           </div>
         </div>
       </div>

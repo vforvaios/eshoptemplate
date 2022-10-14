@@ -5,8 +5,10 @@ import {
   getWishlist,
   setWishlist,
   addProductWishlist,
+  removeProductWishlist,
 } from 'models/actions/wishlistActions';
 import { token } from 'models/selectors/userSelector';
+import { wishlistProducts } from 'models/selectors/wishlistSelectors';
 import { ofType, combineEpics } from 'redux-observable';
 import { messages } from 'resources/constants';
 import { from, of } from 'rxjs';
@@ -52,6 +54,7 @@ const addProductWishlistEpic = (action$, state$) =>
           userReducer: {
             user: { token },
           },
+          wishlistReducer: { wishlist },
         },
       ]) => {
         if (!token) {
@@ -72,14 +75,16 @@ const addProductWishlistEpic = (action$, state$) =>
             token,
           ),
         ).pipe(
-          concatMap((payload) => [
-            toggleLoader(false),
-            toggleShowAlert({
-              message: payload.message,
-              show: true,
-              type: 'success',
-            }),
-          ]),
+          concatMap((payload) => {
+            return [
+              toggleLoader(false),
+              toggleShowAlert({
+                message: payload.message,
+                show: true,
+                type: 'success',
+              }),
+            ];
+          }),
           catchError((error) =>
             of(
               toggleShowAlert({
@@ -95,8 +100,73 @@ const addProductWishlistEpic = (action$, state$) =>
     ),
   );
 
-export { getWishlistEpic, addProductWishlistEpic };
+const removeProductWishlistEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(removeProductWishlist.type),
+    withLatestFrom(state$),
+    mergeMap(
+      ([
+        { payload },
+        {
+          userReducer: {
+            user: { token },
+          },
+        },
+      ]) => {
+        if (!token) {
+          return toggleShowAlert({
+            message: messages.loginFirst,
+            show: true,
+            type: 'error',
+          });
+        }
 
-const epics = combineEpics(getWishlistEpic, addProductWishlistEpic);
+        const productId = payload;
+
+        return from(
+          makeRequest(
+            'wishlist/remove',
+            'DELETE',
+            JSON.stringify({ productId }),
+            token,
+          ),
+        ).pipe(
+          concatMap((payload) => {
+            const newWishlistItems = wishlistProducts(state$.value)?.filter(
+              (wi) => wi.productId !== productId,
+            );
+
+            return [
+              toggleLoader(false),
+              setWishlist({ results: newWishlistItems }),
+              toggleShowAlert({
+                message: payload.message,
+                show: true,
+                type: 'success',
+              }),
+            ];
+          }),
+          catchError((error) =>
+            of(
+              toggleShowAlert({
+                message: `${error}`,
+                type: 'error',
+                show: true,
+              }),
+              toggleLoader(false),
+            ),
+          ),
+        );
+      },
+    ),
+  );
+
+export { getWishlistEpic, addProductWishlistEpic, removeProductWishlistEpic };
+
+const epics = combineEpics(
+  getWishlistEpic,
+  addProductWishlistEpic,
+  removeProductWishlistEpic,
+);
 
 export default epics;
