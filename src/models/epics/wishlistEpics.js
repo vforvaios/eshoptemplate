@@ -1,5 +1,6 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import { toggleLoader } from 'models/actions/loaderActions';
 import {
   getWishlist,
@@ -83,6 +84,7 @@ const addProductWishlistEpic = (action$, state$) =>
                 show: true,
                 type: 'success',
               }),
+              setGeneralLoading(false),
             ];
           }),
           catchError((error) =>
@@ -93,6 +95,7 @@ const addProductWishlistEpic = (action$, state$) =>
                 show: true,
               }),
               toggleLoader(false),
+              setGeneralLoading(false),
             ),
           ),
         );
@@ -144,6 +147,7 @@ const removeProductWishlistEpic = (action$, state$) =>
                 show: true,
                 type: 'success',
               }),
+              setGeneralLoading(false),
             ];
           }),
           catchError((error) =>
@@ -154,6 +158,7 @@ const removeProductWishlistEpic = (action$, state$) =>
                 show: true,
               }),
               toggleLoader(false),
+              setGeneralLoading(false),
             ),
           ),
         );

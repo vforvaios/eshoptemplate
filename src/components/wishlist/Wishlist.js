@@ -1,13 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import GeneralLoading from 'components/loader/GeneralLoading';
 import Product from 'components/product/Product';
 import SEO from 'components/seo/SEO';
 import { toggleLoader } from 'models/actions/loaderActions';
 import { getWishlist } from 'models/actions/wishlistActions';
+import { catalogIsLoading } from 'models/selectors/catalogSelectors';
 import { wishlistProducts } from 'models/selectors/wishlistSelectors';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Wishlist = () => {
   const products = useSelector(wishlistProducts);
+  const loading = useSelector(catalogIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,6 +21,7 @@ const Wishlist = () => {
 
   return (
     <div className="content wishlist">
+      {loading && <GeneralLoading />}
       <SEO
         title="Shoppy wishlist"
         description="Shoppy wishlist page"

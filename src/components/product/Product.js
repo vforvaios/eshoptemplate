@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -10,12 +11,14 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   addProductWishlist,
   removeProductWishlist,
 } from 'models/actions/wishlistActions';
+import { catalogIsLoading } from 'models/selectors/catalogSelectors';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styles from './styles';
@@ -34,6 +37,7 @@ const Product = ({ classes, product, isWishlist }) => {
   } = product;
 
   const dispatch = useDispatch();
+  const loading = useSelector(catalogIsLoading);
 
   return (
     <Link className="navlink product" to={`/product/${productId}`}>
@@ -93,6 +97,7 @@ const Product = ({ classes, product, isWishlist }) => {
               aria-label="add to favorites"
               onClick={(e) => {
                 e.preventDefault();
+                dispatch(setGeneralLoading(true));
                 dispatch(addProductWishlist(productId));
               }}>
               <FavoriteBorderIcon />
@@ -103,6 +108,7 @@ const Product = ({ classes, product, isWishlist }) => {
               aria-label="remove from favorites"
               onClick={(e) => {
                 e.preventDefault();
+                dispatch(setGeneralLoading(true));
                 dispatch(removeProductWishlist(productId));
               }}>
               <DeleteForeverIcon />
