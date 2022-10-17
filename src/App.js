@@ -11,13 +11,14 @@ import Contact from 'components/contact/Contact';
 import Footer from 'components/footer/Footer';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
-import Loader from 'components/loader/Loader';
+import GeneralLoading from 'components/loader/GeneralLoading';
 import PageNotFound from 'components/pagenotfound/PageNotFound';
 import ProductPage from 'components/product-page/ProductPage';
 import ProtectedRoute from 'components/protected-route/ProtectedRoute';
 import Login from 'components/user/Login';
 import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
+import { catalogIsLoading } from 'models/selectors/catalogSelectors';
 import { user } from 'models/selectors/userSelector';
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
@@ -27,6 +28,7 @@ import 'fontello/css/fontello.css';
 
 const App = () => {
   const userSelector = useSelector(user);
+  const loading = useSelector(catalogIsLoading);
 
   return (
     <HelmetProvider>
@@ -73,7 +75,7 @@ const App = () => {
         <Footer />
       </Router>
       <Alert />
-      <Loader />
+      {loading && <GeneralLoading />}
     </HelmetProvider>
   );
 };

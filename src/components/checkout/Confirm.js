@@ -81,7 +81,10 @@ const Confirm = () => {
                 <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
               </button>
               <button
-                onClick={() => dispatch(sendOrder())}
+                onClick={() => {
+                  dispatch(setGeneralLoading(true));
+                  dispatch(sendOrder());
+                }}
                 className="button next">
                 ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
               </button>

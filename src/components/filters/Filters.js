@@ -130,6 +130,7 @@ const Filters = () => {
                   );
                 }}
                 onChangeCommitted={(event, value) => {
+                  dispatch(setGeneralLoading(true));
                   dispatch(getCatalogWithPrices());
                 }}
                 valueLabelDisplay="on"

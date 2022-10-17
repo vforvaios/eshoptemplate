@@ -1,6 +1,6 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
-import { toggleLoader } from 'models/actions/loaderActions';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   loginUser,
   setLoggedInUser,
@@ -17,7 +17,7 @@ const loginUserEpic = (action$) =>
     mergeMap(({ payload }) =>
       from(makeRequest('login', 'POST', JSON.stringify(payload))).pipe(
         concatMap((payload) => [
-          toggleLoader(false),
+          setGeneralLoading(false),
           setLoggedInUser(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
@@ -28,7 +28,7 @@ const loginUserEpic = (action$) =>
               type: 'error',
               show: true,
             }),
-            toggleLoader(false),
+            setGeneralLoading(false),
           ),
         ),
       ),

@@ -2,7 +2,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import SEO from 'components/seo/SEO';
-import { toggleLoader } from 'models/actions/loaderActions';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import { loginUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
 import React, { useState, useEffect } from 'react';
@@ -34,7 +34,7 @@ const Login = () => {
     if (email !== '' && password !== '') {
       const data = { username: email, password };
 
-      dispatch(toggleLoader(true));
+      dispatch(setGeneralLoading(true));
       dispatch(loginUser(data));
     }
   };
