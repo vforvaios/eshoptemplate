@@ -22,6 +22,7 @@ const Confirm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    dispatch(setGeneralLoading(false));
     if (myCart?.length === 0) {
       navigate('/');
     }
