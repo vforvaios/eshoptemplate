@@ -1,27 +1,36 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import CloseIcon from '@material-ui/icons/Close';
 import Search from 'components/searchHeader/Search';
+import {
+  setSelectedFilter,
+  setGeneralLoading,
+} from 'models/actions/catalogActions';
 import { getCategoriesMenu } from 'models/actions/categoriesActions';
 import { categories } from 'models/selectors/categoriesSelectors';
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from 'resources/images/logo.jpg';
 
 const MainMenu = ({ setToggleValue }) => {
   const allCategories = useSelector(categories);
-
+  const navigate = useNavigate();
+  const myCloseMenuBtn = useRef(null);
   const dispatch = useDispatch();
   const [openSubMenu, setOpenSubMenu] = useState(undefined);
 
   useEffect(() => {
     dispatch(getCategoriesMenu());
-  }, []);
+  }, [``]);
 
   return (
     <div className="main-menu">
       <div className="main-menu-header">
         <img src={logo} alt="fasdf" className="logo-image" />
-        <CloseIcon onClick={setToggleValue('left', false)} />
+        <CloseIcon
+          onClick={setToggleValue('left', false)}
+          ref={myCloseMenuBtn}
+        />
       </div>
       <div className="main-menu-search-container">
         <Search />
@@ -30,7 +39,28 @@ const MainMenu = ({ setToggleValue }) => {
         <ul className="menu-list">
           {allCategories?.map((category) => (
             <li className="menu-item" key={category?.id}>
-              <span className="menu-item-category">{category?.name}</span>
+              <span
+                className="menu-item-category"
+                onClick={() => {
+                  dispatch(setGeneralLoading(true));
+                  dispatch(
+                    setSelectedFilter({
+                      type: 'selectedCategory',
+                      value: category?.id,
+                    }),
+                  );
+                  navigate('./catalog');
+                  myCloseMenuBtn.current.dispatchEvent(
+                    new MouseEvent('click', {
+                      view: window,
+                      bubbles: true,
+                      cancelable: true,
+                      buttons: 1,
+                    }),
+                  );
+                }}>
+                {category?.name}
+              </span>
               {category?.subCategories?.length > 0 && (
                 <>
                   <span
@@ -47,7 +77,28 @@ const MainMenu = ({ setToggleValue }) => {
                       openSubMenu === category?.id && 'open'
                     }`}>
                     {category?.subCategories?.map((subCategory) => (
-                      <div key={subCategory.id}>{subCategory?.name}</div>
+                      <div
+                        key={subCategory.id}
+                        onClick={() => {
+                          dispatch(setGeneralLoading(true));
+                          dispatch(
+                            setSelectedFilter({
+                              type: 'selectedCategory',
+                              value: category?.id,
+                            }),
+                          );
+                          navigate('./catalog');
+                          myCloseMenuBtn.current.dispatchEvent(
+                            new MouseEvent('click', {
+                              view: window,
+                              bubbles: true,
+                              cancelable: true,
+                              buttons: 1,
+                            }),
+                          );
+                        }}>
+                        {subCategory?.name}
+                      </div>
                     ))}
                   </div>
                 </>

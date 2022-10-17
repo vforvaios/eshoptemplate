@@ -33,7 +33,6 @@ const Confirm = () => {
 
   return (
     <>
-      {loading && <GeneralLoading />}
       <div className="content checkout step3">
         <SEO
           title="Shoppy checkout step 3"
