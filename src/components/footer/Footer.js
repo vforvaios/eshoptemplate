@@ -1,10 +1,16 @@
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import React from 'react';
+import { setGeneralLoading } from 'models/actions/catalogActions';
+import { addNewsletterUser } from 'models/actions/userActions';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const dispatch = useDispatch();
+
   return (
     <footer>
       <div className="footer-container">
@@ -14,7 +20,7 @@ const Footer = () => {
               <div className="footer-newsletter">
                 <div className="title">NEWSLETTER</div>
                 <div>
-                  <FormControl fullWidth>
+                  <FormControl fullWidth className="newsletter-form">
                     <InputLabel htmlFor="newsletter">
                       Εγγραφή στο newsletter...
                     </InputLabel>
@@ -22,10 +28,18 @@ const Footer = () => {
                       fullWidth
                       id="newsletter"
                       type="email"
-                      value=""
+                      value={newsletterEmail}
                       // error={}
-                      onChange={() => {}}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
                     />
+                    <button
+                      className="button next"
+                      onClick={() => {
+                        dispatch(setGeneralLoading(true));
+                        dispatch(addNewsletterUser(newsletterEmail));
+                      }}>
+                      Εγγραφή
+                    </button>
                     {/* {emailError !== '' && (
                       <span className="error-span">{emailError}</span>
                     )} */}

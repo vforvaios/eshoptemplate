@@ -5,5 +5,12 @@ const logoutUser = createAction('user/logoutUser');
 const registerUser = createAction('user/registerUser');
 
 const setLoggedInUser = createAction('user/setLoggedInUser');
+const addNewsletterUser = createAction('user/addNewsletterUser');
 
-export { setLoggedInUser, loginUser, logoutUser, registerUser };
+export {
+  setLoggedInUser,
+  loginUser,
+  logoutUser,
+  registerUser,
+  addNewsletterUser,
+};
