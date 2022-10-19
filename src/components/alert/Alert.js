@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { toggleShowAlert } from 'models/actions/alertActions';
@@ -27,7 +28,6 @@ const Alert = () => {
     }
   }, [show]);
 
-  // return <div className={`alert ${type} ${show && 'show'}`}>{message}</div>;
   return (
     <Snackbar
       open={show}
