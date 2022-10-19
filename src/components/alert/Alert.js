@@ -1,3 +1,5 @@
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import {
   alertMessage,
@@ -25,7 +27,22 @@ const Alert = () => {
     }
   }, [show]);
 
-  return <div className={`alert ${type} ${show && 'show'}`}>{message}</div>;
+  // return <div className={`alert ${type} ${show && 'show'}`}>{message}</div>;
+  return (
+    <Snackbar
+      open={show}
+      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      autoHideDuration={Number(process.env.REACT_APP_CLOSE_ALERT)}
+      onClose={() => dispatch(toggleShowAlert({ message: '', show: false }))}>
+      <MuiAlert
+        elevation={6}
+        variant="filled"
+        onClose={() => dispatch(toggleShowAlert({ message: '', show: false }))}
+        severity={type}>
+        {message}
+      </MuiAlert>
+    </Snackbar>
+  );
 };
 
 export default Alert;
