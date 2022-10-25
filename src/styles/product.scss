@@ -1,6 +1,7 @@
 .card-actions {
   align-items: center !important;
   justify-content: space-between;
+  cursor: default;
 
   &.loading-actions {
     position: relative;

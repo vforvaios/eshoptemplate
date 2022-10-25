@@ -113,7 +113,7 @@ const removeItemFromCartEpic = (action$, state$) =>
 
         const newCart = cart?.filter((item) => item?.productId !== productId);
 
-        if (cart.length === 0) {
+        if (newCart.length === 0) {
           return [
             setCart(newCart),
             setUpdatedProducts(false),
@@ -122,8 +122,8 @@ const removeItemFromCartEpic = (action$, state$) =>
         }
 
         if (
-          cart.length > 0 &&
-          cart.filter((pr) => pr.total === 0)?.length === 0
+          newCart.length > 0 &&
+          newCart.filter((pr) => pr.total === 0)?.length === 0
         ) {
           return [setCart(newCart), setUpdatedProducts(false)];
         }

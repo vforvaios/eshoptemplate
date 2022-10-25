@@ -83,14 +83,18 @@ const Product = ({ classes, product, isWishlist }) => {
           </p>
         </CardContent>
         <CardActions disableSpacing className="card-actions">
-          <button
-            className="add-to-cart"
-            onClick={(e) => {
-              e.preventDefault();
-              dispatch(addToCart(product));
-            }}>
-            ΑΓΟΡΑ
-          </button>
+          {stock > 0 ? (
+            <button
+              className="add-to-cart"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(addToCart(product));
+              }}>
+              ΑΓΟΡΑ
+            </button>
+          ) : (
+            <span>&nbsp;</span>
+          )}
           {!isWishlist ? (
             <IconButton
               className="product-action"
