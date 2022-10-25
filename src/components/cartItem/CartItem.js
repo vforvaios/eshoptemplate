@@ -2,6 +2,7 @@ import IconButton from '@material-ui/core/IconButton';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
+import ToolTip from '@material-ui/core/ToolTip';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import {
   removeItemFromCart,
@@ -51,9 +52,17 @@ const CartItem = ({ updateable, item }) => {
       <TableCell className={!updateable ? 'not-updateable' : null}>
         <span className="hidden">ΤΙΜΗ</span>
         <span>
-          <strong className="totalPrice">{item.totalPrice} </strong>
+          <strong className="totalPrice">{item.price * item.total} </strong>
           {`(${item.total}x${item.price})`}
         </span>
+        {!updateable && item.total === 0 && (
+          <ToolTip title="Δεν υπάρχει πλέον διαθέσιμο το προϊόν. Παρακαλώ διαγράψτε το για να συνεχίσετε.">
+            <i
+              onClick={() => dispatch(removeItemFromCart(item.productId))}
+              className="icon-cancel-circled removeCancel"
+            />
+          </ToolTip>
+        )}
       </TableCell>
       {updateable && (
         <TableCell>

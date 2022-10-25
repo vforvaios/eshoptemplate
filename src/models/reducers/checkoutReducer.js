@@ -10,9 +10,11 @@ import {
   setCheckoutError,
   setOrderOk,
   setCanSeeSuccessPage,
+  setUpdatedProducts,
 } from 'models/actions/checkoutActions';
 
 const initialState = {
+  updatedProducts: false,
   billingErrors: [],
   shippingErrors: [],
   paymentMethods: [],
@@ -46,6 +48,10 @@ const initialState = {
 };
 
 const checkoutReducer = createReducer(initialState, {
+  [setUpdatedProducts.type]: (state, action) => ({
+    ...state,
+    updatedProducts: action.payload,
+  }),
   [setPaymentMethods.type]: (state, action) => ({
     ...state,
     paymentMethods: action.payload,

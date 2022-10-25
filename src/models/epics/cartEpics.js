@@ -6,7 +6,9 @@ import {
   addToCart,
   removeItemFromCart,
   updateCartItemTotal,
+  navigateBackToCart,
 } from 'models/actions/cartActions';
+import { setUpdatedProducts } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import {
@@ -100,7 +102,7 @@ const removeItemFromCartEpic = (action$, state$) =>
   action$.pipe(
     ofType(removeItemFromCart.type),
     withLatestFrom(state$),
-    map(
+    concatMap(
       ([
         { payload },
         {
@@ -111,7 +113,22 @@ const removeItemFromCartEpic = (action$, state$) =>
 
         const newCart = cart?.filter((item) => item?.productId !== productId);
 
-        return setCart(newCart);
+        if (cart.length === 0) {
+          return [
+            setCart(newCart),
+            setUpdatedProducts(false),
+            navigateBackToCart(),
+          ];
+        }
+
+        if (
+          cart.length > 0 &&
+          cart.filter((pr) => pr.total === 0)?.length === 0
+        ) {
+          return [setCart(newCart), setUpdatedProducts(false)];
+        }
+
+        return [setCart(newCart)];
       },
     ),
   );

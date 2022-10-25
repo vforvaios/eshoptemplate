@@ -25,9 +25,9 @@ const CatalogSelectedFilter = ({
             }}>
             <span>
               {
-                categories.find(
+                categories?.find(
                   (cat) => cat?.id === selectedFilters?.selectedCategory,
-                ).name
+                )?.name
               }
             </span>
           </li>
@@ -41,9 +41,9 @@ const CatalogSelectedFilter = ({
             }}>
             <span>
               {
-                subCategories.find(
+                subCategories?.find(
                   (cat) => cat?.id === selectedFilters?.selectedSubCategory,
-                ).name
+                )?.name
               }
             </span>
           </li>

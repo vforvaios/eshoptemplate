@@ -1,10 +1,7 @@
 import Slider from '@material-ui/core/Slider';
 import {
-  getFilterCategories,
-  getFilterBrands,
   setSelectedFilter,
   setGeneralLoading,
-  getPricesRange,
   getCatalogWithPrices,
   setSelectedFilterPriceRange,
 } from 'models/actions/catalogActions';
@@ -14,7 +11,7 @@ import {
   filterBrands,
   filterPricesRange,
 } from 'models/selectors/catalogSelectors';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CatalogSelectedFilter from './CatalogSelectedFilter';
@@ -30,12 +27,6 @@ const Filters = () => {
   const { minprice, maxprice } = pricesRange;
 
   const [toggleFilters, setToggleFilters] = useState(false);
-
-  useEffect(() => {
-    dispatch(getFilterCategories());
-    dispatch(getFilterBrands());
-    dispatch(getPricesRange());
-  }, []);
 
   return (
     <>

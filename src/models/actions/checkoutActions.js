@@ -23,6 +23,8 @@ const setCheckoutError = createAction('checkout/setCheckoutError');
 const navigateToConfirmPage = createAction('checkout/navigateToConfirmPage');
 const setOrderOk = createAction('checkout/setOrderOk');
 const setCanSeeSuccessPage = createAction('checkout/setCanSeeSuccessPage');
+const setUpdatedProducts = createAction('checkout/setUpdatedProducts');
+const updateCartProducts = createAction('checkout/updateCartProducts');
 
 export {
   getPaymentMethods,
@@ -43,4 +45,6 @@ export {
   navigateToConfirmPage,
   setOrderOk,
   setCanSeeSuccessPage,
+  setUpdatedProducts,
+  updateCartProducts,
 };

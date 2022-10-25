@@ -1,6 +1,7 @@
 import makeRequest from 'library/makeRequest';
 import transformErrorMessages from 'library/transformErrorMessages';
 import { toggleShowAlert } from 'models/actions/alertActions';
+import { setCart, navigateBackToCart } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   getPaymentMethods,
@@ -16,6 +17,8 @@ import {
   navigateToConfirmPage,
   setOrderOk,
   setCanSeeSuccessPage,
+  setUpdatedProducts,
+  updateCartProducts,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -246,6 +249,18 @@ const sendOrderEpic = (action$, state$) =>
           ),
         ).pipe(
           concatMap((payload) => {
+            if (payload?.updatedProducts) {
+              return [
+                setGeneralLoading(false),
+                toggleShowAlert({
+                  message: payload?.updatedProducts,
+                  type: 'error',
+                  show: true,
+                }),
+                setUpdatedProducts(true),
+              ];
+            }
+
             if (payload?.error) {
               return [
                 setGeneralLoading(false),
@@ -343,6 +358,74 @@ const navigateToConfirmPageEpic = (action$) =>
     ignoreElements(),
   );
 
+const updateCartProductsEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(updateCartProducts.type),
+    withLatestFrom(state$),
+    mergeMap(
+      ([
+        ,
+        {
+          cartReducer: { cart },
+        },
+      ]) => {
+        const productIds = cart?.map((prod) => prod?.productId).join(',');
+
+        return from(
+          makeRequest(
+            `products/updated/prods?products=${productIds}`,
+            'GET',
+            '',
+          ),
+        ).pipe(
+          concatMap(({ products }) => {
+            const newCart = products?.map((product) => ({
+              ...product,
+              initialPrice: product?.initialPrice,
+              price: product?.price,
+              total:
+                product?.stock === 0
+                  ? 0
+                  : product?.stock <
+                    cart?.find((pr) => pr?.productId === product?.productId)
+                      ?.total
+                  ? cart?.find((pr) => pr?.productId === product?.productId)
+                      ?.total
+                  : 1,
+            }));
+
+            return [
+              setCart(newCart),
+              toggleShowAlert({
+                message: `Ενημερώθηκαν οι τιμές και τα stock των items.`,
+                type: 'success',
+                show: true,
+              }),
+              newCart?.filter((pr) => pr?.total === 0)?.length === 0 &&
+                setUpdatedProducts(false),
+            ];
+          }),
+          catchError((error) =>
+            of(
+              toggleShowAlert({
+                message: `${error}`,
+                type: 'error',
+                show: true,
+              }),
+            ),
+          ),
+        );
+      },
+    ),
+  );
+
+const navigateBackToCartEpic = (action$) =>
+  action$.pipe(
+    ofType(navigateBackToCart.type),
+    tap(() => (window.location = '../cart')),
+    ignoreElements(),
+  );
+
 export {
   getPaymentMethodsEpic,
   checkPaymentMethodEpic,
@@ -352,6 +435,8 @@ export {
   navigateToSuccessCheckoutEpic,
   checkOrderInfoEpic,
   navigateToConfirmPageEpic,
+  updateCartProductsEpic,
+  navigateBackToCartEpic,
 };
 
 const epics = combineEpics(
@@ -363,6 +448,8 @@ const epics = combineEpics(
   navigateToSuccessCheckoutEpic,
   checkOrderInfoEpic,
   navigateToConfirmPageEpic,
+  updateCartProductsEpic,
+  navigateBackToCartEpic,
 );
 
 export default epics;

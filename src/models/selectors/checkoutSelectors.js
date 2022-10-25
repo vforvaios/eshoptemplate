@@ -16,6 +16,8 @@ const shippingErrors = ({ checkoutReducer }) => checkoutReducer.shippingErrors;
 const orderOK = ({ checkoutReducer }) => checkoutReducer.orderOK;
 const canSeeSuccessPage = ({ checkoutReducer }) =>
   checkoutReducer.canSeeSuccessPage;
+const updatedProducts = ({ checkoutReducer }) =>
+  checkoutReducer.updatedProducts;
 
 export {
   paymentMethods,
@@ -28,4 +30,5 @@ export {
   shippingErrors,
   orderOK,
   canSeeSuccessPage,
+  updatedProducts,
 };

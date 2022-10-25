@@ -5,16 +5,13 @@ import {
   setProductPage,
   getRelatedProducts,
   setRelatedProducts,
-  getFilterCategories,
   setFilterCategories,
   setSelectedFilter,
   setCatalogProducts,
   getInitialCatalog,
   setGeneralLoading,
   removeSelectedFilter,
-  getFilterBrands,
   setFilterBrands,
-  getPricesRange,
   setInitialPricesRange,
   getCatalogWithPrices,
   setCatalogSorting,
@@ -67,7 +64,7 @@ const getRelatedProductsEpic = (action$) =>
 
 const getFilterCategoriesEpic = (action$) =>
   action$.pipe(
-    ofType(getFilterCategories.type),
+    ofType(getInitialCatalog.type),
     mergeMap(() =>
       from(makeRequest('categories', 'GET', '')).pipe(
         concatMap((payload) => [
@@ -89,7 +86,7 @@ const getFilterCategoriesEpic = (action$) =>
 
 const getFilterBrandsEpic = (action$) =>
   action$.pipe(
-    ofType(getFilterBrands.type),
+    ofType(setFilterCategories.type),
     mergeMap(() =>
       from(makeRequest('brands', 'GET', '')).pipe(
         concatMap((payload) => [
@@ -111,7 +108,7 @@ const getFilterBrandsEpic = (action$) =>
 
 const getPricesRangeEpic = (action$) =>
   action$.pipe(
-    ofType(getPricesRange.type),
+    ofType(setFilterBrands.type),
     mergeMap(() =>
       from(makeRequest('prices', 'GET', '')).pipe(
         concatMap((payload) => [
@@ -135,7 +132,7 @@ const getCatalogEpic = (action$, state$) =>
   action$.pipe(
     ofType(
       setSelectedFilter.type,
-      getInitialCatalog.type,
+      setInitialPricesRange.type,
       removeSelectedFilter.type,
       getCatalogWithPrices.type,
       setCatalogSorting.type,
