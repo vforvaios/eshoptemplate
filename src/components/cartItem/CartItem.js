@@ -58,12 +58,13 @@ const CartItem = ({ updateable, item }) => {
         </span>
         {!updateable && item.total === 0 && (
           <ToolTip title="Δεν υπάρχει πλέον διαθέσιμο το προϊόν. Παρακαλώ διαγράψτε το για να συνεχίσετε.">
-            <i
+            <IconButton
               onClick={() =>
                 dispatch(removeItemFromCartWhenInCheckout(item.productId))
               }
-              className="icon-cancel-circled removeCancel"
-            />
+              className="icon-cancel-circled removeCancel">
+              <DeleteForeverIcon />
+            </IconButton>
           </ToolTip>
         )}
       </TableCell>
