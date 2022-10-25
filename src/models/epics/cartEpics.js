@@ -7,7 +7,6 @@ import {
   removeItemFromCart,
   updateCartItemTotal,
   navigateBackToCart,
-  removeItemFromCartWhenInCheckout,
 } from 'models/actions/cartActions';
 import { setUpdatedProducts } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
@@ -99,9 +98,9 @@ const addToCartEpic = (action$, state$) =>
     ),
   );
 
-const removeItemFromCartWhenInCheckoutEpic = (action$, state$) =>
+const removeItemFromCartEpic = (action$, state$) =>
   action$.pipe(
-    ofType(removeItemFromCartWhenInCheckout.type),
+    ofType(removeItemFromCart.type),
     withLatestFrom(state$),
     concatMap(
       ([
@@ -110,46 +109,29 @@ const removeItemFromCartWhenInCheckoutEpic = (action$, state$) =>
           cartReducer: { cart },
         },
       ]) => {
-        const productId = payload;
+        const productId = payload?.id;
+        const isCheckout = payload?.checkout;
 
         const newCart = cart?.filter((item) => item?.productId !== productId);
 
-        if (newCart.length === 0) {
-          return [
-            setCart(newCart),
-            setUpdatedProducts(false),
-            navigateBackToCart(),
-          ];
-        }
+        if (isCheckout) {
+          if (newCart.length === 0) {
+            return [
+              setCart(newCart),
+              setUpdatedProducts(false),
+              navigateBackToCart(),
+            ];
+          }
 
-        if (
-          newCart.length > 0 &&
-          newCart.filter((pr) => pr.total === 0)?.length === 0
-        ) {
-          return [setCart(newCart), setUpdatedProducts(false)];
+          if (
+            newCart.length > 0 &&
+            newCart.filter((pr) => pr.total === 0)?.length === 0
+          ) {
+            return [setCart(newCart), setUpdatedProducts(false)];
+          }
         }
 
         return [setCart(newCart)];
-      },
-    ),
-  );
-
-const removeItemFromCartEpic = (action$, state$) =>
-  action$.pipe(
-    ofType(removeItemFromCart.type),
-    withLatestFrom(state$),
-    map(
-      ([
-        { payload },
-        {
-          cartReducer: { cart },
-        },
-      ]) => {
-        const productId = payload;
-
-        const newCart = cart?.filter((item) => item?.productId !== productId);
-
-        return setCart(newCart);
       },
     ),
   );
@@ -182,7 +164,6 @@ export {
   getCartEpic,
   addToCartEpic,
   removeItemFromCartEpic,
-  removeItemFromCartWhenInCheckoutEpic,
   updateCartItemTotalEpic,
 };
 
@@ -190,7 +171,6 @@ const epics = combineEpics(
   getCartEpic,
   addToCartEpic,
   removeItemFromCartEpic,
-  removeItemFromCartWhenInCheckoutEpic,
   updateCartItemTotalEpic,
 );
 

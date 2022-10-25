@@ -7,7 +7,6 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import {
   removeItemFromCart,
   updateCartItemTotal,
-  removeItemFromCartWhenInCheckout,
 } from 'models/actions/cartActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -60,7 +59,9 @@ const CartItem = ({ updateable, item }) => {
           <ToolTip title="Δεν υπάρχει πλέον διαθέσιμο το προϊόν. Παρακαλώ διαγράψτε το για να συνεχίσετε.">
             <IconButton
               onClick={() =>
-                dispatch(removeItemFromCartWhenInCheckout(item.productId))
+                dispatch(
+                  removeItemFromCart({ id: item.productId, checkout: true }),
+                )
               }
               className="icon-cancel-circled removeCancel">
               <DeleteForeverIcon />
@@ -71,7 +72,11 @@ const CartItem = ({ updateable, item }) => {
       {updateable && (
         <TableCell>
           <IconButton
-            onClick={() => dispatch(removeItemFromCart(item.productId))}>
+            onClick={() =>
+              dispatch(
+                removeItemFromCart({ id: item.productId, checkout: false }),
+              )
+            }>
             <DeleteForeverIcon />
           </IconButton>
         </TableCell>
