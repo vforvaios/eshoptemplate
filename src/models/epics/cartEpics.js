@@ -7,6 +7,7 @@ import {
   removeItemFromCart,
   updateCartItemTotal,
   navigateBackToCart,
+  removeItemFromCartWhenInCheckout,
 } from 'models/actions/cartActions';
 import { setUpdatedProducts } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
@@ -98,9 +99,9 @@ const addToCartEpic = (action$, state$) =>
     ),
   );
 
-const removeItemFromCartEpic = (action$, state$) =>
+const removeItemFromCartWhenInCheckoutEpic = (action$, state$) =>
   action$.pipe(
-    ofType(removeItemFromCart.type),
+    ofType(removeItemFromCartWhenInCheckout.type),
     withLatestFrom(state$),
     concatMap(
       ([
@@ -133,6 +134,26 @@ const removeItemFromCartEpic = (action$, state$) =>
     ),
   );
 
+const removeItemFromCartEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(removeItemFromCart.type),
+    withLatestFrom(state$),
+    map(
+      ([
+        { payload },
+        {
+          cartReducer: { cart },
+        },
+      ]) => {
+        const productId = payload;
+
+        const newCart = cart?.filter((item) => item?.productId !== productId);
+
+        return setCart(newCart);
+      },
+    ),
+  );
+
 const updateCartItemTotalEpic = (action$, state$) =>
   action$.pipe(
     ofType(updateCartItemTotal.type),
@@ -161,6 +182,7 @@ export {
   getCartEpic,
   addToCartEpic,
   removeItemFromCartEpic,
+  removeItemFromCartWhenInCheckoutEpic,
   updateCartItemTotalEpic,
 };
 
@@ -168,6 +190,7 @@ const epics = combineEpics(
   getCartEpic,
   addToCartEpic,
   removeItemFromCartEpic,
+  removeItemFromCartWhenInCheckoutEpic,
   updateCartItemTotalEpic,
 );
 

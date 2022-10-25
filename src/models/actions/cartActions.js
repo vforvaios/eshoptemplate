@@ -4,6 +4,9 @@ const getCart = createAction('alert/getCart');
 const setCart = createAction('alert/setCart');
 const addToCart = createAction('alert/addToCart');
 const removeItemFromCart = createAction('alert/removeItemFromCart');
+const removeItemFromCartWhenInCheckout = createAction(
+  'alert/removeItemFromCartWhenInCheckout',
+);
 const updateCartItemTotal = createAction('alert/updateCartItemTotal');
 const navigateBackToCart = createAction('alert/navigateBackToCart');
 
@@ -14,4 +17,5 @@ export {
   removeItemFromCart,
   updateCartItemTotal,
   navigateBackToCart,
+  removeItemFromCartWhenInCheckout,
 };
