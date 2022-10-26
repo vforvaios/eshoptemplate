@@ -24,7 +24,7 @@ const initialState = {
   sorting: 1, // price asc, then price desc equals 2
   filters: {
     selectedCategory: null,
-    selectedSubCategory: null,
+    selectedBrand: null,
     selectedPriceRange: [],
   },
   catalog: {

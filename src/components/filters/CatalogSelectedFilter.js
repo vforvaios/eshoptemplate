@@ -32,17 +32,17 @@ const CatalogSelectedFilter = ({
             </span>
           </li>
         )}
-        {selectedFilters?.selectedSubCategory && (
+        {selectedFilters?.selectedBrand && (
           <li
             className="selected-filter-option"
             onClick={() => {
               dispatch(setGeneralLoading(true));
-              dispatch(removeSelectedFilter({ type: 'selectedSubCategory' }));
+              dispatch(removeSelectedFilter({ type: 'selectedBrand' }));
             }}>
             <span>
               {
                 subCategories?.find(
-                  (cat) => cat?.id === selectedFilters?.selectedSubCategory,
+                  (cat) => cat?.id === selectedFilters?.selectedBrand,
                 )?.name
               }
             </span>

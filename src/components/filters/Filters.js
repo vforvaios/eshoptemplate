@@ -41,7 +41,7 @@ const Filters = () => {
           onClick={() => setToggleFilters(!toggleFilters)}>
           ΚΛΕΙΣΙΜΟ
         </button>
-        {(allFilters?.selectedCategory || allFilters?.selectedSubCategory) && (
+        {(allFilters?.selectedCategory || allFilters?.selectedBrand) && (
           <CatalogSelectedFilter
             categories={categoriesFilters}
             subCategories={brandsFilters}
@@ -83,15 +83,13 @@ const Filters = () => {
                     dispatch(setGeneralLoading(true));
                     dispatch(
                       setSelectedFilter({
-                        type: 'selectedSubCategory',
+                        type: 'selectedBrand',
                         value: subCategory?.id,
                       }),
                     );
                   }}
                   className={`filter-option ${
-                    allFilters?.selectedSubCategory === subCategory.id
-                      ? 'active'
-                      : ''
+                    allFilters?.selectedBrand === subCategory.id ? 'active' : ''
                   }`}
                   key={subCategory?.id}>
                   {subCategory?.name}

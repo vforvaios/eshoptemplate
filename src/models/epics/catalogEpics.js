@@ -147,22 +147,18 @@ const getCatalogEpic = (action$, state$) =>
         },
       ]) => {
         let requestCategory = '';
-        let requestSubCategory = '';
+        let requestBrand = '';
         let requestPriceRange = '';
         const requestPage = catalog.pagination.currentPage;
 
-        const {
-          selectedCategory,
-          selectedSubCategory,
-          selectedPriceRange,
-        } = filters;
+        const { selectedCategory, selectedBrand, selectedPriceRange } = filters;
 
         if (selectedCategory) {
           requestCategory = selectedCategory;
         }
 
-        if (selectedSubCategory) {
-          requestSubCategory = selectedSubCategory;
+        if (selectedBrand) {
+          requestBrand = selectedBrand;
         }
 
         if (selectedPriceRange.length > 0) {
@@ -171,7 +167,7 @@ const getCatalogEpic = (action$, state$) =>
 
         return from(
           makeRequest(
-            `products?category=${requestCategory}&subCategory=${requestSubCategory}&prices=${requestPriceRange}&sort=${sorting}&page=${requestPage}`,
+            `products?category=${requestCategory}&brand=${requestBrand}&prices=${requestPriceRange}&sort=${sorting}&page=${requestPage}`,
             'GET',
             '',
           ),
