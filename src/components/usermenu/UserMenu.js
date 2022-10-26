@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import Fade from '@material-ui/core/Fade';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import { logoutUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
 import React, { useState } from 'react';
@@ -7,24 +11,37 @@ import { Link } from 'react-router-dom';
 const UserMenu = ({ token }) => {
   const dispatch = useDispatch();
   const loggedInUser = useSelector(user);
-  const [toggleUserMenu, setToggleUserMenu] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return token ? (
     <div className="usermenu-container">
-      <i
-        className="icon-user-o"
-        onClick={() => setToggleUserMenu(!toggleUserMenu)}
-      />
-      <ul className={`usermenu-list ${toggleUserMenu ? 'show' : ''}`}>
-        <li className="userLoggedIn">
+      <i className="icon-user-o" onClick={handleClick} />
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        keepMounted
+        className="user-menu"
+        TransitionComponent={Fade}>
+        <MenuItem className="userLoggedIn">
           Καλωσήρθες {loggedInUser?.userLoggedIn?.username}
-        </li>
-        <li onClick={() => setToggleUserMenu(!toggleUserMenu)}>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
           <Link to="/wishlist">Τα αγαπημένα μου</Link>
-        </li>
-        <li>Οι παραγγελίες μου</li>
-        <li onClick={() => dispatch(logoutUser())}>Εξοδος</li>
-      </ul>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <a onClick={() => dispatch(logoutUser())}>Εξοδος</a>
+        </MenuItem>
+      </Menu>
     </div>
   ) : (
     <Link to="/login" className="user-icon">

@@ -42,14 +42,6 @@ const Confirm = () => {
           <div className="wrapper">
             <div className="text-center">
               <h1 className="page-title">ΕΠΙΒΕΒΑΙΩΣΗ</h1>
-              {productsAreUpdated && (
-                <button
-                  className="button next"
-                  onClick={() => dispatch(updateCartProducts())}>
-                  <i className="icon-arrows-cw" />
-                  Ανανέωση προϊόντων
-                </button>
-              )}
             </div>
           </div>
         </div>
@@ -64,6 +56,14 @@ const Confirm = () => {
               <button className="button back">
                 <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
               </button>
+              {productsAreUpdated && (
+                <button
+                  className="button red refresh"
+                  onClick={() => dispatch(updateCartProducts())}>
+                  <i className="icon-arrows-cw" />
+                  Ανανέωση προϊόντων
+                </button>
+              )}
               <button
                 disabled={productsAreUpdated}
                 onClick={() => {

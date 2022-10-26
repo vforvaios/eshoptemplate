@@ -28,6 +28,10 @@
 
   &.red {
     background: $alert;
+
+    &.refresh {
+      color: $white;
+    }
   }
 
   &.next {
