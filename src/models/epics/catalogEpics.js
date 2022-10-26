@@ -16,6 +16,8 @@ import {
   getCatalogWithPrices,
   setCatalogSorting,
   setCurrentCatalogPage,
+  setSelectedCategory,
+  setSelectedCategoryAndSubCategory,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -137,6 +139,8 @@ const getCatalogEpic = (action$, state$) =>
       getCatalogWithPrices.type,
       setCatalogSorting.type,
       setCurrentCatalogPage.type,
+      setSelectedCategory.type,
+      setSelectedCategoryAndSubCategory.type,
     ),
     withLatestFrom(state$),
     mergeMap(
@@ -147,14 +151,24 @@ const getCatalogEpic = (action$, state$) =>
         },
       ]) => {
         let requestCategory = '';
+        let requestSubCategory = '';
         let requestBrand = '';
         let requestPriceRange = '';
         const requestPage = catalog.pagination.currentPage;
 
-        const { selectedCategory, selectedBrand, selectedPriceRange } = filters;
+        const {
+          selectedCategory,
+          selectedBrand,
+          selectedPriceRange,
+          selectedSubCategory,
+        } = filters;
 
         if (selectedCategory) {
           requestCategory = selectedCategory;
+        }
+
+        if (selectedSubCategory) {
+          requestSubCategory = selectedSubCategory;
         }
 
         if (selectedBrand) {
@@ -167,7 +181,7 @@ const getCatalogEpic = (action$, state$) =>
 
         return from(
           makeRequest(
-            `products?category=${requestCategory}&brand=${requestBrand}&prices=${requestPriceRange}&sort=${sorting}&page=${requestPage}`,
+            `products?category=${requestCategory}&subCategory=${requestSubCategory}&brand=${requestBrand}&prices=${requestPriceRange}&sort=${sorting}&page=${requestPage}`,
             'GET',
             '',
           ),

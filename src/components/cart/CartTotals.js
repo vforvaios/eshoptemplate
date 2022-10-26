@@ -10,10 +10,10 @@ import { useSelector } from 'react-redux';
 const CartTotals = ({ cart }) => {
   const smCost = useSelector(shippingMethods).find(
     (shippingmethod) => shippingmethod.checked,
-  ).cost;
+  )?.cost;
   const pmCost = useSelector(paymentMethods).find(
     (paymentmethod) => paymentmethod.checked,
-  ).cost;
+  )?.cost;
 
   return (
     <div className="cart-totals-container">
@@ -39,7 +39,10 @@ const CartTotals = ({ cart }) => {
       <div className="cart-totals-row bold">
         <span className="cart-totals-name">Σύνολο πληρωμής:</span>
         <span className="cart-totals-value">
-          {smCost + pmCost + getCartTotals(cart)}€
+          {smCost || pmCost
+            ? smCost + pmCost + getCartTotals(cart)
+            : getCartTotals(cart)}
+          €
         </span>
       </div>
     </div>

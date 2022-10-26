@@ -2,8 +2,9 @@
 import CloseIcon from '@material-ui/icons/Close';
 import Search from 'components/searchHeader/Search';
 import {
-  setSelectedFilter,
+  setSelectedCategory,
   setGeneralLoading,
+  setSelectedCategoryAndSubCategory,
 } from 'models/actions/catalogActions';
 import { getCategoriesMenu } from 'models/actions/categoriesActions';
 import { categories } from 'models/selectors/categoriesSelectors';
@@ -44,9 +45,8 @@ const MainMenu = ({ setToggleValue }) => {
                 onClick={() => {
                   dispatch(setGeneralLoading(true));
                   dispatch(
-                    setSelectedFilter({
-                      type: 'selectedCategory',
-                      value: category?.id,
+                    setSelectedCategory({
+                      category: category?.id,
                     }),
                   );
                   navigate('./catalog');
@@ -82,9 +82,9 @@ const MainMenu = ({ setToggleValue }) => {
                         onClick={() => {
                           dispatch(setGeneralLoading(true));
                           dispatch(
-                            setSelectedFilter({
-                              type: 'selectedCategory',
-                              value: category?.id,
+                            setSelectedCategoryAndSubCategory({
+                              category: category?.id,
+                              subCategory: subCategory?.id,
                             }),
                           );
                           navigate('./catalog');
@@ -107,61 +107,6 @@ const MainMenu = ({ setToggleValue }) => {
           ))}
         </ul>
       </div>
-      {/* <li>
-          <Link onClick={setToggleValue('left', false)} to="/">
-            ΑΡΧΙΚΗ
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/about">
-            ΓΙΑ ΕΜΑΣ
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/catalog">
-            ΠΡΟΙΟΝΤΑ
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/cart">
-            ΚΑΛΑΘΙ
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/contact">
-            ΕΠΙΚΟΙΝΩΝΙΑ
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/categories">
-            ΚΑΤΗΓΟΡΙΕΣ
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/checkout/confirm">
-            CHECKOUT CONFIRM
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/checkout/success">
-            CHECKOUT SUCCESS
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/wishlist">
-            ΑΓΑΠΗΜΕΝΑ
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/login">
-            ΕΙΣΟΔΟΣ
-          </Link>
-        </li>
-        <li>
-          <Link onClick={setToggleValue('left', false)} to="/register">
-            ΕΓΓΡΑΦΗ
-          </Link>
-        </li> */}
     </div>
   );
 };
