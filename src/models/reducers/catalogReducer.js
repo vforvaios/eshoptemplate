@@ -15,12 +15,14 @@ import {
   setCurrentCatalogPage,
   setSelectedCategoryAndSubCategory,
   setSelectedCategory,
+  setFilterSubCategories,
 } from 'models/actions/catalogActions';
 
 const initialState = {
   relatedProducts: [],
   singleProduct: {},
   filterCategories: [],
+  filterSubCategories: [],
   filterBrands: [],
   filterPricesRange: {},
   sorting: 1, // price asc, then price desc equals 2
@@ -53,6 +55,10 @@ const catalogReducer = createReducer(initialState, {
   [setFilterCategories.type]: (state, action) => ({
     ...state,
     filterCategories: action.payload,
+  }),
+  [setFilterSubCategories.type]: (state, action) => ({
+    ...state,
+    filterSubCategories: action.payload,
   }),
   [setSelectedFilter.type]: (state, action) => ({
     ...state,

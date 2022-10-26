@@ -9,6 +9,7 @@ const CatalogSelectedFilter = ({
   selectedFilters,
   categories,
   subCategories,
+  brands,
 }) => {
   const dispatch = useDispatch();
 
@@ -32,6 +33,22 @@ const CatalogSelectedFilter = ({
             </span>
           </li>
         )}
+        {selectedFilters?.selectedSubCategory && (
+          <li
+            className="selected-filter-option"
+            onClick={() => {
+              dispatch(setGeneralLoading(true));
+              dispatch(removeSelectedFilter({ type: 'selectedSubCategory' }));
+            }}>
+            <span>
+              {
+                subCategories?.find(
+                  (cat) => cat?.id === selectedFilters?.selectedSubCategory,
+                )?.name
+              }
+            </span>
+          </li>
+        )}
         {selectedFilters?.selectedBrand && (
           <li
             className="selected-filter-option"
@@ -41,7 +58,7 @@ const CatalogSelectedFilter = ({
             }}>
             <span>
               {
-                subCategories?.find(
+                brands?.find(
                   (cat) => cat?.id === selectedFilters?.selectedBrand,
                 )?.name
               }

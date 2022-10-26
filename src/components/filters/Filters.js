@@ -7,6 +7,7 @@ import {
 } from 'models/actions/catalogActions';
 import {
   filterCategories,
+  filterSubCategories,
   filters,
   filterBrands,
   filterPricesRange,
@@ -21,6 +22,7 @@ const valuetext = (value) => `${value}€`;
 const Filters = () => {
   const dispatch = useDispatch();
   const categoriesFilters = useSelector(filterCategories);
+  const subCategoriesFilters = useSelector(filterSubCategories);
   const brandsFilters = useSelector(filterBrands);
   const allFilters = useSelector(filters);
   const pricesRange = useSelector(filterPricesRange);
@@ -41,10 +43,13 @@ const Filters = () => {
           onClick={() => setToggleFilters(!toggleFilters)}>
           ΚΛΕΙΣΙΜΟ
         </button>
-        {(allFilters?.selectedCategory || allFilters?.selectedBrand) && (
+        {(allFilters?.selectedCategory ||
+          allFilters?.selectedSubCategory ||
+          allFilters?.selectedBrand) && (
           <CatalogSelectedFilter
             categories={categoriesFilters}
-            subCategories={brandsFilters}
+            subCategories={subCategoriesFilters}
+            brands={brandsFilters}
             selectedFilters={allFilters}
           />
         )}

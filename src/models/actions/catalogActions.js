@@ -22,6 +22,7 @@ const setCatalogSorting = createAction('catalog/setCatalogSorting');
 const setCurrentCatalogPage = createAction('catalog/setCurrentCatalogPage');
 const getFilterBrands = createAction('catalog/getFilterBrands');
 const setSelectedCategory = createAction('catalog/setSelectedCategory');
+const setFilterSubCategories = createAction('catalog/setFilterSubCategories');
 const setSelectedCategoryAndSubCategory = createAction(
   'catalog/setSelectedCategoryAndSubCategory',
 );
@@ -48,4 +49,5 @@ export {
   getFilterBrands,
   setSelectedCategoryAndSubCategory,
   setSelectedCategory,
+  setFilterSubCategories,
 };
