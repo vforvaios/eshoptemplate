@@ -1,3 +1,4 @@
+import CartTotals from 'components/cart/CartTotals';
 import MyCart from 'components/cart/MyCart';
 import SEO from 'components/seo/SEO';
 import { cart } from 'models/selectors/cartSelectors';
@@ -56,6 +57,11 @@ const Cart = () => {
           <div className="row">
             <div className="wrapper">
               <MyCart cart={myCart} updateable />
+            </div>
+          </div>
+          <div className="row">
+            <div className="wrapper">
+              <CartTotals cart={myCart} />
             </div>
           </div>
           <div className="row">

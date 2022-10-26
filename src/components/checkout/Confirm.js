@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import CartTotals from 'components/cart/CartTotals';
 import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
 import SEO from 'components/seo/SEO';
@@ -79,6 +80,11 @@ const Confirm = () => {
         <div className="row">
           <div className="wrapper">
             <MyCart cart={myCart} updateable={false} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="wrapper">
+            <CartTotals cart={myCart} />
           </div>
         </div>
         <div className="row">

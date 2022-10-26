@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
@@ -32,7 +33,9 @@ const PaymentMethods = () => {
               key={paymentmethod?.id}
               value={paymentmethod?.name}
               control={<Radio />}
-              label={paymentmethod?.name}
+              label={`${paymentmethod?.name} ${
+                paymentmethod?.cost > 0 ? `(${paymentmethod.cost}€)` : ''
+              }`}
             />
           ))}
         </RadioGroup>

@@ -52,7 +52,8 @@ const CartItem = ({ updateable, item }) => {
       <TableCell className={!updateable ? 'not-updateable' : null}>
         <span className="hidden">ΤΙΜΗ</span>
         <span>
-          <strong className="totalPrice">{item.price * item.total} </strong>
+          <span className="cart-item-initial-price">{item.initialPrice}€</span>
+          <strong className="totalPrice">{item.price * item.total}€ </strong>
           {`(${item.total}x${item.price})`}
         </span>
         {!updateable && item.total === 0 && (

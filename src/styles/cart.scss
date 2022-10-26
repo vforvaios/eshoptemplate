@@ -77,3 +77,47 @@
   cursor: pointer;
   margin-left: 12px;
 }
+
+.cart-totals-container {
+  border: 1px solid $shadow;
+}
+
+.cart-totals-row {
+  padding: 12px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &.bold {
+    font-weight: 700;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cart-totals-name {
+  padding-right: 12px;
+}
+
+.cart-totals-value {
+  font-weight: 700;
+}
+
+.cart-item-initial-price {
+  margin-right: 10px;
+  font-size: 14px;
+  text-decoration: line-through;
+  color: $color-2;
+}
+
+.cart-totals-row-title {
+  background: $purple;
+  margin-bottom: 0;
+  color: $black;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
