@@ -3,6 +3,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import formatMoney from 'library/formatMoney';
 import {
   getPaymentMethods,
   checkPaymentMethod,
@@ -34,7 +35,9 @@ const PaymentMethods = () => {
               value={paymentmethod?.name}
               control={<Radio />}
               label={`${paymentmethod?.name} ${
-                paymentmethod?.cost > 0 ? `(${paymentmethod.cost}€)` : ''
+                paymentmethod?.cost > 0
+                  ? `(${formatMoney.format(paymentmethod.cost)})`
+                  : ''
               }`}
             />
           ))}

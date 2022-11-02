@@ -9,6 +9,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import formatMoney from 'library/formatMoney';
 import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
@@ -16,9 +17,8 @@ import {
   addProductWishlist,
   removeProductWishlist,
 } from 'models/actions/wishlistActions';
-import { catalogIsLoading } from 'models/selectors/catalogSelectors';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styles from './styles';
@@ -37,7 +37,6 @@ const Product = ({ classes, product, isWishlist }) => {
   } = product;
 
   const dispatch = useDispatch();
-  const loading = useSelector(catalogIsLoading);
 
   return (
     <Link className="navlink product" to={`/product/${productId}`}>
@@ -52,8 +51,8 @@ const Product = ({ classes, product, isWishlist }) => {
         />
         <div className="price-container">
           <div>
-            <span>{initialPrice}€</span>
-            {price}€
+            <span>{formatMoney.format(initialPrice)}</span>
+            {formatMoney.format(price)}
           </div>
           <span className="discount">
             {getPercentage(initialPrice, price)}%

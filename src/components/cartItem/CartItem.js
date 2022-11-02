@@ -4,6 +4,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import ToolTip from '@material-ui/core/ToolTip';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import formatMoney from 'library/formatMoney';
 import {
   removeItemFromCart,
   updateCartItemTotal,
@@ -52,8 +53,12 @@ const CartItem = ({ updateable, item }) => {
       <TableCell className={!updateable ? 'not-updateable' : null}>
         <span className="hidden">ΤΙΜΗ</span>
         <span>
-          <span className="cart-item-initial-price">{item.initialPrice}€</span>
-          <strong className="totalPrice">{item.price * item.total}€ </strong>
+          <span className="cart-item-initial-price">
+            {formatMoney.format(item.initialPrice)}
+          </span>
+          <strong className="totalPrice">
+            {formatMoney.format(item.price * item.total)}{' '}
+          </strong>
           {`(${item.total}x${item.price})`}
         </span>
         {!updateable && item.total === 0 && (

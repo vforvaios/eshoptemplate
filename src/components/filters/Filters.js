@@ -1,5 +1,6 @@
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Slider from '@material-ui/core/Slider';
+import formatMoney from 'library/formatMoney';
 import {
   setSelectedFilter,
   setGeneralLoading,
@@ -150,11 +151,11 @@ const Filters = () => {
                     marks={[
                       {
                         value: minprice,
-                        label: `${minprice}€`,
+                        label: `${formatMoney.format(minprice)}`,
                       },
                       {
                         value: maxprice,
-                        label: `${maxprice}€`,
+                        label: `${formatMoney.format(maxprice)}`,
                       },
                     ]}
                   />

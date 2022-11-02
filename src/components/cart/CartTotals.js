@@ -1,3 +1,4 @@
+import formatMoney from 'library/formatMoney';
 import getCartTotals from 'library/getCartTotals';
 import getCartTotalsDiscount from 'library/getCartTotalsDiscount';
 import {
@@ -21,28 +22,31 @@ const CartTotals = ({ cart }) => {
       <div className="cart-totals-row">
         <span className="cart-totals-name">Συνολική έκπτωση:</span>
         <span className="cart-totals-value">
-          {getCartTotalsDiscount(cart)}€
+          {formatMoney.format(getCartTotalsDiscount(cart))}
         </span>
       </div>
       {smCost > 0 && (
         <div className="cart-totals-row">
           <span className="cart-totals-name">Μεταφορικά:</span>
-          <span className="cart-totals-value">{smCost}€</span>
+          <span className="cart-totals-value">
+            {formatMoney.format(smCost)}
+          </span>
         </div>
       )}
       {pmCost > 0 && (
         <div className="cart-totals-row">
           <span className="cart-totals-name">Έξοδα πληρωμής:</span>
-          <span className="cart-totals-value">{pmCost}€</span>
+          <span className="cart-totals-value">
+            {formatMoney.format(pmCost)}
+          </span>
         </div>
       )}
       <div className="cart-totals-row bold">
         <span className="cart-totals-name">Σύνολο πληρωμής:</span>
         <span className="cart-totals-value">
           {smCost || pmCost
-            ? smCost + pmCost + getCartTotals(cart)
-            : getCartTotals(cart)}
-          €
+            ? formatMoney.format(smCost + pmCost + getCartTotals(cart))
+            : formatMoney.format(getCartTotals(cart))}
         </span>
       </div>
     </div>

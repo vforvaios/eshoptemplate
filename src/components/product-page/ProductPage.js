@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RelevantProducts from 'components/relevant-products/RelevantProducts';
 import SEO from 'components/seo/SEO';
+import formatMoney from 'library/formatMoney';
 import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
 import {
@@ -71,8 +72,8 @@ const ProductPage = () => {
               </Typography>
               <div className="price-container">
                 <div>
-                  <span>{initialPrice}€</span>
-                  {price}€
+                  <span>{formatMoney.format(initialPrice)}</span>
+                  {formatMoney.format(price)}
                 </div>
                 <span className="discount">
                   {getPercentage(initialPrice, price)}%
