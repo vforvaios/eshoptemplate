@@ -7,7 +7,10 @@ import {
   logoutUser,
   registerUser,
   addNewsletterUser,
+  getMyOrders,
+  setMyOrders,
 } from 'models/actions/userActions';
+import { token } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { mergeMap, concatMap, catchError, map } from 'rxjs/operators';
@@ -74,6 +77,16 @@ const addNewsletterUserEpic = (action$) =>
             }),
           ];
         }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+            setGeneralLoading(false),
+          ),
+        ),
       ),
     ),
   );
@@ -88,11 +101,37 @@ const registerUserEpic = (action$) =>
     ),
   );
 
+const getMyOrdersEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getMyOrders.type),
+    mergeMap(() =>
+      from(
+        makeRequest(`order/admin/userorders`, 'GET', '', token(state$.value)),
+      ).pipe(
+        concatMap(({ orders }) => [
+          setMyOrders(orders),
+          setGeneralLoading(false),
+        ]),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+            setGeneralLoading(false),
+          ),
+        ),
+      ),
+    ),
+  );
+
 export {
   loginUserEpic,
   logoutUserEpic,
   registerUserEpic,
   addNewsletterUserEpic,
+  getMyOrdersEpic,
 };
 
 const epics = combineEpics(
@@ -100,6 +139,7 @@ const epics = combineEpics(
   logoutUserEpic,
   registerUserEpic,
   addNewsletterUserEpic,
+  getMyOrdersEpic,
 );
 
 export default epics;

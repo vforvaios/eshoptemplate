@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import withStyles from '@material-ui/core/styles/withStyles';
 import SEO from 'components/seo/SEO';
 import { getHomePageData } from 'models/actions/homeActions';
 import { homeOffers } from 'models/selectors/homeSelectors';
@@ -8,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import HomeOffersTabs from './home-offer-tabs/HomeOffersTabs';
 import HomeSlider from './home-slider/HomeSlider';
-import styles from './styles';
 
 const Home = () => {
   const offers = useSelector(homeOffers);
@@ -40,4 +38,4 @@ const Home = () => {
   );
 };
 
-export default withStyles(styles)(Home);
+export default Home;

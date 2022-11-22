@@ -6,6 +6,8 @@ const registerUser = createAction('user/registerUser');
 
 const setLoggedInUser = createAction('user/setLoggedInUser');
 const addNewsletterUser = createAction('user/addNewsletterUser');
+const getMyOrders = createAction('user/getMyOrders');
+const setMyOrders = createAction('user/setMyOrders');
 
 export {
   setLoggedInUser,
@@ -13,4 +15,6 @@ export {
   logoutUser,
   registerUser,
   addNewsletterUser,
+  getMyOrders,
+  setMyOrders,
 };

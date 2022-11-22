@@ -1,5 +1,5 @@
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Slider from '@material-ui/core/Slider';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Slider from '@mui/material/Slider';
 import formatMoney from 'library/formatMoney';
 import {
   setSelectedFilter,

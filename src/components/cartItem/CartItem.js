@@ -1,9 +1,9 @@
-import IconButton from '@material-ui/core/IconButton';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import TextField from '@material-ui/core/TextField';
-import ToolTip from '@material-ui/core/ToolTip';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import IconButton from '@mui/material/IconButton';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import TextField from '@mui/material/TextField';
+import ToolTip from '@mui/material/ToolTip';
 import formatMoney from 'library/formatMoney';
 import {
   removeItemFromCart,
@@ -34,6 +34,7 @@ const CartItem = ({ updateable, item }) => {
           item.total
         ) : (
           <TextField
+            variant="standard"
             type="number"
             InputProps={{
               inputProps: { min: 0 },

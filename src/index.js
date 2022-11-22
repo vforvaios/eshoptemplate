@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
+import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 

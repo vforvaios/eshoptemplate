@@ -1,13 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setLoggedInUser } from 'models/actions/userActions';
+import { setLoggedInUser, setMyOrders } from 'models/actions/userActions';
 
 const initialState = {
   user: {},
+  myOrders: [],
 };
 const userReducer = createReducer(initialState, {
   [setLoggedInUser.type]: (state, action) => ({
     ...state,
     user: action.payload,
+  }),
+  [setMyOrders.type]: (state, action) => ({
+    ...state,
+    myOrders: action.payload,
   }),
 });
 

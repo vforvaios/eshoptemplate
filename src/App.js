@@ -12,6 +12,7 @@ import Footer from 'components/footer/Footer';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import GeneralLoading from 'components/loader/GeneralLoading';
+import Orders from 'components/orders/Orders';
 import PageNotFound from 'components/pagenotfound/PageNotFound';
 import ProductPage from 'components/product-page/ProductPage';
 import ProtectedRoute from 'components/protected-route/ProtectedRoute';
@@ -65,6 +66,14 @@ const App = () => {
             element={
               <ProtectedRoute isAllowed={userSelector?.token}>
                 <Wishlist />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoute isAllowed={userSelector?.token}>
+                <Orders />
               </ProtectedRoute>
             }
           />

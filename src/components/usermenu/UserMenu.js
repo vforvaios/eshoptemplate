@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Fade from '@material-ui/core/Fade';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Fade from '@mui/material/Fade';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { logoutUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
 import React, { useState } from 'react';

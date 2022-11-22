@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import SEO from 'components/seo/SEO';
 import { clearOrder } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';

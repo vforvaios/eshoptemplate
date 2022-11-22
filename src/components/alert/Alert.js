@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import {
   alertMessage,

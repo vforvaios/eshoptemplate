@@ -12,7 +12,7 @@ const styles = ({ breakpoints }) => ({
     width: '100%',
     height: 200,
     overflow: 'hidden',
-    [breakpoints.up('sm')]: {
+    [breakpoints?.up('sm')]: {
       height: 320,
     },
   },

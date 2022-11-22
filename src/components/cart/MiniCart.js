@@ -1,4 +1,4 @@
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { cart } from 'models/selectors/cartSelectors';
 import React from 'react';
 import { useSelector } from 'react-redux';

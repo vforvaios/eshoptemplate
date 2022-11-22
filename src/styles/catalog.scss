@@ -39,6 +39,11 @@
   & .MuiFormControl-root {
     display: flex;
   }
+
+  .MuiInputLabel-formControl {
+    left: 0px !important;
+    top: 0px !important;
+  }
 }
 
 .catalog-pagination {

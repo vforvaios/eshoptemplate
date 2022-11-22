@@ -1,5 +1,5 @@
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 import Product from 'components/product/Product';
 import TabPanel from 'components/tab-panel/TabPanel';
 import { withActiveTab } from 'library';
