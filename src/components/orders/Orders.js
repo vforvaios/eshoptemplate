@@ -10,6 +10,7 @@ import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   getOrdersStatuses,
   setCurrentOrdersPage,
+  setOrderId,
 } from 'models/actions/userActions';
 import { myOrders, ordersPagination } from 'models/selectors/userSelector';
 import React, { useEffect } from 'react';
@@ -24,12 +25,13 @@ const Orders = () => {
   const count = Math.ceil(pagination.total / process.env.REACT_APP_PER_PAGE);
 
   useEffect(() => {
+    dispatch(setOrderId(''));
     dispatch(setGeneralLoading(true));
     dispatch(getOrdersStatuses());
   }, []);
 
   return (
-    <div className="content orders">
+    <div className="content orders-page">
       <SEO
         title="Shoppy my orders"
         description="Shoppy my orders page"
@@ -56,7 +58,6 @@ const Orders = () => {
                   <TableCell>ΤΙΜΗ</TableCell>
                   <TableCell>ΤΕΜΑΧΙΑ</TableCell>
                   <TableCell>ΚΑΤΑΣΤΑΣΗ</TableCell>
-                  <TableCell></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

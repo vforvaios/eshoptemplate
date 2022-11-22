@@ -1,0 +1,19 @@
+.orders-page {
+  .table tbody tr {
+    cursor: pointer;
+  }
+}
+
+.table tbody .order-details td:last-child {
+  text-align: left;
+  position: static;
+  padding-right: 0;
+}
+
+.order-details {
+  cursor: default !important;
+}
+
+.table tbody .order-details .cart-content .table tbody td:last-child {
+  text-align: left;
+}

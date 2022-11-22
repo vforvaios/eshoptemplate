@@ -6,5 +6,16 @@ const currentOrderPage = ({ userReducer }) =>
   userReducer.myOrders.pagination.currentPage;
 
 const ordersPagination = ({ userReducer }) => userReducer.myOrders.pagination;
+const orderIdVisible = ({ userReducer }) => userReducer.orderId;
+const orderDetails = ({ userReducer }) => userReducer.orderDetails;
 
-export { user, token, myOrders, statuses, currentOrderPage, ordersPagination };
+export {
+  user,
+  token,
+  myOrders,
+  statuses,
+  currentOrderPage,
+  ordersPagination,
+  orderIdVisible,
+  orderDetails,
+};

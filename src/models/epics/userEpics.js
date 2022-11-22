@@ -12,6 +12,8 @@ import {
   getOrdersStatuses,
   setOrderStatuses,
   setCurrentOrdersPage,
+  getOrderDetails,
+  setOrderDetails,
 } from 'models/actions/userActions';
 import { token, currentOrderPage } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
@@ -156,6 +158,45 @@ const getMyOrdersEpic = (action$, state$) =>
     ),
   );
 
+const getOrderDetailsEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getOrderDetails.type),
+    mergeMap(({ payload }) =>
+      from(
+        makeRequest(
+          `order/admin/order/${payload}`,
+          'GET',
+          '',
+          token(state$.value),
+        ),
+      ).pipe(
+        concatMap(({ order, pastStatuses, products }) => {
+          const payload = {
+            pastStatuses,
+            order,
+            products: products?.map((product) => ({
+              ...product,
+              total: Number(product.items),
+              totalPrice: Number(product?.items) * product?.price,
+            })),
+          };
+
+          return [setOrderDetails(payload), setGeneralLoading(false)];
+        }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+            setGeneralLoading(false),
+          ),
+        ),
+      ),
+    ),
+  );
+
 export {
   loginUserEpic,
   logoutUserEpic,
@@ -163,6 +204,7 @@ export {
   addNewsletterUserEpic,
   getMyOrdersEpic,
   getOrdersStatusesEpic,
+  getOrderDetailsEpic,
 };
 
 const epics = combineEpics(
@@ -172,6 +214,7 @@ const epics = combineEpics(
   addNewsletterUserEpic,
   getMyOrdersEpic,
   getOrdersStatusesEpic,
+  getOrderDetailsEpic,
 );
 
 export default epics;

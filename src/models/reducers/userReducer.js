@@ -3,6 +3,8 @@ import {
   setLoggedInUser,
   setMyOrders,
   setOrderStatuses,
+  setOrderId,
+  setOrderDetails,
 } from 'models/actions/userActions';
 
 const initialState = {
@@ -16,11 +18,18 @@ const initialState = {
     results: [],
   },
   statuses: [],
+  orderId: '',
+  orderDetails: {},
 };
+
 const userReducer = createReducer(initialState, {
   [setLoggedInUser.type]: (state, action) => ({
     ...state,
     user: action.payload,
+  }),
+  [setOrderDetails.type]: (state, action) => ({
+    ...state,
+    orderDetails: action.payload,
   }),
   [setMyOrders.type]: (state, action) => ({
     ...state,
@@ -37,6 +46,10 @@ const userReducer = createReducer(initialState, {
   [setOrderStatuses.type]: (state, action) => ({
     ...state,
     statuses: action.payload,
+  }),
+  [setOrderId.type]: (state, action) => ({
+    ...state,
+    orderId: action.payload,
   }),
 });
 

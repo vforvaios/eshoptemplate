@@ -8,13 +8,21 @@ import {
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const CartTotals = ({ cart }) => {
-  const smCost = useSelector(shippingMethods).find(
+const CartTotals = ({ cart, order }) => {
+  let smCost = useSelector(shippingMethods).find(
     (shippingmethod) => shippingmethod.checked,
   )?.cost;
-  const pmCost = useSelector(paymentMethods).find(
+  let pmCost = useSelector(paymentMethods).find(
     (paymentmethod) => paymentmethod.checked,
   )?.cost;
+
+  if (!smCost) {
+    smCost = order?.shippingMethodCost;
+  }
+
+  if (!pmCost) {
+    pmCost = order?.paymentMethodCost;
+  }
 
   return (
     <div className="cart-totals-container">

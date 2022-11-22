@@ -11,6 +11,9 @@ const setMyOrders = createAction('user/setMyOrders');
 const getOrdersStatuses = createAction('user/getOrdersStatuses');
 const setOrderStatuses = createAction('user/setOrderStatuses');
 const setCurrentOrdersPage = createAction('user/setCurrentOrdersPage');
+const setOrderId = createAction('user/setOrderId');
+const getOrderDetails = createAction('user/getOrderDetails');
+const setOrderDetails = createAction('user/setOrderDetails');
 
 export {
   setLoggedInUser,
@@ -23,4 +26,7 @@ export {
   getOrdersStatuses,
   setOrderStatuses,
   setCurrentOrdersPage,
+  setOrderId,
+  getOrderDetails,
+  setOrderDetails,
 };
