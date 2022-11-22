@@ -39,6 +39,9 @@ const UserMenu = ({ token }) => {
           <Link to="/wishlist">Τα αγαπημένα μου</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
+          <Link to="/orders">Οι παραγγελίες μου</Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
           <a onClick={() => dispatch(logoutUser())}>Εξοδος</a>
         </MenuItem>
       </Menu>

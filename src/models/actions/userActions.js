@@ -8,6 +8,8 @@ const setLoggedInUser = createAction('user/setLoggedInUser');
 const addNewsletterUser = createAction('user/addNewsletterUser');
 const getMyOrders = createAction('user/getMyOrders');
 const setMyOrders = createAction('user/setMyOrders');
+const getOrdersStatuses = createAction('user/getOrdersStatuses');
+const setOrderStatuses = createAction('user/setOrderStatuses');
 
 export {
   setLoggedInUser,
@@ -17,4 +19,6 @@ export {
   addNewsletterUser,
   getMyOrders,
   setMyOrders,
+  getOrdersStatuses,
+  setOrderStatuses,
 };

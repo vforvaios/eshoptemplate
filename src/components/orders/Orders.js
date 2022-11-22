@@ -6,7 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import SEO from 'components/seo/SEO';
 import { toggleLoader } from 'models/actions/loaderActions';
-import { getMyOrders } from 'models/actions/userActions';
+import { getOrdersStatuses } from 'models/actions/userActions';
 import { myOrders } from 'models/selectors/userSelector';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +19,7 @@ const Orders = () => {
 
   useEffect(() => {
     dispatch(toggleLoader(true));
-    dispatch(getMyOrders());
+    dispatch(getOrdersStatuses());
   }, []);
 
   return (
@@ -37,35 +37,35 @@ const Orders = () => {
           </div>
         </div>
       </div>
-      {orders?.length > 0 ? (
-        <Table className="products-grid">
-          <TableHead>
-            <TableRow>
-              <TableCell>ΚΩΔΙΚΟΣ</TableCell>
-              <TableCell>ΗΜΕΡΟΜΗΝΙΑ</TableCell>
-              <TableCell>ΟΝΟΜΑ</TableCell>
-              <TableCell>EMAIL</TableCell>
-              <TableCell>ΤΙΜΗ</TableCell>
-              <TableCell>ΤΕΜΑΧΙΑ</TableCell>
-              <TableCell>ΚΑΤΑΣΤΑΣΗ</TableCell>
-              <TableCell></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {orders?.map((order) => (
-              <Order
-                order={order}
-                key={order?.id}
-                toggleOrderPopup={() => {}}
-              />
-            ))}
-          </TableBody>
-        </Table>
-      ) : (
-        <div className="page-not-found-countainer">
-          <h2>Δεν υπάρχουν παραγγελίες</h2>
+      <div className="row">
+        <div className="wrapper">
+          {orders?.length > 0 ? (
+            <Table className="products-grid table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>ΚΩΔΙΚΟΣ</TableCell>
+                  <TableCell>ΗΜΕΡΟΜΗΝΙΑ</TableCell>
+                  <TableCell>ΟΝΟΜΑ</TableCell>
+                  <TableCell>EMAIL</TableCell>
+                  <TableCell>ΤΙΜΗ</TableCell>
+                  <TableCell>ΤΕΜΑΧΙΑ</TableCell>
+                  <TableCell>ΚΑΤΑΣΤΑΣΗ</TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {orders?.map((order) => (
+                  <Order order={order} key={order?.id} toggleOrder={() => {}} />
+                ))}
+              </TableBody>
+            </Table>
+          ) : (
+            <div className="page-not-found-countainer">
+              <h2>Δεν υπάρχουν παραγγελίες</h2>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };

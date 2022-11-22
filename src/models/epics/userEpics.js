@@ -9,11 +9,35 @@ import {
   addNewsletterUser,
   getMyOrders,
   setMyOrders,
+  getOrdersStatuses,
+  setOrderStatuses,
 } from 'models/actions/userActions';
 import { token } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { mergeMap, concatMap, catchError, map } from 'rxjs/operators';
+
+const getOrdersStatusesEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getOrdersStatuses.type),
+    mergeMap(() =>
+      from(makeRequest('statuses/admin', 'GET', '', token(state$.value))).pipe(
+        concatMap(({ data }) => {
+          return [setOrderStatuses(data), getMyOrders()];
+        }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              show: true,
+              type: 'error',
+            }),
+            setGeneralLoading(false),
+          ),
+        ),
+      ),
+    ),
+  );
 
 const loginUserEpic = (action$) =>
   action$.pipe(
@@ -132,6 +156,7 @@ export {
   registerUserEpic,
   addNewsletterUserEpic,
   getMyOrdersEpic,
+  getOrdersStatusesEpic,
 };
 
 const epics = combineEpics(
@@ -140,6 +165,7 @@ const epics = combineEpics(
   registerUserEpic,
   addNewsletterUserEpic,
   getMyOrdersEpic,
+  getOrdersStatusesEpic,
 );
 
 export default epics;

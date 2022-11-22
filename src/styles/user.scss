@@ -48,3 +48,25 @@
     }
   }
 }
+
+.chip {
+  color: $white !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+
+  &.chip1 {
+    background: $registered;
+  }
+
+  &.chip2 {
+    background: $sent;
+  }
+
+  &.chip3 {
+    background: $completed;
+  }
+
+  &.chip4 {
+    background: $alert;
+  }
+}
