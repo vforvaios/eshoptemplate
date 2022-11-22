@@ -1,13 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import Pagination from '@mui/material/Pagination';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import SEO from 'components/seo/SEO';
-import { toggleLoader } from 'models/actions/loaderActions';
-import { getOrdersStatuses } from 'models/actions/userActions';
-import { myOrders } from 'models/selectors/userSelector';
+import { setGeneralLoading } from 'models/actions/catalogActions';
+import {
+  getOrdersStatuses,
+  setCurrentOrdersPage,
+} from 'models/actions/userActions';
+import { myOrders, ordersPagination } from 'models/selectors/userSelector';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,10 +19,12 @@ import Order from './Order';
 
 const Orders = () => {
   const dispatch = useDispatch();
+  const pagination = useSelector(ordersPagination);
   const orders = useSelector(myOrders);
+  const count = Math.ceil(pagination.total / process.env.REACT_APP_PER_PAGE);
 
   useEffect(() => {
-    dispatch(toggleLoader(true));
+    dispatch(setGeneralLoading(true));
     dispatch(getOrdersStatuses());
   }, []);
 
@@ -66,6 +72,24 @@ const Orders = () => {
           )}
         </div>
       </div>
+      {count > 1 && (
+        <div className="row">
+          <div className="wrapper">
+            <div className="catalog-pagination pagination">
+              <Pagination
+                page={Number(pagination.currentPage)}
+                count={count}
+                showFirstButton
+                showLastButton
+                onChange={(e, value) => {
+                  dispatch(setGeneralLoading(true));
+                  dispatch(setCurrentOrdersPage(Number(value)));
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

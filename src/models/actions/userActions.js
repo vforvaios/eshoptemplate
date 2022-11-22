@@ -10,6 +10,7 @@ const getMyOrders = createAction('user/getMyOrders');
 const setMyOrders = createAction('user/setMyOrders');
 const getOrdersStatuses = createAction('user/getOrdersStatuses');
 const setOrderStatuses = createAction('user/setOrderStatuses');
+const setCurrentOrdersPage = createAction('user/setCurrentOrdersPage');
 
 export {
   setLoggedInUser,
@@ -21,4 +22,5 @@ export {
   setMyOrders,
   getOrdersStatuses,
   setOrderStatuses,
+  setCurrentOrdersPage,
 };

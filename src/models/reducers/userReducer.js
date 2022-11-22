@@ -7,7 +7,14 @@ import {
 
 const initialState = {
   user: {},
-  myOrders: [],
+  myOrders: {
+    pagination: {
+      total: 0,
+      currentPage: 1,
+      perPage: process.env.REACT_APP_PER_PAGE,
+    },
+    results: [],
+  },
   statuses: [],
 };
 const userReducer = createReducer(initialState, {
@@ -17,7 +24,15 @@ const userReducer = createReducer(initialState, {
   }),
   [setMyOrders.type]: (state, action) => ({
     ...state,
-    myOrders: action.payload,
+    myOrders: {
+      ...state?.myOrders,
+      pagination: {
+        ...state?.myOrders.pagination,
+        currentPage: 1,
+        total: action.payload.total,
+      },
+      results: action.payload.results,
+    },
   }),
   [setOrderStatuses.type]: (state, action) => ({
     ...state,

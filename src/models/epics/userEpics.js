@@ -11,8 +11,9 @@ import {
   setMyOrders,
   getOrdersStatuses,
   setOrderStatuses,
+  setCurrentOrdersPage,
 } from 'models/actions/userActions';
-import { token } from 'models/selectors/userSelector';
+import { token, currentOrderPage } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { mergeMap, concatMap, catchError, map } from 'rxjs/operators';
@@ -127,13 +128,18 @@ const registerUserEpic = (action$) =>
 
 const getMyOrdersEpic = (action$, state$) =>
   action$.pipe(
-    ofType(getMyOrders.type),
+    ofType(getMyOrders.type, setCurrentOrdersPage.type),
     mergeMap(() =>
       from(
-        makeRequest(`order/admin/userorders`, 'GET', '', token(state$.value)),
+        makeRequest(
+          `order/admin/userorders?page=${currentOrderPage(state$.value)}`,
+          'GET',
+          '',
+          token(state$.value),
+        ),
       ).pipe(
-        concatMap(({ orders }) => [
-          setMyOrders(orders),
+        concatMap(({ orders, total }) => [
+          setMyOrders({ results: orders, total }),
           setGeneralLoading(false),
         ]),
         catchError((error) =>
