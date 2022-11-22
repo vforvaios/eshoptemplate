@@ -22,7 +22,7 @@ const MainMenu = ({ setToggleValue }) => {
 
   useEffect(() => {
     dispatch(getCategoriesMenu());
-  }, [``]);
+  }, []);
 
   return (
     <div className="main-menu">

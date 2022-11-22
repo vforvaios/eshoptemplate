@@ -15,32 +15,9 @@ const getCategoriesMenuEpic = (action$) =>
       from(makeRequest('menu', 'GET', '')).pipe(
         concatMap((payload) => {
           const { menu } = payload;
-          const distinctCategories = [
-            ...new Set(menu?.map((m) => m.category_id)),
-          ];
-
-          const newMenu = distinctCategories?.reduce(
-            (acc, curr) => [
-              ...acc,
-              {
-                id: menu?.find((m) => m?.category_id === curr)?.category_id,
-                name: menu?.find((m) => m?.category_id === curr)?.category_name,
-                subCategories: menu?.find((m) => m?.category_id === curr)
-                  ?.subcategory_id
-                  ? menu
-                      .filter((m) => m.category_id === curr)
-                      ?.map((s) => ({
-                        id: s.subcategory_id,
-                        name: s.subcategory_name,
-                      }))
-                  : [],
-              },
-            ],
-            [],
-          );
 
           return [
-            setCategoriesMenu(newMenu),
+            setCategoriesMenu(menu),
             toggleShowAlert({ message: '', show: false, type: 'error' }),
           ];
         }),
