@@ -2,11 +2,18 @@
 import CartTotals from 'components/cart/CartTotals';
 import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
+import BillingShippingInfos from 'components/orders/BillingShippingInfos';
 import SEO from 'components/seo/SEO';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import { sendOrder, updateCartProducts } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
-import { orderOK, updatedProducts } from 'models/selectors/checkoutSelectors';
+import {
+  orderOK,
+  updatedProducts,
+  billingInfo,
+  shippingInfo,
+  sameAsBilling,
+} from 'models/selectors/checkoutSelectors';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -16,6 +23,9 @@ const Confirm = () => {
   const myCart = useSelector(cart);
   const myOrderOK = useSelector(orderOK);
   const productsAreUpdated = useSelector(updatedProducts);
+  const myBillingInfo = useSelector(billingInfo);
+  const myShippingInfo = useSelector(shippingInfo);
+  const sameShipping = useSelector(sameAsBilling);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -85,6 +95,40 @@ const Confirm = () => {
         <div className="row">
           <div className="wrapper">
             <CartTotals cart={myCart} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="wrapper">
+            <div className="billing-shipping-order-container">
+              <BillingShippingInfos
+                options={{
+                  billing: {
+                    firstName: myBillingInfo.name,
+                    lastName: myBillingInfo.lastName,
+                    address: myBillingInfo.address,
+                    phone: myBillingInfo.phone,
+                    postCode: myBillingInfo.postCode,
+                  },
+                  shipping: {
+                    firstName: !sameShipping
+                      ? myShippingInfo.name
+                      : myBillingInfo.name,
+                    lastName: !sameShipping
+                      ? myShippingInfo.lastName
+                      : myBillingInfo.lastName,
+                    address: !sameShipping
+                      ? myShippingInfo.address
+                      : myBillingInfo.address,
+                    phone: !sameShipping
+                      ? myShippingInfo.phone
+                      : myBillingInfo.phone,
+                    postCode: !sameShipping
+                      ? myShippingInfo.postCode
+                      : myBillingInfo.postCode,
+                  },
+                }}
+              />
+            </div>
           </div>
         </div>
         <div className="row">

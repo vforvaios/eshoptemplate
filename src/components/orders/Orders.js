@@ -50,6 +50,13 @@ const Orders = () => {
           </div>
         </div>
       </div>
+      {count > 1 && (
+        <OrdersPagination
+          page={Number(pagination.currentPage)}
+          onChange={handleOrderPageChange}
+          count={count}
+        />
+      )}
       <div className="row">
         <div className="wrapper">
           {orders?.length > 0 ? (
