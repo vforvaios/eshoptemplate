@@ -25,19 +25,32 @@ const getOrdersStatusesEpic = (action$, state$) =>
     ofType(getOrdersStatuses.type),
     mergeMap(() =>
       from(makeRequest('statuses/admin', 'GET', '', token(state$.value))).pipe(
-        concatMap(({ data }) => {
-          return [setOrderStatuses(data), getMyOrders()];
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              toggleShowAlert({
+                message: `${payload?.error}`,
+                show: true,
+                type: 'error',
+              }),
+              setGeneralLoading(false),
+            ];
+          }
+
+          return [setOrderStatuses(payload?.data), getMyOrders()];
         }),
-        catchError((error) =>
-          of(
+        catchError((error) => {
+          debugger;
+
+          return of(
             toggleShowAlert({
               message: `${error}`,
               show: true,
               type: 'error',
             }),
             setGeneralLoading(false),
-          ),
-        ),
+          );
+        }),
       ),
     ),
   );
@@ -140,10 +153,23 @@ const getMyOrdersEpic = (action$, state$) =>
           token(state$.value),
         ),
       ).pipe(
-        concatMap(({ orders, total }) => [
-          setMyOrders({ results: orders, total }),
-          setGeneralLoading(false),
-        ]),
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              toggleShowAlert({
+                message: `${payload?.error}`,
+                show: true,
+                type: 'error',
+              }),
+              setGeneralLoading(false),
+            ];
+          }
+
+          return [
+            setMyOrders({ results: payload?.orders, total: payload?.total }),
+            setGeneralLoading(false),
+          ];
+        }),
         catchError((error) =>
           of(
             toggleShowAlert({
@@ -170,11 +196,22 @@ const getOrderDetailsEpic = (action$, state$) =>
           token(state$.value),
         ),
       ).pipe(
-        concatMap(({ order, pastStatuses, products }) => {
+        concatMap((data) => {
+          if (data?.error) {
+            return [
+              toggleShowAlert({
+                message: `${data?.error}`,
+                show: true,
+                type: 'error',
+              }),
+              setGeneralLoading(false),
+            ];
+          }
+
           const payload = {
-            pastStatuses,
-            order,
-            products: products?.map((product) => ({
+            pastStatuses: data?.pastStatuses,
+            order: data?.order,
+            products: data?.products?.map((product) => ({
               ...product,
               total: Number(product.items),
               totalPrice: Number(product?.items) * product?.price,
