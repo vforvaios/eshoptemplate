@@ -25,11 +25,24 @@ const getWishlistEpic = (action$, state$) =>
     ofType(getWishlist.type),
     mergeMap(() =>
       from(makeRequest('wishlist', 'GET', '', token(state$.value))).pipe(
-        concatMap((payload) => [
-          toggleLoader(false),
-          setWishlist(payload),
-          toggleShowAlert({ message: '', show: false, type: 'error' }),
-        ]),
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              toggleShowAlert({
+                message: `${payload?.error}`,
+                show: true,
+                type: 'error',
+              }),
+              setGeneralLoading(false),
+            ];
+          }
+
+          return [
+            toggleLoader(false),
+            setWishlist(payload),
+            toggleShowAlert({ message: '', show: false, type: 'error' }),
+          ];
+        }),
         catchError((error) =>
           of(
             toggleShowAlert({
@@ -77,6 +90,17 @@ const addProductWishlistEpic = (action$, state$) =>
           ),
         ).pipe(
           concatMap((payload) => {
+            if (payload?.error) {
+              return [
+                toggleShowAlert({
+                  message: `${payload?.error}`,
+                  show: true,
+                  type: 'error',
+                }),
+                setGeneralLoading(false),
+              ];
+            }
+
             return [
               toggleLoader(false),
               toggleShowAlert({
@@ -135,6 +159,17 @@ const removeProductWishlistEpic = (action$, state$) =>
           ),
         ).pipe(
           concatMap((payload) => {
+            if (payload?.error) {
+              return [
+                toggleShowAlert({
+                  message: `${payload?.error}`,
+                  show: true,
+                  type: 'error',
+                }),
+                setGeneralLoading(false),
+              ];
+            }
+
             const newWishlistItems = wishlistProducts(state$.value)?.filter(
               (wi) => wi.productId !== productId,
             );
