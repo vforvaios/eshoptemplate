@@ -18,10 +18,10 @@ const CheckoutSuccess = () => {
       navigate('/');
     }
 
-    if (myCanSeeSuccessPage) {
+    return () => {
       dispatch(clearOrder());
-    }
-  }, []);
+    };
+  }, [myCanSeeSuccessPage]);
 
   return (
     <div className="content checkout step4">

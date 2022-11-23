@@ -251,13 +251,13 @@ const sendOrderEpic = (action$, state$) =>
           concatMap((payload) => {
             if (payload?.updatedProducts) {
               return [
-                setGeneralLoading(false),
                 toggleShowAlert({
                   message: payload?.updatedProducts,
                   type: 'error',
                   show: true,
                 }),
                 setUpdatedProducts(true),
+                setGeneralLoading(false),
               ];
             }
 

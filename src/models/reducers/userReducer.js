@@ -5,6 +5,7 @@ import {
   setOrderStatuses,
   setOrderId,
   setOrderDetails,
+  setCurrentOrdersPage,
 } from 'models/actions/userActions';
 
 const initialState = {
@@ -37,10 +38,20 @@ const userReducer = createReducer(initialState, {
       ...state?.myOrders,
       pagination: {
         ...state?.myOrders.pagination,
-        currentPage: 1,
         total: action.payload.total,
       },
       results: action.payload.results,
+    },
+  }),
+  [setCurrentOrdersPage.type]: (state, action) => ({
+    ...state,
+    myOrders: {
+      ...state?.myOrders,
+      pagination: {
+        ...state?.myOrders.pagination,
+        currentPage: action.payload,
+        total: action.payload.total,
+      },
     },
   }),
   [setOrderStatuses.type]: (state, action) => ({

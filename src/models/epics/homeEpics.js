@@ -1,5 +1,6 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import { getHomePageData, setHomePageData } from 'models/actions/homeActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -14,6 +15,7 @@ const getHomePageDataEpic = (action$) =>
         concatMap((payload) => [
           setHomePageData(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
+          setGeneralLoading(false),
         ]),
         catchError((error) =>
           of(
@@ -22,6 +24,7 @@ const getHomePageDataEpic = (action$) =>
               type: 'error',
               show: true,
             }),
+            setGeneralLoading(false),
           ),
         ),
       ),

@@ -94,10 +94,14 @@ const checkoutReducer = createReducer(initialState, {
     ...state,
     orderOK: true,
   }),
-  [setCanSeeSuccessPage.type]: (state, action) => ({
-    ...state,
-    canSeeSuccessPage: true,
-  }),
+  [setCanSeeSuccessPage.type]: (state, action) => {
+    // debugger;
+
+    return {
+      ...state,
+      canSeeSuccessPage: true,
+    };
+  },
 });
 
 export default checkoutReducer;

@@ -69,7 +69,7 @@ const Order = ({ order, toggleOrder }) => {
           />
         </TableCell>
       </TableRow>
-      {orderId !== '' ? <OrderDetails id={orderId} /> : null}
+      {orderId !== '' && orderId === id ? <OrderDetails id={orderId} /> : null}
     </>
   );
 };
