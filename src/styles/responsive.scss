@@ -99,6 +99,10 @@
   text-align: right;
 }
 
+.table tbody .order-details td:last-child {
+  padding-right: 0;
+}
+
 // CART
 .cart-description {
   align-items: center;

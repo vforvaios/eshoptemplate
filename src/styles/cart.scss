@@ -88,6 +88,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  font-size: 16px;
 
   &.bold {
     font-weight: 700;
@@ -95,6 +96,7 @@
 
   &:last-child {
     margin-bottom: 0;
+    font-size: 22px;
   }
 }
 

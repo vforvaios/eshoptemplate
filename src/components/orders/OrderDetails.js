@@ -9,6 +9,8 @@ import { orderDetails } from 'models/selectors/userSelector';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import BillingShippingInfos from './BillingShippingInfos';
+
 const OrderDetails = ({ id }) => {
   const displayedOrder = useSelector(orderDetails);
   const dispatch = useDispatch();
@@ -34,6 +36,30 @@ const OrderDetails = ({ id }) => {
               cart={displayedOrder?.products}
               order={displayedOrder?.order}
             />
+          </div>
+        </div>
+        <div className="row">
+          <div className="wrapper">
+            <div className="billing-shipping-order-container">
+              <BillingShippingInfos
+                options={{
+                  billing: {
+                    firstName: displayedOrder?.order.piFirstName,
+                    lastName: displayedOrder?.order.piLastName,
+                    address: displayedOrder?.order.piAddress,
+                    phone: displayedOrder?.order.piPhone,
+                    postCode: displayedOrder?.order.piPostCode,
+                  },
+                  shipping: {
+                    firstName: displayedOrder?.order.siFirstName,
+                    lastName: displayedOrder?.order.siLastName,
+                    address: displayedOrder?.order.siAddress,
+                    phone: displayedOrder?.order.siPhone,
+                    postCode: displayedOrder?.order.siPostCode,
+                  },
+                }}
+              />
+            </div>
           </div>
         </div>
       </TableCell>
