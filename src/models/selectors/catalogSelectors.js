@@ -14,6 +14,7 @@ const filterSubCategories = ({ catalogReducer }) =>
 const filterBrands = ({ catalogReducer }) => catalogReducer.filterBrands;
 
 const catalogSorting = ({ catalogReducer }) => catalogReducer.sorting;
+const searchedResults = ({ catalogReducer }) => catalogReducer.searchedResults;
 
 export {
   catalogProducts,
@@ -27,4 +28,5 @@ export {
   filterPricesRange,
   catalogSorting,
   filterSubCategories,
+  searchedResults,
 };

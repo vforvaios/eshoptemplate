@@ -1,4 +1,5 @@
 import makeRequest from 'library/makeRequest';
+import transformErrorMessages from 'library/transformErrorMessages';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import {
   getProductDetails,
@@ -19,6 +20,8 @@ import {
   setSelectedCategory,
   setSelectedCategoryAndSubCategory,
   setFilterSubCategories,
+  getSearchRelatedProducts,
+  setSearchedProducts,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -229,6 +232,38 @@ const getCatalogEpic = (action$, state$) =>
     ),
   );
 
+const getSearchRelatedProductsEpic = (action$) =>
+  action$.pipe(
+    ofType(getSearchRelatedProducts.type),
+    mergeMap(({ payload }) =>
+      from(makeRequest(`products/search/all?term=${payload}`)).pipe(
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              setGeneralLoading(false),
+              toggleShowAlert({
+                message: transformErrorMessages(payload?.error?.details),
+                type: 'error',
+                show: true,
+              }),
+            ];
+          }
+
+          return [setSearchedProducts(payload?.data)];
+        }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
+  );
+
 export {
   getProductDetailsEpic,
   getRelatedProductsEpic,
@@ -237,6 +272,7 @@ export {
   getFilterBrandsEpic,
   getPricesRangeEpic,
   getFilterSubCategoriesEpic,
+  getSearchRelatedProductsEpic,
 };
 
 const epics = combineEpics(
@@ -247,6 +283,7 @@ const epics = combineEpics(
   getFilterBrandsEpic,
   getPricesRangeEpic,
   getFilterSubCategoriesEpic,
+  getSearchRelatedProductsEpic,
 );
 
 export default epics;

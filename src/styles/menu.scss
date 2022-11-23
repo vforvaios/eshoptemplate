@@ -104,7 +104,8 @@
   label {
     color: $color-4 !important;
     z-index: 1;
-    left: 4px;
+    left: 4px !important;
+    top: 0 !important;
   }
 
   .MuiInput-underline:after {
@@ -114,4 +115,8 @@
   svg {
     color: $color-6 !important;
   }
+}
+
+.MuiAutocomplete-root .MuiInput-root .MuiInput-input {
+  padding: 6px !important;
 }

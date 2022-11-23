@@ -16,6 +16,7 @@ import {
   setSelectedCategoryAndSubCategory,
   setSelectedCategory,
   setFilterSubCategories,
+  setSearchedProducts,
 } from 'models/actions/catalogActions';
 
 const initialState = {
@@ -41,9 +42,14 @@ const initialState = {
     results: [],
   },
   loading: false,
+  searchedResults: [],
 };
 
 const catalogReducer = createReducer(initialState, {
+  [setSearchedProducts.type]: (state, action) => ({
+    ...state,
+    searchedResults: action.payload,
+  }),
   [setProductPage.type]: (state, action) => ({
     ...state,
     singleProduct: action.payload,

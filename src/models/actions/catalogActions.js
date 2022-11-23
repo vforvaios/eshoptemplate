@@ -26,6 +26,10 @@ const setFilterSubCategories = createAction('catalog/setFilterSubCategories');
 const setSelectedCategoryAndSubCategory = createAction(
   'catalog/setSelectedCategoryAndSubCategory',
 );
+const getSearchRelatedProducts = createAction(
+  'catalog/getSearchRelatedProducts',
+);
+const setSearchedProducts = createAction('catalog/setSearchedProducts');
 
 export {
   getProductDetails,
@@ -50,4 +54,6 @@ export {
   setSelectedCategoryAndSubCategory,
   setSelectedCategory,
   setFilterSubCategories,
+  getSearchRelatedProducts,
+  setSearchedProducts,
 };
