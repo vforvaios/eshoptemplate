@@ -35,7 +35,6 @@ const Search = () => {
             </li>
           );
         }}
-        value=""
         inputValue={searchProductText || ''}
         noOptionsText="Δεν βρέθηκαν προϊόντα"
         onChange={(e, product) => {
