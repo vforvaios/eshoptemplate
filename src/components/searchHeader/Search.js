@@ -1,8 +1,14 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import { getSearchRelatedProducts } from 'models/actions/catalogActions';
-import { searchedResults } from 'models/selectors/catalogSelectors';
+import {
+  getSearchRelatedProducts,
+  setSearchLoading,
+} from 'models/actions/catalogActions';
+import {
+  searchedResults,
+  searchLoading,
+} from 'models/selectors/catalogSelectors';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 const Search = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const loading = useSelector(searchLoading);
   const products = useSelector(searchedResults);
   const [searchProductText, setSearchProductText] = useState('');
 
@@ -17,6 +24,7 @@ const Search = () => {
     <FormControl>
       <Autocomplete
         clearOnBlur={false}
+        disableClearable
         id="header-search"
         options={products || []}
         getOptionLabel={(option) => `${option?.['productTitle'] || ''}`}
@@ -35,6 +43,7 @@ const Search = () => {
         }}
         onInputChange={(e, value) => {
           setSearchProductText(value);
+          dispatch(setSearchLoading(true));
           dispatch(getSearchRelatedProducts(value));
         }}
         renderInput={(params) => (
@@ -46,17 +55,7 @@ const Search = () => {
           />
         )}
       />
-      {/* <Input
-      id="header-search"
-      type="search"
-      value=""
-      onChange={() => {}}
-      endAdornment={
-        <InputAdornment position="end">
-          <SearchIcon />
-        </InputAdornment>
-      }
-    /> */}
+      {loading && <span className="minor-loading">Loading...</span>}
     </FormControl>
   );
 };

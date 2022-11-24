@@ -22,6 +22,7 @@ import {
   setFilterSubCategories,
   getSearchRelatedProducts,
   setSearchedProducts,
+  setSearchLoading,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -30,6 +31,7 @@ import {
   concatMap,
   catchError,
   withLatestFrom,
+  debounceTime,
 } from 'rxjs/operators';
 
 const getProductDetailsEpic = (action$) =>
@@ -235,12 +237,13 @@ const getCatalogEpic = (action$, state$) =>
 const getSearchRelatedProductsEpic = (action$) =>
   action$.pipe(
     ofType(getSearchRelatedProducts.type),
+    debounceTime(500),
     mergeMap(({ payload }) =>
       from(makeRequest(`products/search/all?term=${payload}`)).pipe(
         concatMap((payload) => {
           if (payload?.error) {
             return [
-              setGeneralLoading(false),
+              setSearchLoading(false),
               toggleShowAlert({
                 message: transformErrorMessages(payload?.error?.details),
                 type: 'error',
@@ -249,7 +252,7 @@ const getSearchRelatedProductsEpic = (action$) =>
             ];
           }
 
-          return [setSearchedProducts(payload?.data)];
+          return [setSearchedProducts(payload?.data), setSearchLoading(false)];
         }),
         catchError((error) =>
           of(
@@ -258,6 +261,7 @@ const getSearchRelatedProductsEpic = (action$) =>
               type: 'error',
               show: true,
             }),
+            setSearchLoading(false),
           ),
         ),
       ),

@@ -30,6 +30,7 @@ const getSearchRelatedProducts = createAction(
   'catalog/getSearchRelatedProducts',
 );
 const setSearchedProducts = createAction('catalog/setSearchedProducts');
+const setSearchLoading = createAction('catalog/setSearchLoading');
 
 export {
   getProductDetails,
@@ -56,4 +57,5 @@ export {
   setFilterSubCategories,
   getSearchRelatedProducts,
   setSearchedProducts,
+  setSearchLoading,
 };

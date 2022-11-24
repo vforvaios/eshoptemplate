@@ -15,6 +15,7 @@ const filterBrands = ({ catalogReducer }) => catalogReducer.filterBrands;
 
 const catalogSorting = ({ catalogReducer }) => catalogReducer.sorting;
 const searchedResults = ({ catalogReducer }) => catalogReducer.searchedResults;
+const searchLoading = ({ catalogReducer }) => catalogReducer.searchLoading;
 
 export {
   catalogProducts,
@@ -29,4 +30,5 @@ export {
   catalogSorting,
   filterSubCategories,
   searchedResults,
+  searchLoading,
 };
