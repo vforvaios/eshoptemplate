@@ -6,6 +6,7 @@ import {
   setOrderId,
   setOrderDetails,
   setCurrentOrdersPage,
+  logoutUser,
 } from 'models/actions/userActions';
 
 const initialState = {
@@ -31,6 +32,20 @@ const userReducer = createReducer(initialState, {
   [setOrderDetails.type]: (state, action) => ({
     ...state,
     orderDetails: action.payload,
+  }),
+  [logoutUser.type]: (state, action) => ({
+    ...state,
+    orderDetails: {},
+    statuses: [],
+    orderId: '',
+    myOrders: {
+      pagination: {
+        total: 0,
+        currentPage: 1,
+        perPage: process.env.REACT_APP_PER_PAGE,
+      },
+      results: [],
+    },
   }),
   [setMyOrders.type]: (state, action) => ({
     ...state,
