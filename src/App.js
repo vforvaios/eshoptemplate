@@ -16,6 +16,7 @@ import Orders from 'components/orders/Orders';
 import PageNotFound from 'components/pagenotfound/PageNotFound';
 import ProductPage from 'components/product-page/ProductPage';
 import ProtectedRoute from 'components/protected-route/ProtectedRoute';
+import StaticPage from 'components/static/StaticPage';
 import Login from 'components/user/Login';
 import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
@@ -57,6 +58,7 @@ const App = () => {
             }
           />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/static/:id" element={<StaticPage />} />
           <Route path="/checkout/step1" element={<CheckoutLogin />} />
           <Route path="/checkout/step2" element={<CheckoutEdit />} />
           <Route path="/checkout/confirm" element={<Confirm />} />

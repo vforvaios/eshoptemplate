@@ -5,6 +5,7 @@ import catalogReducer from './catalogReducer';
 import checkoutReducer from './checkoutReducer';
 import counterReducer from './counterReducer';
 import homeReducer from './homeReducer';
+import staticReducer from './staticReducer';
 import wishlistReducer from './wishlistReducer';
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   homeReducer,
   wishlistReducer,
   checkoutReducer,
+  staticReducer,
 });
 
 export default rootReducer;

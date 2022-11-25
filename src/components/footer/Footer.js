@@ -1,15 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import { setGeneralLoading } from 'models/actions/catalogActions';
+import { getStaticContent } from 'models/actions/staticActions';
 import { addNewsletterUser } from 'models/actions/userActions';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { pages } from 'models/selectors/staticSelectors';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const allPages = useSelector(pages);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getStaticContent());
+  }, []);
 
   return (
     <footer>
@@ -29,7 +37,6 @@ const Footer = () => {
                       id="newsletter"
                       type="email"
                       value={newsletterEmail}
-                      // error={}
                       onChange={(e) => setNewsletterEmail(e.target.value)}
                     />
                     <button
@@ -40,9 +47,6 @@ const Footer = () => {
                       }}>
                       Εγγραφή
                     </button>
-                    {/* {emailError !== '' && (
-                      <span className="error-span">{emailError}</span>
-                    )} */}
                   </FormControl>
                 </div>
               </div>
@@ -50,21 +54,11 @@ const Footer = () => {
                 <div>
                   <p className="title">ΓΙΑ ΕΜΑΣ</p>
                   <ul className="footer-links">
-                    <li>
-                      <Link to="/">Link 1</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Link 2</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Link 3</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Link 4</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Link 5</Link>
-                    </li>
+                    {allPages?.map((page) => (
+                      <li key={page?.id}>
+                        <Link to={`/static/${page?.id}`}>{page?.title}</Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div>

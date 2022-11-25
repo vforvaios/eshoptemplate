@@ -8,6 +8,7 @@ import checkoutReducer from 'models/reducers/checkoutReducer';
 import counterReducer from 'models/reducers/counterReducer';
 import homeReducer from 'models/reducers/homeReducer';
 import loaderReducer from 'models/reducers/loaderReducer';
+import staticReducer from 'models/reducers/staticReducer';
 import userReducer from 'models/reducers/userReducer';
 import wishlistReducer from 'models/reducers/wishlistReducer';
 import { combineReducers } from 'redux';
@@ -33,6 +34,7 @@ const persistedReducer = persistReducer(
     userReducer,
     categoriesReducer,
     checkoutReducer,
+    staticReducer,
   }),
 );
 
