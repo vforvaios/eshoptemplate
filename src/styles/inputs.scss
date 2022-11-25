@@ -1,5 +1,9 @@
 .MuiFormControl-root.error .MuiInput-root {
-  border-bottom: 1px solid red;
+  border-bottom: 2px solid red;
+
+  &:before {
+    border-bottom: 0;
+  }
 }
 
 .MuiInputLabel-formControl {

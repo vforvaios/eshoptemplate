@@ -46,7 +46,7 @@ const addToCartEpic = (action$, state$) =>
   action$.pipe(
     ofType(addToCart.type),
     withLatestFrom(state$),
-    map(
+    concatMap(
       ([
         { payload },
         {
@@ -93,7 +93,14 @@ const addToCartEpic = (action$, state$) =>
           });
         }
 
-        return setCart(newCart);
+        return [
+          setCart(newCart),
+          toggleShowAlert({
+            message: `Το προϊόν προστέθηκε στο καλάθι.`,
+            type: 'success',
+            show: true,
+          }),
+        ];
       },
     ),
   );
