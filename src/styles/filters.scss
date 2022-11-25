@@ -31,10 +31,12 @@
   margin: 0;
   padding: 12px;
   list-style-type: none;
+  max-height: 300px;
+  overflow-y: auto;
 
   &.prices {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 34px;
+    padding-right: 34px;
     padding-top: 54px;
   }
 }

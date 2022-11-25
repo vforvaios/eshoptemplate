@@ -26,8 +26,8 @@ const Contact = () => {
       />
       <div className="row">
         <div className="wrapper">
-          <div className="page-title text-center">
-            <h1>ΕΠΙΚΟΙΝΩΝΙΑ</h1>
+          <div className="text-center">
+            <h1 className="page-title">Επικοινωνία</h1>
           </div>
         </div>
       </div>
