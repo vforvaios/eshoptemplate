@@ -87,8 +87,10 @@ const addToCartEpic = (action$, state$) =>
                   ...cartItem,
                   price,
                   initialPrice,
-                  total: Number(cartItem.total) + 1,
-                  totalPrice: (Number(cartItem?.total) + 1) * cartItem?.price,
+                  total: Number(Number(cartItem.total) + 1),
+                  totalPrice: Number(
+                    (Number(cartItem?.total) + 1) * Number(cartItem?.price),
+                  ),
                 };
           });
         }
@@ -159,7 +161,7 @@ const updateCartItemTotalEpic = (action$, state$) =>
         const newCart = cart?.map((item) => {
           return item?.productId !== productId
             ? { ...item }
-            : { ...item, total, totalPrice: total * item.price };
+            : { ...item, total: Number(total), totalPrice: total * item.price };
         });
 
         return setCart(newCart);
