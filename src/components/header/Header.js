@@ -8,6 +8,7 @@ import { withToggle } from 'library';
 import { token } from 'models/selectors/userSelector';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import logo from 'resources/images/logo.jpg';
 
 const Header = ({ toggleValue, setToggleValue }) => {
@@ -25,7 +26,9 @@ const Header = ({ toggleValue, setToggleValue }) => {
         </Drawer>
       </Grid>
       <Grid item sm={6} className="logo">
-        <img src={logo} alt="fasdf" className="logo-image" />
+        <Link to="/">
+          <img src={logo} alt="fasdf" className="logo-image" />
+        </Link>
       </Grid>
       <Grid item sm={3}>
         <div className="headerActions">
