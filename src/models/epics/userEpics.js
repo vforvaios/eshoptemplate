@@ -14,11 +14,19 @@ import {
   setCurrentOrdersPage,
   getOrderDetails,
   setOrderDetails,
+  navigateToLogin,
 } from 'models/actions/userActions';
 import { token, currentOrderPage } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
-import { mergeMap, concatMap, catchError, map } from 'rxjs/operators';
+import {
+  mergeMap,
+  concatMap,
+  catchError,
+  map,
+  tap,
+  ignoreElements,
+} from 'rxjs/operators';
 
 const getOrdersStatusesEpic = (action$, state$) =>
   action$.pipe(
@@ -60,11 +68,20 @@ const loginUserEpic = (action$) =>
     ofType(loginUser.type),
     mergeMap(({ payload }) =>
       from(makeRequest('login', 'POST', JSON.stringify(payload))).pipe(
-        concatMap((payload) => [
-          setGeneralLoading(false),
-          setLoggedInUser(payload),
-          toggleShowAlert({ message: '', show: false, type: 'error' }),
-        ]),
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              setGeneralLoading(false),
+              toggleShowAlert({
+                message: `${payload.error.details[0].message}`,
+                show: true,
+                type: 'error',
+              }),
+            ];
+          }
+
+          return [setGeneralLoading(false), setLoggedInUser(payload)];
+        }),
         catchError((error) =>
           of(
             toggleShowAlert({
@@ -136,9 +153,47 @@ const registerUserEpic = (action$) =>
     ofType(registerUser.type),
     mergeMap(({ payload }) =>
       from(makeRequest('register', 'POST', JSON.stringify(payload))).pipe(
-        map((payload) => {}),
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              setGeneralLoading(false),
+              toggleShowAlert({
+                message: `${payload.error.details[0].message}`,
+                type: 'error',
+                show: true,
+              }),
+            ];
+          }
+
+          return [
+            setGeneralLoading(false),
+            toggleShowAlert({
+              message: `${payload.message}`,
+              type: 'success',
+              show: true,
+            }),
+            navigateToLogin(),
+          ];
+        }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+            setGeneralLoading(false),
+          ),
+        ),
       ),
     ),
+  );
+
+const navigateToLoginEpic = (action$) =>
+  action$.pipe(
+    ofType(navigateToLogin.type),
+    tap(() => (window.location = './login')),
+    ignoreElements(),
   );
 
 const getMyOrdersEpic = (action$, state$) =>
@@ -242,6 +297,7 @@ export {
   getMyOrdersEpic,
   getOrdersStatusesEpic,
   getOrderDetailsEpic,
+  navigateToLoginEpic,
 };
 
 const epics = combineEpics(
@@ -252,6 +308,7 @@ const epics = combineEpics(
   getMyOrdersEpic,
   getOrdersStatusesEpic,
   getOrderDetailsEpic,
+  navigateToLoginEpic,
 );
 
 export default epics;

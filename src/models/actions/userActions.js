@@ -15,6 +15,7 @@ const setOrderId = createAction('user/setOrderId');
 const getOrderDetails = createAction('user/getOrderDetails');
 const setOrderDetails = createAction('user/setOrderDetails');
 const resetState = createAction('user/resetState');
+const navigateToLogin = createAction('user/navigateToLogin');
 
 export {
   setLoggedInUser,
@@ -31,4 +32,5 @@ export {
   getOrderDetails,
   setOrderDetails,
   resetState,
+  navigateToLogin,
 };
