@@ -239,7 +239,7 @@ const getSearchRelatedProductsEpic = (action$) =>
     ofType(getSearchRelatedProducts.type),
     debounceTime(500),
     mergeMap(({ payload }) =>
-      from(makeRequest(`products/search/all?term=${payload}`)).pipe(
+      from(makeRequest(`products/search/all?term=${payload}`, 'GET', '')).pipe(
         concatMap((payload) => {
           if (payload?.error) {
             return [
