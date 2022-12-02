@@ -28,7 +28,7 @@ const settings = {
 const HomeSections = ({ sections }) =>
   sections?.length > 0 &&
   sections?.map((section) => (
-    <div className="row">
+    <div key={section.id} className="row">
       <div className="wrapper">
         <h2 className="section-title">{section.title}</h2>
         <Slider {...settings}>
