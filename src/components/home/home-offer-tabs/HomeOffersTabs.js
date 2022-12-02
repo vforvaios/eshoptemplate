@@ -8,30 +8,30 @@ import Slider from 'react-slick';
 
 import './homeOffersTabs.scss';
 
-const HomeOffersTabs = ({ handleChange, value, offers }) => {
-  const settings = {
-    dots: true,
-    arrows: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 961,
-        settings: {
-          slidesToShow: 2,
-        },
+const settings = {
+  dots: true,
+  arrows: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 961,
+      settings: {
+        slidesToShow: 2,
       },
-      {
-        breakpoint: 481,
-        settings: {
-          slidesToShow: 1,
-        },
+    },
+    {
+      breakpoint: 481,
+      settings: {
+        slidesToShow: 1,
       },
-    ],
-  };
+    },
+  ],
+};
 
+const HomeOffersTabs = ({ handleChange, value, offers }) => {
   return (
     <>
       <h2 className="section-title">ΠΡΟΣΦΟΡΕΣ</h2>

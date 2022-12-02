@@ -1,15 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import SEO from 'components/seo/SEO';
 import { getHomePageData } from 'models/actions/homeActions';
-import { homeOffers } from 'models/selectors/homeSelectors';
+import { homeOffers, homeSections } from 'models/selectors/homeSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import HomeOffersTabs from './home-offer-tabs/HomeOffersTabs';
+import HomeSections from './home-sections/HomeSections';
 import HomeSlider from './home-slider/HomeSlider';
 
 const Home = () => {
   const offers = useSelector(homeOffers);
+  const sections = useSelector(homeSections);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,6 +35,7 @@ const Home = () => {
             <HomeOffersTabs offers={offers} />
           </div>
         </div>
+        <HomeSections sections={sections} />
       </div>
     </>
   );

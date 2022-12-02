@@ -7,6 +7,9 @@ const initialState = {
   offers: {
     results: [],
   },
+  sections: {
+    results: [],
+  },
 };
 const homeReducer = createReducer(initialState, {
   [setHomePageData.type]: (state, action) => ({
@@ -14,6 +17,10 @@ const homeReducer = createReducer(initialState, {
     offers: {
       ...state.offers,
       results: action.payload.tabsOffers,
+    },
+    sections: {
+      ...state.offers,
+      results: action.payload?.sections,
     },
   }),
 });
