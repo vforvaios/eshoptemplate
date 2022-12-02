@@ -12,11 +12,21 @@ const getHomePageDataEpic = (action$) =>
     ofType(getHomePageData.type),
     mergeMap(() =>
       from(makeRequest('home', 'GET', '')).pipe(
-        concatMap((payload) => [
-          setHomePageData(payload),
-          toggleShowAlert({ message: '', show: false, type: 'error' }),
-          setGeneralLoading(false),
-        ]),
+        concatMap((payload) => {
+          const newPayload = {
+            ...payload,
+            tabsOffers: payload?.tabsOffers?.map((offer, index) => ({
+              ...offer,
+              index,
+            })),
+          };
+
+          return [
+            setHomePageData(newPayload),
+            toggleShowAlert({ message: '', show: false, type: 'error' }),
+            setGeneralLoading(false),
+          ];
+        }),
         catchError((error) =>
           of(
             toggleShowAlert({
