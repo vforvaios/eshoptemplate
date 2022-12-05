@@ -59,12 +59,16 @@ const Product = ({ classes, product, isWishlist }) => {
           </span>
         </div>
         <CardMedia className={classes.media} title={productTitle}>
-          <div
-            className="productImage"
-            style={{
-              backgroundImage: `url('${process.env.REACT_APP_IMAGES_URL}/${imgHref}')`,
-            }}
-          />
+          {imgHref?.length > 1 ? (
+            <div
+              className="productImage"
+              style={{
+                backgroundImage: `url('${process.env.REACT_APP_IMAGES_URL}/${imgHref}')`,
+              }}
+            />
+          ) : (
+            <div className="productImage no-image">NO IMAGE</div>
+          )}
         </CardMedia>
         <CardContent>
           <Typography
