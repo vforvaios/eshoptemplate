@@ -62,7 +62,7 @@ const Product = ({ classes, product, isWishlist }) => {
           <div
             className="productImage"
             style={{
-              backgroundImage: `url(${imgHref})`,
+              backgroundImage: `url('${process.env.REACT_APP_IMAGES_URL}/${imgHref}')`,
             }}
           />
         </CardMedia>
