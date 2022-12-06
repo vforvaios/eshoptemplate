@@ -1,5 +1,4 @@
 import makeRequest from 'library/makeRequest';
-import transformErrorMessages from 'library/transformErrorMessages';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import {
   getProductDetails,
@@ -245,7 +244,7 @@ const getSearchRelatedProductsEpic = (action$) =>
             return [
               setSearchLoading(false),
               toggleShowAlert({
-                message: transformErrorMessages(payload?.error?.details),
+                message: `${payload?.error}`,
                 type: 'error',
                 show: true,
               }),

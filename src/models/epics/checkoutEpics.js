@@ -1,5 +1,4 @@
 import makeRequest from 'library/makeRequest';
-import transformErrorMessages from 'library/transformErrorMessages';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import { setCart, navigateBackToCart } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
@@ -265,7 +264,7 @@ const sendOrderEpic = (action$, state$) =>
               return [
                 setGeneralLoading(false),
                 toggleShowAlert({
-                  message: transformErrorMessages(payload?.error?.details),
+                  message: `${payload?.error}`,
                   type: 'error',
                   show: true,
                 }),
