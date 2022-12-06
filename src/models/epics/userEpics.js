@@ -49,18 +49,16 @@ const getOrdersStatusesEpic = (action$, state$) =>
 
           return [setOrderStatuses(payload?.data), getMyOrders()];
         }),
-        catchError((error) => {
-          debugger;
-
-          return of(
+        catchError((error) =>
+          of(
             toggleShowAlert({
               message: `${error}`,
               show: true,
               type: 'error',
             }),
             setGeneralLoading(false),
-          );
-        }),
+          ),
+        ),
       ),
     ),
   );
@@ -71,11 +69,13 @@ const loginUserEpic = (action$) =>
     mergeMap(({ payload }) =>
       from(makeRequest('login', 'POST', JSON.stringify(payload))).pipe(
         concatMap((payload) => {
+          debugger;
+
           if (payload?.error) {
             return [
               setGeneralLoading(false),
               toggleShowAlert({
-                message: `${payload.error.details[0].message}`,
+                message: `${payload.error}`,
                 show: true,
                 type: 'error',
               }),
@@ -120,7 +120,7 @@ const addNewsletterUserEpic = (action$) =>
             return [
               setGeneralLoading(false),
               toggleShowAlert({
-                message: `${payload.error.details[0].message}`,
+                message: `${payload.error}`,
                 type: 'error',
                 show: true,
               }),
@@ -160,7 +160,7 @@ const registerUserEpic = (action$) =>
             return [
               setGeneralLoading(false),
               toggleShowAlert({
-                message: `${payload.error.details[0].message}`,
+                message: `${payload.error}`,
                 type: 'error',
                 show: true,
               }),
@@ -301,7 +301,7 @@ const sendNewUserPasswordEpic = (action$) =>
             return [
               setGeneralLoading(false),
               toggleShowAlert({
-                message: `${payload.error.details[0].message}`,
+                message: `${payload.error}`,
                 type: 'error',
                 show: true,
               }),
@@ -359,7 +359,7 @@ const changeUserPasswordEpic = (action$, state$) =>
             return [
               setGeneralLoading(false),
               toggleShowAlert({
-                message: `${payload.error.details[0].message}`,
+                message: `${payload.error}`,
                 type: 'error',
                 show: true,
               }),
