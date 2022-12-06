@@ -1,5 +1,4 @@
 import makeRequest from 'library/makeRequest';
-import transformErrorMessages from 'library/transformErrorMessages';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {

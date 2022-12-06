@@ -5,7 +5,6 @@ import SEO from 'components/seo/SEO';
 import { changeUserPassword } from 'models/actions/userActions';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 const ChangePassword = () => {
   const [password, setPassword] = useState('');
