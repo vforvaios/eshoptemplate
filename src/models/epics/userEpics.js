@@ -69,8 +69,6 @@ const loginUserEpic = (action$) =>
     mergeMap(({ payload }) =>
       from(makeRequest('login', 'POST', JSON.stringify(payload))).pipe(
         concatMap((payload) => {
-          debugger;
-
           if (payload?.error) {
             return [
               setGeneralLoading(false),
