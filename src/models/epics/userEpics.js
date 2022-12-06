@@ -1,4 +1,5 @@
 import makeRequest from 'library/makeRequest';
+import transformErrorMessages from 'library/transformErrorMessages';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
@@ -15,6 +16,8 @@ import {
   getOrderDetails,
   setOrderDetails,
   navigateToLogin,
+  sendNewUserPassword,
+  changeUserPassword,
 } from 'models/actions/userActions';
 import { token, currentOrderPage } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
@@ -289,6 +292,116 @@ const getOrderDetailsEpic = (action$, state$) =>
     ),
   );
 
+const sendNewUserPasswordEpic = (action$) =>
+  action$.pipe(
+    ofType(sendNewUserPassword.type),
+    mergeMap(({ payload }) =>
+      from(makeRequest('login/forgot', 'POST', JSON.stringify(payload))).pipe(
+        concatMap((payload) => {
+          if (payload?.error?.details?.length) {
+            return [
+              setGeneralLoading(false),
+              toggleShowAlert({
+                message: `${payload.error.details[0].message}`,
+                type: 'error',
+                show: true,
+              }),
+            ];
+          }
+
+          if (payload?.error) {
+            return [
+              setGeneralLoading(false),
+              toggleShowAlert({
+                message: `${payload.error}`,
+                type: 'error',
+                show: true,
+              }),
+            ];
+          }
+
+          return [
+            toggleShowAlert({
+              message: `${payload?.message}`,
+              type: 'success',
+              show: true,
+            }),
+            setGeneralLoading(false),
+          ];
+        }),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+            setGeneralLoading(false),
+          ),
+        ),
+      ),
+    ),
+  );
+
+const changeUserPasswordEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(changeUserPassword.type),
+    mergeMap(({ payload }) =>
+      from(
+        makeRequest(
+          'login/changepassword',
+          'POST',
+          JSON.stringify({ password: payload?.password }),
+          token(state$.value),
+        ),
+      ).pipe(
+        concatMap((payload) => {
+          if (payload?.error?.details?.length) {
+            return [
+              setGeneralLoading(false),
+              toggleShowAlert({
+                message: `${payload.error.details[0].message}`,
+                type: 'error',
+                show: true,
+              }),
+            ];
+          }
+
+          if (payload?.error) {
+            return [
+              setGeneralLoading(false),
+              toggleShowAlert({
+                message: `${payload.error}`,
+                type: 'error',
+                show: true,
+              }),
+            ];
+          }
+
+          return [
+            setGeneralLoading(false),
+            toggleShowAlert({
+              message: `${payload.message}`,
+              type: 'success',
+              show: true,
+            }),
+            navigateToLogin(),
+          ];
+        }),
+        catchError((error) => {
+          return of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+            setGeneralLoading(false),
+          );
+        }),
+      ),
+    ),
+  );
+
 export {
   loginUserEpic,
   logoutUserEpic,
@@ -298,6 +411,8 @@ export {
   getOrdersStatusesEpic,
   getOrderDetailsEpic,
   navigateToLoginEpic,
+  sendNewUserPasswordEpic,
+  changeUserPasswordEpic,
 };
 
 const epics = combineEpics(
@@ -309,6 +424,8 @@ const epics = combineEpics(
   getOrdersStatusesEpic,
   getOrderDetailsEpic,
   navigateToLoginEpic,
+  sendNewUserPasswordEpic,
+  changeUserPasswordEpic,
 );
 
 export default epics;

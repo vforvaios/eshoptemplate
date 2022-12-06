@@ -20,6 +20,7 @@ img {
 .content {
   margin-top: 20px;
   margin-bottom: 60px;
+  min-height: 600px;
 }
 
 .hidden {
@@ -66,6 +67,7 @@ ul {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  align-items: center;
 
   &.separate {
     justify-content: space-between;

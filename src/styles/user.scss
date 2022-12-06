@@ -70,3 +70,13 @@
     background: $alert;
   }
 }
+
+.minor-link {
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

@@ -36,6 +36,9 @@ const UserMenu = ({ token }) => {
           Καλωσήρθες {loggedInUser?.userLoggedIn?.username}
         </MenuItem>
         <MenuItem onClick={handleClose}>
+          <Link to="/changepassword">Αλλαγή κωδικού</Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
           <Link to="/wishlist">Τα αγαπημένα μου</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>

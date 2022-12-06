@@ -16,6 +16,8 @@ const getOrderDetails = createAction('user/getOrderDetails');
 const setOrderDetails = createAction('user/setOrderDetails');
 const resetState = createAction('user/resetState');
 const navigateToLogin = createAction('user/navigateToLogin');
+const sendNewUserPassword = createAction('user/sendNewUserPassword');
+const changeUserPassword = createAction('user/changeUserPassword');
 
 export {
   setLoggedInUser,
@@ -33,4 +35,6 @@ export {
   setOrderDetails,
   resetState,
   navigateToLogin,
+  sendNewUserPassword,
+  changeUserPassword,
 };

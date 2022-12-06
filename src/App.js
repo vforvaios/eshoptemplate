@@ -3,12 +3,14 @@ import Alert from 'components/alert/Alert';
 import Cart from 'components/cart/Cart';
 import Catalog from 'components/catalog/Catalog';
 import CategoriesLanding from 'components/categoriesLanging/CategoriesLanding';
+import ChangePassword from 'components/change-password/ChangePassword';
 import CheckoutEdit from 'components/checkout/CheckoutEdit';
 import CheckoutLogin from 'components/checkout/CheckoutLogin';
 import CheckoutSuccess from 'components/checkout/CheckoutSuccess';
 import Confirm from 'components/checkout/Confirm';
 import Contact from 'components/contact/Contact';
 import Footer from 'components/footer/Footer';
+import ForgotPassword from 'components/forgot-password/ForgotPassword';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import GeneralLoading from 'components/loader/GeneralLoading';
@@ -46,6 +48,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<Contact />} />
@@ -54,6 +57,14 @@ const App = () => {
             element={
               <ProtectedRoute isAllowed={userSelector?.token}>
                 <CategoriesLanding />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/changepassword"
+            element={
+              <ProtectedRoute isAllowed={userSelector?.token}>
+                <ChangePassword />
               </ProtectedRoute>
             }
           />
