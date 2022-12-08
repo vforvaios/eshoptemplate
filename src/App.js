@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import About from 'components/about/About';
 import Alert from 'components/alert/Alert';
 import Cart from 'components/cart/Cart';
@@ -9,6 +10,7 @@ import CheckoutLogin from 'components/checkout/CheckoutLogin';
 import CheckoutSuccess from 'components/checkout/CheckoutSuccess';
 import Confirm from 'components/checkout/Confirm';
 import Contact from 'components/contact/Contact';
+import CookiesManagement from 'components/cookies-management/CookiesManagement';
 import Footer from 'components/footer/Footer';
 import ForgotPassword from 'components/forgot-password/ForgotPassword';
 import Header from 'components/header/Header';
@@ -24,82 +26,101 @@ import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
 import { catalogIsLoading } from 'models/selectors/catalogSelectors';
 import { user } from 'models/selectors/userSelector';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { CookiesProvider, withCookies } from 'react-cookie';
+import ReactGA from 'react-ga';
 import { HelmetProvider } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'fontello/css/fontello.css';
 
-const App = () => {
+const TRACKING_ID = process.env.REACT_APP_TRACKING_ID; // OUR_TRACKING_ID
+
+const App = ({ cookies }) => {
   const userSelector = useSelector(user);
   const loading = useSelector(catalogIsLoading);
 
+  useEffect(() => {
+    if (
+      cookies.get('CookieConsent') !== null &&
+      cookies.get('CookieConsent') !== undefined &&
+      cookies.get('CookieConsent') === 'true'
+    ) {
+      ReactGA.initialize(TRACKING_ID);
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+  }, []);
+
   return (
-    <HelmetProvider>
-      <Router>
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route
-            path="/about"
-            element={
-              <ProtectedRoute isAllowed={userSelector?.token}>
-                <About />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/categories"
-            element={
-              <ProtectedRoute isAllowed={userSelector?.token}>
-                <CategoriesLanding />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/changepassword"
-            element={
-              <ProtectedRoute isAllowed={userSelector?.token}>
-                <ChangePassword />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/static/:id" element={<StaticPage />} />
-          <Route path="/checkout/step1" element={<CheckoutLogin />} />
-          <Route path="/checkout/step2" element={<CheckoutEdit />} />
-          <Route path="/checkout/confirm" element={<Confirm />} />
-          <Route path="/checkout/success" element={<CheckoutSuccess />} />
-          <Route
-            path="/wishlist"
-            element={
-              <ProtectedRoute isAllowed={userSelector?.token}>
-                <Wishlist />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/orders"
-            element={
-              <ProtectedRoute isAllowed={userSelector?.token}>
-                <Orders />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-        <Footer />
-      </Router>
-      <Alert />
-      {loading && <GeneralLoading />}
-    </HelmetProvider>
+    <CookiesProvider>
+      <HelmetProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route
+              path="/about"
+              element={
+                <ProtectedRoute isAllowed={userSelector?.token}>
+                  <About />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/categories"
+              element={
+                <ProtectedRoute isAllowed={userSelector?.token}>
+                  <CategoriesLanding />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/changepassword"
+              element={
+                <ProtectedRoute isAllowed={userSelector?.token}>
+                  <ChangePassword />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/static/:id" element={<StaticPage />} />
+            <Route path="/checkout/step1" element={<CheckoutLogin />} />
+            <Route path="/checkout/step2" element={<CheckoutEdit />} />
+            <Route path="/checkout/confirm" element={<Confirm />} />
+            <Route path="/checkout/success" element={<CheckoutSuccess />} />
+            <Route
+              path="/wishlist"
+              element={
+                <ProtectedRoute isAllowed={userSelector?.token}>
+                  <Wishlist />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/orders"
+              element={
+                <ProtectedRoute isAllowed={userSelector?.token}>
+                  <Orders />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+          <Footer />
+        </Router>
+        <Alert />
+        <CookiesManagement />
+
+        {loading && <GeneralLoading />}
+      </HelmetProvider>
+    </CookiesProvider>
   );
 };
 
-export default App;
+export default withCookies(App);
