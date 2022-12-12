@@ -9,6 +9,7 @@ const HomeSlider = ({ banners }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    touchMove: true,
   };
 
   return (
