@@ -1,7 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import SEO from 'components/seo/SEO';
 import { getHomePageData } from 'models/actions/homeActions';
-import { homeOffers, homeSections } from 'models/selectors/homeSelectors';
+import {
+  homeOffers,
+  homeSections,
+  homeBanners,
+} from 'models/selectors/homeSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,6 +16,7 @@ import HomeSlider from './home-slider/HomeSlider';
 const Home = () => {
   const offers = useSelector(homeOffers);
   const sections = useSelector(homeSections);
+  const banners = useSelector(homeBanners);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +33,7 @@ const Home = () => {
       />
       <div className="homeBG">
         <div className="row">
-          <HomeSlider />
+          <HomeSlider banners={banners} />
         </div>
         <div className="row">
           <div className="wrapper">

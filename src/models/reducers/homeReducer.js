@@ -10,6 +10,9 @@ const initialState = {
   sections: {
     results: [],
   },
+  banners: {
+    results: [],
+  },
 };
 const homeReducer = createReducer(initialState, {
   [setHomePageData.type]: (state, action) => ({
@@ -21,6 +24,10 @@ const homeReducer = createReducer(initialState, {
     sections: {
       ...state.offers,
       results: action.payload?.sections,
+    },
+    banners: {
+      ...state.offers,
+      results: action.payload?.banners,
     },
   }),
 });

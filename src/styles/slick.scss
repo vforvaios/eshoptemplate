@@ -4,9 +4,15 @@
 }
 
 .homeSlickSlide {
+  a {
+    display: block;
+    padding: 0;
+  }
+
   img {
     width: 100%;
     outline: none;
+    object-fit: contain;
   }
 }
 .slick-next {
