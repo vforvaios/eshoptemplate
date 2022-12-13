@@ -32,15 +32,19 @@ const Home = () => {
         type="article"
       />
       <div className="homeBG">
-        <div className="row">
-          <HomeSlider banners={banners} />
-        </div>
-        <div className="row">
-          <div className="wrapper">
-            <HomeOffersTabs offers={offers} />
+        {banners?.length > 0 && (
+          <div className="row">
+            <HomeSlider banners={banners} />
           </div>
-        </div>
-        <HomeSections sections={sections} />
+        )}
+        {offers?.length > 0 && (
+          <div className="row">
+            <div className="wrapper">
+              <HomeOffersTabs offers={offers} />
+            </div>
+          </div>
+        )}
+        {sections?.length > 0 && <HomeSections sections={sections} />}
       </div>
     </>
   );
