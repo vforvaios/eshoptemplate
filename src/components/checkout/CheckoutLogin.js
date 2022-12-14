@@ -7,7 +7,7 @@ import GuestCheckout from './GuestCheckout';
 
 const CheckoutLogin = () => {
   return (
-    <div className="content checkout step3">
+    <div className="content checkout step1">
       <SEO
         title="Shoppy checkout step 1"
         description="Shoppy checkout step 1 page"
