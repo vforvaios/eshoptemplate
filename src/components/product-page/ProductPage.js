@@ -21,13 +21,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import ProductMoreDetails from './ProductMoreDetails';
-
 const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const product = useSelector(singleProduct);
   const relProducts = useSelector(relatedProducts);
+
   const {
     productTitle,
     productDescription,
@@ -35,7 +34,7 @@ const ProductPage = () => {
     price,
     imgHref,
     code,
-    tabs,
+    productLargeDescription,
   } = product;
 
   useEffect(() => {
@@ -56,8 +55,9 @@ const ProductPage = () => {
           <Grid container>
             <Grid item sm={6} xs={12} className="mainProductPhotosContainer">
               <img
-                src={imgHref}
-                alt="Chris standing up holding his daughter Elva"
+                src={`${process.env.REACT_APP_IMAGES_URL}/${imgHref}`}
+                alt={productTitle}
+                title={productTitle}
               />
             </Grid>
             <Grid item sm={6} xs={12} className="pr0">
@@ -108,10 +108,13 @@ const ProductPage = () => {
           </Grid>
         </div>
       </div>
-      {tabs && (
+      {productLargeDescription && (
         <div className="row">
           <div className="wrapper">
-            <ProductMoreDetails tabs={tabs} />
+            <div className="section-title">ΠΕΡΙΓΡΑΦΗ</div>
+            <div
+              dangerouslySetInnerHTML={{ __html: productLargeDescription }}
+            />
           </div>
         </div>
       )}
