@@ -69,6 +69,45 @@ const Filters = () => {
               />
             )}
             <div className="filter-boxes">
+              {/* PRICES */}
+              <div className="filter-box">
+                <div className="filter-title">ΕΥΡΟΣ ΤΙΜΩΝ</div>
+                <div className="filter-list prices">
+                  <Slider
+                    getAriaLabel={() => 'ευρώ'}
+                    value={[
+                      allFilters?.selectedPriceRange[0] || minprice,
+                      allFilters?.selectedPriceRange[1] || maxprice,
+                    ]}
+                    min={minprice}
+                    max={maxprice}
+                    onChange={(event, newValue) => {
+                      dispatch(
+                        setSelectedFilterPriceRange({
+                          type: 'selectedPriceRange',
+                          value: newValue,
+                        }),
+                      );
+                    }}
+                    onChangeCommitted={(event, value) => {
+                      dispatch(setGeneralLoading(true));
+                      dispatch(getCatalogWithPrices());
+                    }}
+                    valueLabelDisplay="on"
+                    getAriaValueText={valuetext}
+                    marks={[
+                      {
+                        value: minprice,
+                        label: `${formatMoney.format(minprice)}`,
+                      },
+                      {
+                        value: maxprice,
+                        label: `${formatMoney.format(maxprice)}`,
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
               <div className="filter-box">
                 <div className="filter-title">ΚΑΤΗΓΟΡΙΕΣ</div>
                 <ul className="filter-list">
@@ -120,46 +159,6 @@ const Filters = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              {/* PRICES */}
-              <div className="filter-box">
-                <div className="filter-title">ΕΥΡΟΣ ΤΙΜΩΝ</div>
-                <div className="filter-list prices">
-                  <Slider
-                    getAriaLabel={() => 'ευρώ'}
-                    value={[
-                      allFilters?.selectedPriceRange[0] || minprice,
-                      allFilters?.selectedPriceRange[1] || maxprice,
-                    ]}
-                    min={minprice}
-                    max={maxprice}
-                    onChange={(event, newValue) => {
-                      dispatch(
-                        setSelectedFilterPriceRange({
-                          type: 'selectedPriceRange',
-                          value: newValue,
-                        }),
-                      );
-                    }}
-                    onChangeCommitted={(event, value) => {
-                      dispatch(setGeneralLoading(true));
-                      dispatch(getCatalogWithPrices());
-                    }}
-                    valueLabelDisplay="on"
-                    getAriaValueText={valuetext}
-                    marks={[
-                      {
-                        value: minprice,
-                        label: `${formatMoney.format(minprice)}`,
-                      },
-                      {
-                        value: maxprice,
-                        label: `${formatMoney.format(maxprice)}`,
-                      },
-                    ]}
-                  />
-                </div>
               </div>
             </div>
           </div>
