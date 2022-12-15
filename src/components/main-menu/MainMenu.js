@@ -8,6 +8,7 @@ import {
 } from 'models/actions/catalogActions';
 import { getCategoriesMenu } from 'models/actions/categoriesActions';
 import { categories } from 'models/selectors/categoriesSelectors';
+import { staticPagesInMenu } from 'models/selectors/staticSelectors';
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +16,7 @@ import logo from 'resources/images/logo.jpg';
 
 const MainMenu = ({ setToggleValue }) => {
   const allCategories = useSelector(categories);
+  const staticPages = useSelector(staticPagesInMenu);
   const navigate = useNavigate();
   const myCloseMenuBtn = useRef(null);
   const dispatch = useDispatch();
@@ -103,6 +105,16 @@ const MainMenu = ({ setToggleValue }) => {
                   </div>
                 </>
               )}
+            </li>
+          ))}
+          {staticPages?.map((page, index) => (
+            <li className="menu-item" key={`${page?.id}_${index}`}>
+              <span onClick={() => navigate(`./static/${page?.id}`)}>
+                {page?.title
+                  .toUpperCase()
+                  .normalize('NFD')
+                  .replace(/[\u0300-\u036f]/g, '')}
+              </span>
             </li>
           ))}
         </ul>
