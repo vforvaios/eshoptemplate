@@ -11,6 +11,7 @@ import {
   setOrderOk,
   setCanSeeSuccessPage,
   setUpdatedProducts,
+  setCountries,
 } from 'models/actions/checkoutActions';
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   shippingErrors: [],
   paymentMethods: [],
   shippingMethods: [],
+  countries: [],
   billingInfo: {
     name: '',
     lastName: '',
@@ -29,6 +31,8 @@ const initialState = {
     postCode: '',
     city: '',
     region: '',
+    country: 81,
+    prefecture: 1,
   },
   shippingInfo: {
     name: '',
@@ -40,6 +44,8 @@ const initialState = {
     postCode: '',
     city: '',
     region: '',
+    country: 81,
+    prefecture: 1,
   },
   receipt: 'receipt',
   sameAsBilling: true,
@@ -48,6 +54,10 @@ const initialState = {
 };
 
 const checkoutReducer = createReducer(initialState, {
+  [setCountries.type]: (state, action) => ({
+    ...state,
+    countries: action.payload,
+  }),
   [setUpdatedProducts.type]: (state, action) => ({
     ...state,
     updatedProducts: action.payload,

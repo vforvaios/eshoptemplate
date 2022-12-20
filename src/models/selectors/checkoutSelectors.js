@@ -11,6 +11,7 @@ const shippingInfo = ({ checkoutReducer }) => checkoutReducer.shippingInfo;
 
 const sameAsBilling = ({ checkoutReducer }) => checkoutReducer.sameAsBilling;
 
+const countries = ({ checkoutReducer }) => checkoutReducer.countries;
 const billingErrors = ({ checkoutReducer }) => checkoutReducer.billingErrors;
 const shippingErrors = ({ checkoutReducer }) => checkoutReducer.shippingErrors;
 const orderOK = ({ checkoutReducer }) => checkoutReducer.orderOK;
@@ -31,4 +32,5 @@ export {
   orderOK,
   canSeeSuccessPage,
   updatedProducts,
+  countries,
 };

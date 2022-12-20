@@ -25,6 +25,8 @@ const setOrderOk = createAction('checkout/setOrderOk');
 const setCanSeeSuccessPage = createAction('checkout/setCanSeeSuccessPage');
 const setUpdatedProducts = createAction('checkout/setUpdatedProducts');
 const updateCartProducts = createAction('checkout/updateCartProducts');
+const getCountries = createAction('checkout/getCountries');
+const setCountries = createAction('checkout/setCountries');
 
 export {
   getPaymentMethods,
@@ -47,4 +49,6 @@ export {
   setCanSeeSuccessPage,
   setUpdatedProducts,
   updateCartProducts,
+  getCountries,
+  setCountries,
 };

@@ -18,6 +18,9 @@ import {
   setCanSeeSuccessPage,
   setUpdatedProducts,
   updateCartProducts,
+  // basic
+  getCountries,
+  setCountries,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -29,6 +32,25 @@ import {
   tap,
   ignoreElements,
 } from 'rxjs/operators';
+
+const getCountriesEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getCountries.type),
+    mergeMap(() =>
+      from(makeRequest('countries', 'GET', '')).pipe(
+        concatMap(({ countries }) => [setCountries(countries)]),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+          ),
+        ),
+      ),
+    ),
+  );
 
 const getPaymentMethodsEpic = (action$, state$) =>
   action$.pipe(
@@ -436,6 +458,7 @@ export {
   navigateToConfirmPageEpic,
   updateCartProductsEpic,
   navigateBackToCartEpic,
+  getCountriesEpic,
 };
 
 const epics = combineEpics(
@@ -449,6 +472,7 @@ const epics = combineEpics(
   navigateToConfirmPageEpic,
   updateCartProductsEpic,
   navigateBackToCartEpic,
+  getCountriesEpic,
 );
 
 export default epics;

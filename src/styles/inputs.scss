@@ -9,6 +9,10 @@
 .MuiInputLabel-formControl {
   left: -6px !important;
   top: 6px !important;
+
+  &.select-label {
+    left: 8px !important;
+  }
 }
 
 .MuiRadio-root {
