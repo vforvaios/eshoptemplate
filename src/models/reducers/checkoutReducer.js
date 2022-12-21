@@ -12,6 +12,8 @@ import {
   setCanSeeSuccessPage,
   setUpdatedProducts,
   setCountries,
+  setPrefectures,
+  changedPrefecture,
 } from 'models/actions/checkoutActions';
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
   paymentMethods: [],
   shippingMethods: [],
   countries: [],
+  prefectureIsChanged: false,
   billingInfo: {
     name: '',
     lastName: '',
@@ -33,6 +36,7 @@ const initialState = {
     region: '',
     country: 81,
     prefecture: 1,
+    prefectures: [],
   },
   shippingInfo: {
     name: '',
@@ -46,6 +50,7 @@ const initialState = {
     region: '',
     country: 81,
     prefecture: 1,
+    prefectures: [],
   },
   receipt: 'receipt',
   sameAsBilling: true,
@@ -54,6 +59,17 @@ const initialState = {
 };
 
 const checkoutReducer = createReducer(initialState, {
+  [changedPrefecture.type]: (state, action) => ({
+    ...state,
+    prefectureIsChanged: action.payload,
+  }),
+  [setPrefectures.type]: (state, action) => ({
+    ...state,
+    [action.payload?.info]: {
+      ...state?.[action?.payload?.info],
+      prefectures: action?.payload?.prefectures,
+    },
+  }),
   [setCountries.type]: (state, action) => ({
     ...state,
     countries: action.payload,
@@ -84,6 +100,7 @@ const checkoutReducer = createReducer(initialState, {
       ...state?.billingInfo,
       [action.payload.key]: action.payload.name,
     },
+    prefectureIsChanged: false,
   }),
   [setShippingInfo.type]: (state, action) => ({
     ...state,
@@ -91,6 +108,7 @@ const checkoutReducer = createReducer(initialState, {
       ...state?.shippingInfo,
       [action.payload.key]: action.payload.name,
     },
+    prefectureIsChanged: false,
   }),
   [clearOrder.type]: (state) => ({
     ...initialState,

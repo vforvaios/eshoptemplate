@@ -4,21 +4,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import formatMoney from 'library/formatMoney';
-import {
-  getPaymentMethods,
-  checkPaymentMethod,
-} from 'models/actions/checkoutActions';
+import { checkPaymentMethod } from 'models/actions/checkoutActions';
 import { paymentMethods } from 'models/selectors/checkoutSelectors';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const PaymentMethods = () => {
   const dispatch = useDispatch();
   const currentPaymentMethods = useSelector(paymentMethods);
-
-  useEffect(() => {
-    dispatch(getPaymentMethods());
-  }, []);
 
   return (
     <div className="payment-methods">

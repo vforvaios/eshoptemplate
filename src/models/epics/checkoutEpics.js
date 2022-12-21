@@ -3,10 +3,10 @@ import { toggleShowAlert } from 'models/actions/alertActions';
 import { setCart, navigateBackToCart } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
-  getPaymentMethods,
+  // getPaymentMethods,
   setPaymentMethods,
   checkPaymentMethod,
-  getShippingMethods,
+  // getShippingMethods,
   setShippingMethods,
   checkShippingMethod,
   sendOrder,
@@ -21,6 +21,12 @@ import {
   // basic
   getCountries,
   setCountries,
+  setPrefectures,
+  setSameAsBilling,
+  getPaymentMethods,
+  getShippingMethods,
+  getPrefecturesPerCountryForBilling,
+  getPrefecturesPerCountryForShipping,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
@@ -31,9 +37,10 @@ import {
   withLatestFrom,
   tap,
   ignoreElements,
+  distinctUntilChanged,
 } from 'rxjs/operators';
 
-const getCountriesEpic = (action$, state$) =>
+const getCountriesEpic = (action$) =>
   action$.pipe(
     ofType(getCountries.type),
     mergeMap(() =>
@@ -48,6 +55,42 @@ const getCountriesEpic = (action$, state$) =>
             }),
           ),
         ),
+      ),
+    ),
+  );
+
+const getPrefecturesPerCountryForBillingEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getPrefecturesPerCountryForBilling.type),
+    withLatestFrom(state$),
+    mergeMap(
+      ([
+        { payload },
+        {
+          checkoutReducer: {
+            shippingInfo: { country },
+          },
+        },
+      ]) =>
+        from(makeRequest(`prefectures?country_id=${payload}`, 'GET', '')).pipe(
+          concatMap(({ prefectures }) => [
+            setPrefectures({ prefectures, info: 'billingInfo' }),
+            getPrefecturesPerCountryForShipping(country),
+          ]),
+        ),
+    ),
+  );
+
+const getPrefecturesPerCountryForShippingEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getPrefecturesPerCountryForShipping.type),
+    mergeMap(({ payload }) =>
+      from(makeRequest(`prefectures?country_id=${payload}`, 'GET', '')).pipe(
+        concatMap(({ prefectures }) => [
+          setPrefectures({ prefectures, info: 'shippingInfo' }),
+          getPaymentMethods(),
+          getShippingMethods(),
+        ]),
       ),
     ),
   );
@@ -100,8 +143,8 @@ const checkPaymentMethodEpic = (action$, state$) =>
         });
 
         // ΠΑΡΑΛΑΒΗ ΣΤΟ ΚΑΤΑΣΤΗΜΑ id=2
-        const paralaviChecked = shippingMethods.find((sm) => sm?.id === 2)
-          .checked;
+        const paralaviChecked = shippingMethods?.find((sm) => sm?.id === 2)
+          ?.checked;
 
         if (
           paralaviChecked &&
@@ -142,31 +185,47 @@ const checkPaymentMethodEpic = (action$, state$) =>
 
 const getShippingMethodsEpic = (action$, state$) =>
   action$.pipe(
-    ofType(getShippingMethods.type),
-    mergeMap(() =>
-      from(makeRequest('shippingmethods', 'GET', '')).pipe(
-        concatMap((payload) => {
-          const newPayload = payload?.map((shippingmethod, index) => {
-            return index === 0
-              ? { ...shippingmethod, checked: true }
-              : { ...shippingmethod };
-          });
+    ofType(setSameAsBilling.type, getShippingMethods.type),
+    distinctUntilChanged(),
+    withLatestFrom(state$),
+    mergeMap(
+      ([
+        ,
+        {
+          checkoutReducer: { sameAsBilling, shippingInfo, billingInfo },
+        },
+      ]) =>
+        from(
+          makeRequest(
+            `shippingmethods?prefecture=${
+              sameAsBilling ? billingInfo?.prefecture : shippingInfo?.prefecture
+            }`,
+            'GET',
+            '',
+          ),
+        ).pipe(
+          concatMap((payload) => {
+            const newPayload = payload?.map((shippingmethod, index) => {
+              return index === 0
+                ? { ...shippingmethod, checked: true }
+                : { ...shippingmethod };
+            });
 
-          return [
-            setShippingMethods(newPayload),
-            toggleShowAlert({ message: '', show: false, type: 'error' }),
-          ];
-        }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
+            return [
+              setShippingMethods(newPayload),
+              toggleShowAlert({ message: '', show: false, type: 'error' }),
+            ];
+          }),
+          catchError((error) =>
+            of(
+              toggleShowAlert({
+                message: `${error}`,
+                type: 'error',
+                show: true,
+              }),
+            ),
           ),
         ),
-      ),
     ),
   );
 
@@ -188,9 +247,9 @@ const checkShippingMethodEpic = (action$, state$) =>
         });
 
         // ΠΛΗΡΩΜΗ ΣΤΟ ΚΑΤΑΣΤΗΜΑ id=2
-        const pliromiKatastimaChecked = paymentMethods.find(
+        const pliromiKatastimaChecked = paymentMethods?.find(
           (pm) => pm?.id === 2,
-        ).checked;
+        )?.checked;
 
         if (
           pliromiKatastimaChecked &&
@@ -459,6 +518,8 @@ export {
   updateCartProductsEpic,
   navigateBackToCartEpic,
   getCountriesEpic,
+  getPrefecturesPerCountryForBillingEpic,
+  getPrefecturesPerCountryForShippingEpic,
 };
 
 const epics = combineEpics(
@@ -473,6 +534,8 @@ const epics = combineEpics(
   updateCartProductsEpic,
   navigateBackToCartEpic,
   getCountriesEpic,
+  getPrefecturesPerCountryForBillingEpic,
+  getPrefecturesPerCountryForShippingEpic,
 );
 
 export default epics;

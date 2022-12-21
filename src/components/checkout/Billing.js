@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
@@ -7,6 +8,8 @@ import {
   setShippingInfo,
   setReceipt,
   setSameAsBilling,
+  getCountries,
+  getPrefecturesPerCountryForBilling,
 } from 'models/actions/checkoutActions';
 import {
   billingInfo,
@@ -15,20 +18,27 @@ import {
   receipt,
   billingErrors,
   shippingErrors,
+  countries,
 } from 'models/selectors/checkoutSelectors';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import BillingShippingInputs from './BillingShippingInputs';
 
 const Billing = () => {
   const dispatch = useDispatch();
+  const allCountries = useSelector(countries);
   const myBillingInfo = useSelector(billingInfo);
   const myReceipt = useSelector(receipt);
   const myShippingInfo = useSelector(shippingInfo);
   const mySameAsBilling = useSelector(sameAsBilling);
   const myBillingErrors = useSelector(billingErrors);
   const myShippingErrors = useSelector(shippingErrors);
+
+  useEffect(() => {
+    dispatch(getCountries());
+    dispatch(getPrefecturesPerCountryForBilling(myBillingInfo.country));
+  }, []);
 
   return (
     <div className="billing-shipping billing">
@@ -57,6 +67,8 @@ const Billing = () => {
         <div className="billing-inputs">
           <BillingShippingInputs
             billing
+            countries={allCountries}
+            prefectures={myBillingInfo?.prefectures}
             inputs={myBillingInfo}
             sameAsBilling={false}
             setInfo={setBillingInfo}
@@ -66,6 +78,8 @@ const Billing = () => {
         <div className="billing-inputs">
           <BillingShippingInputs
             billing={false}
+            countries={allCountries}
+            prefectures={myShippingInfo?.prefectures}
             sameAsBilling={mySameAsBilling}
             inputs={myShippingInfo}
             setInfo={setShippingInfo}

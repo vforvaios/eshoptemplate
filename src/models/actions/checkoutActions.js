@@ -27,6 +27,15 @@ const setUpdatedProducts = createAction('checkout/setUpdatedProducts');
 const updateCartProducts = createAction('checkout/updateCartProducts');
 const getCountries = createAction('checkout/getCountries');
 const setCountries = createAction('checkout/setCountries');
+const getPrefecturesPerCountryForBilling = createAction(
+  'checkout/getPrefecturesPerCountryForBilling',
+);
+const getPrefecturesPerCountryForShipping = createAction(
+  'checkout/getPrefecturesPerCountryForShipping',
+);
+const setPrefectures = createAction('checkout/setPrefectures');
+const changedCountry = createAction('checkout/changedCountry');
+const changedPrefecture = createAction('checkout/changedPrefecture');
 
 export {
   getPaymentMethods,
@@ -51,4 +60,9 @@ export {
   updateCartProducts,
   getCountries,
   setCountries,
+  getPrefecturesPerCountryForBilling,
+  getPrefecturesPerCountryForShipping,
+  setPrefectures,
+  changedPrefecture,
+  changedCountry,
 };

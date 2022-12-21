@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -5,10 +6,12 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { getCountries } from 'models/actions/checkoutActions';
-import { countries } from 'models/selectors/checkoutSelectors';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  changedPrefecture,
+  changedCountry,
+} from 'models/actions/checkoutActions';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
 const BillingShippingInputs = ({
   billing,
@@ -17,6 +20,8 @@ const BillingShippingInputs = ({
   sameAsBilling,
   setSameAsBilling,
   errors,
+  countries,
+  prefectures,
 }) => {
   const {
     name,
@@ -33,13 +38,6 @@ const BillingShippingInputs = ({
   } = inputs;
 
   const dispatch = useDispatch();
-  const allCountries = useSelector(countries);
-
-  useEffect(() => {
-    dispatch(getCountries());
-  }, []);
-
-  console.log(country);
 
   return (
     <div>
@@ -196,12 +194,40 @@ const BillingShippingInputs = ({
             id="billing-country-label"
             value={Number(country) || ''}
             label="Χώρα"
-            onChange={(e) =>
-              dispatch(setInfo({ key: 'country', name: e.target.value }))
-            }>
-            {allCountries?.map((country) => (
+            onChange={(e) => {
+              dispatch(setInfo({ key: 'country', name: e.target.value }));
+              dispatch(
+                changedCountry({
+                  country: e.target.value,
+                  typeOfInfoChanging: billing ? 'billingInfo' : 'shippingInfo',
+                }),
+              );
+            }}>
+            {countries?.map((country) => (
               <MenuItem key={country?.id} value={Number(country?.id)}>
                 {country?.country_name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl variant="standard" fullWidth>
+          <InputLabel
+            className="select-label"
+            htmlFor="billing-prefecture-label2">
+            ΝΟΜΟΣ
+          </InputLabel>
+          <Select
+            labelId="billing-prefecture-label2"
+            id="billing-prefecture-label"
+            value={Number(prefecture) || ''}
+            label="ΝΟΜΟΣ"
+            onChange={(e) => {
+              dispatch(setInfo({ key: 'prefecture', name: e.target.value }));
+              dispatch(changedPrefecture());
+            }}>
+            {prefectures?.map((prefecture) => (
+              <MenuItem key={prefecture?.id} value={Number(prefecture?.id)}>
+                {prefecture?.prefecture_name}
               </MenuItem>
             ))}
           </Select>
