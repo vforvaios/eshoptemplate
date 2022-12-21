@@ -68,6 +68,7 @@ const checkoutReducer = createReducer(initialState, {
     [action.payload?.info]: {
       ...state?.[action?.payload?.info],
       prefectures: action?.payload?.prefectures,
+      prefecture: action?.payload?.prefectures?.[0]?.id,
     },
   }),
   [setCountries.type]: (state, action) => ({

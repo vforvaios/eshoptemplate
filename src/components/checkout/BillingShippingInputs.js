@@ -8,7 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import {
   changedPrefecture,
-  changedCountry,
+  getPrefecturesPerCountryForShipping,
+  getPrefecturesPerCountryForBilling,
 } from 'models/actions/checkoutActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -196,12 +197,9 @@ const BillingShippingInputs = ({
             label="Χώρα"
             onChange={(e) => {
               dispatch(setInfo({ key: 'country', name: e.target.value }));
-              dispatch(
-                changedCountry({
-                  country: e.target.value,
-                  typeOfInfoChanging: billing ? 'billingInfo' : 'shippingInfo',
-                }),
-              );
+              billing
+                ? dispatch(getPrefecturesPerCountryForBilling(e.target.value))
+                : dispatch(getPrefecturesPerCountryForShipping(e.target.value));
             }}>
             {countries?.map((country) => (
               <MenuItem key={country?.id} value={Number(country?.id)}>

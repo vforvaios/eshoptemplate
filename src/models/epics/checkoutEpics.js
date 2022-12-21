@@ -95,7 +95,7 @@ const getPrefecturesPerCountryForShippingEpic = (action$, state$) =>
     ),
   );
 
-const getPaymentMethodsEpic = (action$, state$) =>
+const getPaymentMethodsEpic = (action$) =>
   action$.pipe(
     ofType(getPaymentMethods.type),
     mergeMap(() =>
@@ -186,7 +186,6 @@ const checkPaymentMethodEpic = (action$, state$) =>
 const getShippingMethodsEpic = (action$, state$) =>
   action$.pipe(
     ofType(setSameAsBilling.type, getShippingMethods.type),
-    distinctUntilChanged(),
     withLatestFrom(state$),
     mergeMap(
       ([
