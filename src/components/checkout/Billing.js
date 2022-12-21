@@ -3,6 +3,7 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   setBillingInfo,
   setShippingInfo,
@@ -36,6 +37,7 @@ const Billing = () => {
   const myShippingErrors = useSelector(shippingErrors);
 
   useEffect(() => {
+    dispatch(setGeneralLoading(true));
     dispatch(getCountries());
     dispatch(getPrefecturesPerCountryForBilling(myBillingInfo.country));
   }, []);

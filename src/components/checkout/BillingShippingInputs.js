@@ -6,6 +6,7 @@ import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   changedPrefecture,
   getPrefecturesPerCountryForShipping,
@@ -197,6 +198,7 @@ const BillingShippingInputs = ({
             label="Χώρα"
             onChange={(e) => {
               dispatch(setInfo({ key: 'country', name: e.target.value }));
+              dispatch(setGeneralLoading(true));
               billing
                 ? dispatch(getPrefecturesPerCountryForBilling(e.target.value))
                 : dispatch(getPrefecturesPerCountryForShipping(e.target.value));

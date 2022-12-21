@@ -37,7 +37,6 @@ import {
   withLatestFrom,
   tap,
   ignoreElements,
-  distinctUntilChanged,
 } from 'rxjs/operators';
 
 const getCountriesEpic = (action$) =>
@@ -212,6 +211,7 @@ const getShippingMethodsEpic = (action$, state$) =>
 
             return [
               setShippingMethods(newPayload),
+              setGeneralLoading(false),
               toggleShowAlert({ message: '', show: false, type: 'error' }),
             ];
           }),
