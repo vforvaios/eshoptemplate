@@ -9,19 +9,26 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const CartTotals = ({ cart, order }) => {
-  let smCost = useSelector(shippingMethods).find(
-    (shippingmethod) => shippingmethod.checked,
-  )?.cost;
-  let pmCost = useSelector(paymentMethods).find(
-    (paymentmethod) => paymentmethod.checked,
-  )?.cost;
+  const mySmCost = useSelector(shippingMethods);
+  const myPmCost = useSelector(paymentMethods);
+
+  let smCost = mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost
+    ? parseFloat(
+        mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost,
+      ).toFixed(2)
+    : Number(0).toFixed(2);
+  let pmCost = myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost
+    ? parseFloat(
+        myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost,
+      ).toFixed(2)
+    : Number(0).toFixed(2);
 
   if (!smCost) {
-    smCost = order?.shippingMethodCost;
+    smCost = parseFloat(order?.shippingMethodCost).toFixed(2);
   }
 
   if (!pmCost) {
-    pmCost = order?.paymentMethodCost;
+    pmCost = parseFloat(order?.paymentMethodCost).toFixed(2);
   }
 
   return (
@@ -53,7 +60,11 @@ const CartTotals = ({ cart, order }) => {
         <span className="cart-totals-name">Σύνολο πληρωμής:</span>
         <span className="cart-totals-value">
           {smCost || pmCost
-            ? formatMoney.format(smCost + pmCost + getCartTotals(cart))
+            ? formatMoney.format(
+                parseFloat(smCost) +
+                  parseFloat(pmCost) +
+                  parseFloat(getCartTotals(cart)),
+              )
             : formatMoney.format(getCartTotals(cart))}
         </span>
       </div>
