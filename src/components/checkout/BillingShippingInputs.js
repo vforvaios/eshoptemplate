@@ -8,9 +8,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
-  changedPrefecture,
   getPrefecturesPerCountryForShipping,
   getPrefecturesPerCountryForBilling,
+  getShippingMethods,
 } from 'models/actions/checkoutActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -223,7 +223,8 @@ const BillingShippingInputs = ({
             label="ΝΟΜΟΣ"
             onChange={(e) => {
               dispatch(setInfo({ key: 'prefecture', name: e.target.value }));
-              dispatch(changedPrefecture());
+              dispatch(setGeneralLoading(true));
+              dispatch(getShippingMethods());
             }}>
             {prefectures?.map((prefecture) => (
               <MenuItem key={prefecture?.id} value={Number(prefecture?.id)}>

@@ -3,10 +3,8 @@ import { toggleShowAlert } from 'models/actions/alertActions';
 import { setCart, navigateBackToCart } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
-  // getPaymentMethods,
   setPaymentMethods,
   checkPaymentMethod,
-  // getShippingMethods,
   setShippingMethods,
   checkShippingMethod,
   sendOrder,
@@ -52,6 +50,7 @@ const getCountriesEpic = (action$) =>
               type: 'error',
               show: true,
             }),
+            setGeneralLoading(false),
           ),
         ),
       ),
@@ -76,6 +75,16 @@ const getPrefecturesPerCountryForBillingEpic = (action$, state$) =>
             setPrefectures({ prefectures, info: 'billingInfo' }),
             getPrefecturesPerCountryForShipping(country),
           ]),
+          catchError((error) =>
+            of(
+              toggleShowAlert({
+                message: `${error}`,
+                type: 'error',
+                show: true,
+              }),
+              setGeneralLoading(false),
+            ),
+          ),
         ),
     ),
   );
@@ -90,6 +99,16 @@ const getPrefecturesPerCountryForShippingEpic = (action$, state$) =>
           getPaymentMethods(),
           getShippingMethods(),
         ]),
+        catchError((error) =>
+          of(
+            toggleShowAlert({
+              message: `${error}`,
+              type: 'error',
+              show: true,
+            }),
+            setGeneralLoading(false),
+          ),
+        ),
       ),
     ),
   );
@@ -118,6 +137,7 @@ const getPaymentMethodsEpic = (action$) =>
               type: 'error',
               show: true,
             }),
+            setGeneralLoading(false),
           ),
         ),
       ),
@@ -222,6 +242,7 @@ const getShippingMethodsEpic = (action$, state$) =>
                 type: 'error',
                 show: true,
               }),
+              setGeneralLoading(false),
             ),
           ),
         ),
