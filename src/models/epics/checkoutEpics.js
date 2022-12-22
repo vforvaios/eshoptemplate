@@ -330,6 +330,26 @@ const sendOrderEpic = (action$, state$) =>
           sameAsBilling,
         } = checkoutReducer;
 
+        const newBillingInfo = Object.keys(billingInfo)
+          ?.filter((item) => item !== 'prefectures')
+          ?.reduce(
+            (acc, curr) => ({
+              ...acc,
+              [curr]: billingInfo?.[curr],
+            }),
+            {},
+          );
+
+        const newShippingInfo = Object.keys(shippingInfo)
+          ?.filter((item) => item !== 'prefectures')
+          ?.reduce(
+            (acc, curr) => ({
+              ...acc,
+              [curr]: shippingInfo?.[curr],
+            }),
+            {},
+          );
+
         return from(
           makeRequest(
             'order/sendorder',
@@ -339,8 +359,8 @@ const sendOrderEpic = (action$, state$) =>
               checkoutInfo: {
                 paymentMethod: paymentMethods.find((pm) => pm.checked).id,
                 shippingMethod: shippingMethods.find((sm) => sm.checked).id,
-                billingInfo,
-                shippingInfo,
+                billingInfo: newBillingInfo,
+                shippingInfo: newShippingInfo,
                 receipt,
                 sameAsBilling,
               },
