@@ -417,11 +417,15 @@ const checkOrderInfoEpic = (action$, state$) =>
           'address',
           'email',
           'postCode',
+          'prefecture',
         ];
 
         const billingErrors = requiredFields
           .reduce(
-            (acc, curr) => [...acc, billingInfo[curr] === '' ? curr : null],
+            (acc, curr) => [
+              ...acc,
+              billingInfo[curr] === '' || !billingInfo[curr] ? curr : null,
+            ],
             [],
           )
           .filter((x) => x !== null);
@@ -432,7 +436,9 @@ const checkOrderInfoEpic = (action$, state$) =>
               .reduce(
                 (acc, curr) => [
                   ...acc,
-                  shippingInfo[curr] === '' ? curr : null,
+                  shippingInfo[curr] === '' || !shippingInfo[curr]
+                    ? curr
+                    : null,
                 ],
                 [],
               )

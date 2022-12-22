@@ -210,7 +210,10 @@ const BillingShippingInputs = ({
             ))}
           </Select>
         </FormControl>
-        <FormControl variant="standard" fullWidth>
+        <FormControl
+          variant="standard"
+          fullWidth
+          className={errors?.includes('prefecture') ? 'error' : ''}>
           <InputLabel
             className="select-label"
             htmlFor="billing-prefecture-label2">
