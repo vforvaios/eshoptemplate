@@ -13,6 +13,7 @@ import BillingShippingInfos from './BillingShippingInfos';
 
 const OrderDetails = ({ id }) => {
   const displayedOrder = useSelector(orderDetails);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,14 +28,14 @@ const OrderDetails = ({ id }) => {
       <TableCell colSpan={7}>
         <div className="row">
           <div className="wrapper">
-            <MyCart cart={displayedOrder?.products} />
+            <MyCart cart={displayedOrder?.products || []} />
           </div>
         </div>
         <div className="row">
           <div className="wrapper">
             <CartTotals
-              cart={displayedOrder?.products}
-              order={displayedOrder?.order}
+              cart={displayedOrder?.products || []}
+              order={displayedOrder?.order || {}}
             />
           </div>
         </div>
@@ -44,18 +45,18 @@ const OrderDetails = ({ id }) => {
               <BillingShippingInfos
                 options={{
                   billing: {
-                    firstName: displayedOrder?.order.piFirstName,
-                    lastName: displayedOrder?.order.piLastName,
-                    address: displayedOrder?.order.piAddress,
-                    phone: displayedOrder?.order.piPhone,
-                    postCode: displayedOrder?.order.piPostCode,
+                    firstName: displayedOrder?.order?.piFirstName || '',
+                    lastName: displayedOrder?.order?.piLastName || '',
+                    address: displayedOrder?.order?.piAddress || '',
+                    phone: displayedOrder?.order?.piPhone || '',
+                    postCode: displayedOrder?.order?.piPostCode || '',
                   },
                   shipping: {
-                    firstName: displayedOrder?.order.siFirstName,
-                    lastName: displayedOrder?.order.siLastName,
-                    address: displayedOrder?.order.siAddress,
-                    phone: displayedOrder?.order.siPhone,
-                    postCode: displayedOrder?.order.siPostCode,
+                    firstName: displayedOrder?.order?.siFirstName || '',
+                    lastName: displayedOrder?.order?.siLastName || '',
+                    address: displayedOrder?.order?.siAddress || '',
+                    phone: displayedOrder?.order?.siPhone || '',
+                    postCode: displayedOrder?.order?.siPostCode || '',
                   },
                 }}
               />

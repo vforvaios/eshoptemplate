@@ -1,7 +1,6 @@
 const getCartTotals = (cart) =>
   cart?.reduce(
-    (acc, curr) =>
-      Number(acc + curr?.total * Number(curr.price).toFixed(2)).toFixed(2),
+    (acc, curr) => parseFloat(acc + curr?.total * parseFloat(curr.price)),
     0,
   );
 

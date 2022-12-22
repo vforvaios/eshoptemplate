@@ -11,24 +11,28 @@ import { useSelector } from 'react-redux';
 const CartTotals = ({ cart, order }) => {
   const mySmCost = useSelector(shippingMethods);
   const myPmCost = useSelector(paymentMethods);
+  let smCost;
+  let pmCost;
 
-  let smCost = mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost
-    ? parseFloat(
-        mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost,
-      ).toFixed(2)
-    : Number(0).toFixed(2);
-  let pmCost = myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost
-    ? parseFloat(
-        myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost,
-      ).toFixed(2)
-    : Number(0).toFixed(2);
+  if (!order || Object.keys(order)?.length === 0) {
+    smCost = mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost
+      ? parseFloat(
+          mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost,
+        )
+      : Number(0);
+    pmCost = myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost
+      ? parseFloat(
+          myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost,
+        )
+      : Number(0);
+  }
 
   if (!smCost) {
-    smCost = parseFloat(order?.shippingMethodCost).toFixed(2);
+    smCost = parseFloat(order?.shippingMethodCost);
   }
 
   if (!pmCost) {
-    pmCost = parseFloat(order?.paymentMethodCost).toFixed(2);
+    pmCost = parseFloat(order?.paymentMethodCost);
   }
 
   return (
@@ -40,7 +44,7 @@ const CartTotals = ({ cart, order }) => {
           {formatMoney.format(getCartTotalsDiscount(cart))}
         </span>
       </div>
-      {smCost > 0 && (
+      {Number(smCost) > Number(0) && (
         <div className="cart-totals-row">
           <span className="cart-totals-name">Μεταφορικά:</span>
           <span className="cart-totals-value">
@@ -48,7 +52,7 @@ const CartTotals = ({ cart, order }) => {
           </span>
         </div>
       )}
-      {pmCost > 0 && (
+      {Number(pmCost) > Number(0) && (
         <div className="cart-totals-row">
           <span className="cart-totals-name">Έξοδα πληρωμής:</span>
           <span className="cart-totals-value">
