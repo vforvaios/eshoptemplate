@@ -35,6 +35,7 @@ const ProductPage = () => {
     imgHref,
     code,
     productLargeDescription,
+    isNew,
   } = product;
 
   useEffect(() => {
@@ -70,6 +71,7 @@ const ProductPage = () => {
                 className="product-code">
                 <span>Κωδικός: {code}</span>
               </Typography>
+              <div className="is-new">{isNew ? 'ΝΕΟ' : null}</div>
               <div className="price-container">
                 <div>
                   <span>{formatMoney.format(initialPrice)}</span>

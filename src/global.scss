@@ -148,6 +148,10 @@ ul {
   }
 }
 
+.mb0 {
+  margin-bottom: 0 !important;
+}
+
 @import 'src/styles/buttons.scss';
 @import 'src/styles/tabs.scss';
 @import 'src/styles/slick.scss';

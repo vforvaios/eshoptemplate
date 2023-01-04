@@ -34,6 +34,7 @@ const Product = ({ classes, product, isWishlist }) => {
     initialPrice,
     code,
     stock,
+    isNew,
   } = product;
 
   const dispatch = useDispatch();
@@ -98,6 +99,7 @@ const Product = ({ classes, product, isWishlist }) => {
           ) : (
             <span>&nbsp;</span>
           )}
+          <span className="is-new mb0">{isNew ? 'ΝΕΟ' : null}</span>
           {!isWishlist ? (
             <IconButton
               className="product-action"
