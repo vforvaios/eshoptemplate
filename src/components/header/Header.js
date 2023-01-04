@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import Grid from '@mui/material/Grid';
@@ -5,14 +6,22 @@ import MiniCart from 'components/cart/MiniCart';
 import MainMenu from 'components/main-menu/MainMenu';
 import UserMenu from 'components/usermenu/UserMenu';
 import { withToggle } from 'library';
+import { getLogo } from 'models/actions/homeActions';
+import { logo } from 'models/selectors/homeSelectors';
 import { token } from 'models/selectors/userSelector';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import logo from 'resources/images/logo.jpg';
 
 const Header = ({ toggleValue, setToggleValue }) => {
+  const dispatch = useDispatch();
   const userToken = useSelector(token);
+  const logoImage = useSelector(logo);
+
+  useEffect(() => {
+    dispatch(getLogo());
+  }, []);
 
   return (
     <Grid container className="headerContainer">
@@ -27,7 +36,11 @@ const Header = ({ toggleValue, setToggleValue }) => {
       </Grid>
       <Grid item sm={6} className="logo">
         <Link to="/">
-          <img src={logo} alt="fasdf" className="logo-image" />
+          <img
+            src={logoImage?.preview}
+            alt={logoImage?.data?.name}
+            className="logo-image"
+          />
         </Link>
       </Grid>
       <Grid item sm={3}>

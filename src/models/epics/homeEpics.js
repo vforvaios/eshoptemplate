@@ -1,12 +1,26 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
-import { getHomePageData, setHomePageData } from 'models/actions/homeActions';
+import {
+  getHomePageData,
+  setHomePageData,
+  getLogo,
+  setLogo,
+} from 'models/actions/homeActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from, of } from 'rxjs';
 import { mergeMap, concatMap, catchError } from 'rxjs/operators';
 
-// TODO - NOT USED AT THE MOMENT
+const getLogoEpic = (action$) =>
+  action$.pipe(
+    ofType(getLogo.type),
+    mergeMap(() =>
+      from(makeRequest('logo', 'GET', '')).pipe(
+        concatMap((payload) => [setLogo(payload?.logo)]),
+      ),
+    ),
+  );
+
 const getHomePageDataEpic = (action$) =>
   action$.pipe(
     ofType(getHomePageData.type),
@@ -41,8 +55,8 @@ const getHomePageDataEpic = (action$) =>
     ),
   );
 
-export { getHomePageDataEpic };
+export { getHomePageDataEpic, getLogoEpic };
 
-const epics = combineEpics(getHomePageDataEpic);
+const epics = combineEpics(getHomePageDataEpic, getLogoEpic);
 
 export default epics;

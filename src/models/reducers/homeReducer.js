@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import { createReducer } from '@reduxjs/toolkit';
-import { setHomePageData } from 'models/actions/homeActions';
+import { setHomePageData, setLogo } from 'models/actions/homeActions';
 
 const initialState = {
+  logo: {},
   homeSlider: [],
   offers: {
     results: [],
@@ -15,6 +16,10 @@ const initialState = {
   },
 };
 const homeReducer = createReducer(initialState, {
+  [setLogo.type]: (state, action) => ({
+    ...state,
+    logo: action.payload,
+  }),
   [setHomePageData.type]: (state, action) => ({
     ...state,
     offers: {
