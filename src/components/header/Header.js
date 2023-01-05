@@ -10,18 +10,38 @@ import { getLogo } from 'models/actions/homeActions';
 import { logo } from 'models/selectors/homeSelectors';
 import { token } from 'models/selectors/userSelector';
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withCookies } from 'react-cookie';
+import ReactGA from 'react-ga4';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { compose } from 'redux';
 
-const Header = ({ toggleValue, setToggleValue }) => {
+const TRACKING_ID = process.env.REACT_APP_TRACKING_ID; // OUR_TRACKING_ID
+
+const Header = ({ cookies, toggleValue, setToggleValue }) => {
   const dispatch = useDispatch();
   const userToken = useSelector(token);
   const logoImage = useSelector(logo);
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(getLogo());
   }, []);
+
+  useEffect(() => {
+    if (
+      cookies.get('CookieConsent') !== null &&
+      cookies.get('CookieConsent') !== undefined &&
+      cookies.get('CookieConsent') === 'true'
+    ) {
+      ReactGA.initialize(TRACKING_ID);
+      // ReactGA.pageview(window.location.pathname + window.location.search);
+      ReactGA.send({
+        hitType: 'pageview',
+        page: window.location.pathname + window.location.search,
+      });
+    }
+  }, [location.pathname]);
 
   return (
     <Grid container className="headerContainer">
@@ -53,4 +73,4 @@ const Header = ({ toggleValue, setToggleValue }) => {
   );
 };
 
-export default withToggle(Header);
+export default compose(withToggle, withCookies)(Header);

@@ -26,30 +26,16 @@ import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
 import { catalogIsLoading } from 'models/selectors/catalogSelectors';
 import { user } from 'models/selectors/userSelector';
-import React, { useEffect } from 'react';
-import { CookiesProvider, withCookies } from 'react-cookie';
-import ReactGA from 'react-ga';
+import React from 'react';
+import { CookiesProvider } from 'react-cookie';
 import { HelmetProvider } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'fontello/css/fontello.css';
 
-const TRACKING_ID = process.env.REACT_APP_TRACKING_ID; // OUR_TRACKING_ID
-
-const App = ({ cookies }) => {
+const App = () => {
   const userSelector = useSelector(user);
   const loading = useSelector(catalogIsLoading);
-
-  useEffect(() => {
-    if (
-      cookies.get('CookieConsent') !== null &&
-      cookies.get('CookieConsent') !== undefined &&
-      cookies.get('CookieConsent') === 'true'
-    ) {
-      ReactGA.initialize(TRACKING_ID);
-      ReactGA.pageview(window.location.pathname + window.location.search);
-    }
-  }, []);
 
   return (
     <CookiesProvider>
@@ -123,4 +109,4 @@ const App = ({ cookies }) => {
   );
 };
 
-export default withCookies(App);
+export default App;
