@@ -8,21 +8,24 @@ import {
   getInitialCatalog,
   setGeneralLoading,
 } from 'models/actions/catalogActions';
+import { getKeyWords } from 'models/actions/staticActions';
 import {
   catalogProducts,
   catalogPagination,
 } from 'models/selectors/catalogSelectors';
+import { keywords } from 'models/selectors/staticSelectors';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Catalog = () => {
   const dispatch = useDispatch();
   const products = useSelector(catalogProducts);
-
+  const pageKeywords = useSelector(keywords);
   const pagination = useSelector(catalogPagination);
 
   useEffect(() => {
     dispatch(setGeneralLoading(true));
+    dispatch(getKeyWords('catalog'));
     dispatch(getInitialCatalog());
   }, []);
 
@@ -30,7 +33,7 @@ const Catalog = () => {
     <>
       <SEO
         title="Shoppy catalog"
-        description="Shoppy catalog with filters"
+        description={pageKeywords}
         name="Shoppy"
         type="article"
       />

@@ -46,9 +46,9 @@ const ProductPage = () => {
   return (
     <div className="productPage content">
       <SEO
-        title="Shoppy product"
-        description="Shoppy product page"
-        name="Shoppy"
+        title={productTitle}
+        description={productTitle}
+        name={productTitle}
         type="article"
       />
       <div className="row">

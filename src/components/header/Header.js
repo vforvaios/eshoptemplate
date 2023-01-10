@@ -35,7 +35,6 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
       cookies.get('CookieConsent') === 'true'
     ) {
       ReactGA.initialize(TRACKING_ID);
-      // ReactGA.pageview(window.location.pathname + window.location.search);
       ReactGA.send({
         hitType: 'pageview',
         page: window.location.pathname + window.location.search,
