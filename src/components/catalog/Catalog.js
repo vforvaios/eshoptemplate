@@ -63,7 +63,7 @@ const Catalog = () => {
       <SEO
         title={`${process.env.REACT_APP_WEBSITE_NAME} ${concatedTitle}`}
         description={pageKeywords}
-        name="Shoppy"
+        name={process.env.REACT_APP_WEBSITE_NAME}
         type="article"
       />
       <div className="row catalog content">

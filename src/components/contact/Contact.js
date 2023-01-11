@@ -31,7 +31,7 @@ const Contact = () => {
       <SEO
         title={`${process.env.REACT_APP_WEBSITE_NAME} contact`}
         description={pageKeywords}
-        name="Shoppy"
+        name={process.env.REACT_APP_WEBSITE_NAME}
         type="article"
       />
       <div className="row">

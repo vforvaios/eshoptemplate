@@ -48,7 +48,7 @@ const ProductPage = () => {
       <SEO
         title={`${process.env.REACT_APP_WEBSITE_NAME} ${productTitle}`}
         description={`${process.env.REACT_APP_WEBSITE_NAME} ${productTitle}`}
-        name={`${process.env.REACT_APP_WEBSITE_NAME} ${productTitle}`}
+        name={process.env.REACT_APP_WEBSITE_NAME}
         type="article"
       />
       <div className="row">
