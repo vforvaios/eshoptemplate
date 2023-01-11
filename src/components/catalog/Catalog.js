@@ -12,6 +12,10 @@ import { getKeyWords } from 'models/actions/staticActions';
 import {
   catalogProducts,
   catalogPagination,
+  filters,
+  filterCategories,
+  filterSubCategories,
+  filterBrands,
 } from 'models/selectors/catalogSelectors';
 import { keywords } from 'models/selectors/staticSelectors';
 import React, { useEffect } from 'react';
@@ -19,6 +23,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Catalog = () => {
   const dispatch = useDispatch();
+  const allFilters = useSelector(filters);
+  const categoriesFilters = useSelector(filterCategories);
+  const subCategoriesFilters = useSelector(filterSubCategories);
+  const brandsFilters = useSelector(filterBrands);
   const products = useSelector(catalogProducts);
   const pageKeywords = useSelector(keywords);
   const pagination = useSelector(catalogPagination);
@@ -29,10 +37,31 @@ const Catalog = () => {
     dispatch(getInitialCatalog());
   }, []);
 
+  let concatedTitle = '';
+  const category = allFilters?.selectedCategory
+    ? categoriesFilters?.find((cat) => cat?.id === allFilters?.selectedCategory)
+        ?.name
+    : '';
+
+  const subCategory = allFilters?.selectedSubCategory
+    ? subCategoriesFilters?.find(
+        (subCat) => subCat?.id === allFilters?.selectedSubCategory,
+      )?.name
+    : '';
+
+  const brand = allFilters?.selectedBrand
+    ? brandsFilters?.find((brand) => brand?.id === allFilters?.selectedBrand)
+        ?.name
+    : '';
+
+  concatedTitle = `${category !== '' ? category : ''} ${
+    subCategory !== '' ? subCategory : ''
+  } ${brand !== '' ? brand : ''}`;
+
   return (
     <>
       <SEO
-        title="Shoppy catalog"
+        title={`${process.env.REACT_APP_WEBSITE_NAME} ${concatedTitle}`}
         description={pageKeywords}
         name="Shoppy"
         type="article"

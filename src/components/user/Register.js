@@ -2,9 +2,11 @@ import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import SEO from 'components/seo/SEO';
+import { getKeyWords } from 'models/actions/staticActions';
 import { registerUser } from 'models/actions/userActions';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { keywords } from 'models/selectors/staticSelectors';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
@@ -17,6 +19,7 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const dispatch = useDispatch();
+  const pageKeywords = useSelector(keywords);
 
   const submitRegisterForm = () => {
     if (username === '') {
@@ -56,11 +59,15 @@ const Register = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(getKeyWords('register'));
+  }, []);
+
   return (
     <div className="content user">
       <SEO
-        title="Shoppy register"
-        description="Shoppy register page"
+        title={`${process.env.REACT_APP_WEBSITE_NAME} register`}
+        description={pageKeywords}
         name="Shoppy"
         type="article"
       />

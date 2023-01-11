@@ -1,9 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import SEO from 'components/seo/SEO';
 import { setGeneralLoading } from 'models/actions/catalogActions';
+import { getKeyWords } from 'models/actions/staticActions';
 import { loginUser } from 'models/actions/userActions';
+import { keywords } from 'models/selectors/staticSelectors';
 import { user } from 'models/selectors/userSelector';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +20,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userSelector = useSelector(user);
+  const pageKeywords = useSelector(keywords);
 
   const submitLoginForm = () => {
     if (email === '') {
@@ -40,14 +44,15 @@ const Login = () => {
   };
 
   useEffect(() => {
+    dispatch(getKeyWords('login'));
     userSelector?.token && navigate('/');
   }, [userSelector.token, navigate]);
 
   return (
     <div className="content user">
       <SEO
-        title="Shoppy login"
-        description="Shoppy login page"
+        title={`${process.env.REACT_APP_WEBSITE_NAME} login`}
+        description={pageKeywords}
         name="Shoppy"
         type="article"
       />

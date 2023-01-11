@@ -46,9 +46,9 @@ const ProductPage = () => {
   return (
     <div className="productPage content">
       <SEO
-        title={productTitle}
-        description={productTitle}
-        name={productTitle}
+        title={`${process.env.REACT_APP_WEBSITE_NAME} ${productTitle}`}
+        description={`${process.env.REACT_APP_WEBSITE_NAME} ${productTitle}`}
+        name={`${process.env.REACT_APP_WEBSITE_NAME} ${productTitle}`}
         type="article"
       />
       <div className="row">
