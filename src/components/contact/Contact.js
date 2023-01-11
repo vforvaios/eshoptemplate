@@ -1,8 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import SEO from 'components/seo/SEO';
-import React, { useState } from 'react';
+import { getKeyWords } from 'models/actions/staticActions';
+import { keywords } from 'models/selectors/staticSelectors';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Contact = () => {
   const [contactState, setContactState] = useState({
@@ -11,16 +15,22 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const dispatch = useDispatch();
+  const pageKeywords = useSelector(keywords);
 
   const handleContactState = (e, contactKey) => {
     setContactState({ ...contactState, [contactKey]: e.target.value });
   };
 
+  useEffect(() => {
+    dispatch(getKeyWords('contact'));
+  }, []);
+
   return (
     <div className="content contact-page">
       <SEO
-        title="Shoppy contact"
-        description="Shoppy contact page"
+        title={`${process.env.REACT_APP_WEBSITE_NAME} contact`}
+        description={pageKeywords}
         name="Shoppy"
         type="article"
       />
