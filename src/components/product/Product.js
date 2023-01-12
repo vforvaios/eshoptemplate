@@ -4,7 +4,6 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -42,23 +41,6 @@ const Product = ({ classes, product, isWishlist }) => {
   return (
     <Link className="navlink product" to={`/product/${productId}`}>
       <Card className={classes?.root}>
-        <CardHeader
-          title={productTitle}
-          subheader={productSubHeader}
-          classes={{
-            title: 'headerTitle',
-            subheader: 'subHeader',
-          }}
-        />
-        <div className="price-container">
-          <div>
-            <span>{formatMoney.format(initialPrice)}</span>
-            {formatMoney.format(price)}
-          </div>
-          <span className="discount">
-            {getPercentage(initialPrice, price)}%
-          </span>
-        </div>
         <CardMedia className={classes.media} title={productTitle}>
           {imgHref?.length > 1 ? (
             <div
@@ -72,6 +54,13 @@ const Product = ({ classes, product, isWishlist }) => {
           )}
         </CardMedia>
         <CardContent>
+          <div className="price-container">
+            <span className="discount absolute">
+              {getPercentage(initialPrice, price)}%
+            </span>
+          </div>
+          <div className="headerTitle">{productTitle}</div>
+          <div className="subHeader">{productSubHeader || ' '}</div>
           <Typography
             variant="body2"
             color="textSecondary"
@@ -82,9 +71,16 @@ const Product = ({ classes, product, isWishlist }) => {
           <Typography variant="body2" component="p" className="product-code">
             <span>{code}</span>
           </Typography>
+          <div className="price-container">
+            <div>
+              <span>{formatMoney.format(initialPrice)}</span>
+              {formatMoney.format(price)}
+            </div>
+          </div>
           <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
             <span>{stock > 0 ? 'Διαθέσιμο' : 'Μη διαθέσιμο'}</span>
           </p>
+          {isNew ? <span className="is-new mb0">ΝΕΟ</span> : null}
         </CardContent>
         <CardActions disableSpacing className="card-actions">
           {stock > 0 ? (
@@ -99,7 +95,7 @@ const Product = ({ classes, product, isWishlist }) => {
           ) : (
             <span>&nbsp;</span>
           )}
-          <span className="is-new mb0">{isNew ? 'ΝΕΟ' : null}</span>
+
           {!isWishlist ? (
             <IconButton
               className="product-action"

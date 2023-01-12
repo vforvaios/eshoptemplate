@@ -36,6 +36,7 @@ const ProductPage = () => {
     code,
     productLargeDescription,
     isNew,
+    stock,
   } = product;
 
   useEffect(() => {
@@ -55,13 +56,19 @@ const ProductPage = () => {
         <div className="wrapper">
           <Grid container>
             <Grid item sm={6} xs={12} className="mainProductPhotosContainer">
+              {isNew ? <div className="is-new">ΝΕΟ</div> : null}
+              <div className="price-container">
+                <span className="discount absolute">
+                  {getPercentage(initialPrice, price)}%
+                </span>
+              </div>
               <img
                 src={`${process.env.REACT_APP_IMAGES_URL}/${imgHref}`}
                 alt={productTitle}
                 title={productTitle}
               />
             </Grid>
-            <Grid item sm={6} xs={12} className="pr0">
+            <Grid item sm={6} xs={12} className="pr0 mainProductRightSection">
               <div className="product-title">
                 <h1 className="headerTitle">{productTitle}</h1>
               </div>
@@ -71,22 +78,23 @@ const ProductPage = () => {
                 className="product-code">
                 <span>Κωδικός: {code}</span>
               </Typography>
-              <div className="is-new">{isNew ? 'ΝΕΟ' : null}</div>
-              <div className="price-container">
+
+              <div className="price-container for-product-page">
                 <div>
                   <span>{formatMoney.format(initialPrice)}</span>
                   {formatMoney.format(price)}
                 </div>
-                <span className="discount">
-                  {getPercentage(initialPrice, price)}%
-                </span>
               </div>
+
               <Typography
                 className="product-description"
                 component="p"
                 variant="body1">
                 {productDescription}
               </Typography>
+              <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
+                <span>{stock > 0 ? 'Διαθέσιμο' : 'Μη διαθέσιμο'}</span>
+              </p>
               <div className="product-page-actions">
                 <button
                   className="add-to-cart"
