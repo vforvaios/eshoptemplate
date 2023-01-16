@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Product from 'components/product/Product';
 import SEO from 'components/seo/SEO';
-import { toggleLoader } from 'models/actions/loaderActions';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import { getWishlist } from 'models/actions/wishlistActions';
 import { wishlistProducts } from 'models/selectors/wishlistSelectors';
 import React, { useEffect } from 'react';
@@ -12,7 +12,7 @@ const Wishlist = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(toggleLoader(true));
+    dispatch(setGeneralLoading(true));
     dispatch(getWishlist());
   }, []);
 

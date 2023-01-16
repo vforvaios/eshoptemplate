@@ -44,6 +44,7 @@ const Login = () => {
   };
 
   useEffect(() => {
+    dispatch(setGeneralLoading(false));
     dispatch(getKeyWords('login'));
     userSelector?.token && navigate('/');
   }, [userSelector.token, navigate]);

@@ -6,8 +6,10 @@ import {
 } from 'models/actions/categoriesActions';
 import { setStaticPagesInMenu } from 'models/actions/staticActions';
 import { ofType, combineEpics } from 'redux-observable';
-import { from, of } from 'rxjs';
-import { mergeMap, concatMap, catchError } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { mergeMap, concatMap } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
 
 const getCategoriesMenuEpic = (action$) =>
   action$.pipe(
@@ -23,15 +25,7 @@ const getCategoriesMenuEpic = (action$) =>
             toggleShowAlert({ message: '', show: false, type: 'error' }),
           ];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );

@@ -20,15 +20,10 @@ import {
 } from 'models/actions/userActions';
 import { token, currentOrderPage } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
-import { from, of } from 'rxjs';
-import {
-  mergeMap,
-  concatMap,
-  catchError,
-  map,
-  tap,
-  ignoreElements,
-} from 'rxjs/operators';
+import { from } from 'rxjs';
+import { mergeMap, concatMap, map, tap, ignoreElements } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
 
 const getOrdersStatusesEpic = (action$, state$) =>
   action$.pipe(
@@ -49,16 +44,7 @@ const getOrdersStatusesEpic = (action$, state$) =>
 
           return [setOrderStatuses(payload?.data), getMyOrders()];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              show: true,
-              type: 'error',
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -82,16 +68,7 @@ const loginUserEpic = (action$) =>
 
           return [setGeneralLoading(false), setLoggedInUser(payload)];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -134,16 +111,7 @@ const addNewsletterUserEpic = (action$) =>
             }),
           ];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -175,16 +143,7 @@ const registerUserEpic = (action$) =>
             navigateToLogin(),
           ];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -225,16 +184,7 @@ const getMyOrdersEpic = (action$, state$) =>
             setGeneralLoading(false),
           ];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -275,16 +225,7 @@ const getOrderDetailsEpic = (action$, state$) =>
 
           return [setOrderDetails(payload), setGeneralLoading(false)];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -326,16 +267,7 @@ const sendNewUserPasswordEpic = (action$) =>
             setGeneralLoading(false),
           ];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -385,16 +317,7 @@ const changeUserPasswordEpic = (action$, state$) =>
             navigateToLogin(),
           ];
         }),
-        catchError((error) => {
-          return of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          );
-        }),
+        catchErrorOperator(true),
       ),
     ),
   );

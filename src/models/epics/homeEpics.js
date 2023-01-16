@@ -8,8 +8,10 @@ import {
   setLogo,
 } from 'models/actions/homeActions';
 import { ofType, combineEpics } from 'redux-observable';
-import { from, of } from 'rxjs';
-import { mergeMap, concatMap, catchError } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { mergeMap, concatMap } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
 
 const getLogoEpic = (action$) =>
   action$.pipe(
@@ -41,16 +43,7 @@ const getHomePageDataEpic = (action$) =>
             setGeneralLoading(false),
           ];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );

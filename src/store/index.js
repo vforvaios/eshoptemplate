@@ -7,7 +7,6 @@ import categoriesReducer from 'models/reducers/categoriesReducer';
 import checkoutReducer from 'models/reducers/checkoutReducer';
 import counterReducer from 'models/reducers/counterReducer';
 import homeReducer from 'models/reducers/homeReducer';
-import loaderReducer from 'models/reducers/loaderReducer';
 import staticReducer from 'models/reducers/staticReducer';
 import userReducer from 'models/reducers/userReducer';
 import wishlistReducer from 'models/reducers/wishlistReducer';
@@ -29,7 +28,6 @@ const persistedReducer = persistReducer(
     cartReducer,
     catalogReducer,
     homeReducer,
-    loaderReducer,
     wishlistReducer,
     userReducer,
     categoriesReducer,

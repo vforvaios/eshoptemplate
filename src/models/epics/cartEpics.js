@@ -10,14 +10,10 @@ import {
 } from 'models/actions/cartActions';
 import { setUpdatedProducts } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
-import { from, of } from 'rxjs';
-import {
-  mergeMap,
-  concatMap,
-  catchError,
-  map,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { from } from 'rxjs';
+import { mergeMap, concatMap, map, withLatestFrom } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
 
 // TODO - NOT USED AT THE MOMENT
 const getCartEpic = (action$) =>
@@ -29,15 +25,7 @@ const getCartEpic = (action$) =>
           setCart(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );

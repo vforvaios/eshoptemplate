@@ -7,8 +7,10 @@ import {
   setKeyWords,
 } from 'models/actions/staticActions';
 import { ofType, combineEpics } from 'redux-observable';
-import { from, of } from 'rxjs';
-import { mergeMap, concatMap, catchError } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { mergeMap, concatMap } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
 
 const getKeyWordsEpic = (action$) =>
   action$.pipe(
@@ -28,15 +30,7 @@ const getKeyWordsEpic = (action$) =>
 
           return [setKeyWords(payload?.keywords)];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );
@@ -50,15 +44,7 @@ const getStaticContentEpic = (action$, state$) =>
           setStaticContent(payload.data),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );

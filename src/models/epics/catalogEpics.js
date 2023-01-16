@@ -24,14 +24,15 @@ import {
   setSearchLoading,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
-import { from, of } from 'rxjs';
+import { from } from 'rxjs';
 import {
   mergeMap,
   concatMap,
-  catchError,
   withLatestFrom,
   debounceTime,
 } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
 
 const getProductDetailsEpic = (action$) =>
   action$.pipe(
@@ -42,11 +43,7 @@ const getProductDetailsEpic = (action$) =>
           setProductPage(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({ message: `${error}`, type: 'error', show: true }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );
@@ -60,11 +57,7 @@ const getRelatedProductsEpic = (action$) =>
           setRelatedProducts(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({ message: `${error}`, type: 'error', show: true }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );
@@ -78,15 +71,7 @@ const getFilterCategoriesEpic = (action$) =>
           setFilterCategories(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );
@@ -100,15 +85,7 @@ const getFilterSubCategoriesEpic = (action$) =>
           setFilterSubCategories(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );
@@ -122,15 +99,7 @@ const getFilterBrandsEpic = (action$) =>
           setFilterBrands(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );
@@ -144,15 +113,7 @@ const getPricesRangeEpic = (action$) =>
           setInitialPricesRange(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-          ),
-        ),
+        catchErrorOperator(false),
       ),
     ),
   );
@@ -218,16 +179,7 @@ const getCatalogEpic = (action$, state$) =>
             toggleShowAlert({ message: '', show: false, type: 'error' }),
             setGeneralLoading(false),
           ]),
-          catchError((error) =>
-            of(
-              toggleShowAlert({
-                message: `${error}`,
-                type: 'error',
-                show: true,
-              }),
-              setGeneralLoading(false),
-            ),
-          ),
+          catchErrorOperator(true),
         );
       },
     ),
@@ -253,16 +205,7 @@ const getSearchRelatedProductsEpic = (action$) =>
 
           return [setSearchedProducts(payload?.data), setSearchLoading(false)];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setSearchLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );

@@ -1,7 +1,6 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
-import { toggleLoader } from 'models/actions/loaderActions';
 import {
   getWishlist,
   setWishlist,
@@ -12,13 +11,10 @@ import { token } from 'models/selectors/userSelector';
 import { wishlistProducts } from 'models/selectors/wishlistSelectors';
 import { ofType, combineEpics } from 'redux-observable';
 import { messages } from 'resources/constants';
-import { from, of } from 'rxjs';
-import {
-  mergeMap,
-  concatMap,
-  catchError,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { from } from 'rxjs';
+import { mergeMap, concatMap, withLatestFrom } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
 
 const getWishlistEpic = (action$, state$) =>
   action$.pipe(
@@ -37,22 +33,9 @@ const getWishlistEpic = (action$, state$) =>
             ];
           }
 
-          return [
-            toggleLoader(false),
-            setWishlist(payload),
-            toggleShowAlert({ message: '', show: false, type: 'error' }),
-          ];
+          return [setWishlist(payload), setGeneralLoading(false)];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            toggleLoader(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -102,7 +85,6 @@ const addProductWishlistEpic = (action$, state$) =>
             }
 
             return [
-              toggleLoader(false),
               toggleShowAlert({
                 message: payload.message,
                 show: true,
@@ -111,17 +93,7 @@ const addProductWishlistEpic = (action$, state$) =>
               setGeneralLoading(false),
             ];
           }),
-          catchError((error) =>
-            of(
-              toggleShowAlert({
-                message: `${error}`,
-                type: 'error',
-                show: true,
-              }),
-              toggleLoader(false),
-              setGeneralLoading(false),
-            ),
-          ),
+          catchErrorOperator(true),
         );
       },
     ),
@@ -175,7 +147,6 @@ const removeProductWishlistEpic = (action$, state$) =>
             );
 
             return [
-              toggleLoader(false),
               setWishlist({ results: newWishlistItems }),
               toggleShowAlert({
                 message: payload.message,
@@ -185,17 +156,7 @@ const removeProductWishlistEpic = (action$, state$) =>
               setGeneralLoading(false),
             ];
           }),
-          catchError((error) =>
-            of(
-              toggleShowAlert({
-                message: `${error}`,
-                type: 'error',
-                show: true,
-              }),
-              toggleLoader(false),
-              setGeneralLoading(false),
-            ),
-          ),
+          catchErrorOperator(true),
         );
       },
     ),

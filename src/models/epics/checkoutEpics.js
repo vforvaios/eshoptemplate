@@ -27,15 +27,16 @@ import {
   getPrefecturesPerCountryForShipping,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
-import { from, of } from 'rxjs';
+import { from } from 'rxjs';
 import {
   mergeMap,
   concatMap,
-  catchError,
   withLatestFrom,
   tap,
   ignoreElements,
 } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
 
 const getCountriesEpic = (action$) =>
   action$.pipe(
@@ -43,16 +44,7 @@ const getCountriesEpic = (action$) =>
     mergeMap(() =>
       from(makeRequest('countries', 'GET', '')).pipe(
         concatMap(({ countries }) => [setCountries(countries)]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -75,16 +67,7 @@ const getPrefecturesPerCountryForBillingEpic = (action$, state$) =>
             setPrefectures({ prefectures, info: 'billingInfo' }),
             getPrefecturesPerCountryForShipping(country),
           ]),
-          catchError((error) =>
-            of(
-              toggleShowAlert({
-                message: `${error}`,
-                type: 'error',
-                show: true,
-              }),
-              setGeneralLoading(false),
-            ),
-          ),
+          catchErrorOperator(true),
         ),
     ),
   );
@@ -99,16 +82,7 @@ const getPrefecturesPerCountryForShippingEpic = (action$, state$) =>
           getPaymentMethods(),
           getShippingMethods(),
         ]),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -130,16 +104,7 @@ const getPaymentMethodsEpic = (action$) =>
             toggleShowAlert({ message: '', show: false, type: 'error' }),
           ];
         }),
-        catchError((error) =>
-          of(
-            toggleShowAlert({
-              message: `${error}`,
-              type: 'error',
-              show: true,
-            }),
-            setGeneralLoading(false),
-          ),
-        ),
+        catchErrorOperator(true),
       ),
     ),
   );
@@ -235,16 +200,7 @@ const getShippingMethodsEpic = (action$, state$) =>
               toggleShowAlert({ message: '', show: false, type: 'error' }),
             ];
           }),
-          catchError((error) =>
-            of(
-              toggleShowAlert({
-                message: `${error}`,
-                type: 'error',
-                show: true,
-              }),
-              setGeneralLoading(false),
-            ),
-          ),
+          catchErrorOperator(true),
         ),
     ),
   );
@@ -398,15 +354,7 @@ const sendOrderEpic = (action$, state$) =>
               navigateToSuccessCheckout(),
             ];
           }),
-          catchError((error) =>
-            of(
-              toggleShowAlert({
-                message: `${error}`,
-                type: 'error',
-                show: true,
-              }),
-            ),
-          ),
+          catchErrorOperator(false),
         );
       },
     ),
@@ -531,15 +479,7 @@ const updateCartProductsEpic = (action$, state$) =>
                 setUpdatedProducts(false),
             ];
           }),
-          catchError((error) =>
-            of(
-              toggleShowAlert({
-                message: `${error}`,
-                type: 'error',
-                show: true,
-              }),
-            ),
-          ),
+          catchErrorOperator(false),
         );
       },
     ),
