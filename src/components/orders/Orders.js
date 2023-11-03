@@ -1,9 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import Table from 'react-bootstrap/Table';
 import SEO from 'components/seo/SEO';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
@@ -61,22 +57,22 @@ const Orders = () => {
         <div className="wrapper">
           {orders?.length > 0 ? (
             <Table className="products-grid table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>ΚΩΔΙΚΟΣ</TableCell>
-                  <TableCell>ΗΜΕΡΟΜΗΝΙΑ</TableCell>
-                  <TableCell>ΟΝΟΜΑ</TableCell>
-                  <TableCell>EMAIL</TableCell>
-                  <TableCell>ΤΙΜΗ</TableCell>
-                  <TableCell>ΤΕΜΑΧΙΑ</TableCell>
-                  <TableCell>ΚΑΤΑΣΤΑΣΗ</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
+              <thead>
+                <tr>
+                  <td>ΚΩΔΙΚΟΣ</td>
+                  <td>ΗΜΕΡΟΜΗΝΙΑ</td>
+                  <td>ΟΝΟΜΑ</td>
+                  <td>EMAIL</td>
+                  <td>ΤΙΜΗ</td>
+                  <td>ΤΕΜΑΧΙΑ</td>
+                  <td>ΚΑΤΑΣΤΑΣΗ</td>
+                </tr>
+              </thead>
+              <tbody>
                 {orders?.map((order) => (
                   <Order order={order} key={order?.id} toggleOrder={() => {}} />
                 ))}
-              </TableBody>
+              </tbody>
             </Table>
           ) : (
             <div className="page-not-found-countainer">

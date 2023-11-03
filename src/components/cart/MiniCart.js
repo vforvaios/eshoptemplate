@@ -1,4 +1,3 @@
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { cart } from 'models/selectors/cartSelectors';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -13,7 +12,7 @@ const MiniCart = () => {
 
   return (
     <Link to="/cart" className="mini-cart">
-      <ShoppingBasketIcon />
+      <i class="bi bi-cart3"></i>
       <span>{itemsLength}</span>
     </Link>
   );

@@ -1,8 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   setBillingInfo,
@@ -45,25 +41,16 @@ const Billing = () => {
   return (
     <div className="billing-shipping billing">
       <div className="receipt-container">
-        <FormControl>
-          <RadioGroup
-            row
-            aria-labelledby="receipt-or-invoice"
-            value={myReceipt}
-            onChange={(e) => dispatch(setReceipt(e.target.value))}
-            name="receipt-buttons-group">
-            <FormControlLabel
-              value="receipt"
-              control={<Radio />}
-              label="Απόδειξη"
-            />
-            <FormControlLabel
-              value="invoice"
-              control={<Radio />}
-              label="Τιμολόγιο"
-            />
-          </RadioGroup>
-        </FormControl>
+        <div
+          aria-labelledby="receipt-or-invoice"
+          value={myReceipt}
+          onChange={(e) => dispatch(setReceipt(e.target.value))}
+          name="receipt-buttons-group">
+          <input type="radio" value="receipt" name="receiptinvoice" />
+          Απόδειξη
+          <input type="radio" value="invoice" name="receiptinvoice" />
+          Τιμολόγιο
+        </div>
       </div>
       <div className="flex-billing-shipping">
         <div className="billing-inputs">

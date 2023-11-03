@@ -1,5 +1,5 @@
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import Product from 'components/product/Product';
 import TabPanel from 'components/tab-panel/TabPanel';
 import { withActiveTab } from 'library';
@@ -37,14 +37,9 @@ const HomeOffersTabs = ({ handleChange, value, offers }) => {
     <>
       <h2 className="section-title">ΠΡΟΣΦΟΡΕΣ</h2>
       <div className="tabsContainer">
-        <Tabs
-          value={value}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={handleChange}
-          aria-label="disabled tabs example">
+        <Tabs activeKey={value} onSelect={handleChange}>
           {offers?.map((offer) => (
-            <Tab key={offer.id} label={offer.title} />
+            <Tab key={offer.id} id={offer.id} label={offer.title} />
           ))}
         </Tabs>
       </div>

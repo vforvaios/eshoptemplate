@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
 import CartTotals from 'components/cart/CartTotals';
 import MyCart from 'components/cart/MyCart';
 import { setGeneralLoading } from 'models/actions/catalogActions';
@@ -24,8 +22,8 @@ const OrderDetails = ({ id }) => {
   }, [id]);
 
   return (
-    <TableRow className="order-details">
-      <TableCell colSpan={7}>
+    <tr className="order-details">
+      <td colSpan={7}>
         <div className="row">
           <div className="wrapper">
             <MyCart cart={displayedOrder?.products || []} />
@@ -63,8 +61,8 @@ const OrderDetails = ({ id }) => {
             </div>
           </div>
         </div>
-      </TableCell>
-    </TableRow>
+      </td>
+    </tr>
   );
 };
 

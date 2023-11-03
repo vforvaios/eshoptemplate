@@ -1,6 +1,3 @@
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
 import SEO from 'components/seo/SEO';
 import { changeUserPassword } from 'models/actions/userActions';
 import React, { useState } from 'react';
@@ -56,38 +53,30 @@ const ChangePassword = () => {
         <div className="wrapper">
           <div className="login-container">
             <div className="form-control">
-              <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">ΝΕΟΣ ΚΩΔΙΚΟΣ</InputLabel>
-                <Input
-                  fullWidth
-                  error={passwordError !== ''}
-                  id="login-password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                {passwordError !== '' && (
-                  <span className="error-span">{passwordError}</span>
-                )}
-              </FormControl>
+              <label htmlFor="login-password">ΝΕΟΣ ΚΩΔΙΚΟΣ</label>
+              <input
+                error={passwordError !== ''}
+                id="login-password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {passwordError !== '' && (
+                <span className="error-span">{passwordError}</span>
+              )}
             </div>
             <div className="form-control">
-              <FormControl fullWidth>
-                <InputLabel htmlFor="login-confirmpassword">
-                  ΕΠΙΒΕΒΑΙΩΣΗ ΚΩΔΙΚΟΥ
-                </InputLabel>
-                <Input
-                  fullWidth
-                  error={confirmPasswordError !== ''}
-                  id="login-confirmpassword"
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                {confirmPasswordError !== '' && (
-                  <span className="error-span">{confirmPasswordError}</span>
-                )}
-              </FormControl>
+              <label htmlFor="login-confirmpassword">ΕΠΙΒΕΒΑΙΩΣΗ ΚΩΔΙΚΟΥ</label>
+              <input
+                error={confirmPasswordError !== ''}
+                id="login-confirmpassword"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              {confirmPasswordError !== '' && (
+                <span className="error-span">{confirmPasswordError}</span>
+              )}
             </div>
             <div className="form-control">
               <div className="actions">

@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
+import Input from 'components/input/Input';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import { getStaticContent } from 'models/actions/staticActions';
 import { addNewsletterUser } from 'models/actions/userActions';
@@ -28,12 +26,11 @@ const Footer = () => {
               <div className="footer-newsletter">
                 <div className="title">NEWSLETTER</div>
                 <div>
-                  <FormControl fullWidth className="newsletter-form">
-                    <InputLabel htmlFor="newsletter">
+                  <div className="newsletter-form">
+                    <label htmlFor="newsletter">
                       Εγγραφή στο newsletter...
-                    </InputLabel>
+                    </label>
                     <Input
-                      fullWidth
                       id="newsletter"
                       type="email"
                       value={newsletterEmail}
@@ -47,7 +44,7 @@ const Footer = () => {
                       }}>
                       Εγγραφή
                     </button>
-                  </FormControl>
+                  </div>
                 </div>
               </div>
               <div className="footer-columns">

@@ -1,8 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import RelevantProducts from 'components/relevant-products/RelevantProducts';
 import SEO from 'components/seo/SEO';
 import formatMoney from 'library/formatMoney';
@@ -72,12 +69,9 @@ const ProductPage = () => {
               <div className="product-title">
                 <h1 className="headerTitle">{productTitle}</h1>
               </div>
-              <Typography
-                variant="body2"
-                component="p"
-                className="product-code">
+              <p className="product-code">
                 <span>Κωδικός: {code}</span>
-              </Typography>
+              </p>
 
               <div className="price-container for-product-page">
                 <div>
@@ -86,12 +80,7 @@ const ProductPage = () => {
                 </div>
               </div>
 
-              <Typography
-                className="product-description"
-                component="p"
-                variant="body1">
-                {productDescription}
-              </Typography>
+              <p className="product-description">{productDescription}</p>
               <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
                 <span>{stock > 0 ? 'Διαθέσιμο' : 'Μη διαθέσιμο'}</span>
               </p>
@@ -104,15 +93,15 @@ const ProductPage = () => {
                   }}>
                   ΑΓΟΡΑ
                 </button>
-                <IconButton
+                <div
                   className="product-action"
                   aria-label="add to favorites"
                   onClick={(e) => {
                     e.preventDefault();
                     dispatch(addProductWishlist(id));
                   }}>
-                  <FavoriteBorderIcon />
-                </IconButton>
+                  <i class="icon-heart-empty" />
+                </div>
               </div>
             </Grid>
           </Grid>

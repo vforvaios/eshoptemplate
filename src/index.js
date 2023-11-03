@@ -1,5 +1,4 @@
 /* eslint-disable import/order */
-import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -14,7 +13,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import theme from './resources/mui/theme';
 import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,9 +23,7 @@ root.render(
   // <React.StrictMode>
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+      <App />
     </PersistGate>
   </Provider>,
   // </React.StrictMode>,

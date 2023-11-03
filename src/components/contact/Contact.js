@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
+import Input from 'components/input/Input';
 import SEO from 'components/seo/SEO';
 import { getKeyWords } from 'models/actions/staticActions';
 import { keywords } from 'models/selectors/staticSelectors';
@@ -44,50 +42,42 @@ const Contact = () => {
       <div className="row">
         <div className="wrapper">
           <div className="form-control">
-            <FormControl>
-              <InputLabel htmlFor="firstName">ΟΝΟΜΑ</InputLabel>
-              <Input
-                id="firstName"
-                type="text"
-                value={contactState.firstName}
-                onChange={(e) => handleContactState(e, 'firstName')}
-              />
-            </FormControl>
+            <label htmlFor="firstName">ΟΝΟΜΑ</label>
+            <Input
+              id="firstName"
+              type="text"
+              value={contactState.firstName}
+              onChange={(e) => handleContactState(e, 'firstName')}
+            />
           </div>
           <div className="form-control">
-            <FormControl>
-              <InputLabel htmlFor="lastName">ΕΠΩΝΥΜΟ</InputLabel>
-              <Input
-                id="lastName"
-                type="text"
-                value={contactState.lastName}
-                onChange={(e) => handleContactState(e, 'lastName')}
-              />
-            </FormControl>
+            <label htmlFor="lastName">ΕΠΩΝΥΜΟ</label>
+            <Input
+              id="lastName"
+              type="text"
+              value={contactState.lastName}
+              onChange={(e) => handleContactState(e, 'lastName')}
+            />
           </div>
           <div className="form-control">
-            <FormControl>
-              <InputLabel htmlFor="email">EMAIL</InputLabel>
-              <Input
-                id="email"
-                type="email"
-                value={contactState.email}
-                onChange={(e) => handleContactState(e, 'email')}
-              />
-            </FormControl>
+            <label htmlFor="email">EMAIL</label>
+            <Input
+              id="email"
+              type="email"
+              value={contactState.email}
+              onChange={(e) => handleContactState(e, 'email')}
+            />
           </div>
           <div className="form-control">
-            <FormControl>
-              <InputLabel htmlFor="message">ΜΗΝΥΜΑ</InputLabel>
-              <Input
-                id="message"
-                type="text"
-                rows="7"
-                multiline
-                value={contactState.message}
-                onChange={(e) => handleContactState(e, 'message')}
-              />
-            </FormControl>
+            <label htmlFor="message">ΜΗΝΥΜΑ</label>
+            <Input
+              id="message"
+              type="text"
+              rows="7"
+              multiline
+              value={contactState.message}
+              onChange={(e) => handleContactState(e, 'message')}
+            />
           </div>
         </div>
       </div>

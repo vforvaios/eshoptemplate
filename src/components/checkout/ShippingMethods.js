@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -16,7 +15,7 @@ const ShippingMethods = () => {
   return (
     <div className="shipping-methods">
       <h3>ΤΡΟΠΟΙ ΑΠΟΣΤΟΛΗΣ</h3>
-      <FormControl>
+      <div>
         <RadioGroup
           aria-labelledby="payment-methods"
           value={currentShippingMethods?.find((sm) => sm?.checked)?.name || ''}
@@ -35,7 +34,7 @@ const ShippingMethods = () => {
             />
           ))}
         </RadioGroup>
-      </FormControl>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import MuiAlert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
+import Toast from 'react-bootstrap/Toast';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import {
   alertMessage,
@@ -29,19 +28,12 @@ const Alert = () => {
   }, [show]);
 
   return (
-    <Snackbar
-      open={show}
-      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      autoHideDuration={Number(process.env.REACT_APP_CLOSE_ALERT)}
+    <Toast
+      show={show}
+      bg={type}
       onClose={() => dispatch(toggleShowAlert({ message: '', show: false }))}>
-      <MuiAlert
-        elevation={6}
-        variant="filled"
-        onClose={() => dispatch(toggleShowAlert({ message: '', show: false }))}
-        severity={type}>
-        {message}
-      </MuiAlert>
-    </Snackbar>
+      {message}
+    </Toast>
   );
 };
 

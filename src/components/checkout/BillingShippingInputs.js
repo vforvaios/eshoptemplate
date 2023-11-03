@@ -1,11 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Checkbox from '@mui/material/Checkbox';
-import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import Input from 'components/input/Input';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   getPrefecturesPerCountryForShipping,
@@ -49,7 +44,8 @@ const BillingShippingInputs = ({
           <FormControlLabel
             label="Ίδιο με πληρωμή"
             control={
-              <Checkbox
+              <input
+                type="checkbox"
                 checked={sameAsBilling}
                 onChange={() => dispatch(setSameAsBilling(!sameAsBilling))}
               />
@@ -58,12 +54,9 @@ const BillingShippingInputs = ({
         </>
       )}
       <div className={`${!billing && sameAsBilling ? 'same-as-billing' : ''}`}>
-        <FormControl
-          fullWidth
-          className={errors?.includes('name') ? 'error' : ''}>
-          <InputLabel htmlFor="name">ΟΝΟΜΑ</InputLabel>
+        <div className={errors?.includes('name') ? 'error' : ''}>
+          <label htmlFor="name">ΟΝΟΜΑ</label>
           <Input
-            fullWidth
             id="name"
             type="text"
             value={name}
@@ -72,13 +65,10 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'name', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl
-          fullWidth
-          className={errors?.includes('lastName') ? 'error' : ''}>
-          <InputLabel htmlFor="lastName">ΕΠΩΝΥΜΟ</InputLabel>
+        </div>
+        <div className={errors?.includes('lastName') ? 'error' : ''}>
+          <label htmlFor="lastName">ΕΠΩΝΥΜΟ</label>
           <Input
-            fullWidth
             id="lastName"
             type="text"
             value={lastName}
@@ -87,13 +77,10 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'lastName', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl
-          fullWidth
-          className={errors?.includes('email') ? 'error' : ''}>
-          <InputLabel htmlFor="email">EMAIL</InputLabel>
+        </div>
+        <div className={errors?.includes('email') ? 'error' : ''}>
+          <label htmlFor="email">EMAIL</label>
           <Input
-            fullWidth
             id="email"
             type="email"
             value={email}
@@ -102,11 +89,10 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'email', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="phone">ΤΗΛΕΦΩΝΟ</InputLabel>
+        </div>
+        <div>
+          <label htmlFor="phone">ΤΗΛΕΦΩΝΟ</label>
           <Input
-            fullWidth
             id="phone"
             type="text"
             value={phone}
@@ -115,13 +101,10 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'phone', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl
-          fullWidth
-          className={errors?.includes('mobile') ? 'error' : ''}>
-          <InputLabel htmlFor="mobile">ΚΙΝΗΤΟ</InputLabel>
+        </div>
+        <div className={errors?.includes('mobile') ? 'error' : ''}>
+          <label htmlFor="mobile">ΚΙΝΗΤΟ</label>
           <Input
-            fullWidth
             id="mobile"
             type="text"
             value={mobile}
@@ -130,13 +113,10 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'mobile', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl
-          fullWidth
-          className={errors?.includes('address') ? 'error' : ''}>
-          <InputLabel htmlFor="address">ΔΙΕΥΘΥΝΣΗ</InputLabel>
+        </div>
+        <div className={errors?.includes('address') ? 'error' : ''}>
+          <label htmlFor="address">ΔΙΕΥΘΥΝΣΗ</label>
           <Input
-            fullWidth
             id="address"
             type="text"
             value={address}
@@ -145,13 +125,10 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'address', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl
-          fullWidth
-          className={errors?.includes('postCode') ? 'error' : ''}>
-          <InputLabel htmlFor="postCode">Τ.Κ.</InputLabel>
+        </div>
+        <div className={errors?.includes('postCode') ? 'error' : ''}>
+          <label htmlFor="postCode">Τ.Κ.</label>
           <Input
-            fullWidth
             id="postCode"
             type="text"
             value={postCode}
@@ -160,11 +137,10 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'postCode', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="city">ΠΟΛΗ</InputLabel>
+        </div>
+        <div>
+          <label htmlFor="city">ΠΟΛΗ</label>
           <Input
-            fullWidth
             id="city"
             type="text"
             value={city}
@@ -173,11 +149,10 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'city', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="region">ΠΕΡΙΟΧΗ</InputLabel>
+        </div>
+        <div>
+          <label htmlFor="region">ΠΕΡΙΟΧΗ</label>
           <Input
-            fullWidth
             id="region"
             type="text"
             value={region}
@@ -186,16 +161,15 @@ const BillingShippingInputs = ({
               dispatch(setInfo({ key: 'region', name: e.target.value }))
             }
           />
-        </FormControl>
-        <FormControl variant="standard" fullWidth>
-          <InputLabel className="select-label" htmlFor="billing-country-label2">
+        </div>
+        <div>
+          <label className="select-label" htmlFor="billing-country-label2">
             ΧΩΡΑ
-          </InputLabel>
-          <Select
+          </label>
+          <select
             labelId="billing-country-label2"
             id="billing-country-label"
             value={Number(country) || ''}
-            label="Χώρα"
             onChange={(e) => {
               dispatch(setInfo({ key: 'country', name: e.target.value }));
               dispatch(setGeneralLoading(true));
@@ -204,38 +178,32 @@ const BillingShippingInputs = ({
                 : dispatch(getPrefecturesPerCountryForShipping(e.target.value));
             }}>
             {countries?.map((country) => (
-              <MenuItem key={country?.id} value={Number(country?.id)}>
+              <option key={country?.id} value={Number(country?.id)}>
                 {country?.country_name}
-              </MenuItem>
+              </option>
             ))}
-          </Select>
-        </FormControl>
-        <FormControl
-          variant="standard"
-          fullWidth
-          className={errors?.includes('prefecture') ? 'error' : ''}>
-          <InputLabel
-            className="select-label"
-            htmlFor="billing-prefecture-label2">
+          </select>
+        </div>
+        <div className={errors?.includes('prefecture') ? 'error' : ''}>
+          <label className="select-label" htmlFor="billing-prefecture-label2">
             ΝΟΜΟΣ
-          </InputLabel>
-          <Select
+          </label>
+          <select
             labelId="billing-prefecture-label2"
             id="billing-prefecture-label"
             value={Number(prefecture) || ''}
-            label="ΝΟΜΟΣ"
             onChange={(e) => {
               dispatch(setInfo({ key: 'prefecture', name: e.target.value }));
               dispatch(setGeneralLoading(true));
               dispatch(getShippingMethods());
             }}>
             {prefectures?.map((prefecture) => (
-              <MenuItem key={prefecture?.id} value={Number(prefecture?.id)}>
+              <option key={prefecture?.id} value={Number(prefecture?.id)}>
                 {prefecture?.prefecture_name}
-              </MenuItem>
+              </option>
             ))}
-          </Select>
-        </FormControl>
+          </select>
+        </div>
       </div>
     </div>
   );

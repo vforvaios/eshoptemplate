@@ -1,13 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { withStyles } from '@mui/styles';
 import formatMoney from 'library/formatMoney';
 import getPercentage from 'library/getPercentage';
 import { addToCart } from 'models/actions/cartActions';
@@ -19,8 +10,7 @@ import {
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import styles from './styles';
+import './styles.scss';
 
 const Product = ({ classes, product, isWishlist }) => {
   const {
@@ -41,7 +31,7 @@ const Product = ({ classes, product, isWishlist }) => {
   return (
     <Link className="navlink product" to={`/product/${productId}`}>
       <Card className={classes?.root}>
-        <CardMedia className={classes.media} title={productTitle}>
+        <div className="media" title={productTitle}>
           {imgHref?.length > 1 ? (
             <div
               className="productImage"
@@ -52,8 +42,8 @@ const Product = ({ classes, product, isWishlist }) => {
           ) : (
             <div className="productImage no-image">NO IMAGE</div>
           )}
-        </CardMedia>
-        <CardContent>
+        </div>
+        <div>
           <div className="price-container">
             <span className="discount absolute">
               {getPercentage(initialPrice, price)}%
@@ -61,16 +51,10 @@ const Product = ({ classes, product, isWishlist }) => {
           </div>
           <div className="headerTitle">{productTitle}</div>
           <div className="subHeader">{productSubHeader || ' '}</div>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            className="product-description">
-            {productDescription}
-          </Typography>
-          <Typography variant="body2" component="p" className="product-code">
+          <p className="product-description">{productDescription}</p>
+          <p className="product-code">
             <span>{code}</span>
-          </Typography>
+          </p>
           <div className="price-container">
             <div>
               <span>{formatMoney.format(initialPrice)}</span>
@@ -81,8 +65,8 @@ const Product = ({ classes, product, isWishlist }) => {
             <span>{stock > 0 ? 'Διαθέσιμο' : 'Μη διαθέσιμο'}</span>
           </p>
           {isNew ? <span className="is-new mb0">ΝΕΟ</span> : null}
-        </CardContent>
-        <CardActions disableSpacing className="card-actions">
+        </div>
+        <div disableSpacing className="card-actions">
           {stock > 0 ? (
             <button
               className="add-to-cart"
@@ -97,7 +81,7 @@ const Product = ({ classes, product, isWishlist }) => {
           )}
 
           {!isWishlist ? (
-            <IconButton
+            <div
               className="product-action"
               aria-label="add to favorites"
               onClick={(e) => {
@@ -105,10 +89,10 @@ const Product = ({ classes, product, isWishlist }) => {
                 dispatch(setGeneralLoading(true));
                 dispatch(addProductWishlist(productId));
               }}>
-              <FavoriteBorderIcon />
-            </IconButton>
+              <i class="icon-heart-empty" />
+            </div>
           ) : (
-            <IconButton
+            <div
               className="product-action"
               aria-label="remove from favorites"
               onClick={(e) => {
@@ -116,10 +100,10 @@ const Product = ({ classes, product, isWishlist }) => {
                 dispatch(setGeneralLoading(true));
                 dispatch(removeProductWishlist(productId));
               }}>
-              <DeleteForeverIcon />
-            </IconButton>
+              <i className="icon-trash-empty" />
+            </div>
           )}
-        </CardActions>
+        </div>
       </Card>
     </Link>
   );

@@ -1,6 +1,4 @@
-import Chip from '@mui/material/Chip';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
+import Chip from 'components/input/Chip';
 import formatMoney from 'library/formatMoney';
 import { setOrderId } from 'models/actions/userActions';
 import { statuses, orderIdVisible } from 'models/selectors/userSelector';
@@ -9,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import OrderDetails from './OrderDetails';
 
-const Order = ({ order, toggleOrder }) => {
+const Order = ({ order }) => {
   const dispatch = useDispatch();
   const orderStatuses = useSelector(statuses);
   const orderId = useSelector(orderIdVisible);
@@ -29,46 +27,46 @@ const Order = ({ order, toggleOrder }) => {
 
   return (
     <>
-      <TableRow
+      <tr
         className="product-row extra"
         onClick={() => {
           id !== orderId ? dispatch(setOrderId(id)) : dispatch(setOrderId(''));
         }}>
-        <TableCell>
+        <td>
           <span className="hidden">ΚΩΔΙΚΟΣ</span>
           {order_code}
-        </TableCell>
-        <TableCell>
+        </td>
+        <td>
           <span className="hidden">ΗΜΕΡΟΜΗΝΙΑ</span>
           {new Date(dateCreated).toLocaleString()}
-        </TableCell>
-        <TableCell>
+        </td>
+        <td>
           <span className="hidden">ΟΝΟΜΑ</span>
           {paymentFirstName} {paymentLastName}
-        </TableCell>
-        <TableCell>
+        </td>
+        <td>
           <span className="hidden">EMAIL</span>
           {paymentEmail}
-        </TableCell>
-        <TableCell>
+        </td>
+        <td>
           <span className="hidden">ΤΙΜΗ</span>
           {formatMoney.format(
             Number(totalOrderPrice) +
               Number(paymentMethodCost) +
               Number(shippingMethodCost),
           )}
-        </TableCell>
-        <TableCell>
+        </td>
+        <td>
           <span className="hidden">ΤΕΜΑΧΙΑ</span>
           {totalItems}
-        </TableCell>
-        <TableCell>
+        </td>
+        <td>
           <Chip
-            className={`chip chip${statusId}`}
+            klassName={`chip chip${statusId}`}
             label={orderStatuses?.find((st) => st?.id === statusId)?.name}
           />
-        </TableCell>
-      </TableRow>
+        </td>
+      </tr>
       {orderId !== '' && orderId === id ? <OrderDetails id={orderId} /> : null}
     </>
   );

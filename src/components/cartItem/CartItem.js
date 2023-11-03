@@ -1,9 +1,3 @@
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import IconButton from '@mui/material/IconButton';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-import TextField from '@mui/material/TextField';
-import ToolTip from '@mui/material/ToolTip';
 import formatMoney from 'library/formatMoney';
 import {
   removeItemFromCart,
@@ -16,8 +10,8 @@ const CartItem = ({ updateable, item }) => {
   const dispatch = useDispatch();
 
   return (
-    <TableRow>
-      <TableCell>
+    <tr>
+      <td>
         <div className="cart-description">
           <span>
             <img
@@ -27,18 +21,15 @@ const CartItem = ({ updateable, item }) => {
           </span>
           <span>{item.productTitle}</span>
         </div>
-      </TableCell>
-      <TableCell>
+      </td>
+      <td>
         <span className="hidden">ΠΟΣΟΤΗΤΑ</span>
         {!updateable ? (
           item.total
         ) : (
-          <TextField
-            variant="standard"
+          <input
             type="number"
-            InputProps={{
-              inputProps: { min: 0 },
-            }}
+            min={0}
             value={item.total}
             onChange={(e) =>
               dispatch(
@@ -50,8 +41,8 @@ const CartItem = ({ updateable, item }) => {
             }
           />
         )}
-      </TableCell>
-      <TableCell className={!updateable ? 'not-updateable' : null}>
+      </td>
+      <td className={!updateable ? 'not-updateable' : null}>
         <span className="hidden">ΤΙΜΗ</span>
         <span>
           <span className="cart-item-initial-price">
@@ -63,32 +54,30 @@ const CartItem = ({ updateable, item }) => {
           {`(${item.total}x${item.price})`}
         </span>
         {!updateable && item.total === 0 && (
-          <ToolTip title="Δεν υπάρχει πλέον διαθέσιμο το προϊόν. Παρακαλώ διαγράψτε το για να συνεχίσετε.">
-            <IconButton
-              onClick={() =>
-                dispatch(
-                  removeItemFromCart({ id: item.productId, checkout: true }),
-                )
-              }
-              className="icon-cancel-circled removeCancel">
-              <DeleteForeverIcon />
-            </IconButton>
-          </ToolTip>
+          <i
+            title="Δεν υπάρχει πλέον διαθέσιμο το προϊόν. Παρακαλώ διαγράψτε το για να συνεχίσετε."
+            class="bi bi-trash removeCancel"
+            onClick={() =>
+              dispatch(
+                removeItemFromCart({ id: item.productId, checkout: true }),
+              )
+            }
+          />
         )}
-      </TableCell>
+      </td>
       {updateable && (
-        <TableCell>
-          <IconButton
+        <td>
+          <i
+            class="bi bi-trash"
             onClick={() =>
               dispatch(
                 removeItemFromCart({ id: item.productId, checkout: false }),
               )
-            }>
-            <DeleteForeverIcon />
-          </IconButton>
-        </TableCell>
+            }
+          />
+        </td>
       )}
-    </TableRow>
+    </tr>
   );
 };
 

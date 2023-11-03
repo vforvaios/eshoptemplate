@@ -1,5 +1,4 @@
 import Autocomplete from '@mui/material/Autocomplete';
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import {
   getSearchRelatedProducts,
@@ -21,7 +20,7 @@ const Search = () => {
   const [searchProductText, setSearchProductText] = useState('');
 
   return (
-    <FormControl>
+    <div>
       <Autocomplete
         clearOnBlur={false}
         disableClearable
@@ -55,7 +54,7 @@ const Search = () => {
         )}
       />
       {loading && <span className="minor-loading">Loading...</span>}
-    </FormControl>
+    </div>
   );
 };
 

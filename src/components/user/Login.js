@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
+import Input from 'components/input/Input';
 import SEO from 'components/seo/SEO';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import { getKeyWords } from 'models/actions/staticActions';
@@ -68,36 +66,32 @@ const Login = () => {
         <div className="wrapper">
           <div className="login-container">
             <div className="form-control">
-              <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">ΟΝΟΜΑ ΧΡΗΣΤΗ</InputLabel>
-                <Input
-                  fullWidth
-                  id="login-email"
-                  type="email"
-                  value={email}
-                  error={emailError !== ''}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {emailError !== '' && (
-                  <span className="error-span">{emailError}</span>
-                )}
-              </FormControl>
+              <label htmlFor="login-email">ΟΝΟΜΑ ΧΡΗΣΤΗ</label>
+              <Input
+                fullWidth
+                id="login-email"
+                type="email"
+                value={email}
+                error={emailError !== ''}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {emailError !== '' && (
+                <span className="error-span">{emailError}</span>
+              )}
             </div>
             <div className="form-control">
-              <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">ΚΩΔΙΚΟΣ</InputLabel>
-                <Input
-                  fullWidth
-                  error={passwordError !== ''}
-                  id="login-password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                {passwordError !== '' && (
-                  <span className="error-span">{passwordError}</span>
-                )}
-              </FormControl>
+              <label htmlFor="login-password">ΚΩΔΙΚΟΣ</label>
+              <Input
+                fullWidth
+                error={passwordError !== ''}
+                id="login-password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {passwordError !== '' && (
+                <span className="error-span">{passwordError}</span>
+              )}
             </div>
             <div className="form-control">
               <div className="actions">

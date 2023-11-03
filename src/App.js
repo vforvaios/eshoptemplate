@@ -32,6 +32,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'fontello/css/fontello.css';
+import 'normalize.css';
 
 const App = () => {
   const userSelector = useSelector(user);

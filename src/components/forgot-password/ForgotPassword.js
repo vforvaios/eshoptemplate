@@ -1,6 +1,4 @@
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
+import Input from 'components/input/Input';
 import SEO from 'components/seo/SEO';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import { sendNewUserPassword } from 'models/actions/userActions';
@@ -54,22 +52,17 @@ const ForgotPassword = () => {
         <div className="wrapper">
           <div className="login-container">
             <div className="form-control">
-              <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">
-                  ΟΝΟΜΑ ΧΡΗΣΤΗ/EMAIL
-                </InputLabel>
-                <Input
-                  fullWidth
-                  id="login-email"
-                  type="email"
-                  value={email}
-                  error={emailError !== ''}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {emailError !== '' && (
-                  <span className="error-span">{emailError}</span>
-                )}
-              </FormControl>
+              <label htmlFor="login-email">ΟΝΟΜΑ ΧΡΗΣΤΗ/EMAIL</label>
+              <Input
+                id="login-email"
+                type="email"
+                value={email}
+                error={emailError !== ''}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {emailError !== '' && (
+                <span className="error-span">{emailError}</span>
+              )}
             </div>
             <div className="form-control">
               <div className="actions">

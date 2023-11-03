@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import Grid from '@mui/material/Grid';
 import MiniCart from 'components/cart/MiniCart';
@@ -45,7 +44,10 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
   return (
     <Grid container className="headerContainer">
       <Grid item sm={3}>
-        <MenuIcon onClick={setToggleValue('left', true)} className="menuIcon" />
+        <i
+          onClick={setToggleValue('left', true)}
+          className="icon-menu menuIcon"
+        />
         <Drawer
           anchor="left"
           open={toggleValue?.left}

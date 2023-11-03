@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Fade from '@mui/material/Fade';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { logoutUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
 import React, { useState } from 'react';
@@ -25,29 +23,29 @@ const UserMenu = ({ token }) => {
   return token ? (
     <div className="usermenu-container">
       <i className="icon-user-o" onClick={handleClick} />
-      <Menu
+      <ul
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         keepMounted
         className="user-menu"
         TransitionComponent={Fade}>
-        <MenuItem className="userLoggedIn">
+        <li className="userLoggedIn">
           Καλωσήρθες {loggedInUser?.userLoggedIn?.username}
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
+        </li>
+        <li onClick={handleClose}>
           <Link to="/changepassword">Αλλαγή κωδικού</Link>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
+        </li>
+        <li onClick={handleClose}>
           <Link to="/wishlist">Τα αγαπημένα μου</Link>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
+        </li>
+        <li onClick={handleClose}>
           <Link to="/orders">Οι παραγγελίες μου</Link>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
+        </li>
+        <li onClick={handleClose}>
           <a onClick={() => dispatch(logoutUser())}>Εξοδος</a>
-        </MenuItem>
-      </Menu>
+        </li>
+      </ul>
     </div>
   ) : (
     <Link to="/login" className="user-icon">
