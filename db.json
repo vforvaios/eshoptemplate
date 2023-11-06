@@ -1,0 +1,229 @@
+{
+  "home": {
+    "tabsOffers": [
+      {
+        "id": 3,
+        "title": "ΚΑΛΟΚΑΙΡΙ",
+        "isActive": 1,
+        "products": [
+          {
+            "productId": 1,
+            "productTitle": "Title 1",
+            "stock": 99,
+            "productDescription": "Descripption 1",
+            "initialPrice": 30,
+            "price": 20,
+            "imgHref": "adminbg.jpg",
+            "productSubHeader": "Sub Header 1",
+            "code": "1234re",
+            "isNew": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "title": "ΟΜΟΡΦΙΑ",
+        "isActive": 1,
+        "products": [
+          {
+            "productId": 1,
+            "productTitle": "Title 1",
+            "stock": 99,
+            "productDescription": "Descripption 1",
+            "initialPrice": 30,
+            "price": 20,
+            "imgHref": "adminbg.jpg",
+            "productSubHeader": "Sub Header 1",
+            "code": "1234re",
+            "isNew": 1
+          },
+          {
+            "productId": 2,
+            "productTitle": "Title 2",
+            "stock": 40,
+            "productDescription": "Description 2",
+            "initialPrice": 100,
+            "price": 80,
+            "imgHref": "adminbg.jpg",
+            "productSubHeader": "Sub Header 2",
+            "code": "fsd84r23j",
+            "isNew": 0
+          },
+          {
+            "productId": 3,
+            "productTitle": "Title 3",
+            "stock": 160,
+            "productDescription": "Descripption 3",
+            "initialPrice": 50,
+            "price": 40,
+            "imgHref": "adminbg.jpg",
+            "productSubHeader": "Sub Header 3",
+            "code": "fsd8fws2",
+            "isNew": 1
+          }
+        ]
+      }
+    ],
+    "sections": [
+      {
+        "id": 2,
+        "title": "ΑΞΙΖΕΙ ΝΑ ΔΕΙΤΕ...",
+        "isActive": 1,
+        "products": [
+          {
+            "productId": 3,
+            "productTitle": "Title 3",
+            "stock": 160,
+            "productDescription": "Descripption 3",
+            "initialPrice": 50,
+            "price": 40,
+            "imgHref": "adminbg.jpg",
+            "productSubHeader": "Sub Header 3",
+            "code": "fsd8fws2",
+            "isNew": 1
+          },
+          {
+            "productId": 15,
+            "productTitle": "test title",
+            "stock": 100,
+            "productDescription": "test small description",
+            "initialPrice": 300,
+            "price": 100,
+            "imgHref": "adminbg.jpg",
+            "productSubHeader": "test subheader",
+            "code": "test code",
+            "isNew": 0
+          },
+          {
+            "productId": 2,
+            "productTitle": "Title 2",
+            "stock": 40,
+            "productDescription": "Description 2",
+            "initialPrice": 100,
+            "price": 80,
+            "imgHref": "adminbg.jpg",
+            "productSubHeader": "Sub Header 2",
+            "code": "fsd84r23j",
+            "isNew": 0
+          }
+        ]
+      }
+    ],
+    "banners": [
+      {
+        "id": 1,
+        "title": "Αγόρασε τώρα το frezy derm",
+        "product_id": 3,
+        "imgHref": "adminbg.jpg",
+        "productId": 3,
+        "isNew": 1
+      },
+      {
+        "id": 2,
+        "title": "fasdfasdafd",
+        "product_id": 2,
+        "imgHref": "adminbg.jpg",
+        "productId": 2,
+        "isNew": 0
+      }
+    ]
+  },
+  "staticcontentkeywordshome": { "keywords": "Αρχική σελίδα Shoppy" },
+  "logo": {
+    "data": {
+      "name": "computer-img.png"
+    },
+    "preview": "undefined/images/computer-img.png"
+  },
+  "staticcontentactive": {
+    "data": [
+      {
+        "id": 1,
+        "title": "Οροι Χρήσης",
+        "description": "<p>fasdasdfasdfasdfasdasdfasd2222222</p>"
+      },
+      {
+        "id": 2,
+        "title": "Τρόποι Πληρωμής",
+        "description": "<p>perigrafi</p>"
+      },
+      {
+        "id": 3,
+        "title": "Τρόποι Αποστολής",
+        "description": "<p>2test perigrafi22222</p>"
+      }
+    ]
+  },
+  "menu": {
+    "menu": [
+      {
+        "id": 1,
+        "name": "ΓΥΝΑΙΚΑ",
+        "subCategories": [
+          {
+            "id": 1,
+            "name": "ΑΝΤΗΛΙΑΚΗ ΠΡΟΣΤΑΣΙΑ",
+            "category_id": 1
+          },
+          {
+            "id": 2,
+            "name": "ΠΡΟΣΩΠΟ",
+            "category_id": 1
+          },
+          {
+            "id": 3,
+            "name": "ΡΥΤΙΔΕΣ",
+            "category_id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "ΑΝΤΡΑΣ",
+        "subCategories": [
+          {
+            "id": 3,
+            "name": "ΡΥΤΙΔΕΣ",
+            "category_id": 2
+          },
+          {
+            "id": 4,
+            "name": "ΣΤΟΜΑΤΙΚΗ ΠΡΟΣΤΑΣΙΑ",
+            "category_id": 2
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "ΠΑΙΔΙ",
+        "subCategories": []
+      },
+      {
+        "id": 4,
+        "name": "ΧΕΙΜΩΝΑΣ",
+        "subCategories": []
+      },
+      {
+        "id": 5,
+        "name": "ΚΑΛΟΚΑΙΡΙ",
+        "subCategories": []
+      }
+    ],
+    "staticPagesInMenu": [
+      {
+        "id": 2,
+        "title": "Τρόποι Πληρωμής",
+        "description": "<p>perigrafi</p>",
+        "isActive": 1,
+        "isMenu": 1
+      },
+      {
+        "id": 3,
+        "title": "Τρόποι Αποστολής",
+        "description": "<p>2test perigrafi22222</p>",
+        "isActive": 1,
+        "isMenu": 1
+      }
+    ]
+  }
+}
