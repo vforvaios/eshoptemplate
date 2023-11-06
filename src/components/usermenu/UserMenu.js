@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Fade from '@mui/material/Fade';
 import { logoutUser } from 'models/actions/userActions';
 import { user } from 'models/selectors/userSelector';
 import React, { useState } from 'react';
@@ -23,13 +22,7 @@ const UserMenu = ({ token }) => {
   return token ? (
     <div className="usermenu-container">
       <i className="icon-user-o" onClick={handleClick} />
-      <ul
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        keepMounted
-        className="user-menu"
-        TransitionComponent={Fade}>
+      <ul open={open} onClose={handleClose} className="user-menu">
         <li className="userLoggedIn">
           Καλωσήρθες {loggedInUser?.userLoggedIn?.username}
         </li>

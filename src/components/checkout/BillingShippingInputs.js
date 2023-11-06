@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Input from 'components/input/Input';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
@@ -41,15 +40,11 @@ const BillingShippingInputs = ({
       <h3>{billing ? 'ΔΙΕΥΘΥΝΣΗ ΑΠΟΣΤΟΛΗΣ' : 'ΔΙΕΥΘΥΝΣΗ ΠΛΗΡΩΜΗΣ'}</h3>
       {!billing && (
         <>
-          <FormControlLabel
-            label="Ίδιο με πληρωμή"
-            control={
-              <input
-                type="checkbox"
-                checked={sameAsBilling}
-                onChange={() => dispatch(setSameAsBilling(!sameAsBilling))}
-              />
-            }
+          <label>Ίδιο με πληρωμή</label>
+          <input
+            type="checkbox"
+            checked={sameAsBilling}
+            onChange={() => dispatch(setSameAsBilling(!sameAsBilling))}
           />
         </>
       )}

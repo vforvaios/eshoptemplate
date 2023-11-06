@@ -1,4 +1,4 @@
-import Pagination from '@mui/material/Pagination';
+import { Pagination } from 'semantic-ui-react';
 import {
   setCurrentCatalogPage,
   setGeneralLoading,
@@ -14,11 +14,9 @@ const CatalogPagination = ({ pagination }) => {
     count > 1 && (
       <div className="catalog-pagination pagination">
         <Pagination
-          page={Number(pagination.currentPage)}
-          count={count}
-          showFirstButton
-          showLastButton
-          onChange={(e, value) => {
+          activePage={Number(pagination.currentPage)}
+          totalPages={count}
+          onPageChange={(e, value) => {
             dispatch(setGeneralLoading(true));
             dispatch(setCurrentCatalogPage(Number(value)));
           }}

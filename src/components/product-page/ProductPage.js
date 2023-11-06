@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Grid from '@mui/material/Grid';
 import RelevantProducts from 'components/relevant-products/RelevantProducts';
 import SEO from 'components/seo/SEO';
 import formatMoney from 'library/formatMoney';
@@ -51,8 +50,8 @@ const ProductPage = () => {
       />
       <div className="row">
         <div className="wrapper">
-          <Grid container>
-            <Grid item sm={6} xs={12} className="mainProductPhotosContainer">
+          <div container>
+            <div item sm={6} xs={12} className="mainProductPhotosContainer">
               {isNew ? <div className="is-new">ΝΕΟ</div> : null}
               <div className="price-container">
                 <span className="discount absolute">
@@ -64,8 +63,8 @@ const ProductPage = () => {
                 alt={productTitle}
                 title={productTitle}
               />
-            </Grid>
-            <Grid item sm={6} xs={12} className="pr0 mainProductRightSection">
+            </div>
+            <div item sm={6} xs={12} className="pr0 mainProductRightSection">
               <div className="product-title">
                 <h1 className="headerTitle">{productTitle}</h1>
               </div>
@@ -103,8 +102,8 @@ const ProductPage = () => {
                   <i class="icon-heart-empty" />
                 </div>
               </div>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </div>
       </div>
       {productLargeDescription && (

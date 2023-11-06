@@ -1,4 +1,4 @@
-import Pagination from '@mui/material/Pagination';
+import { Pagination } from 'semantic-ui-react';
 import React from 'react';
 
 const OrdersPagination = ({ page, count, onChange }) => {
@@ -7,11 +7,9 @@ const OrdersPagination = ({ page, count, onChange }) => {
       <div className="wrapper">
         <div className="catalog-pagination pagination">
           <Pagination
-            page={page}
-            count={count}
-            showFirstButton
-            showLastButton
-            onChange={(e, value) => onChange(e, value)}
+            activePage={page}
+            totalPages={count}
+            onPageChange={(e, value) => onChange(e, value)}
           />
         </div>
       </div>

@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Drawer from '@mui/material/Drawer';
-import Grid from '@mui/material/Grid';
 import MiniCart from 'components/cart/MiniCart';
 import MainMenu from 'components/main-menu/MainMenu';
 import UserMenu from 'components/usermenu/UserMenu';
@@ -42,20 +40,20 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
   }, [location.pathname]);
 
   return (
-    <Grid container className="headerContainer">
-      <Grid item sm={3}>
+    <div container className="headerContainer">
+      <div item sm={3}>
         <i
           onClick={setToggleValue('left', true)}
           className="icon-menu menuIcon"
         />
-        <Drawer
+        <div
           anchor="left"
           open={toggleValue?.left}
           onClose={setToggleValue('left', false)}>
           <MainMenu setToggleValue={setToggleValue} />
-        </Drawer>
-      </Grid>
-      <Grid item sm={6} className="logo">
+        </div>
+      </div>
+      <div item sm={6} className="logo">
         <Link to="/">
           <img
             src={logoImage?.preview}
@@ -63,14 +61,14 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
             className="logo-image"
           />
         </Link>
-      </Grid>
-      <Grid item sm={3}>
+      </div>
+      <div item sm={3}>
         <div className="headerActions">
           <MiniCart />
           <UserMenu token={userToken} />
         </div>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };
 

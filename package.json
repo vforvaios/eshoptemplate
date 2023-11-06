@@ -11,6 +11,7 @@
     "bootstrap-icons": "^1.11.1",
     "node-sass": "^9.0.0",
     "normalize.css": "^8.0.1",
+    "primereact": "^10.0.9",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-cookie": "^4.1.1",
@@ -29,6 +30,8 @@
     "redux-observable": "^2.0.0",
     "redux-persist": "^6.0.0",
     "rxjs": "^7.3.0",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
     "slick-carousel": "^1.8.1",
     "tss-react": "^4.4.4",
     "web-vitals": "^2.1.4"
@@ -56,12 +59,8 @@
   },
   "eslintConfig": {
     "extends": [
-      "eslint:recommended"
-    ],
-    "plugins": [
-      "react",
-      "prettier",
-      "eslint:recommended"
+      "react-app",
+      "react-app/jest"
     ],
     "overrides": [
       {
@@ -141,31 +140,6 @@
             "always"
           ],
           "sort-imports": "off",
-          "import/order": [
-            "error",
-            {
-              "groups": [
-                "builtin",
-                "external",
-                "internal",
-                [
-                  "parent",
-                  "sibling"
-                ]
-              ],
-              "alphabetize": {
-                "order": "asc",
-                "caseInsensitive": true
-              },
-              "newlines-between": "always"
-            }
-          ],
-          "import/newline-after-import": [
-            "warn",
-            {
-              "count": 1
-            }
-          ],
           "prefer-arrow-callback": 0,
           "prefer-template": "error",
           "no-constant-condition": [
