@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -105,7 +103,7 @@ const Product = ({ classes, product, isWishlist }) => {
                 dispatch(setGeneralLoading(true));
                 dispatch(addProductWishlist(productId));
               }}>
-              <FavoriteBorderIcon />
+              <i className="icon-heart-empty" />
             </IconButton>
           ) : (
             <IconButton
@@ -116,7 +114,7 @@ const Product = ({ classes, product, isWishlist }) => {
                 dispatch(setGeneralLoading(true));
                 dispatch(removeProductWishlist(productId));
               }}>
-              <DeleteForeverIcon />
+              <i className="icon-trash-empty" />
             </IconButton>
           )}
         </CardActions>

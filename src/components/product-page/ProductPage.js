@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -111,7 +110,7 @@ const ProductPage = () => {
                     e.preventDefault();
                     dispatch(addProductWishlist(id));
                   }}>
-                  <FavoriteBorderIcon />
+                  <i className="icon-heart-empty" />
                 </IconButton>
               </div>
             </Grid>

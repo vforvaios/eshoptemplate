@@ -1,9 +1,8 @@
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from '@mui/material/IconButton';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
-import ToolTip from '@mui/material/ToolTip';
+import ToolTip from '@mui/material/Tooltip';
 import formatMoney from 'library/formatMoney';
 import {
   removeItemFromCart,
@@ -71,7 +70,7 @@ const CartItem = ({ updateable, item }) => {
                 )
               }
               className="icon-cancel-circled removeCancel">
-              <DeleteForeverIcon />
+              <i className="icon-trash-empty" />
             </IconButton>
           </ToolTip>
         )}
@@ -84,7 +83,7 @@ const CartItem = ({ updateable, item }) => {
                 removeItemFromCart({ id: item.productId, checkout: false }),
               )
             }>
-            <DeleteForeverIcon />
+            <i className="icon-trash-empty" />
           </IconButton>
         </TableCell>
       )}

@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import CloseIcon from '@mui/icons-material/Close';
 import Search from 'components/searchHeader/Search';
 import {
   setSelectedCategory,
@@ -30,7 +29,8 @@ const MainMenu = ({ setToggleValue }) => {
     <div className="main-menu">
       <div className="main-menu-header">
         <img src={logo} alt="fasdf" className="logo-image" />
-        <CloseIcon
+        <i
+          className="cancel-circled"
           onClick={setToggleValue('left', false)}
           ref={myCloseMenuBtn}
         />
