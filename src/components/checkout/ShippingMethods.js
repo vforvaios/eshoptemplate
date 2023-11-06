@@ -1,7 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import formatMoney from 'library/formatMoney';
 import { checkShippingMethod } from 'models/actions/checkoutActions';
 import { shippingMethods } from 'models/selectors/checkoutSelectors';
@@ -16,24 +13,25 @@ const ShippingMethods = () => {
     <div className="shipping-methods">
       <h3>ΤΡΟΠΟΙ ΑΠΟΣΤΟΛΗΣ</h3>
       <div>
-        <RadioGroup
-          aria-labelledby="payment-methods"
+        <div
+          aria-labelledby="shipping-methods"
           value={currentShippingMethods?.find((sm) => sm?.checked)?.name || ''}
           onChange={(e) => dispatch(checkShippingMethod(e.target.value))}
-          name="payment-methods">
+          name="shipping-methods">
           {currentShippingMethods?.map((shippingmethod) => (
-            <FormControlLabel
-              key={shippingmethod?.id}
-              value={shippingmethod?.name}
-              control={<Radio />}
-              label={`${shippingmethod?.name} ${
-                shippingmethod?.cost > 0
-                  ? `(${formatMoney.format(shippingmethod.cost)})`
-                  : ''
-              }`}
-            />
+            <>
+              <input
+                type="radio"
+                name="shipping-methods-map"
+                key={shippingmethod?.id}
+                value={shippingmethod?.name}
+              />
+              {shippingmethod?.cost > 0
+                ? `(${formatMoney.format(shippingmethod.cost)})`
+                : ''}
+            </>
           ))}
-        </RadioGroup>
+        </div>
       </div>
     </div>
   );

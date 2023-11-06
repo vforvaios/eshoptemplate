@@ -1,7 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import formatMoney from 'library/formatMoney';
 import { checkPaymentMethod } from 'models/actions/checkoutActions';
 import { paymentMethods } from 'models/selectors/checkoutSelectors';
@@ -16,24 +13,27 @@ const PaymentMethods = () => {
     <div className="payment-methods">
       <h3>ΤΡΟΠΟΙ ΠΛΗΡΩΜΗΣ</h3>
       <div>
-        <RadioGroup
+        <div
           aria-labelledby="payment-methods"
-          value={currentPaymentMethods?.find((pm) => pm?.checked)?.name || ''}
+          // value={currentPaymentMethods?.find((pm) => pm?.checked)?.name || ''}
           onChange={(e) => dispatch(checkPaymentMethod(e.target.value))}
           name="payment-methods">
           {currentPaymentMethods?.map((paymentmethod) => (
-            <FormControlLabel
-              key={paymentmethod?.id}
-              value={paymentmethod?.name}
-              control={<Radio />}
-              label={`${paymentmethod?.name} ${
-                paymentmethod?.cost > 0
-                  ? `(${formatMoney.format(paymentmethod.cost)})`
-                  : ''
-              }`}
-            />
+            <>
+              <input
+                type="radio"
+                name="payment-methods-map"
+                key={paymentmethod?.id}
+                value={paymentmethod?.name}
+              />
+              `${paymentmethod?.name} $
+              {paymentmethod?.cost > 0
+                ? `(${formatMoney.format(paymentmethod.cost)})`
+                : ''}
+              `
+            </>
           ))}
-        </RadioGroup>
+        </div>
       </div>
     </div>
   );
