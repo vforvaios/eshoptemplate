@@ -20,6 +20,7 @@ const TRACKING_ID = process.env.REACT_APP_TRACKING_ID; // OUR_TRACKING_ID
 const Header = ({ cookies, toggleValue, setToggleValue }) => {
   const dispatch = useDispatch();
   const userToken = useSelector(token);
+
   const logoImage = useSelector(logo);
   const location = useLocation();
 
