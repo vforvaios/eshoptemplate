@@ -123,3 +123,13 @@
   font-weight: 700;
   letter-spacing: 1px;
 }
+
+.icon-shopping-basket {
+  font-size: 26px;
+  color: $white;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: $color-1;
+  }
+}

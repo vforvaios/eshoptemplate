@@ -30,7 +30,7 @@ const MainMenu = ({ setToggleValue }) => {
       <div className="main-menu-header">
         <img src={logo} alt="fasdf" className="logo-image" />
         <i
-          className="cancel-circled"
+          className="icon-cancel-circled closeMenu"
           onClick={setToggleValue('left', false)}
           ref={myCloseMenuBtn}
         />

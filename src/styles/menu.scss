@@ -139,3 +139,20 @@
 .MuiAutocomplete-root .MuiInput-root .MuiInput-input {
   padding: 6px !important;
 }
+
+.menuIcon {
+  font-size: 26px;
+  color: $white;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: $color-1;
+  }
+}
+
+.closeMenu {
+  font-size: 26px;
+  color: $white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
