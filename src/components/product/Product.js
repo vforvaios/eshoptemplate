@@ -24,9 +24,7 @@ const Product = ({ classes, product, isWishlist }) => {
   const {
     productId,
     productTitle,
-    productSubHeader,
     imgHref,
-    productDescription,
     price,
     initialPrice,
     code,
@@ -52,29 +50,23 @@ const Product = ({ classes, product, isWishlist }) => {
           )}
         </CardMedia>
         <CardContent>
-          <div className="price-container">
+          <div className="price-container no-margin">
             <span className="discount absolute">
               {getPercentage(initialPrice, price)}%
             </span>
           </div>
-          <div className="headerTitle">{productTitle}</div>
-          <div className="subHeader">{productSubHeader || ' '}</div>
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-            className="product-description">
-            {productDescription}
-          </Typography>
-          <Typography variant="body2" component="p" className="product-code">
-            <span>{code}</span>
-          </Typography>
-          <div className="price-container">
-            <div>
-              <span>{formatMoney.format(initialPrice)}</span>
-              {formatMoney.format(price)}
+          <div className="headerTitleContainer">
+            <div className="headerTitle">{productTitle}</div>
+            <div className="price-container">
+              <div>
+                <span>{formatMoney.format(initialPrice)}</span>
+                {formatMoney.format(price)}
+              </div>
             </div>
           </div>
+          <p className="product-code">
+            <span>{code}</span>
+          </p>
           <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
             <span>{stock > 0 ? 'Διαθέσιμο' : 'Μη διαθέσιμο'}</span>
           </p>

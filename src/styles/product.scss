@@ -46,9 +46,9 @@
       color: $color-6 !important;
 
       &.in-stock {
-        margin: 0;
+        margin: 8px 0 0;
         min-height: unset;
-        text-align: center;
+        text-align: left;
         padding: 0;
         -webkit-box-orient: unset;
         box-orient: unset;
@@ -81,11 +81,12 @@
 
       &.product-code {
         font-size: 11px;
+        font-weight: 300;
         display: block;
         min-height: unset;
         line-clamp: unset;
         overflow: auto;
-        color: $color-4 !important;
+        color: $color-6 !important;
         margin-bottom: 0;
         padding-right: 4px;
       }
@@ -106,6 +107,17 @@
   &.MuiIconButton-root {
     padding: 6px;
     color: $color-1;
+  }
+}
+
+.headerTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 12px;
+
+  .price-container {
+    margin-bottom: 0;
   }
 }
 
@@ -130,6 +142,10 @@
   align-items: center;
   margin-bottom: 10px;
 
+  &.no-margin {
+    margin-bottom: 0;
+  }
+
   &.for-product-page {
     & > div {
       justify-content: flex-start;
@@ -141,14 +157,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     color: $color-1;
     width: 100%;
 
     & > span {
       margin-right: 10px;
-      font-size: 14px;
+      font-size: 10px;
       text-decoration: line-through;
       color: $color-2;
     }
@@ -189,6 +205,8 @@
 
   .MuiGrid-container .product-code {
     margin-bottom: 20px;
+    color: $color-6;
+    font-weight: 300;
   }
 
   .product-title {
@@ -300,7 +318,7 @@
   box-orient: vertical;
   -webkit-box-orient: vertical;
   text-align: left;
-  margin-bottom: 12px;
+  padding-right: 12px;
 }
 
 .is-new {
@@ -359,5 +377,9 @@
 .navlink.product {
   .subHeader {
     height: 14px;
+  }
+
+  .MuiCardContent-root {
+    padding: 8px;
   }
 }
