@@ -5,7 +5,7 @@ const SEO = ({ title, description, name, type }) => (
   <Helmet>
     {/* Standard metadata tags */}
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={description} data-rh={true} />
     {/* End standard metadata tags */}
     {/* Facebook tags */}
     <meta property="og:type" content={type} />
