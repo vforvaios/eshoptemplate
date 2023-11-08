@@ -82,6 +82,7 @@
       &.product-code {
         font-size: 11px;
         display: block;
+        min-height: unset;
         line-clamp: unset;
         overflow: auto;
         color: $color-4 !important;
