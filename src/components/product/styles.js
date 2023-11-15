@@ -10,12 +10,9 @@ const styles = ({ breakpoints }) => ({
   },
   media: {
     width: '100%',
-    height: 200,
+    height: 'auto',
     position: 'relative',
     overflow: 'hidden',
-    [breakpoints?.up('sm')]: {
-      height: 320,
-    },
   },
 });
 
