@@ -5,14 +5,15 @@ import { clearOrder } from 'models/actions/checkoutActions';
 const initialState = {
   cart: [],
 };
-const cartReducer = createReducer(initialState, {
-  [setCart.type]: (state, action) => ({
-    ...state,
-    cart: action.payload,
-  }),
-  [clearOrder.type]: (state, action) => ({
-    ...initialState,
-  }),
+const cartReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(setCart, (state, action) => ({
+      ...state,
+      cart: action.payload,
+    }))
+    .addCase(clearOrder, (state, action) => ({
+      ...initialState,
+    }));
 });
 
 export default cartReducer;
