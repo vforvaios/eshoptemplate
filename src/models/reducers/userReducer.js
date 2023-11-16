@@ -24,59 +24,60 @@ const initialState = {
   orderDetails: {},
 };
 
-const userReducer = createReducer(initialState, {
-  [setLoggedInUser.type]: (state, action) => ({
-    ...state,
-    user: action.payload,
-  }),
-  [setOrderDetails.type]: (state, action) => ({
-    ...state,
-    orderDetails: action.payload,
-  }),
-  [logoutUser.type]: (state, action) => ({
-    ...state,
-    orderDetails: {},
-    statuses: [],
-    orderId: '',
-    myOrders: {
-      pagination: {
-        total: 0,
-        currentPage: 1,
-        perPage: process.env.REACT_APP_PER_PAGE,
+const userReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(setLoggedInUser, (state, action) => ({
+      ...state,
+      user: action.payload,
+    }))
+    .addCase(setOrderDetails, (state, action) => ({
+      ...state,
+      orderDetails: action.payload,
+    }))
+    .addCase(logoutUser, (state, action) => ({
+      ...state,
+      orderDetails: {},
+      statuses: [],
+      orderId: '',
+      myOrders: {
+        pagination: {
+          total: 0,
+          currentPage: 1,
+          perPage: process.env.REACT_APP_PER_PAGE,
+        },
+        results: [],
       },
-      results: [],
-    },
-  }),
-  [setMyOrders.type]: (state, action) => ({
-    ...state,
-    myOrders: {
-      ...state?.myOrders,
-      pagination: {
-        ...state?.myOrders.pagination,
-        total: action.payload.total,
+    }))
+    .addCase(setMyOrders, (state, action) => ({
+      ...state,
+      myOrders: {
+        ...state?.myOrders,
+        pagination: {
+          ...state?.myOrders.pagination,
+          total: action.payload.total,
+        },
+        results: action.payload.results,
       },
-      results: action.payload.results,
-    },
-  }),
-  [setCurrentOrdersPage.type]: (state, action) => ({
-    ...state,
-    myOrders: {
-      ...state?.myOrders,
-      pagination: {
-        ...state?.myOrders.pagination,
-        currentPage: action.payload,
-        total: action.payload.total,
+    }))
+    .addCase(setCurrentOrdersPage, (state, action) => ({
+      ...state,
+      myOrders: {
+        ...state?.myOrders,
+        pagination: {
+          ...state?.myOrders.pagination,
+          currentPage: action.payload,
+          total: action.payload.total,
+        },
       },
-    },
-  }),
-  [setOrderStatuses.type]: (state, action) => ({
-    ...state,
-    statuses: action.payload,
-  }),
-  [setOrderId.type]: (state, action) => ({
-    ...state,
-    orderId: action.payload,
-  }),
+    }))
+    .addCase(setOrderStatuses, (state, action) => ({
+      ...state,
+      statuses: action.payload,
+    }))
+    .addCase(setOrderId, (state, action) => ({
+      ...state,
+      orderId: action.payload,
+    }));
 });
 
 export default userReducer;
