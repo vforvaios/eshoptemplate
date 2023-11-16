@@ -5,7 +5,6 @@ import cartReducer from 'models/reducers/cartReducer';
 import catalogReducer from 'models/reducers/catalogReducer';
 import categoriesReducer from 'models/reducers/categoriesReducer';
 import checkoutReducer from 'models/reducers/checkoutReducer';
-import counterReducer from 'models/reducers/counterReducer';
 import homeReducer from 'models/reducers/homeReducer';
 import staticReducer from 'models/reducers/staticReducer';
 import userReducer from 'models/reducers/userReducer';
@@ -24,7 +23,6 @@ const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({
     alertReducer,
-    counterReducer,
     cartReducer,
     catalogReducer,
     homeReducer,

@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import About from 'components/about/About';
 import Alert from 'components/alert/Alert';
 import Cart from 'components/cart/Cart';
 import Catalog from 'components/catalog/Catalog';
@@ -44,14 +43,6 @@ const App = () => {
           <Header />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route
-              path="/about"
-              element={
-                <ProtectedRoute isAllowed={userSelector?.token}>
-                  <About />
-                </ProtectedRoute>
-              }
-            />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/cart" element={<Cart />} />
