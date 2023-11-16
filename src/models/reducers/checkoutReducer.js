@@ -58,75 +58,76 @@ const initialState = {
   canSeeSuccessPage: false,
 };
 
-const checkoutReducer = createReducer(initialState, {
-  [changedPrefecture.type]: (state, action) => ({
-    ...state,
-    prefectureIsChanged: action.payload,
-  }),
-  [setPrefectures.type]: (state, action) => ({
-    ...state,
-    [action.payload?.info]: {
-      ...state?.[action?.payload?.info],
-      prefectures: action?.payload?.prefectures,
-      prefecture: action?.payload?.prefectures?.[0]?.id,
-    },
-  }),
-  [setCountries.type]: (state, action) => ({
-    ...state,
-    countries: action.payload,
-  }),
-  [setUpdatedProducts.type]: (state, action) => ({
-    ...state,
-    updatedProducts: action.payload,
-  }),
-  [setPaymentMethods.type]: (state, action) => ({
-    ...state,
-    paymentMethods: action.payload,
-  }),
-  [setShippingMethods.type]: (state, action) => ({
-    ...state,
-    shippingMethods: action.payload,
-  }),
-  [setReceipt.type]: (state, action) => ({
-    ...state,
-    receipt: action.payload,
-  }),
-  [setSameAsBilling.type]: (state, action) => ({
-    ...state,
-    sameAsBilling: action.payload,
-  }),
-  [setBillingInfo.type]: (state, action) => ({
-    ...state,
-    billingInfo: {
-      ...state?.billingInfo,
-      [action.payload.key]: action.payload.name,
-    },
-    prefectureIsChanged: false,
-  }),
-  [setShippingInfo.type]: (state, action) => ({
-    ...state,
-    shippingInfo: {
-      ...state?.shippingInfo,
-      [action.payload.key]: action.payload.name,
-    },
-    prefectureIsChanged: false,
-  }),
-  [clearOrder.type]: (state) => ({
-    ...initialState,
-  }),
-  [setCheckoutError.type]: (state, action) => ({
-    ...state,
-    billingErrors: action.payload.billingErrors,
-    shippingErrors: action.payload.shippingErrors,
-  }),
-  [setOrderOk.type]: (state, action) => ({
-    ...state,
-    orderOK: true,
-  }),
-  [setCanSeeSuccessPage.type]: (state, action) => ({
-    ...state,
-    canSeeSuccessPage: true,
-  }),
+const checkoutReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(changedPrefecture, (state, action) => ({
+      ...state,
+      prefectureIsChanged: action.payload,
+    }))
+    .addCase(setPrefectures, (state, action) => ({
+      ...state,
+      [action.payload?.info]: {
+        ...state?.[action?.payload?.info],
+        prefectures: action?.payload?.prefectures,
+        prefecture: action?.payload?.prefectures?.[0]?.id,
+      },
+    }))
+    .addCase(setCountries, (state, action) => ({
+      ...state,
+      countries: action.payload,
+    }))
+    .addCase(setUpdatedProducts, (state, action) => ({
+      ...state,
+      updatedProducts: action.payload,
+    }))
+    .addCase(setPaymentMethods, (state, action) => ({
+      ...state,
+      paymentMethods: action.payload,
+    }))
+    .addCase(setShippingMethods, (state, action) => ({
+      ...state,
+      shippingMethods: action.payload,
+    }))
+    .addCase(setReceipt, (state, action) => ({
+      ...state,
+      receipt: action.payload,
+    }))
+    .addCase(setSameAsBilling, (state, action) => ({
+      ...state,
+      sameAsBilling: action.payload,
+    }))
+    .addCase(setBillingInfo, (state, action) => ({
+      ...state,
+      billingInfo: {
+        ...state?.billingInfo,
+        [action.payload.key]: action.payload.name,
+      },
+      prefectureIsChanged: false,
+    }))
+    .addCase(setShippingInfo, (state, action) => ({
+      ...state,
+      shippingInfo: {
+        ...state?.shippingInfo,
+        [action.payload.key]: action.payload.name,
+      },
+      prefectureIsChanged: false,
+    }))
+    .addCase(clearOrder, (state, action) => ({
+      ...initialState,
+    }))
+    .addCase(setCheckoutError, (state, action) => ({
+      ...state,
+      billingErrors: action.payload.billingErrors,
+      shippingErrors: action.payload.shippingErrors,
+    }))
+    .addCase(setOrderOk, (state, action) => ({
+      ...state,
+      orderOK: true,
+    }))
+    .addCase(setCanSeeSuccessPage, (state, action) => ({
+      ...state,
+      canSeeSuccessPage: true,
+    }));
 });
 
 export default checkoutReducer;
