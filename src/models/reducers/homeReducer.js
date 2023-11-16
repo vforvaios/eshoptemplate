@@ -15,26 +15,27 @@ const initialState = {
     results: [],
   },
 };
-const homeReducer = createReducer(initialState, {
-  [setLogo.type]: (state, action) => ({
-    ...state,
-    logo: action.payload,
-  }),
-  [setHomePageData.type]: (state, action) => ({
-    ...state,
-    offers: {
-      ...state.offers,
-      results: action.payload.tabsOffers,
-    },
-    sections: {
-      ...state.offers,
-      results: action.payload?.sections,
-    },
-    banners: {
-      ...state.offers,
-      results: action.payload?.banners,
-    },
-  }),
+const homeReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(setLogo, (state, action) => ({
+      ...state,
+      logo: action.payload,
+    }))
+    .addCase(setHomePageData, (state, action) => ({
+      ...state,
+      offers: {
+        ...state.offers,
+        results: action.payload.tabsOffers,
+      },
+      sections: {
+        ...state.offers,
+        results: action.payload?.sections,
+      },
+      banners: {
+        ...state.offers,
+        results: action.payload?.banners,
+      },
+    }));
 });
 
 export default homeReducer;

@@ -6,13 +6,15 @@ const initialState = {
   show: false,
   type: 'success',
 };
-const alertReducer = createReducer(initialState, {
-  [toggleShowAlert.type]: (state, action) => ({
-    ...state,
-    show: action.payload.show,
-    message: action.payload.message,
-    type: action.payload.type,
-  }),
+const alertReducer = createReducer(initialState, (builder) => {
+  builder.addCase(toggleShowAlert, (state, action) => {
+    return {
+      ...state,
+      show: action.payload.show,
+      message: action.payload.message,
+      type: action.payload.type,
+    };
+  });
 });
 
 export default alertReducer;

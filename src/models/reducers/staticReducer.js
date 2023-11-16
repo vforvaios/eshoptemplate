@@ -10,19 +10,20 @@ const initialState = {
   pages: [],
   staticPagesInMenu: [],
 };
-const staticReducer = createReducer(initialState, {
-  [setKeyWords.type]: (state, action) => ({
-    ...state,
-    keywords: action.payload,
-  }),
-  [setStaticContent.type]: (state, action) => ({
-    ...state,
-    pages: action.payload,
-  }),
-  [setStaticPagesInMenu.type]: (state, action) => ({
-    ...state,
-    staticPagesInMenu: action.payload,
-  }),
+const staticReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(setKeyWords, (state, action) => ({
+      ...state,
+      keywords: action.payload,
+    }))
+    .addCase(setStaticContent, (state, action) => ({
+      ...state,
+      pages: action.payload,
+    }))
+    .addCase(setStaticPagesInMenu, (state, action) => ({
+      ...state,
+      staticPagesInMenu: action.payload,
+    }));
 });
 
 export default staticReducer;
