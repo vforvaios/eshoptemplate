@@ -13,15 +13,20 @@ const CheckoutSuccess = () => {
   const cartItems = useSelector(cart);
   const myCanSeeSuccessPage = useSelector(canSeeSuccessPage);
 
+  const handleEventListener = () => {
+    dispatch(clearOrder());
+  };
+
   useEffect(() => {
+    window.addEventListener('load', handleEventListener);
     if (cartItems?.length === 0 || !myCanSeeSuccessPage) {
       navigate('/');
     }
 
     return () => {
-      dispatch(clearOrder());
+      window.removeEventListener('load', handleEventListener);
     };
-  }, [myCanSeeSuccessPage]);
+  }, []);
 
   return (
     <div className="content checkout step4">
