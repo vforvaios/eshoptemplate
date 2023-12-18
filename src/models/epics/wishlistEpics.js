@@ -55,11 +55,14 @@ const addProductWishlistEpic = (action$, state$) =>
         },
       ]) => {
         if (!token) {
-          return toggleShowAlert({
-            message: messages.loginFirst,
-            show: true,
-            type: 'error',
-          });
+          return [
+            setGeneralLoading(false),
+            toggleShowAlert({
+              message: messages.loginFirst,
+              show: true,
+              type: 'error',
+            }),
+          ];
         }
 
         const productId = payload;
