@@ -19,6 +19,7 @@ import {
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Slider from 'react-slick';
 
 const ProductPage = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,17 @@ const ProductPage = () => {
     dispatch(getRelatedProducts(id));
   }, [id]);
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    touchMove: true,
+  };
+
+  const allImgHrefs = imgHref?.split('#')?.map((imag) => imag);
+
   return (
     <div className="productPage content">
       <SEO
@@ -61,11 +73,16 @@ const ProductPage = () => {
                   {getPercentage(initialPrice, price)}%
                 </span>
               </div>
-              <img
-                src={`${process.env.REACT_APP_IMAGES_URL}/${imgHref}`}
-                alt={productTitle}
-                title={productTitle}
-              />
+              <Slider {...settings}>
+                {allImgHrefs?.map((myImage, index) => (
+                  <img
+                    key={`${myImage}_${index}`}
+                    src={`${process.env.REACT_APP_IMAGES_URL}/${myImage}`}
+                    alt={productTitle}
+                    title={productTitle}
+                  />
+                ))}
+              </Slider>
             </Grid>
             <Grid item sm={6} xs={12} className="pr0 mainProductRightSection">
               <div className="product-title">
