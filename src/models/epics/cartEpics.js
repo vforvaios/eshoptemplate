@@ -47,6 +47,7 @@ const addToCartEpic = (action$, state$) =>
           price,
           productTitle,
           initialPrice,
+          imgHref,
         } = payload;
 
         const productAlreadyExistsInCart =
@@ -62,6 +63,7 @@ const addToCartEpic = (action$, state$) =>
               productId,
               productDescription,
               total: 1,
+              imgHref,
               price,
               initialPrice,
               totalPrice: price,
@@ -74,6 +76,7 @@ const addToCartEpic = (action$, state$) =>
               : {
                   ...cartItem,
                   price,
+                  imgHref,
                   initialPrice,
                   total: Number(Number(cartItem.total) + 1),
                   totalPrice: Number(

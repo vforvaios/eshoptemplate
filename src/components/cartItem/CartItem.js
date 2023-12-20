@@ -20,7 +20,14 @@ const CartItem = ({ updateable, item }) => {
         <div className="cart-description">
           <span>
             <img
-              src="https://via.placeholder.com/100x100"
+              className="cart-item-image"
+              src={`${process.env.REACT_APP_IMAGES_URL}/${
+                item?.imgHref?.indexOf('#') !== -1
+                  ? item?.imgHref
+                      ?.substr(0, item?.imgHref.lastIndexOf('#') - 1)
+                      ?.split('#')?.[0]
+                  : item?.imgHref
+              }`}
               alt="product description"
             />
           </span>
