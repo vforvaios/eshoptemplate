@@ -7,14 +7,15 @@ import {
 } from 'models/actions/catalogActions';
 import { getCategoriesMenu } from 'models/actions/categoriesActions';
 import { categories } from 'models/selectors/categoriesSelectors';
+import { logo } from 'models/selectors/homeSelectors';
 import { staticPagesInMenu } from 'models/selectors/staticSelectors';
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import logo from 'resources/images/logo.jpg';
 
 const MainMenu = ({ setToggleValue }) => {
   const allCategories = useSelector(categories);
+  const logoImage = useSelector(logo);
   const staticPages = useSelector(staticPagesInMenu);
   const navigate = useNavigate();
   const myCloseMenuBtn = useRef(null);
@@ -28,7 +29,11 @@ const MainMenu = ({ setToggleValue }) => {
   return (
     <div className="main-menu">
       <div className="main-menu-header">
-        <img src={logo} alt="fasdf" className="logo-image" />
+        <img
+          src={logoImage?.preview}
+          alt={logoImage?.data?.name}
+          className="logo-image"
+        />
         <i
           className="icon-cancel-circled closeMenu"
           onClick={setToggleValue('left', false)}
