@@ -141,3 +141,13 @@
   max-width: 100px;
   max-height: 100px;
 }
+
+.mini-cart-drawer-wrapper {
+  thead {
+    display: none !important;
+  }
+
+  .cart-item-image {
+    max-width: 50px;
+  }
+}

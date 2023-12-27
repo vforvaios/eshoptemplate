@@ -20,6 +20,12 @@ const MiniCart = ({ toggleValue, setToggleValue }) => {
         <span>{itemsLength}</span>
       </button>
       <Drawer
+        sx={{
+          '& .MuiPaper-root': {
+            width: 340,
+            backgroundColor: '#fff!important',
+          },
+        }}
         anchor="right"
         open={toggleValue?.right}
         onClose={setToggleValue('right', false)}>

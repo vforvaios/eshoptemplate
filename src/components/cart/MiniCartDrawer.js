@@ -1,4 +1,4 @@
-import MyCart from 'components/cart/MyCart';
+import MiniCartItem from 'components/cartItem/MiniCartItem';
 import { cart } from 'models/selectors/cartSelectors';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,9 @@ const MiniCartDrawer = ({ setToggleValue }) => {
 
   return (
     <div className="mini-cart-drawer-wrapper">
-      <MyCart cart={myCart} updateable />
+      {myCart?.map((item, index) => (
+        <MiniCartItem setToggleValue={setToggleValue} key={index} item={item} />
+      ))}
     </div>
   );
 };
