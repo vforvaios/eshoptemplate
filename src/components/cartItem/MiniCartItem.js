@@ -1,6 +1,4 @@
 import IconButton from '@mui/material/IconButton';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
 import ToolTip from '@mui/material/Tooltip';
 import formatMoney from 'library/formatMoney';
@@ -15,8 +13,8 @@ const MiniCartItem = ({ item, setToggleValue }) => {
   const dispatch = useDispatch();
 
   return (
-    <TableRow>
-      <TableCell>
+    <div className="mini-cart-drawer-flex">
+      <div>
         <div className="cart-description">
           <span>
             <img
@@ -33,8 +31,8 @@ const MiniCartItem = ({ item, setToggleValue }) => {
           </span>
           <span>{item.productTitle}</span>
         </div>
-      </TableCell>
-      <TableCell>
+      </div>
+      <div>
         <TextField
           variant="standard"
           type="number"
@@ -51,17 +49,16 @@ const MiniCartItem = ({ item, setToggleValue }) => {
             )
           }
         />
-      </TableCell>
-      <TableCell>
-        <span>
-          <span className="cart-item-initial-price">
+      </div>
+      <div className="mini-cart-prices">
+        <div>
+          <div className="cart-item-initial-price">
             {formatMoney.format(item.initialPrice)}
-          </span>
-          <strong className="totalPrice">
+          </div>
+          <div className="totalPrice">
             {formatMoney.format(item.price * item.total)}{' '}
-          </strong>
-          {`(${item.total}x${item.price})`}
-        </span>
+          </div>
+        </div>
         {item.total === 0 && (
           <ToolTip title="Δεν υπάρχει πλέον διαθέσιμο το προϊόν. Παρακαλώ διαγράψτε το για να συνεχίσετε.">
             <IconButton
@@ -75,9 +72,9 @@ const MiniCartItem = ({ item, setToggleValue }) => {
             </IconButton>
           </ToolTip>
         )}
-      </TableCell>
+      </div>
 
-      <TableCell>
+      <div>
         <IconButton
           onClick={() =>
             dispatch(
@@ -86,8 +83,8 @@ const MiniCartItem = ({ item, setToggleValue }) => {
           }>
           <i className="icon-trash-empty" />
         </IconButton>
-      </TableCell>
-    </TableRow>
+      </div>
+    </div>
   );
 };
 

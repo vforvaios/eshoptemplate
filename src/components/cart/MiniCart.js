@@ -22,7 +22,8 @@ const MiniCart = ({ toggleValue, setToggleValue }) => {
       <Drawer
         sx={{
           '& .MuiPaper-root': {
-            width: 340,
+            width: '100%',
+            maxWidth: 340,
             backgroundColor: '#fff!important',
           },
         }}
