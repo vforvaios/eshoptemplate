@@ -55,6 +55,10 @@ ul {
   &.nopadding {
     padding: 0;
   }
+
+  &.small {
+    max-width: 990px;
+  }
 }
 
 .grid-container {

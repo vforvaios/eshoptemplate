@@ -40,7 +40,8 @@ const Product = ({ classes, product, isWishlist }) => {
               <img
                 alt={productTitle}
                 title={productTitle}
-                src={`${process.env.REACT_APP_IMAGES_URL}/${
+                // src={`${process.env.REACT_APP_IMAGES_URL}/${
+                  src={`${process.env.PUBLIC_URL}/${
                   imgHref.indexOf('#') !== -1
                     ? imgHref.substr(0, imgHref.indexOf('#'))
                     : imgHref

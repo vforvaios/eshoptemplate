@@ -13,7 +13,7 @@
             "productDescription": "Descripption 1",
             "initialPrice": 30,
             "price": 20,
-            "imgHref": "adminbg.jpg",
+            "imgHref": "purse.jpg",
             "productSubHeader": "Sub Header 1",
             "code": "1234re",
             "isNew": 1
@@ -32,7 +32,7 @@
             "productDescription": "Descripption 1",
             "initialPrice": 30,
             "price": 20,
-            "imgHref": "adminbg.jpg",
+            "imgHref": "purse.jpg",
             "productSubHeader": "Sub Header 1",
             "code": "1234re",
             "isNew": 1
@@ -44,7 +44,7 @@
             "productDescription": "Description 2",
             "initialPrice": 100,
             "price": 80,
-            "imgHref": "adminbg.jpg",
+            "imgHref": "purse.jpg",
             "productSubHeader": "Sub Header 2",
             "code": "fsd84r23j",
             "isNew": 0
@@ -56,7 +56,7 @@
             "productDescription": "Descripption 3",
             "initialPrice": 50,
             "price": 40,
-            "imgHref": "adminbg.jpg",
+            "imgHref": "purse.jpg",
             "productSubHeader": "Sub Header 3",
             "code": "fsd8fws2",
             "isNew": 1
@@ -77,7 +77,7 @@
             "productDescription": "Descripption 3",
             "initialPrice": 50,
             "price": 40,
-            "imgHref": "adminbg.jpg",
+            "imgHref": "purse.jpg",
             "productSubHeader": "Sub Header 3",
             "code": "fsd8fws2",
             "isNew": 1
@@ -89,7 +89,7 @@
             "productDescription": "test small description",
             "initialPrice": 300,
             "price": 100,
-            "imgHref": "adminbg.jpg",
+            "imgHref": "purse.jpg",
             "productSubHeader": "test subheader",
             "code": "test code",
             "isNew": 0
@@ -101,7 +101,7 @@
             "productDescription": "Description 2",
             "initialPrice": 100,
             "price": 80,
-            "imgHref": "adminbg.jpg",
+            "imgHref": "purse.jpg",
             "productSubHeader": "Sub Header 2",
             "code": "fsd84r23j",
             "isNew": 0
@@ -114,7 +114,7 @@
         "id": 1,
         "title": "Αγόρασε τώρα το frezy derm",
         "product_id": 3,
-        "imgHref": "adminbg.jpg",
+        "imgHref": "purse.jpg",
         "productId": 3,
         "isNew": 1
       },
@@ -122,7 +122,7 @@
         "id": 2,
         "title": "fasdfasdafd",
         "product_id": 2,
-        "imgHref": "adminbg.jpg",
+        "imgHref": "purse.jpg",
         "productId": 2,
         "isNew": 0
       }
@@ -131,9 +131,9 @@
   "staticcontentkeywordshome": { "keywords": "Αρχική σελίδα Shoppy" },
   "logo": {
     "data": {
-      "name": "computer-img.png"
+      "name": "purse.jpg"
     },
-    "preview": "undefined/images/computer-img.png"
+    "preview": "purse.jpg"
   },
   "staticcontentactive": {
     "data": [
@@ -232,7 +232,7 @@
     "productDescription": "Descripption 3",
     "productSubHeader": "Sub Header 3",
     "stock": 160,
-    "imgHref": "adminbg.jpg",
+    "imgHref": "purse.jpg",
     "price": 40,
     "initialPrice": 50,
     "code": "fsd8fws2",
@@ -248,7 +248,7 @@
       "productDescription": "Descripption 1",
       "productSubHeader": "Sub Header 1",
       "stock": 99,
-      "imgHref": "adminbg.jpg",
+      "imgHref": "purse.jpg",
       "price": 20,
       "initialPrice": 30,
       "code": "1234re",
@@ -263,7 +263,7 @@
       "productDescription": "Description 2",
       "productSubHeader": "Sub Header 2",
       "stock": 40,
-      "imgHref": "adminbg.jpg",
+      "imgHref": "purse.jpg",
       "price": 80,
       "initialPrice": 100,
       "code": "fsd84r23j",
@@ -376,7 +376,7 @@
         "initialPrice": 11,
         "code": "test code2",
         "isActive": 1,
-        "imgHref": "adminbg.jpg",
+        "imgHref": "purse.jpg",
         "isNew": 0
       },
       {
@@ -389,7 +389,7 @@
         "initialPrice": 60,
         "code": "6hf435g",
         "isActive": 1,
-        "imgHref": "adminbg.jpg",
+        "imgHref": "purse.jpg",
         "isNew": 0
       }
     ],
@@ -2411,7 +2411,7 @@
         "productDescription": "Descripption 1",
         "productSubHeader": "Sub Header 1",
         "stock": 99,
-        "imgHref": "adminbg.jpg",
+        "imgHref": "purse.jpg",
         "price": 20,
         "initialPrice": 30,
         "code": "1234re",
@@ -2480,7 +2480,7 @@
       {
         "productId": 1,
         "productTitle": "Title 1",
-        "imgHref": "adminbg.jpg",
+        "imgHref": "purse.jpg",
         "code": "1234re",
         "initialPrice": 30,
         "price": 20,

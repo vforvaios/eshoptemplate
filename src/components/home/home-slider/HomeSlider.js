@@ -19,7 +19,8 @@ const HomeSlider = ({ banners }) => {
           <div className="homeSlickSlide" key={banner.id}>
             <Link to={`product/${banner.product_id}`}>
               <img
-                src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
+                // src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
+                src={'https://via.assets.so/movie.png?id=4&q=80&w=1350&h=500'}
                 alt={banner.title}
                 title={banner.title}
               />
