@@ -43,7 +43,7 @@
 .usermenu-container {
   i {
     font-size: 28px;
-    color: $white;
+    color: $color-1;
     margin-left: 16px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
@@ -129,7 +129,7 @@
 
 .icon-shopping-basket {
   font-size: 26px;
-  color: $white;
+  color: $color-1;
   transition: all 0.2s ease-in-out;
 
   &:hover {

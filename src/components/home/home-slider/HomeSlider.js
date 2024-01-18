@@ -14,6 +14,11 @@ const HomeSlider = ({ banners }) => {
 
   return (
     <Slider {...settings}>
+      <div className="homeSlickSlide" key={'vaios'}>
+        <video preload="auto" width={'100%'} autoPlay loop muted>
+          <source  src={`${process.env.PUBLIC_URL}/video.mp4`} type="video/mp4"/>
+        </video>
+      </div>
       {banners?.map((banner) =>
         banner?.product_id ? (
           <div className="homeSlickSlide" key={banner.id}>
