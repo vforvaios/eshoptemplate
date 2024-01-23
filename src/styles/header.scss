@@ -2,13 +2,24 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px;
-  background: $white;
+  background: none;
   height: 100px;
   position: fixed;
   z-index: 100000;
   top: 0;
-  box-shadow: 0px 0px 20px -10px $color-1;
-  & > div {
+  // box-shadow: 0px 0px 20px -10px $color-1;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .07)
+  }
+
+  &>div {
     color: $white;
   }
 
@@ -51,7 +62,7 @@
 }
 
 .menuIcon {
-  fill: $color-1;
+  fill: $white;
   width: 40px !important;
   height: 40px !important;
   line-height: 40px;
@@ -80,6 +91,6 @@
   cursor: pointer;
 
   span {
-    color: $color-1;
+    color: $white;
   }
 }

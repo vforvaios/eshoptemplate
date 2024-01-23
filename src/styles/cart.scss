@@ -43,7 +43,7 @@
 .usermenu-container {
   i {
     font-size: 28px;
-    color: $color-1;
+    color: $white;
     margin-left: 16px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
@@ -129,7 +129,7 @@
 
 .icon-shopping-basket {
   font-size: 26px;
-  color: $color-1;
+  color: $white;
   transition: all 0.2s ease-in-out;
 
   &:hover {
@@ -164,11 +164,11 @@
     margin-bottom: 0;
   }
 
-  > div:first-child {
+  >div:first-child {
     width: 140px;
   }
 
-  > div:nth-child(2) {
+  >div:nth-child(2) {
     max-width: 40px;
     text-align: center;
   }

@@ -5,7 +5,7 @@
   width: 100%;
   margin-top: 8px;
 
-  > * {
+  >* {
     color: $color-1;
     margin-bottom: 12px;
     font-size: 14px;
@@ -65,7 +65,7 @@
 
 .main-menu {
   a {
-    color: $color-1;
+    color: $white;
   }
 }
 
@@ -90,6 +90,7 @@
     height: 40px;
   }
 }
+
 .menu-list {
   padding: 0;
   margin: 0;
@@ -97,7 +98,7 @@
 }
 
 .main-menu-search-container {
-  > div {
+  >div {
     width: 100%;
     margin-bottom: 20px;
   }
@@ -120,8 +121,7 @@
     }
   }
 
-  .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root
-    .MuiAutocomplete-inputRoot {
+  .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root .MuiAutocomplete-inputRoot {
     padding-right: 60px;
   }
 
@@ -147,7 +147,7 @@
 
 .menuIcon {
   font-size: 26px;
-  color: $color-1;
+  color: $white;
   transition: all 0.2s ease-in-out;
 
   &:hover {

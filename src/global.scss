@@ -1,4 +1,5 @@
 @import 'src/styles/colors.scss';
+
 * {
   box-sizing: border-box;
 }
@@ -91,6 +92,7 @@ ul {
 .pr0 {
   padding-right: 0 !important;
 }
+
 .mrl12 {
   margin-left: 12px !important;
   font-weight: 400;
@@ -186,6 +188,7 @@ ul {
 @import 'src/styles/orders.scss';
 @import 'src/styles/static.scss';
 @import 'src/styles/cookies.scss';
+@import 'src/styles/accordion.scss';
 @media only screen and (min-width: 961px) {
   @import 'src/styles/responsive.scss';
 }

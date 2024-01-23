@@ -114,21 +114,39 @@
         "id": 1,
         "title": "Αγόρασε τώρα το frezy derm",
         "product_id": 3,
-        "imgHref": "purse.jpg",
+        "imgHref": "img_1.jpeg",
         "productId": 3,
         "isNew": 1
       },
       {
         "id": 2,
-        "title": "fasdfasdafd",
+        "title": "Αγόρασε τώρα το frezy derm",
         "product_id": 2,
-        "imgHref": "purse.jpg",
+        "imgHref": "img_2.jpeg",
+        "productId": 2,
+        "isNew": 0
+      },
+      {
+        "id": 3,
+        "title": "Αγόρασε τώρα το frezy derm",
+        "product_id": 2,
+        "imgHref": "img_3.jpeg",
+        "productId": 2,
+        "isNew": 0
+      },
+      {
+        "id": 4,
+        "title": "Αγόρασε τώρα το frezy derm",
+        "product_id": 2,
+        "imgHref": "img_4.jpeg",
         "productId": 2,
         "isNew": 0
       }
     ]
   },
-  "staticcontentkeywordshome": { "keywords": "Αρχική σελίδα Shoppy" },
+  "staticcontentkeywordshome": {
+    "keywords": "Αρχική σελίδα Shoppy"
+  },
   "logo": {
     "data": {
       "name": "purse.jpg"
@@ -363,7 +381,10 @@
       "isActive": 1
     }
   ],
-  "prices": { "minprice": 2, "maxprice": 100 },
+  "prices": {
+    "minprice": 2,
+    "maxprice": 100
+  },
   "catalog": {
     "results": [
       {
