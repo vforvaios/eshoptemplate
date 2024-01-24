@@ -3,8 +3,17 @@
 .tabsContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+
 }
+
+.tabPanel,
+.home-section {
+  .slick-slide:nth-child(even) {
+    margin-top: 60px;
+  }
+}
+
 .productContainer {
   display: flex;
   justify-content: flex-start;
@@ -12,8 +21,7 @@
   gap: 16px;
   flex-wrap: wrap;
 }
-.offers-bg {
-  background: $color-1;
-  padding: 24px;
-}
 
+.offers-bg {
+  background: $white;
+}
