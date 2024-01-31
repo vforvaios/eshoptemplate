@@ -35,7 +35,7 @@ const settings = {
 const HomeOffersTabs = ({ handleChange, value, offers }) => {
   return (
     <>
-      <h2 className="section-title">ΠΡΟΣΦΟΡΕΣ</h2>
+      <h2 className="section-title">OFFERS</h2>
       <div className="tabsContainer">
         <Tabs
           value={value}

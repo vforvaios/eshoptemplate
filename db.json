@@ -91,7 +91,7 @@
     "sections": [
       {
         "id": 2,
-        "title": "ΑΞΙΖΕΙ ΝΑ ΔΕΙΤΕ...",
+        "title": "DONT MISS",
         "isActive": 1,
         "products": [
           {
@@ -136,33 +136,25 @@
     "banners": [
       {
         "id": 1,
-        "title": "Αγόρασε τώρα το frezy derm",
+        "title": "SPECIAL OCCASIONS",
         "product_id": 3,
-        "imgHref": "img_1.jpeg",
+        "imgHref": "slide-1.jpeg",
         "productId": 3,
         "isNew": 1
       },
       {
         "id": 2,
-        "title": "Αγόρασε τώρα το frezy derm",
+        "title": "WINTER COLLECTION",
         "product_id": 2,
-        "imgHref": "img_2.jpeg",
+        "imgHref": "slide-2.jpeg",
         "productId": 2,
         "isNew": 0
       },
       {
         "id": 3,
-        "title": "Αγόρασε τώρα το frezy derm",
+        "title": "SALES",
         "product_id": 2,
-        "imgHref": "img_3.jpeg",
-        "productId": 2,
-        "isNew": 0
-      },
-      {
-        "id": 4,
-        "title": "Αγόρασε τώρα το frezy derm",
-        "product_id": 2,
-        "imgHref": "img_4.jpeg",
+        "imgHref": "slide-3.jpeg",
         "productId": 2,
         "isNew": 0
       }

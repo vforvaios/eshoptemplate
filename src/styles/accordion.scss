@@ -1,5 +1,5 @@
 // Accordion Height
-$a-height: 400px;
+$a-height: 700px;
 
 // Position text along bottom
 $text-offset: $a-height - 90;
@@ -36,30 +36,23 @@ $text-offset: $a-height - 90;
     padding: 0;
 
     li {
-
       display: table-cell;
       vertical-align: bottom;
       position: relative;
       width: 16.666%; // 6 into 100
-      height: $a-height;
-
       background-repeat: no-repeat;
       background-position: center center;
-
       transition: all 500ms ease;
 
       div {
-
         display: block;
         overflow: hidden;
         width: 100%;
 
         a {
-
           display: block;
           height: $a-height;
           width: 100%;
-
           position: relative;
           z-index: 3;
           padding: 15px 20px;
@@ -70,7 +63,7 @@ $text-offset: $a-height - 90;
 
           * {
 
-            opacity: 0;
+            opacity: 1;
             margin: 0;
             width: 100%;
             text-overflow: ellipsis;
@@ -80,9 +73,6 @@ $text-offset: $a-height - 90;
             white-space: nowrap;
             overflow: hidden;
 
-            -webkit-transform: translateX(-20px);
-            transform: translateX(-20px);
-
             -webkit-transition: all 400ms ease;
             transition: all 400ms ease;
 
@@ -90,10 +80,16 @@ $text-offset: $a-height - 90;
 
           h2 {
             text-overflow: clip;
-            font-size: 24px;
-            margin-bottom: 2px;
-            top: $text-offset;
-
+            font-size: 40px;
+            margin: 0 auto;
+            display: flex;
+            height: 100%;
+            font-weight: 300;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Gowun Batang', serif;
+            white-space: break-spaces;
+            max-width: 300px;
           }
 
           p {
@@ -114,6 +110,11 @@ $text-offset: $a-height - 90;
     &:hover li,
     &:focus-within li {
       width: 8%;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+
+      }
     }
 
     li:focus {
@@ -126,6 +127,10 @@ $text-offset: $a-height - 90;
     &:focus-within li:focus {
 
       width: 60%;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
 
       a {
 
@@ -146,6 +151,10 @@ $text-offset: $a-height - 90;
     &:hover li {
       width: 8% !important;
 
+      @media screen and (max-width: 600px) {
+        width: 100% !important;
+      }
+
       a * {
         opacity: 0 !important;
       }
@@ -153,6 +162,10 @@ $text-offset: $a-height - 90;
 
     &:hover li:hover {
       width: 60% !important;
+
+      @media screen and (max-width: 600px) {
+        width: 100% !important;
+      }
 
       a {
 
@@ -179,24 +192,33 @@ $text-offset: $a-height - 90;
   .accordion {
     height: auto;
 
-    ul,
-    ul:hover {
+    ul {
+      display: table;
+      table-layout: fixed;
+      height: auto;
 
-      li,
-      li:hover {
+      li {
 
         position: relative;
-        display: table;
-        table-layout: fixed;
+        display: block;
         width: 100%;
-
-        -webkit-transition: none;
-        transition: none;
-
+        height: 140px;
       }
 
     }
 
+  }
+
+  .accordion ul li div a {
+    height: 100%;
+  }
+
+  .accordion ul li div {
+    height: 100%;
+  }
+
+  .accordion ul li div a h2 {
+    font-size: 20px;
   }
 
 }
