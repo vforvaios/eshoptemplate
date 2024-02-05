@@ -8,7 +8,7 @@ const settings = {
   infinite: false,
   speed: 500,
   slidesToShow: 3,
-  slidesToScroll: 1,
+  slidesToScroll: 3,
   touchMove: true,
   responsive: [
     {
@@ -17,12 +17,7 @@ const settings = {
         slidesToShow: 2,
       },
     },
-    {
-      breakpoint: 481,
-      settings: {
-        slidesToShow: 1,
-      },
-    },
+
   ],
 };
 

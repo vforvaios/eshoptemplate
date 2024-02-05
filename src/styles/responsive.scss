@@ -7,6 +7,26 @@
   padding: 0 20px;
 }
 
+.headerTitle {
+  font-size: 18px;
+}
+
+.headerContainer {
+  height: 100px;
+}
+
+.productImage {
+  height: 400px;
+}
+
+.price-container>div>span {
+  font-size: 12px;
+}
+
+.price-container>div {
+  font-size: 18px
+}
+
 // CATALOG
 .filters {
   flex-basis: 33.33%;
@@ -34,7 +54,7 @@
 
 // PRODUCT PAGE
 .mainProductPhotosContainer {
-  + div {
+  +div {
     padding-left: 16px;
   }
 }
@@ -50,11 +70,14 @@
 // TABLE
 .table {
   display: table;
+
   tr {
     display: table-row;
   }
+
   thead {
     display: table-header-group;
+
     th {
       display: table-cell;
       font-weight: bold;
@@ -109,7 +132,7 @@
 }
 
 //
-.products-grid > li {
+.products-grid>li {
   flex-basis: 33%;
   padding-left: 10px;
   padding-right: 10px;

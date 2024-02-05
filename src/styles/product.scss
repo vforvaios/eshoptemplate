@@ -147,14 +147,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: bold;
     color: $color-1;
     width: 100%;
 
     &>span {
       margin-right: 10px;
-      font-size: 12px;
+      font-size: 8px;
       text-decoration: line-through;
       color: $color-2;
     }
@@ -300,10 +300,10 @@
 }
 
 .headerTitle {
-  font-size: 18px !important;
+  font-size: 12px;
   font-weight: 300 !important;
   color: $black;
-  text-align: center;
+  text-align: left;
   margin-bottom: 12px;
   line-clamp: 1;
   -webkit-line-clamp: 1;
@@ -312,7 +312,9 @@
   display: -webkit-box !important;
   box-orient: vertical;
   -webkit-box-orient: vertical;
-  padding: 0 4px;
+  padding: 0;
+
+
 }
 
 .is-new {
@@ -347,7 +349,7 @@
 .productImage {
   transition: all 0.2s ease-in-out;
   position: relative;
-  height: 400px;
+  height: 300px;
 
   img {
     width: 100%;
@@ -381,7 +383,10 @@
   }
 
   .MuiCardContent-root {
-    padding: 8px;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 

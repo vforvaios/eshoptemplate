@@ -48,7 +48,7 @@ const Home = () => {
             </div>
           </div>
         )}
-        {sections?.length > 0 && <HomeSections sections={sections} />}
+        {/* {sections?.length > 0 && <HomeSections sections={sections} />} */}
       </div>
     </>
   );

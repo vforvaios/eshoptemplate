@@ -3,15 +3,8 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
 import { withStyles } from '@mui/styles';
 import formatMoney from 'library/formatMoney';
-import { addToCart } from 'models/actions/cartActions';
-import { setGeneralLoading } from 'models/actions/catalogActions';
-import {
-  addProductWishlist,
-  removeProductWishlist,
-} from 'models/actions/wishlistActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -25,7 +18,6 @@ const Product = ({ classes, product, isWishlist }) => {
     imgHref,
     price,
     initialPrice,
-    stock,
     isNew,
   } = product;
 
@@ -40,12 +32,12 @@ const Product = ({ classes, product, isWishlist }) => {
               <img
                 alt={productTitle}
                 title={productTitle}
+                // TODO - REMOVE
                 // src={`${process.env.REACT_APP_IMAGES_URL}/${
-                  src={`${process.env.PUBLIC_URL}/${
-                  imgHref.indexOf('#') !== -1
-                    ? imgHref.substr(0, imgHref.indexOf('#'))
-                    : imgHref
-                }`}
+                src={`${process.env.PUBLIC_URL}/${imgHref.indexOf('#') !== -1
+                  ? imgHref.substr(0, imgHref.indexOf('#'))
+                  : imgHref
+                  }`}
               />
             </div>
           ) : (
@@ -60,47 +52,9 @@ const Product = ({ classes, product, isWishlist }) => {
               {formatMoney.format(price)}
             </div>
           </div>
-
           {isNew ? <span className="is-new mb0">ΝΕΟ</span> : null}
         </CardContent>
-        <CardActions disableSpacing className="card-actions">
-          {stock > 0 ? (
-            <button
-              className="add-to-cart"
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(addToCart(product));
-              }}>
-              ΑΓΟΡΑ
-            </button>
-          ) : (
-            <span>&nbsp;</span>
-          )}
 
-          {!isWishlist ? (
-            <IconButton
-              className="product-action"
-              aria-label="add to favorites"
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(setGeneralLoading(true));
-                dispatch(addProductWishlist(productId));
-              }}>
-              <i className="icon-heart-empty" />
-            </IconButton>
-          ) : (
-            <IconButton
-              className="product-action"
-              aria-label="remove from favorites"
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(setGeneralLoading(true));
-                dispatch(removeProductWishlist(productId));
-              }}>
-              <i className="icon-trash-empty" />
-            </IconButton>
-          )}
-        </CardActions>
       </Card>
     </Link>
   );

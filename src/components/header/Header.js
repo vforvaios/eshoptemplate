@@ -59,7 +59,9 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
       <Grid item sm={6} className="logo">
         <Link to="/">
           <img
-            src={logoImage?.preview}
+            // TODO - REMOVE
+            // src={logoImage?.preview}
+            src={`${process.env.PUBLIC_URL}/logo.png`}
             alt={logoImage?.data?.name}
             className="logo-image"
           />

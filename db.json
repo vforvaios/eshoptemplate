@@ -3,7 +3,7 @@
     "tabsOffers": [
       {
         "id": 3,
-        "title": "ΚΑΛΟΚΑΙΡΙ",
+        "title": "SUMMER",
         "isActive": 1,
         "products": [
           {
@@ -41,12 +41,36 @@
             "productSubHeader": "Sub Header 3",
             "code": "fsd8fws2",
             "isNew": 1
+          },
+          {
+            "productId": 3,
+            "productTitle": "Title 3",
+            "stock": 160,
+            "productDescription": "Descripption 3",
+            "initialPrice": 50,
+            "price": 40,
+            "imgHref": "img_2.jpeg",
+            "productSubHeader": "Sub Header 3",
+            "code": "fsd8fws2",
+            "isNew": 1
+          },
+          {
+            "productId": 3,
+            "productTitle": "Title 3",
+            "stock": 160,
+            "productDescription": "Descripption 3",
+            "initialPrice": 50,
+            "price": 40,
+            "imgHref": "img_2.jpeg",
+            "productSubHeader": "Sub Header 3",
+            "code": "fsd8fws2",
+            "isNew": 1
           }
         ]
       },
       {
         "id": 1,
-        "title": "ΟΜΟΡΦΙΑ",
+        "title": "WINTER",
         "isActive": 1,
         "products": [
           {
@@ -129,6 +153,30 @@
             "productSubHeader": "Sub Header 2",
             "code": "fsd84r23j",
             "isNew": 0
+          },
+          {
+            "productId": 2,
+            "productTitle": "Title 2",
+            "stock": 40,
+            "productDescription": "Description 2",
+            "initialPrice": 100,
+            "price": 80,
+            "imgHref": "purse.jpg",
+            "productSubHeader": "Sub Header 2",
+            "code": "fsd84r23j",
+            "isNew": 0
+          },
+          {
+            "productId": 2,
+            "productTitle": "Title 2",
+            "stock": 40,
+            "productDescription": "Description 2",
+            "initialPrice": 100,
+            "price": 80,
+            "imgHref": "purse.jpg",
+            "productSubHeader": "Sub Header 2",
+            "code": "fsd84r23j",
+            "isNew": 0
           }
         ]
       }
@@ -167,7 +215,7 @@
     "data": {
       "name": "purse.jpg"
     },
-    "preview": "purse.jpg"
+    "preview": "logo.png"
   },
   "staticcontentactive": {
     "data": [
