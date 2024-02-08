@@ -30,7 +30,7 @@ const Footer = () => {
                 <div>
                   <FormControl fullWidth className="newsletter-form">
                     <InputLabel htmlFor="newsletter">
-                      Εγγραφή στο newsletter...
+                      Subscribe
                     </InputLabel>
                     <Input
                       fullWidth
@@ -40,19 +40,19 @@ const Footer = () => {
                       onChange={(e) => setNewsletterEmail(e.target.value)}
                     />
                     <button
-                      className="button next"
+                      className="button"
                       onClick={() => {
                         dispatch(setGeneralLoading(true));
                         dispatch(addNewsletterUser(newsletterEmail));
                       }}>
-                      Εγγραφή
+                      Subscribe
                     </button>
                   </FormControl>
                 </div>
               </div>
               <div className="footer-columns">
                 <div>
-                  <p className="title">ΓΙΑ ΕΜΑΣ</p>
+                  <p className="title">ABOUT US</p>
                   <ul className="footer-links">
                     {allPages?.map((page) => (
                       <li key={page?.id}>
@@ -62,7 +62,7 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div>
-                  <p className="title">ΔΗΜΟΦΙΛΕΙΣ ΚΑΤΗΓΟΡΙΕΣ</p>
+                  <p className="title">POPULAR</p>
                   <ul className="footer-links">
                     <li>
                       <Link to="/">Link 1</Link>
@@ -82,10 +82,10 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div>
-                  <p className="title">ΕΠΙΚΟΙΝΩΝΙΑ</p>
+                  <p className="title">CONTACT</p>
                   <ul className="footer-links">
                     <li>
-                      <Link to="/contact">Επικοινωνήστε μαζί μας</Link>
+                      <Link to="/contact">Contact Us</Link>
                     </li>
                   </ul>
                 </div>

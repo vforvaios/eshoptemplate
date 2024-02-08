@@ -221,17 +221,17 @@
     "data": [
       {
         "id": 1,
-        "title": "Οροι Χρήσης",
+        "title": "Terms and Conditions",
         "description": "<p>fasdasdfasdfasdfasdasdfasd2222222</p>"
       },
       {
         "id": 2,
-        "title": "Τρόποι Πληρωμής",
+        "title": "Payments",
         "description": "<p>perigrafi</p>"
       },
       {
         "id": 3,
-        "title": "Τρόποι Αποστολής",
+        "title": "Shipping",
         "description": "<p>2test perigrafi22222</p>"
       }
     ]
@@ -240,68 +240,68 @@
     "menu": [
       {
         "id": 1,
-        "name": "ΓΥΝΑΙΚΑ",
+        "name": "SUMMER",
         "subCategories": [
           {
             "id": 1,
-            "name": "ΑΝΤΗΛΙΑΚΗ ΠΡΟΣΤΑΣΙΑ",
+            "name": "SUMMER 1",
             "category_id": 1
           },
           {
             "id": 2,
-            "name": "ΠΡΟΣΩΠΟ",
+            "name": "SUMMER 2",
             "category_id": 1
           },
           {
             "id": 3,
-            "name": "ΡΥΤΙΔΕΣ",
+            "name": "SUMMER 3",
             "category_id": 1
           }
         ]
       },
       {
         "id": 2,
-        "name": "ΑΝΤΡΑΣ",
+        "name": "WINTER",
         "subCategories": [
           {
             "id": 3,
-            "name": "ΡΥΤΙΔΕΣ",
+            "name": "WINTER 1",
             "category_id": 2
           },
           {
             "id": 4,
-            "name": "ΣΤΟΜΑΤΙΚΗ ΠΡΟΣΤΑΣΙΑ",
+            "name": "WINTER 2",
             "category_id": 2
           }
         ]
       },
       {
         "id": 3,
-        "name": "ΠΑΙΔΙ",
+        "name": "SPRING",
         "subCategories": []
       },
       {
         "id": 4,
-        "name": "ΧΕΙΜΩΝΑΣ",
+        "name": "SALES",
         "subCategories": []
       },
       {
         "id": 5,
-        "name": "ΚΑΛΟΚΑΙΡΙ",
+        "name": "LUXURY",
         "subCategories": []
       }
     ],
     "staticPagesInMenu": [
       {
         "id": 2,
-        "title": "Τρόποι Πληρωμής",
+        "title": "PAYMENTS",
         "description": "<p>perigrafi</p>",
         "isActive": 1,
         "isMenu": 1
       },
       {
         "id": 3,
-        "title": "Τρόποι Αποστολής",
+        "title": "SHIPPING",
         "description": "<p>2test perigrafi22222</p>",
         "isActive": 1,
         "isMenu": 1

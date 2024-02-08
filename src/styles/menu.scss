@@ -8,7 +8,7 @@
   >* {
     color: $color-1;
     margin-bottom: 12px;
-    font-size: 14px;
+    font-size: 9px;
     cursor: pointer;
 
     &:last-child {
@@ -37,12 +37,12 @@
 .menu-item-category {
   flex-grow: 1;
   flex-basis: 50%;
+  font-size: 12px;
 }
 
 .menu-item {
   color: $white;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 12px;
   padding: 6px 0;
   display: flex;
   justify-content: space-between;
@@ -64,8 +64,13 @@
 }
 
 .main-menu {
+  * {
+    font-family: 'Sackers Gothic Std';
+  }
+
   a {
     color: $white;
+    font-size: 12px;
   }
 }
 
@@ -98,6 +103,10 @@
 }
 
 .main-menu-search-container {
+  * {
+    font-family: 'Sackers Gothic Std' !important;
+  }
+
   >div {
     width: 100%;
     margin-bottom: 20px;

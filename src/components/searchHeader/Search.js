@@ -36,7 +36,7 @@ const Search = () => {
           );
         }}
         inputValue={searchProductText || ''}
-        noOptionsText="Δεν βρέθηκαν προϊόντα"
+        noOptionsText="No products found."
         onChange={(e, product) => {
           navigate(`/product/${product?.productId}`);
         }}
@@ -49,8 +49,8 @@ const Search = () => {
           <TextField
             {...params}
             variant="standard"
-            label="Αναζήτηση προϊόντων"
-            placeholder="Επιλογή"
+            label="Search..."
+            placeholder="Select"
           />
         )}
       />

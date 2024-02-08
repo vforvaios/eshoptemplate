@@ -10,7 +10,7 @@ import './homeOffersTabs.scss';
 
 const settings = {
   dots: true,
-  arrows: false,
+  arrows: true,
   infinite: false,
   speed: 500,
   slidesToShow: 3,
