@@ -1,6 +1,11 @@
 .slick-prev,
 .slick-next {
   margin-top: -10px;
+
+  &:before {
+    font-size: 16px;
+    font-family: 'Sackers Gothic Std' !important;
+  }
 }
 
 
@@ -18,13 +23,23 @@
 }
 
 .slick-next {
-  right: 20px;
+  right: -10px;
   z-index: 1;
+
+  &:before {
+    content: '>';
+    color: $black;
+  }
 }
 
 .slick-prev {
-  left: 20px;
+  left: -10px;
   z-index: 1;
+
+  &:before {
+    content: '<';
+    color: $black;
+  }
 }
 
 .slick-dots {
@@ -32,7 +47,7 @@
 }
 
 .slider-product {
-  padding: 0 6px;
+  padding: 0 4px;
 }
 
 .slick-dots li button:before {

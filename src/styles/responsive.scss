@@ -8,7 +8,7 @@
 }
 
 .headerTitle {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .headerContainer {
@@ -16,15 +16,22 @@
 }
 
 .productImage {
-  height: 400px;
+  height: 300px;
+}
+
+.slider-product {
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .price-container>div>span {
-  font-size: 12px;
+  font-size: 10px;
+  letter-spacing: -1px;
 }
 
 .price-container>div {
-  font-size: 18px
+  font-size: 14px;
+  letter-spacing: -1px;
 }
 
 // CATALOG

@@ -52,7 +52,7 @@ const Product = ({ classes, product, isWishlist }) => {
               {formatMoney.format(price)}
             </div>
           </div>
-          {isNew ? <span className="is-new mb0">ΝΕΟ</span> : null}
+          {isNew ? <span className="is-new mb0">NEW</span> : null}
         </CardContent>
 
       </Card>

@@ -20,3 +20,25 @@
     color: $color-1;
   }
 }
+
+
+
+input::placeholder {
+  font-family: 'Sackers Gothic Std' !important;
+}
+
+input::-webkit-input-placeholder {
+  font-family: 'Sackers Gothic Std' !important;
+}
+
+input::-moz-placeholder {
+  font-family: 'Sackers Gothic Std' !important;
+}
+
+input:-ms-input-placeholder {
+  font-family: 'Sackers Gothic Std' !important;
+}
+
+input:-moz-placeholder {
+  font-family: 'Sackers Gothic Std' !important;
+}

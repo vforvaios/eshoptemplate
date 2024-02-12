@@ -147,16 +147,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
     color: $color-1;
     width: 100%;
+    font-family: 'Sackers Gothic Std';
 
     &>span {
-      margin-right: 10px;
-      font-size: 8px;
+      margin-right: 4px;
+      font-size: 7px;
       text-decoration: line-through;
       color: $color-2;
+      font-family: 'Sackers Gothic Std';
     }
   }
 
@@ -301,6 +303,7 @@
 
 .headerTitle {
   font-size: 12px;
+  font-family: 'Sackers Gothic Std' !important;
   font-weight: 300 !important;
   color: $black;
   text-align: left;
@@ -319,9 +322,10 @@
 
 .is-new {
   font-weight: 700;
-  font-size: 16px;
+  font-family: 'Sackers Gothic Std' !important;
+  font-size: 10px;
   color: $white;
-  background-color: $color-1;
+  background-color: $black;
   position: absolute;
   z-index: 1;
   padding: 6px;
@@ -349,7 +353,7 @@
 .productImage {
   transition: all 0.2s ease-in-out;
   position: relative;
-  height: 300px;
+  height: 200px;
 
   img {
     width: 100%;

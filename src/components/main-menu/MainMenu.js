@@ -36,7 +36,7 @@ const MainMenu = ({ setToggleValue }) => {
         />
         <i
           className="icon-cancel-circled closeMenu"
-          onClick={setToggleValue('left', false)}
+          onClick={setToggleValue('top', false)}
           ref={myCloseMenuBtn}
         />
       </div>
@@ -71,18 +71,16 @@ const MainMenu = ({ setToggleValue }) => {
               {category?.subCategories?.length > 0 && (
                 <>
                   <span
-                    className={`submenu-item ${
-                      openSubMenu === category?.id && 'rotate'
-                    }`}>
+                    className={`submenu-item ${openSubMenu === category?.id && 'rotate'
+                      }`}>
                     <i
                       className="icon-down-dir"
                       onClick={() => setOpenSubMenu(category?.id)}
                     />
                   </span>
                   <div
-                    className={`submenu-container ${
-                      openSubMenu === category?.id && 'open'
-                    }`}>
+                    className={`submenu-container ${openSubMenu === category?.id && 'open'
+                      }`}>
                     {category?.subCategories?.map((subCategory) => (
                       <div
                         key={subCategory.id}

@@ -117,13 +117,17 @@
   vertical-align: middle;
   color: $white;
   text-align: center;
-  line-height: 40px;
+  line-height: 36px;
   font-size: 20px;
   margin-right: 10px;
 
   &:last-child {
     margin-right: 0;
   }
+}
+
+.footer-newsletter label {
+  font-family: 'Sackers Gothic Std' !important;
 }
 
 .newsletter-form {
