@@ -19,18 +19,18 @@
 
   span {
     position: absolute;
-    font-size: 12px;
+    font-size: 10px;
     width: 18px;
     height: 18px;
     border-radius: 50%;
     background-color: $alert;
     color: $white;
     text-align: center;
-    line-height: 16px;
+    line-height: 14px;
     top: 0;
     right: -9px;
     border: 1px solid $white;
-    letter-spacing: -1px;
+
   }
 
   svg {

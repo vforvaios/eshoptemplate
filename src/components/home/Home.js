@@ -35,7 +35,7 @@ const Home = () => {
         name={process.env.REACT_APP_WEBSITE_NAME}
         type="article"
       />
-      <div className="homeBG">
+      <div className="homeBG content">
         {banners?.length > 0 && (
           <div className="row">
             <HomeSlider banners={banners} />

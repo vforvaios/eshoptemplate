@@ -10,12 +10,12 @@ img {
 }
 
 body {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Sackers Gothic Std';
   margin: 0;
   padding: 0;
 
   * {
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Sackers Gothic Std';
   }
 }
 
@@ -24,7 +24,7 @@ img {
 }
 
 .content {
-  margin-top: 120px;
+  margin-top: -70px;
   margin-bottom: 60px;
   min-height: 600px;
 
@@ -101,12 +101,12 @@ ul {
 // TITLES
 .section-title {
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 300;
   text-align: left;
   margin: 0 0 20px;
   color: $black;
   letter-spacing: 1px;
-  font-family: 'Gowun Batang', serif;
+  font-family: 'Cormorant', serif;
 }
 
 .page-title {

@@ -149,7 +149,7 @@
     align-items: center;
     font-size: 10px;
     font-weight: bold;
-    color: $color-1;
+    color: $black;
     width: 100%;
     font-family: 'Sackers Gothic Std';
 
@@ -157,7 +157,7 @@
       margin-right: 4px;
       font-size: 7px;
       text-decoration: line-through;
-      color: $color-2;
+      color: $black;
       font-family: 'Sackers Gothic Std';
     }
   }
@@ -323,16 +323,16 @@
 .is-new {
   font-weight: 700;
   font-family: 'Sackers Gothic Std' !important;
-  font-size: 10px;
-  color: $white;
-  background-color: $black;
+  font-size: 8px;
+  color: $black;
+  background-color: $white;
   position: absolute;
   z-index: 1;
-  padding: 6px;
+  padding: 5px 6px 6px;
   right: 0;
   top: 12px;
   text-align: center;
-  line-height: 1;
+  line-height: 1px;
 }
 
 .subHeader {

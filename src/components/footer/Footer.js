@@ -30,7 +30,7 @@ const Footer = () => {
                 <div>
                   <FormControl fullWidth className="newsletter-form">
                     <InputLabel htmlFor="newsletter">
-                      Subscribe
+                      Your email
                     </InputLabel>
                     <Input
                       fullWidth
