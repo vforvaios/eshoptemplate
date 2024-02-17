@@ -16,7 +16,7 @@ const MiniCart = ({ toggleValue, setToggleValue }) => {
   return (
     <>
       <button className="mini-cart" onClick={setToggleValue('right', true)}>
-        <i className="icon-shopping-basket" />
+        <i><img src={`${process.env.PUBLIC_URL}/bag.svg`} /></i>
         <span>{itemsLength}</span>
       </button>
       <Drawer

@@ -191,20 +191,22 @@
 
 // FOOTER
 .footer-columns {
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   align-items: flex-start;
   flex-grow: 1;
+  gap: 30px;
 }
 
 .footer-newsletter {
   padding-right: 20px;
   flex-basis: 40%;
-  width: auto;
+  max-width: 500px;
 }
 
 .footer-row {
   flex-direction: row;
+  justify-content: flex-start;
 
   &:last-child {
     align-items: center;

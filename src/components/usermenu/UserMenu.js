@@ -24,7 +24,7 @@ const UserMenu = ({ token }) => {
 
   return token ? (
     <div className="usermenu-container">
-      <i className="icon-user-o" onClick={handleClick} />
+      <i onClick={handleClick}><img src={`${process.env.PUBLIC_URL}/user.svg`} /></i>
       <Menu
         anchorEl={anchorEl}
         open={open}
@@ -51,7 +51,7 @@ const UserMenu = ({ token }) => {
     </div>
   ) : (
     <Link to="/login" className="user-icon">
-      <i className="icon-user-o" />
+      <i><img src={`${process.env.PUBLIC_URL}/user.svg`} /></i>
     </Link>
   );
 };

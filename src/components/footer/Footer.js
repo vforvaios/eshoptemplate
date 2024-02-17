@@ -23,33 +23,38 @@ const Footer = () => {
     <footer>
       <div className="footer-container">
         <div className="row">
+          <div className="wrapper newsletter">
+            <div className="footer-newsletter">
+              <div className="title">NEWSLETTER</div>
+              <div>
+                <FormControl fullWidth className="newsletter-form">
+                  <InputLabel htmlFor="newsletter">
+                    Your email
+                  </InputLabel>
+                  <Input
+                    fullWidth
+                    id="newsletter"
+                    type="email"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                  />
+                  <button
+                    className="button"
+                    onClick={() => {
+                      dispatch(setGeneralLoading(true));
+                      dispatch(addNewsletterUser(newsletterEmail));
+                    }}>
+                    Subscribe
+                  </button>
+                </FormControl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
           <div className="wrapper">
             <div className="footer-row">
-              <div className="footer-newsletter">
-                <div className="title">NEWSLETTER</div>
-                <div>
-                  <FormControl fullWidth className="newsletter-form">
-                    <InputLabel htmlFor="newsletter">
-                      Your email
-                    </InputLabel>
-                    <Input
-                      fullWidth
-                      id="newsletter"
-                      type="email"
-                      value={newsletterEmail}
-                      onChange={(e) => setNewsletterEmail(e.target.value)}
-                    />
-                    <button
-                      className="button"
-                      onClick={() => {
-                        dispatch(setGeneralLoading(true));
-                        dispatch(addNewsletterUser(newsletterEmail));
-                      }}>
-                      Subscribe
-                    </button>
-                  </FormControl>
-                </div>
-              </div>
+
               <div className="footer-columns">
                 <div>
                   <p className="title">ABOUT US</p>
@@ -82,27 +87,34 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div>
-                  <p className="title">CONTACT</p>
+                  <p className="title">FIND US</p>
                   <ul className="footer-links">
                     <li>
                       <Link to="/contact">Contact Us</Link>
                     </li>
+
+                    <li><Link to="/">Instagram</Link></li>
+                    <li><Link to="/">X - Twitter</Link></li>
+                    <li><Link to="/">Facebook</Link></li>
+                    <li><Link to="/">Working Hours: 9:00 - 17:00</Link></li>
+                    <li><Link to="/">Phone: 1234567890</Link></li>
                   </ul>
                 </div>
               </div>
             </div>
+
+          </div>
+        </div>
+        <div className="row">
+          <div className="wrapper wrapper-copyright">
             <div className="footer-row">
-              <div className="copyright">Copyright (C) By Vaios</div>
-              <div className="footer-social-icons">
-                <i className="footer-icon icon-facebook" />
-                <i className="footer-icon icon-instagram" />
-                <i className="footer-icon icon-twitter" />
-              </div>
+              <div className="copyright"> (C) Tierra 2024</div>
+
             </div>
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };
 

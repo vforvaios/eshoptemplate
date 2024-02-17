@@ -1,6 +1,6 @@
 .footer-container {
   background: $white;
-  padding: 20px 0px;
+  padding: 20px 0px 6px;
   color: $black;
   border-top: 1px solid $color-5;
 
@@ -26,6 +26,11 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+
+}
+
+.wrapper.wrapper-copyright {
+  border-top: 1px solid $color-5;
 }
 
 .footer-columns {
@@ -61,9 +66,15 @@
   }
 }
 
+.wrapper.newsletter {
+  margin-bottom: 20px;
+  border-bottom: 1px solid $color-5;
+}
+
 .footer-newsletter {
   margin-bottom: 20px;
   width: 100%;
+  max-width: 300px;
 
   input {
     background: transparent;
@@ -98,9 +109,10 @@
 }
 
 .copyright {
-  margin-bottom: 20px;
-  font-size: 12px;
+  font-size: 10px;
   align-self: center;
+  text-align: center;
+  width: 100%;
 }
 
 .footer-social-icons {

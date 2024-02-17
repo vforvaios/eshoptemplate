@@ -130,7 +130,7 @@ const ProductPage = () => {
                     e.preventDefault();
                     dispatch(addProductWishlist(id));
                   }}>
-                  <i className="icon-heart-empty" />
+                  <i className="icon-heart-empty"><img src={`${process.env.PUBLIC_URL}/heart.svg`} /></i>
                 </IconButton>
               </div>
             </Grid>
