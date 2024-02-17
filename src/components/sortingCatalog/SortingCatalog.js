@@ -17,19 +17,19 @@ const SortingCatalog = () => {
   return (
     <div className="sorting-container">
       <FormControl variant="standard">
-        <InputLabel id="sortingCatalogProducts">Ταξινόμηση</InputLabel>
+        <InputLabel id="sortingCatalogProducts">Order by</InputLabel>
         <Select
           labelId="sortingCatalogProducts"
           autoWidth
           id="sortingSelect"
           value={sorting}
-          label="Ταξινόμηση"
+          label="Order by"
           onChange={(e) => {
             dispatch(setGeneralLoading(true));
             dispatch(setCatalogSorting(e.target.value));
           }}>
-          <MenuItem value={1}>Ανά τιμή (αύξουσα)</MenuItem>
-          <MenuItem value={2}>Ανά τιμή (φθίνουσα)</MenuItem>
+          <MenuItem value={1}>Price (asc)</MenuItem>
+          <MenuItem value={2}>Price (desc)</MenuItem>
         </Select>
       </FormControl>
     </div>

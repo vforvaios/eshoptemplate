@@ -17,13 +17,13 @@ const CartTotals = ({ cart, order }) => {
   if (!order || Object.keys(order)?.length === 0) {
     smCost = mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost
       ? parseFloat(
-          mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost,
-        )
+        mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost,
+      )
       : Number(0);
     pmCost = myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost
       ? parseFloat(
-          myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost,
-        )
+        myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost,
+      )
       : Number(0);
   }
 
@@ -37,16 +37,16 @@ const CartTotals = ({ cart, order }) => {
 
   return (
     <div className="cart-totals-container">
-      <div className="cart-totals-row cart-totals-row-title">ΣΥΝΟΛΟ</div>
+      <div className="cart-totals-row cart-totals-row-title">TOTALS</div>
       <div className="cart-totals-row">
-        <span className="cart-totals-name">Συνολική έκπτωση:</span>
+        <span className="cart-totals-name">Total discount:</span>
         <span className="cart-totals-value">
           {formatMoney.format(getCartTotalsDiscount(cart))}
         </span>
       </div>
       {Number(smCost) > Number(0) && (
         <div className="cart-totals-row">
-          <span className="cart-totals-name">Μεταφορικά:</span>
+          <span className="cart-totals-name">Shipping cost:</span>
           <span className="cart-totals-value">
             {formatMoney.format(smCost)}
           </span>
@@ -54,21 +54,21 @@ const CartTotals = ({ cart, order }) => {
       )}
       {Number(pmCost) > Number(0) && (
         <div className="cart-totals-row">
-          <span className="cart-totals-name">Έξοδα πληρωμής:</span>
+          <span className="cart-totals-name">Payment cost:</span>
           <span className="cart-totals-value">
             {formatMoney.format(pmCost)}
           </span>
         </div>
       )}
       <div className="cart-totals-row bold">
-        <span className="cart-totals-name">Σύνολο πληρωμής:</span>
+        <span className="cart-totals-name">Total:</span>
         <span className="cart-totals-value">
           {smCost || pmCost
             ? formatMoney.format(
-                parseFloat(smCost) +
-                  parseFloat(pmCost) +
-                  parseFloat(getCartTotals(cart)),
-              )
+              parseFloat(smCost) +
+              parseFloat(pmCost) +
+              parseFloat(getCartTotals(cart)),
+            )
             : formatMoney.format(getCartTotals(cart))}
         </span>
       </div>

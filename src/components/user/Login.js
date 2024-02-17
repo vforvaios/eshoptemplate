@@ -24,13 +24,13 @@ const Login = () => {
 
   const submitLoginForm = () => {
     if (email === '') {
-      setEmailError('Πρέπει να συμπληρώσετε email!');
+      setEmailError('You have to fill in your email!');
     } else {
       setEmailError('');
     }
 
     if (password === '') {
-      setPasswordError('Πρέπει να συμπληρώσετε κωδικό!');
+      setPasswordError('You have to fill in your password!');
     } else {
       setPasswordError('');
     }
@@ -60,7 +60,7 @@ const Login = () => {
       <div className="row">
         <div className="wrapper">
           <div className=" text-center">
-            <h1 className="page-title">ΕΙΣΟΔΟΣ</h1>
+            <h1 className="page-title">LOGIN</h1>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@ const Login = () => {
           <div className="login-container">
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">ΟΝΟΜΑ ΧΡΗΣΤΗ</InputLabel>
+                <InputLabel htmlFor="login-email">USERNAME</InputLabel>
                 <Input
                   fullWidth
                   id="login-email"
@@ -85,7 +85,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">ΚΩΔΙΚΟΣ</InputLabel>
+                <InputLabel htmlFor="login-password">PASSWORD</InputLabel>
                 <Input
                   fullWidth
                   error={passwordError !== ''}
@@ -102,13 +102,13 @@ const Login = () => {
             <div className="form-control">
               <div className="actions">
                 <Link className="minor-link mrl12" to="/forgotpassword">
-                  ΞΕΧΑΣΑ ΤΟΝ ΚΩΔΙΚΟ ΜΟΥ
+                  FORGOT MY PASSWORD
                 </Link>
                 <button className="button next" onClick={submitLoginForm}>
-                  ΕΙΣΟΔΟΣ
+                  LOGIN
                 </button>
                 <Link className="button next mrl12" to="/register">
-                  ΕΓΓΡΑΦΗ
+                  REGISTER
                 </Link>
               </div>
             </div>

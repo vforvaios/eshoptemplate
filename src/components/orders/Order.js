@@ -35,15 +35,15 @@ const Order = ({ order, toggleOrder }) => {
           id !== orderId ? dispatch(setOrderId(id)) : dispatch(setOrderId(''));
         }}>
         <TableCell>
-          <span className="hidden">ΚΩΔΙΚΟΣ</span>
+          <span className="hidden">CODE</span>
           {order_code}
         </TableCell>
         <TableCell>
-          <span className="hidden">ΗΜΕΡΟΜΗΝΙΑ</span>
+          <span className="hidden">DATE</span>
           {new Date(dateCreated).toLocaleString()}
         </TableCell>
         <TableCell>
-          <span className="hidden">ΟΝΟΜΑ</span>
+          <span className="hidden">NAME</span>
           {paymentFirstName} {paymentLastName}
         </TableCell>
         <TableCell>
@@ -51,15 +51,15 @@ const Order = ({ order, toggleOrder }) => {
           {paymentEmail}
         </TableCell>
         <TableCell>
-          <span className="hidden">ΤΙΜΗ</span>
+          <span className="hidden">PRICE</span>
           {formatMoney.format(
             Number(totalOrderPrice) +
-              Number(paymentMethodCost) +
-              Number(shippingMethodCost),
+            Number(paymentMethodCost) +
+            Number(shippingMethodCost),
           )}
         </TableCell>
         <TableCell>
-          <span className="hidden">ΤΕΜΑΧΙΑ</span>
+          <span className="hidden">QUANTITY</span>
           {totalItems}
         </TableCell>
         <TableCell>

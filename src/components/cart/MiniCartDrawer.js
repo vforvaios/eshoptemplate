@@ -12,7 +12,7 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
   return (
     <div className="mini-cart-drawer-wrapper">
       <div>
-        <h1 className="page-title">Το καλάθι μου</h1>
+        <h1 className="page-title">My Cart</h1>
         <i
           className="hidden"
           onClick={setToggleValue('right', false)}
@@ -22,13 +22,13 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
       <div className="mini-cart-drawer-items">
         {itemsLength > 0
           ? myCart?.map((item, index) => (
-              <MiniCartItem
-                setToggleValue={setToggleValue}
-                key={`${item?.productId}_${index}`}
-                item={item}
-              />
-            ))
-          : 'Το καλάθι σας είναι άδειο.'}
+            <MiniCartItem
+              setToggleValue={setToggleValue}
+              key={`${item?.productId}_${index}`}
+              item={item}
+            />
+          ))
+          : 'Your cart is empty.'}
       </div>
       <div className="mini-cart-actions">
         <div
@@ -42,7 +42,7 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
               }),
             );
           }}>
-          ΚΛΕΙΣΙΜΟ
+          CLOSE
         </div>
         {itemsLength > 0 && (
           <div
@@ -58,7 +58,7 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
                 }),
               );
             }}>
-            ΤΑΜΕΙΟ
+            PROCEED
           </div>
         )}
       </div>

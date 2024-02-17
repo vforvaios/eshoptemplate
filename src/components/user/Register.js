@@ -24,26 +24,26 @@ const Register = () => {
 
   const submitRegisterForm = () => {
     if (username === '') {
-      setUsernameError('Πρέπει να συμπληρώσετε username!');
+      setUsernameError('You have to fill in your username!');
     } else {
       setUsernameError('');
     }
 
     if (email === '') {
-      setEmailError('Πρέπει να συμπληρώσετε email!');
+      setEmailError('You have to fill in your email!');
     } else {
       setEmailError('');
     }
 
     if (password === '') {
-      setPasswordError('Πρέπει να συμπληρώσετε κωδικό!');
+      setPasswordError('You have to fill in your password!');
     } else {
       setPasswordError('');
     }
 
     if (confirmPassword === '' || confirmPassword !== password) {
       setConfirmPasswordError(
-        'Πρέπει να συμπληρώσετε κωδικό ή δεν ταιριάζουν οι 2 κωδικοί!',
+        'You have to fill in your password or the passwords do not match.',
       );
     } else {
       setConfirmPasswordError('');
@@ -75,7 +75,7 @@ const Register = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">ΕΓΓΡΑΦΗ</h1>
+            <h1 className="page-title">REGISTER</h1>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ const Register = () => {
           <div className="login-container">
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-username">ΟΝΟΜΑ ΧΡΗΣΤΗ</InputLabel>
+                <InputLabel htmlFor="login-username">USERNAME</InputLabel>
                 <Input
                   fullWidth
                   id="login-username"
@@ -116,7 +116,7 @@ const Register = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">ΚΩΔΙΚΟΣ</InputLabel>
+                <InputLabel htmlFor="login-password">PASSWORD</InputLabel>
                 <Input
                   fullWidth
                   error={passwordError !== ''}
@@ -133,7 +133,7 @@ const Register = () => {
             <div className="form-control">
               <FormControl fullWidth>
                 <InputLabel htmlFor="login-confirmpassword">
-                  ΕΠΙΒΕΒΑΙΩΣΗ ΚΩΔΙΚΟΥ
+                  CONFIRM PASSWORD
                 </InputLabel>
                 <Input
                   fullWidth
@@ -151,10 +151,10 @@ const Register = () => {
             <div className="form-control">
               <div className="actions">
                 <button className="button next" onClick={submitRegisterForm}>
-                  ΕΓΓΡΑΦΗ
+                  REGISTER
                 </button>
                 <Link className="button next mrl12" to="/login">
-                  ΕΙΣΟΔΟΣ
+                  LOGIN
                 </Link>
               </div>
             </div>

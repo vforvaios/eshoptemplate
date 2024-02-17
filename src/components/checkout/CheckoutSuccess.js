@@ -41,9 +41,9 @@ const CheckoutSuccess = () => {
           <div className="checkout-success">
             <h2>ΣΥΓΧΑΡΗΤΗΡΙΑ!</h2>
             <div className="success-message">
-              Η ΠΑΡΑΓΓΕΛΙΑ ΣΑΣ ΟΛΟΚΛΗΡΩΘΗΚΕ. ΠΟΛΥ ΣΥΝΤΟΜΑ ΘΑ ΠΑΡΑΛΑΒΕΤΕ ΕΝΑ
-              EMAIL ΜΕ ΤΙΣ ΠΛΗΡΟΦΟΡΙΕΣ ΤΗΣ ΠΑΡΑΓΓΕΛΙΑΣ ΣΑΣ. ΕΥΧΑΡΙΣΤΟΥΜΕ ΠΟΛΥ
-              ΓΙΑ ΤΗΝ ΠΡΟΤΙΜΗΣΗ ΣΑΣ.
+              Your order has been completed. You will very soon get an email
+              with all the relevant information. Thank you very much for
+              choosing us.
             </div>
           </div>
         </div>

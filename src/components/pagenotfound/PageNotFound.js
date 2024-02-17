@@ -14,9 +14,9 @@ const PageNotFound = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-not-found-countainer">
-            <h1>ΔΕΝ ΒΡΕΘΗΚΕ</h1>
+            <h1>PAGE NOT FOUND</h1>
             <Link to="/" className="button green">
-              Αρχική Σελίδα
+              HOME PAGE
             </Link>
           </div>
         </div>

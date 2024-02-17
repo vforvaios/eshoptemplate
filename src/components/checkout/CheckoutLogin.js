@@ -17,7 +17,7 @@ const CheckoutLogin = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">ΣΥΝΔΕΣΗ</h1>
+            <h1 className="page-title">LOGIN</h1>
           </div>
         </div>
       </div>

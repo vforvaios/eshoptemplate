@@ -52,7 +52,7 @@ const Confirm = () => {
         <div className="row">
           <div className="wrapper">
             <div className="text-center">
-              <h1 className="page-title">ΕΠΙΒΕΒΑΙΩΣΗ</h1>
+              <h1 className="page-title">CONFIRM</h1>
             </div>
           </div>
         </div>
@@ -65,14 +65,14 @@ const Confirm = () => {
           <div className="wrapper">
             <div className="actions separate">
               <button className="button back">
-                <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
+                <Link to="/checkout/step2">EDIT ORDER</Link>
               </button>
               {productsAreUpdated && (
                 <button
                   className="button red refresh"
                   onClick={() => dispatch(updateCartProducts())}>
                   <i className="icon-arrows-cw" />
-                  Ανανέωση προϊόντων
+                  Refresh Products
                 </button>
               )}
               <button
@@ -82,7 +82,7 @@ const Confirm = () => {
                   dispatch(sendOrder());
                 }}
                 className="button next">
-                ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
+                Complete Order
               </button>
             </div>
           </div>
@@ -135,7 +135,7 @@ const Confirm = () => {
           <div className="wrapper">
             <div className="actions separate">
               <button className="button back">
-                <Link to="/checkout/step2">ΕΠΕΞΕΡΓΑΣΙΑ ΠΑΡΑΓΓΕΛΙΑΣ</Link>
+                <Link to="/checkout/step2">EDIT ORDER</Link>
               </button>
               <button
                 disabled={productsAreUpdated}
@@ -144,7 +144,7 @@ const Confirm = () => {
                   dispatch(sendOrder());
                 }}
                 className="button next">
-                ΟΛΟΚΛΗΡΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
+                COMPLETE ORDER
               </button>
             </div>
           </div>

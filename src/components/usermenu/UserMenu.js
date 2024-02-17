@@ -33,19 +33,19 @@ const UserMenu = ({ token }) => {
         className="user-menu"
         TransitionComponent={Fade}>
         <MenuItem className="userLoggedIn">
-          Καλωσήρθες {loggedInUser?.userLoggedIn?.username}
+          Welcome {loggedInUser?.userLoggedIn?.username}
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link to="/changepassword">Αλλαγή κωδικού</Link>
+          <Link to="/changepassword">Change password</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link to="/wishlist">Τα αγαπημένα μου</Link>
+          <Link to="/wishlist">My favorites</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link to="/orders">Οι παραγγελίες μου</Link>
+          <Link to="/orders">My orders</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <a onClick={() => dispatch(logoutUser())}>Εξοδος</a>
+          <a onClick={() => dispatch(logoutUser())}>Logout</a>
         </MenuItem>
       </Menu>
     </div>

@@ -21,13 +21,12 @@ const CartItem = ({ updateable, item }) => {
           <span>
             <img
               className="cart-item-image"
-              src={`${process.env.REACT_APP_IMAGES_URL}/${
-                item?.imgHref?.indexOf('#') !== -1
-                  ? item?.imgHref
-                      ?.substr(0, item?.imgHref.lastIndexOf('#') - 1)
-                      ?.split('#')?.[0]
-                  : item?.imgHref
-              }`}
+              src={`${process.env.REACT_APP_IMAGES_URL}/${item?.imgHref?.indexOf('#') !== -1
+                ? item?.imgHref
+                  ?.substr(0, item?.imgHref.lastIndexOf('#') - 1)
+                  ?.split('#')?.[0]
+                : item?.imgHref
+                }`}
               alt="product description"
             />
           </span>
@@ -35,7 +34,7 @@ const CartItem = ({ updateable, item }) => {
         </div>
       </TableCell>
       <TableCell>
-        <span className="hidden">ΠΟΣΟΤΗΤΑ</span>
+        <span className="hidden">QUANTITY</span>
         {!updateable ? (
           item.total
         ) : (
@@ -58,7 +57,7 @@ const CartItem = ({ updateable, item }) => {
         )}
       </TableCell>
       <TableCell className={!updateable ? 'not-updateable' : null}>
-        <span className="hidden">ΤΙΜΗ</span>
+        <span className="hidden">PRICE</span>
         <span>
           <span className="cart-item-initial-price">
             {formatMoney.format(item.initialPrice)}
@@ -69,7 +68,7 @@ const CartItem = ({ updateable, item }) => {
           {`(${item.total}x${item.price})`}
         </span>
         {!updateable && item.total === 0 && (
-          <ToolTip title="Δεν υπάρχει πλέον διαθέσιμο το προϊόν. Παρακαλώ διαγράψτε το για να συνεχίσετε.">
+          <ToolTip title="This product is no longer available. Please remove it and proceed.">
             <IconButton
               onClick={() =>
                 dispatch(

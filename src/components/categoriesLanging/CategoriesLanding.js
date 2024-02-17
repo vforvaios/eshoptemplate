@@ -15,7 +15,7 @@ const CategoriesLanding = () => {
       <div className="row">
         <div className="wrapper">
           <div className="page-title text-center">
-            <h1>Κατηγορίες: ΓΥΝΑΙΚΑ</h1>
+            <h1>Category: SALES</h1>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@ const CategoriesLanding = () => {
                     src="https://via.placeholder.com/550x300"
                     alt="Category 1"
                   />
-                  <p>Μαλλιά</p>
+                  <p>Hair</p>
                 </li>
               ))}
             </ul>

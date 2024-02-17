@@ -18,7 +18,7 @@ const ForgotPassword = () => {
 
   const submitLoginForm = () => {
     if (email === '') {
-      setEmailError('Πρέπει να συμπληρώσετε email!');
+      setEmailError('You have to fill in your email!');
     } else {
       setEmailError('');
     }
@@ -46,7 +46,7 @@ const ForgotPassword = () => {
       <div className="row">
         <div className="wrapper">
           <div className=" text-center">
-            <h1 className="page-title">ΕΠΑΝΑΦΟΡΑ ΚΩΔΙΚΟΥ</h1>
+            <h1 className="page-title">RESET PASSWORD</h1>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
             <div className="form-control">
               <FormControl fullWidth>
                 <InputLabel htmlFor="login-email">
-                  ΟΝΟΜΑ ΧΡΗΣΤΗ/EMAIL
+                  USERNAME/EMAIL
                 </InputLabel>
                 <Input
                   fullWidth
@@ -74,7 +74,7 @@ const ForgotPassword = () => {
             <div className="form-control">
               <div className="actions">
                 <button className="button next" onClick={submitLoginForm}>
-                  ΕΠΑΝΑΦΟΡΑ
+                  RESET
                 </button>
               </div>
             </div>

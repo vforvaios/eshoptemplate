@@ -46,7 +46,7 @@ const Orders = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">ΟΙ ΠΑΡΑΓΓΕΛΙΕΣ ΜΟΥ</h1>
+            <h1 className="page-title">MY ORDERS</h1>
           </div>
         </div>
       </div>
@@ -63,24 +63,24 @@ const Orders = () => {
             <Table className="products-grid table">
               <TableHead>
                 <TableRow>
-                  <TableCell>ΚΩΔΙΚΟΣ</TableCell>
-                  <TableCell>ΗΜΕΡΟΜΗΝΙΑ</TableCell>
-                  <TableCell>ΟΝΟΜΑ</TableCell>
+                  <TableCell>CODE</TableCell>
+                  <TableCell>DATE</TableCell>
+                  <TableCell>NAME</TableCell>
                   <TableCell>EMAIL</TableCell>
-                  <TableCell>ΤΙΜΗ</TableCell>
-                  <TableCell>ΤΕΜΑΧΙΑ</TableCell>
-                  <TableCell>ΚΑΤΑΣΤΑΣΗ</TableCell>
+                  <TableCell>PRICE</TableCell>
+                  <TableCell>QUANTITY</TableCell>
+                  <TableCell>STATUS</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {orders?.map((order) => (
-                  <Order order={order} key={order?.id} toggleOrder={() => {}} />
+                  <Order order={order} key={order?.id} toggleOrder={() => { }} />
                 ))}
               </TableBody>
             </Table>
           ) : (
             <div className="page-not-found-countainer">
-              <h2>Δεν υπάρχουν παραγγελίες</h2>
+              <h2>No orders found.</h2>
             </div>
           )}
         </div>

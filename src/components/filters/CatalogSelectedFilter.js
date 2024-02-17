@@ -15,7 +15,7 @@ const CatalogSelectedFilter = ({
 
   return (
     <div className="filter-box">
-      <div className="filter-title orange">ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ</div>
+      <div className="filter-title orange">SELECTED FILTERS</div>
       <ul className="selected-filters-list">
         {selectedFilters?.selectedCategory && (
           <li

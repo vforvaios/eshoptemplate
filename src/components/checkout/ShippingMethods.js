@@ -15,7 +15,7 @@ const ShippingMethods = () => {
 
   return (
     <div className="shipping-methods">
-      <h3>ΤΡΟΠΟΙ ΑΠΟΣΤΟΛΗΣ</h3>
+      <h3>SHIPPING METHODS</h3>
       <FormControl>
         <RadioGroup
           aria-labelledby="payment-methods"
@@ -27,11 +27,10 @@ const ShippingMethods = () => {
               key={shippingmethod?.id}
               value={shippingmethod?.name}
               control={<Radio />}
-              label={`${shippingmethod?.name} ${
-                shippingmethod?.cost > 0
+              label={`${shippingmethod?.name} ${shippingmethod?.cost > 0
                   ? `(${formatMoney.format(shippingmethod.cost)})`
                   : ''
-              }`}
+                }`}
             />
           ))}
         </RadioGroup>

@@ -3,7 +3,7 @@ import React from 'react';
 const GeneralLoading = () => {
   return (
     <div className="loading full">
-      <span>Περιμένετε...</span>
+      <span>Wait...</span>
     </div>
   );
 };

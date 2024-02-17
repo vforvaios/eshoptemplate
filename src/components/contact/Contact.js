@@ -37,7 +37,7 @@ const Contact = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">Επικοινωνία</h1>
+            <h1 className="page-title">Contact</h1>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@ const Contact = () => {
         <div className="wrapper">
           <div className="form-control">
             <FormControl>
-              <InputLabel htmlFor="firstName">ΟΝΟΜΑ</InputLabel>
+              <InputLabel htmlFor="firstName">NAME</InputLabel>
               <Input
                 id="firstName"
                 type="text"
@@ -56,7 +56,7 @@ const Contact = () => {
           </div>
           <div className="form-control">
             <FormControl>
-              <InputLabel htmlFor="lastName">ΕΠΩΝΥΜΟ</InputLabel>
+              <InputLabel htmlFor="lastName">SURNAME</InputLabel>
               <Input
                 id="lastName"
                 type="text"
@@ -78,7 +78,7 @@ const Contact = () => {
           </div>
           <div className="form-control">
             <FormControl>
-              <InputLabel htmlFor="message">ΜΗΝΥΜΑ</InputLabel>
+              <InputLabel htmlFor="message">MESSAGE</InputLabel>
               <Input
                 id="message"
                 type="text"
@@ -94,7 +94,7 @@ const Contact = () => {
       <div className="row">
         <div className="wrapper">
           <div className="actions">
-            <button className="button next">ΑΠΟΣΤΟΛΗ</button>
+            <button className="button next">SEND</button>
           </div>
         </div>
       </div>

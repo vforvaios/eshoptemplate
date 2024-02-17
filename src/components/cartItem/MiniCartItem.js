@@ -19,13 +19,12 @@ const MiniCartItem = ({ item, setToggleValue }) => {
           <span>
             <img
               className="cart-item-image"
-              src={`${process.env.REACT_APP_IMAGES_URL}/${
-                item?.imgHref?.indexOf('#') !== -1
+              src={`${process.env.REACT_APP_IMAGES_URL}/${item?.imgHref?.indexOf('#') !== -1
                   ? item?.imgHref
-                      ?.substr(0, item?.imgHref.lastIndexOf('#') - 1)
-                      ?.split('#')?.[0]
+                    ?.substr(0, item?.imgHref.lastIndexOf('#') - 1)
+                    ?.split('#')?.[0]
                   : item?.imgHref
-              }`}
+                }`}
               alt="product description"
             />
           </span>
@@ -60,7 +59,7 @@ const MiniCartItem = ({ item, setToggleValue }) => {
           </div>
         </div>
         {item.total === 0 && (
-          <ToolTip title="Δεν υπάρχει πλέον διαθέσιμο το προϊόν. Παρακαλώ διαγράψτε το για να συνεχίσετε.">
+          <ToolTip title="This product is no longer available. Please remove it and proceed.">
             <IconButton
               onClick={() =>
                 dispatch(

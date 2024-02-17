@@ -15,14 +15,14 @@ const ChangePassword = () => {
 
   const submitChangePasswordForm = () => {
     if (password === '') {
-      setPasswordError('Πρέπει να συμπληρώσετε κωδικό!');
+      setPasswordError('You have to fill in your password!');
     } else {
       setPasswordError('');
     }
 
     if (confirmPassword === '' || confirmPassword !== password) {
       setConfirmPasswordError(
-        'Πρέπει να συμπληρώσετε κωδικό ή δεν ταιριάζουν οι 2 κωδικοί!',
+        'You have to fill in your password or passwords are not the same!',
       );
     } else {
       setConfirmPasswordError('');
@@ -48,7 +48,7 @@ const ChangePassword = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">ΑΛΛΑΓΗ ΚΩΔΙΚΟΥ</h1>
+            <h1 className="page-title">CHANGE PASSWORD</h1>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@ const ChangePassword = () => {
           <div className="login-container">
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">ΝΕΟΣ ΚΩΔΙΚΟΣ</InputLabel>
+                <InputLabel htmlFor="login-password">NEW PASSWORD</InputLabel>
                 <Input
                   fullWidth
                   error={passwordError !== ''}
@@ -74,7 +74,7 @@ const ChangePassword = () => {
             <div className="form-control">
               <FormControl fullWidth>
                 <InputLabel htmlFor="login-confirmpassword">
-                  ΕΠΙΒΕΒΑΙΩΣΗ ΚΩΔΙΚΟΥ
+                  CONFIRM PASSWORD
                 </InputLabel>
                 <Input
                   fullWidth
@@ -94,7 +94,7 @@ const ChangePassword = () => {
                 <button
                   className="button next"
                   onClick={submitChangePasswordForm}>
-                  ΑΛΛΑΓΗ
+                  CHANGE
                 </button>
               </div>
             </div>

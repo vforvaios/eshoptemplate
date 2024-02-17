@@ -56,20 +56,13 @@
 }
 
 .MuiDrawer-paper {
-  background: none !important;
+
 
   & .MuiSvgIcon-root {
     color: $white;
   }
 }
 
-.MuiDrawer-root.MuiDrawer-modal {
-  background: rgba(249, 249, 249, 1) !important;
-}
-
-.MuiBackdrop-root.MuiModal-backdrop {
-  background: none !important;
-}
 
 .main-menu {
   height: 100vh;
@@ -79,6 +72,7 @@
   align-items: flex-start;
   padding-left: 20px;
   flex-direction: column;
+  background-color: rgba(249, 249, 249, 1);
 
   * {
     font-family: 'Sackers Gothic Std';

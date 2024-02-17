@@ -18,7 +18,7 @@ const CookiesManagement = () => {
       expires={1000}
       onAccept={handleCookieAcceptOrDecline}
       onDecline={handleCookieAcceptOrDecline}>
-      Το SHOPPY χρησιμοποιεί cookies για την καλύτερη εμπειρία των χρηστών.
+      Tierra uses cookies for better experience.
     </CookieConsent>
   );
 };

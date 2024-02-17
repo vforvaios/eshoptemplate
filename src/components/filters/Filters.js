@@ -44,7 +44,7 @@ const Filters = () => {
           handleToggle(true);
         }}
         className="hidden button next filter-toggle">
-        ΦΙΛΤΡΑ
+        FILTERS
       </button>
       <div className={`filters-container ${toggleFilters ? 'open' : ''}`}>
         <ClickAwayListener
@@ -56,22 +56,22 @@ const Filters = () => {
             <button
               className="hidden button next filter-toggle"
               onClick={() => handleToggle(false)}>
-              ΚΛΕΙΣΙΜΟ
+              CLOSE
             </button>
             {(allFilters?.selectedCategory ||
               allFilters?.selectedSubCategory ||
               allFilters?.selectedBrand) && (
-              <CatalogSelectedFilter
-                categories={categoriesFilters}
-                subCategories={subCategoriesFilters}
-                brands={brandsFilters}
-                selectedFilters={allFilters}
-              />
-            )}
+                <CatalogSelectedFilter
+                  categories={categoriesFilters}
+                  subCategories={subCategoriesFilters}
+                  brands={brandsFilters}
+                  selectedFilters={allFilters}
+                />
+              )}
             <div className="filter-boxes">
               {/* PRICES */}
               <div className="filter-box">
-                <div className="filter-title">ΕΥΡΟΣ ΤΙΜΩΝ</div>
+                <div className="filter-title">PRICE RANGE</div>
                 <div className="filter-list prices">
                   <Slider
                     getAriaLabel={() => 'ευρώ'}
@@ -109,7 +109,7 @@ const Filters = () => {
                 </div>
               </div>
               <div className="filter-box">
-                <div className="filter-title">ΚΑΤΗΓΟΡΙΕΣ</div>
+                <div className="filter-title">CATEGORIES</div>
                 <ul className="filter-list">
                   {categoriesFilters?.map((category) => (
                     <li
@@ -122,11 +122,10 @@ const Filters = () => {
                           }),
                         );
                       }}
-                      className={`filter-option ${
-                        allFilters?.selectedCategory === category.id
-                          ? 'active'
-                          : ''
-                      }`}
+                      className={`filter-option ${allFilters?.selectedCategory === category.id
+                        ? 'active'
+                        : ''
+                        }`}
                       key={category?.id}>
                       {category?.name}
                     </li>
@@ -136,7 +135,7 @@ const Filters = () => {
 
               {/* SUB CATEGORIES */}
               <div className="filter-box">
-                <div className="filter-title">ΥΠΟΚΑΤΗΓΟΡΙΕΣ</div>
+                <div className="filter-title">SUB-CATEGORIES</div>
                 <ul className="filter-list">
                   {brandsFilters?.map((subCategory) => (
                     <li
@@ -149,11 +148,10 @@ const Filters = () => {
                           }),
                         );
                       }}
-                      className={`filter-option ${
-                        allFilters?.selectedBrand === subCategory.id
-                          ? 'active'
-                          : ''
-                      }`}
+                      className={`filter-option ${allFilters?.selectedBrand === subCategory.id
+                        ? 'active'
+                        : ''
+                        }`}
                       key={subCategory?.id}>
                       {subCategory?.name}
                     </li>

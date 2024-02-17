@@ -358,31 +358,31 @@
   "categories": [
     {
       "id": 1,
-      "name": "ΓΥΝΑΙΚΑ",
+      "name": "WINTER",
       "description": "fasdfasdasdfads2",
       "isActive": 1
     },
     {
       "id": 2,
-      "name": "ΑΝΤΡΑΣ",
+      "name": "SUMMER",
       "description": "kgjgkjgkjgkjgh",
       "isActive": 1
     },
     {
       "id": 3,
-      "name": "ΠΑΙΔΙ",
+      "name": "SALES",
       "description": "fasdfasdfadsfds",
       "isActive": 1
     },
     {
       "id": 4,
-      "name": "ΧΕΙΜΩΝΑΣ",
+      "name": "LUXURY",
       "description": null,
       "isActive": 1
     },
     {
       "id": 5,
-      "name": "ΚΑΛΟΚΑΙΡΙ",
+      "name": "SPRING",
       "description": null,
       "isActive": 1
     }
@@ -390,25 +390,25 @@
   "subcategories": [
     {
       "id": 1,
-      "name": "ΑΝΤΗΛΙΑΚΗ ΠΡΟΣΤΑΣΙΑ",
+      "name": "SOMETHING",
       "description": null,
       "isActive": 1
     },
     {
       "id": 2,
-      "name": "ΠΡΟΣΩΠΟ",
+      "name": "SOMETHING",
       "description": "",
       "isActive": 1
     },
     {
       "id": 3,
-      "name": "ΡΥΤΙΔΕΣ",
+      "name": "SOMETHING",
       "description": null,
       "isActive": 1
     },
     {
       "id": 4,
-      "name": "ΣΤΟΜΑΤΙΚΗ ΠΡΟΣΤΑΣΙΑ",
+      "name": "SOMETHING",
       "description": null,
       "isActive": 1
     }
@@ -2451,19 +2451,19 @@
   "paymentmethods": [
     {
       "id": 1,
-      "name": "ΑΝΤΙΚΑΤΑΒΟΛΗ",
+      "name": "PAY AT HOME",
       "description": null,
       "cost": 4
     },
     {
       "id": 2,
-      "name": "ΠΛΗΡΩΜΗ ΣΤΟ ΚΑΤΑΣΤΗΜΑ",
+      "name": "PAY AT STORE",
       "description": null,
       "cost": 0
     },
     {
       "id": 3,
-      "name": "ΚΑΤΑΘΕΣΗ ΣΕ ΤΡΑΠΕΖΑ",
+      "name": "BANK DEPOSIT",
       "description": null,
       "cost": 0
     }
@@ -2477,7 +2477,7 @@
     },
     {
       "id": 2,
-      "name": "ΠΑΡΑΛΑΒΗ ΑΠΟ ΤΟ ΚΑΤΑΣΤΗΜΑ",
+      "name": "STORE PICKUP",
       "description": null,
       "cost": 0
     }
@@ -2549,7 +2549,7 @@
       "paymentMethodCost": 0,
       "shippingMethodCost": 0,
       "statusId": 1,
-      "statusName": "ΚΑΤΑΧΩΡΗΘΗΚΕ",
+      "statusName": "ADDED",
       "piFirstName": "fasd",
       "piLastName": "fads",
       "piAddress": "fasdfasd 11",
@@ -2575,7 +2575,7 @@
     "pastStatuses": [
       {
         "id": 1,
-        "name": "ΚΑΤΑΧΩΡΗΘΗΚΕ",
+        "name": "ADDED",
         "dateCreated": "2022-12-22T11:51:41.000Z"
       }
     ]

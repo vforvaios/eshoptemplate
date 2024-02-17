@@ -43,11 +43,11 @@ const BillingShippingInputs = ({
 
   return (
     <div>
-      <h3>{billing ? 'ΔΙΕΥΘΥΝΣΗ ΑΠΟΣΤΟΛΗΣ' : 'ΔΙΕΥΘΥΝΣΗ ΠΛΗΡΩΜΗΣ'}</h3>
+      <h3>{billing ? 'SHIPPING ADDRESS' : 'PAYMENT ADDRESS'}</h3>
       {!billing && (
         <>
           <FormControlLabel
-            label="Ίδιο με πληρωμή"
+            label="Same as payment"
             control={
               <Checkbox
                 checked={sameAsBilling}
@@ -61,7 +61,7 @@ const BillingShippingInputs = ({
         <FormControl
           fullWidth
           className={errors?.includes('name') ? 'error' : ''}>
-          <InputLabel htmlFor="name">ΟΝΟΜΑ</InputLabel>
+          <InputLabel htmlFor="name">NAME</InputLabel>
           <Input
             fullWidth
             id="name"
@@ -76,7 +76,7 @@ const BillingShippingInputs = ({
         <FormControl
           fullWidth
           className={errors?.includes('lastName') ? 'error' : ''}>
-          <InputLabel htmlFor="lastName">ΕΠΩΝΥΜΟ</InputLabel>
+          <InputLabel htmlFor="lastName">SURNAME</InputLabel>
           <Input
             fullWidth
             id="lastName"
@@ -104,7 +104,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="phone">ΤΗΛΕΦΩΝΟ</InputLabel>
+          <InputLabel htmlFor="phone">PHONE</InputLabel>
           <Input
             fullWidth
             id="phone"
@@ -119,7 +119,7 @@ const BillingShippingInputs = ({
         <FormControl
           fullWidth
           className={errors?.includes('mobile') ? 'error' : ''}>
-          <InputLabel htmlFor="mobile">ΚΙΝΗΤΟ</InputLabel>
+          <InputLabel htmlFor="mobile">MOBILE</InputLabel>
           <Input
             fullWidth
             id="mobile"
@@ -134,7 +134,7 @@ const BillingShippingInputs = ({
         <FormControl
           fullWidth
           className={errors?.includes('address') ? 'error' : ''}>
-          <InputLabel htmlFor="address">ΔΙΕΥΘΥΝΣΗ</InputLabel>
+          <InputLabel htmlFor="address">ADDRESS</InputLabel>
           <Input
             fullWidth
             id="address"
@@ -149,7 +149,7 @@ const BillingShippingInputs = ({
         <FormControl
           fullWidth
           className={errors?.includes('postCode') ? 'error' : ''}>
-          <InputLabel htmlFor="postCode">Τ.Κ.</InputLabel>
+          <InputLabel htmlFor="postCode">POSTCODE</InputLabel>
           <Input
             fullWidth
             id="postCode"
@@ -162,7 +162,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="city">ΠΟΛΗ</InputLabel>
+          <InputLabel htmlFor="city">CITY</InputLabel>
           <Input
             fullWidth
             id="city"
@@ -175,7 +175,7 @@ const BillingShippingInputs = ({
           />
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel htmlFor="region">ΠΕΡΙΟΧΗ</InputLabel>
+          <InputLabel htmlFor="region">AREA</InputLabel>
           <Input
             fullWidth
             id="region"
@@ -189,13 +189,13 @@ const BillingShippingInputs = ({
         </FormControl>
         <FormControl variant="standard" fullWidth>
           <InputLabel className="select-label" htmlFor="billing-country-label2">
-            ΧΩΡΑ
+            COUNTRY
           </InputLabel>
           <Select
             labelId="billing-country-label2"
             id="billing-country-label"
             value={Number(country) || ''}
-            label="Χώρα"
+            label="COUNTRY"
             onChange={(e) => {
               dispatch(setInfo({ key: 'country', name: e.target.value }));
               dispatch(setGeneralLoading(true));
@@ -217,13 +217,13 @@ const BillingShippingInputs = ({
           <InputLabel
             className="select-label"
             htmlFor="billing-prefecture-label2">
-            ΝΟΜΟΣ
+            PREFECTURE
           </InputLabel>
           <Select
             labelId="billing-prefecture-label2"
             id="billing-prefecture-label"
             value={Number(prefecture) || ''}
-            label="ΝΟΜΟΣ"
+            label="PREFECTURE"
             onChange={(e) => {
               dispatch(setInfo({ key: 'prefecture', name: e.target.value }));
               dispatch(setGeneralLoading(true));

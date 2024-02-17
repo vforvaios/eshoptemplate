@@ -27,7 +27,7 @@ const Wishlist = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">ΑΓΑΠΗΜΕΝΑ</h1>
+            <h1 className="page-title">FAVORITES</h1>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@ const Wishlist = () => {
             ) : (
               <div className="products">
                 <h3 className="no-products">
-                  Δεν έχετε αγαπημένα προϊόντα στη λίστα!
+                  No favorites in the list!
                 </h3>
               </div>
             )}

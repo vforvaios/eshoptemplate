@@ -15,7 +15,7 @@ const PaymentMethods = () => {
 
   return (
     <div className="payment-methods">
-      <h3>ΤΡΟΠΟΙ ΠΛΗΡΩΜΗΣ</h3>
+      <h3>PAYMENT METHODS</h3>
       <FormControl>
         <RadioGroup
           aria-labelledby="payment-methods"
@@ -27,11 +27,10 @@ const PaymentMethods = () => {
               key={paymentmethod?.id}
               value={paymentmethod?.name}
               control={<Radio />}
-              label={`${paymentmethod?.name} ${
-                paymentmethod?.cost > 0
+              label={`${paymentmethod?.name} ${paymentmethod?.cost > 0
                   ? `(${formatMoney.format(paymentmethod.cost)})`
                   : ''
-              }`}
+                }`}
             />
           ))}
         </RadioGroup>

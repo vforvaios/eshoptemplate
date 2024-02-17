@@ -22,14 +22,14 @@ const Cart = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">Το καλάθι μου</h1>
+            <h1 className="page-title">My Cart</h1>
             <div className="total-cart-items">
               {myCart?.reduce((acc, curr) => {
                 acc = Number(acc) + Number(curr?.total);
 
                 return acc;
               }, 0)}{' '}
-              τεμάχια στο καλάθι
+              item(s) in my cart
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ const Cart = () => {
             <div className="wrapper">
               <div className="actions separate">
                 <button className="button back">
-                  <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
+                  <Link to="/catalog">Back to catalog...</Link>
                 </button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="navigation next">
@@ -68,7 +68,7 @@ const Cart = () => {
             <div className="wrapper">
               <div className="actions separate">
                 <button className="button back">
-                  <Link to="/catalog">ΠΙΣΩ ΣΤΟΝ ΚΑΤΑΛΟΓΟ...</Link>
+                  <Link to="/catalog">Back to catalog...</Link>
                 </button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="navigation next">

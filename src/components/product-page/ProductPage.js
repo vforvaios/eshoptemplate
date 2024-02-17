@@ -95,7 +95,7 @@ const ProductPage = () => {
                 variant="body2"
                 component="p"
                 className="product-code">
-                <span>Κωδικός: {code}</span>
+                <span>Code: {code}</span>
               </Typography>
 
               <div className="price-container for-product-page">
@@ -121,7 +121,7 @@ const ProductPage = () => {
                     e.preventDefault();
                     dispatch(addToCart(product));
                   }}>
-                  ΑΓΟΡΑ
+                  BUY
                 </button>
                 <IconButton
                   className="product-action"
@@ -140,7 +140,7 @@ const ProductPage = () => {
       {productLargeDescription && (
         <div className="row">
           <div className="wrapper">
-            <div className="section-title">ΠΕΡΙΓΡΑΦΗ</div>
+            <div className="section-title">DESCRIPTION</div>
             <div
               dangerouslySetInnerHTML={{ __html: productLargeDescription }}
             />
@@ -149,7 +149,7 @@ const ProductPage = () => {
       )}
       <div className="row">
         <div className="wrapper">
-          <RelevantProducts title="ΣΧΕΤΙΚΑ ΠΡΟΪΟΝΤΑ" products={relProducts} />
+          <RelevantProducts title="RELEVANT PRODUCTS" products={relProducts} />
         </div>
       </div>
     </div>

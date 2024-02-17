@@ -19,6 +19,10 @@ body {
   }
 }
 
+.MuiInputLabel-root {
+  font-family: 'Sackers Gothic Std' !important;
+}
+
 img {
   vertical-align: middle;
 }
@@ -30,6 +34,10 @@ img {
 
   .content {
     min-height: unset;
+  }
+
+  &.user {
+    padding-top: 120px;
   }
 }
 
