@@ -33,7 +33,7 @@ const CheckoutEdit = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">ΔΙΕΥΘΥΝΣΗ ΚΑΙ ΠΛΗΡΩΜΗ</h1>
+            <h1 className="page-title">ADDRESS AND PAYMENT</h1>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@ const CheckoutEdit = () => {
             <button
               className="button next"
               onClick={() => dispatch(checkOrderInfo())}>
-              ΕΠΙΒΕΒΑΙΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
+              CONFIRM ORDER
             </button>
           </div>
         </div>
@@ -80,7 +80,7 @@ const CheckoutEdit = () => {
             <button
               className="button next"
               onClick={() => dispatch(checkOrderInfo())}>
-              ΕΠΙΒΕΒΑΙΩΣΗ ΠΑΡΑΓΓΕΛΙΑΣ
+              CONFIRM ORDER
             </button>
           </div>
         </div>

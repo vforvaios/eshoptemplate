@@ -112,7 +112,7 @@ const ProductPage = () => {
                 {productDescription}
               </Typography>
               <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
-                <span>{stock > 0 ? 'Διαθέσιμο' : 'Μη διαθέσιμο'}</span>
+                <span>{stock > 0 ? 'Available' : 'Not Available'}</span>
               </p>
               <div className="product-page-actions">
                 <button

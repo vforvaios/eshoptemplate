@@ -44,11 +44,11 @@ const Cart = () => {
                 </button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="navigation next">
-                    ΑΓΟΡΑ...
+                    CHECKOUT...
                   </Link>
                 ) : (
                   <Link to="/checkout/step2" className="navigation next">
-                    ΑΓΟΡΑ...
+                    CHECKOUT...
                   </Link>
                 )}
               </div>
@@ -72,11 +72,11 @@ const Cart = () => {
                 </button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="navigation next">
-                    ΑΓΟΡΑ...
+                    CHECKOUT...
                   </Link>
                 ) : (
                   <Link to="/checkout/step2" className="navigation next">
-                    ΑΓΟΡΑ...
+                    CHECKOUT...
                   </Link>
                 )}
               </div>

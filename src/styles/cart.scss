@@ -172,6 +172,7 @@
   display: flex;
   gap: 4px;
   margin-bottom: 12px;
+  align-items: center;
 
   &:last-child {
     margin-bottom: 0;
@@ -228,5 +229,6 @@
 
   * {
     cursor: pointer;
+    font-size: 12px;
   }
 }
