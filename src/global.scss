@@ -43,7 +43,8 @@ img {
   &.wishlist,
   &.orders-page,
   &.contact-page,
-  &.productPage {
+  &.productPage,
+  &.catalog {
     padding-top: 120px;
   }
 }
@@ -114,6 +115,10 @@ ul {
 }
 
 // TITLES
+.MuiTypography-root {
+  font-family: 'Sackers Gothic Std' !important;
+}
+
 .section-title {
   font-size: 36px;
   font-weight: 300;

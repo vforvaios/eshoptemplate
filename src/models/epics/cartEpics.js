@@ -74,22 +74,22 @@ const addToCartEpic = (action$, state$) =>
             return cartItem.productId !== productId
               ? { ...cartItem }
               : {
-                  ...cartItem,
-                  price,
-                  imgHref,
-                  initialPrice,
-                  total: Number(Number(cartItem.total) + 1),
-                  totalPrice: Number(
-                    (Number(cartItem?.total) + 1) * Number(cartItem?.price),
-                  ),
-                };
+                ...cartItem,
+                price,
+                imgHref,
+                initialPrice,
+                total: Number(Number(cartItem.total) + 1),
+                totalPrice: Number(
+                  (Number(cartItem?.total) + 1) * Number(cartItem?.price),
+                ),
+              };
           });
         }
 
         return [
           setCart(newCart),
           toggleShowAlert({
-            message: `Το προϊόν προστέθηκε στο καλάθι.`,
+            message: `Product added to cart.`,
             type: 'success',
             show: true,
           }),

@@ -11,6 +11,11 @@
 
   thead {
     display: none;
+
+    th {
+      font-family: 'Sackers Gothic Std' !important;
+      font-size: 10px !important;
+    }
   }
 
   tbody {
@@ -37,7 +42,7 @@
     }
 
     tr:hover {
-      background: $black;
+      background: $color-2;
     }
   }
 

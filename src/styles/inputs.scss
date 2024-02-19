@@ -21,7 +21,9 @@
   }
 }
 
-
+.MuiAutocomplete-inputRoot {
+  background: none !important;
+}
 
 input::placeholder {
   font-family: 'Sackers Gothic Std' !important;

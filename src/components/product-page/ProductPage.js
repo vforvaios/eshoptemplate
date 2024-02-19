@@ -71,7 +71,7 @@ const ProductPage = () => {
         <div className="wrapper">
           <Grid container>
             <Grid item sm={6} xs={12} className="mainProductPhotosContainer">
-              {isNew ? <div className="is-new">ΝΕΟ</div> : null}
+              {isNew ? <div className="is-new">NEW</div> : null}
               <div className="price-container">
                 <span className="discount absolute">
                   {getPercentage(initialPrice, price)}%
