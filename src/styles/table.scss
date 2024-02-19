@@ -1,18 +1,21 @@
 .table {
   display: block;
+
   tr {
     display: block;
     position: relative;
-    border-bottom: 1px solid $color-7;
+    border-bottom: 1px solid $black;
     margin-bottom: 10px;
     transition: all 0.2s ease-in-out;
   }
+
   thead {
     display: none;
   }
 
   tbody {
     display: block;
+
     td {
       display: block;
       text-align: left;
@@ -34,7 +37,7 @@
     }
 
     tr:hover {
-      background: $shadow;
+      background: $black;
     }
   }
 

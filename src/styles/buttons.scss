@@ -2,7 +2,7 @@
   background: transparent;
   border: 0 none;
   font-size: 12px;
-  color: $color-3;
+  color: $black;
   transition: all 0.2s ease-in-out;
   font-family: 'Sackers Gothic Std';
   padding: 8px;
@@ -35,7 +35,7 @@
   }
 
   &.next {
-    background: $color-1 !important;
+    background: $black !important;
     border: 0 none;
     color: $white;
   }
@@ -52,7 +52,7 @@ a {
   border: 0 none;
   font-size: 12px;
   font-family: 'Sackers Gothic Std';
-  color: $color-1;
+  color: $black;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   padding: 4px;
@@ -76,7 +76,7 @@ a {
       color: $white;
       border: 0 none;
       font-size: 12px;
-      background: $color-1;
+      background: $black;
       border-radius: 4px;
       padding: 8px;
       min-width: 150px;
@@ -87,6 +87,6 @@ a {
 .button.next[disabled] {
   cursor: default;
   pointer-events: none;
-  background: $shadow !important;
+  background: $black !important;
   color: $disabled;
 }

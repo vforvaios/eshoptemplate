@@ -6,7 +6,7 @@
   margin-top: 8px;
 
   >* {
-    color: $color-1;
+    color: $black;
     margin-bottom: 12px;
     font-size: 9px;
     cursor: pointer;
@@ -63,6 +63,11 @@
   }
 }
 
+.icon-menu:before {
+  color: $black;
+  font-size: 20px;
+}
+
 
 .main-menu {
   height: 100vh;
@@ -87,7 +92,7 @@
 .MuiDrawer-paperAnchorLeft {
   right: auto !important;
   padding: 20px;
-  background-color: $color-1 !important;
+  background-color: $black !important;
   width: 100%;
   max-width: 340px;
   z-index: 1000000 !important;
@@ -157,18 +162,18 @@
   }
 
   label {
-    color: $color-4 !important;
+    color: $black !important;
     z-index: 1;
     left: 4px !important;
     top: 0 !important;
   }
 
   .MuiInput-underline:after {
-    border-color: $shadow;
+    border-color: $black;
   }
 
   svg {
-    color: $color-6 !important;
+    color: $black !important;
   }
 }
 
@@ -182,8 +187,10 @@
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: $color-2;
+    color: $color-1;
   }
+
+
 }
 
 .closeMenu {

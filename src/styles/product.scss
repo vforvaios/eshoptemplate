@@ -43,7 +43,7 @@
       box-orient: vertical;
       margin-bottom: 10px;
       text-align: left;
-      color: $color-6 !important;
+      color: $black !important;
 
       &.in-stock {
         margin: 8px 0 0;
@@ -87,7 +87,7 @@
         min-height: unset;
         line-clamp: unset;
         overflow: auto;
-        color: $color-6 !important;
+        color: $black !important;
         margin-bottom: 0;
         padding-right: 4px;
       }
@@ -107,7 +107,7 @@
 
   &.MuiIconButton-root {
     padding: 6px;
-    color: $color-1;
+    color: $black;
   }
 }
 
@@ -115,9 +115,9 @@
   border: none;
   padding: 2px;
   background: none;
-  color: $color-1;
+  color: $black;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -167,7 +167,7 @@
     font-size: 14px;
     font-weight: bold;
     padding: 0 4px;
-    background: $shadow;
+    background: $black;
     margin-left: 10px;
 
     &.absolute {
@@ -197,7 +197,7 @@
 
   .MuiGrid-container .product-code {
     margin-bottom: 20px;
-    color: $color-6;
+    color: $black;
     font-weight: 300;
   }
 
@@ -236,6 +236,7 @@
 .mainProductRightSection {
   .product-description {
     margin-bottom: 16px;
+    font-family: 'Sackers Gothic Std';
   }
 
   .in-stock {
@@ -323,12 +324,12 @@
 .is-new {
   font-weight: 700;
   font-family: 'Sackers Gothic Std' !important;
-  font-size: 8px;
+  font-size: 10px;
   color: $black;
   background-color: $white;
   position: absolute;
   z-index: 1;
-  padding: 5px 6px 6px;
+  padding: 7px 6px 9px;
   right: 0;
   top: 12px;
   text-align: center;
@@ -337,7 +338,7 @@
 
 .subHeader {
   font-size: 12px !important;
-  color: $color-3 !important;
+  color: $black !important;
   text-align: left;
   margin-bottom: 12px;
   -webkit-line-clamp: 1;
@@ -353,7 +354,7 @@
 .productImage {
   transition: all 0.2s ease-in-out;
   position: relative;
-  height: 220px;
+  height: 180px;
 
   img {
     width: 100%;
@@ -378,7 +379,7 @@
 .product-description {
   margin-bottom: 10px;
   text-align: left;
-  color: $color-6 !important;
+  color: $black !important;
 }
 
 .navlink.product {

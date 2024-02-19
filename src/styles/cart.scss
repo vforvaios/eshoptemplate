@@ -19,29 +19,20 @@
 
   span {
     position: absolute;
-    font-size: 10px;
-    width: 18px;
-    height: 18px;
+    font-size: 8px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background-color: $alert;
-    color: $white;
+    color: $black;
     text-align: center;
-    line-height: 14px;
+    line-height: 10px;
     top: 0;
-    right: -9px;
-    border: 1px solid $white;
+    right: -3px;
+    border: 1px solid $black;
 
   }
 
-  i img {
-    width: 30px;
-    height: 30px;
-  }
 
-  svg {
-    fill: $white;
-    font-size: 32px;
-  }
 }
 
 .user-icon {
@@ -62,7 +53,7 @@
     cursor: pointer;
 
     &:hover {
-      color: $color-2;
+      color: $color-1;
     }
   }
 }
@@ -95,7 +86,7 @@
 }
 
 .cart-totals-container {
-  border: 1px solid $shadow;
+  border: 1px solid $black;
 }
 
 .cart-totals-row {
@@ -128,11 +119,11 @@
   margin-right: 10px;
   font-size: 14px;
   text-decoration: line-through;
-  color: $color-2;
+  color: $color-1;
 }
 
 .cart-totals-row-title {
-  background: $color-3;
+  background: $black;
   margin-bottom: 0;
   color: $black;
   font-size: 16px;
@@ -146,7 +137,7 @@
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: $color-2;
+    color: $color-1;
   }
 }
 

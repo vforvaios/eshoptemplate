@@ -64,6 +64,8 @@ const Footer = () => {
                         <Link to={`/static/${page?.id}`}>{page?.title}</Link>
                       </li>
                     ))}
+                    <li><Link to="/">Working Hours: 9:00 - 17:00</Link></li>
+                    <li><Link to="/">Phone: 1234567890</Link></li>
                   </ul>
                 </div>
                 <div>
@@ -96,8 +98,7 @@ const Footer = () => {
                     <li><Link to="/">Instagram</Link></li>
                     <li><Link to="/">X - Twitter</Link></li>
                     <li><Link to="/">Facebook</Link></li>
-                    <li><Link to="/">Working Hours: 9:00 - 17:00</Link></li>
-                    <li><Link to="/">Phone: 1234567890</Link></li>
+
                   </ul>
                 </div>
               </div>

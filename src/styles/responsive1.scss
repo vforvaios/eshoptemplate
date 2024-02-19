@@ -94,7 +94,7 @@
       font-weight: bold;
       font-size: 18px;
       text-align: center;
-      border-color: $shadow;
+      border-color: $black;
 
       &:first-child {
         text-align: left;
@@ -195,7 +195,7 @@
   flex-direction: row;
   align-items: flex-start;
   flex-grow: 1;
-  gap: 30px;
+  gap: 60px;
 }
 
 .footer-newsletter {

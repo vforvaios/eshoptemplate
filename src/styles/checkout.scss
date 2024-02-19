@@ -18,7 +18,7 @@
       margin: 0 10px;
 
       &.active {
-        background-color: $color-1;
+        background-color: $black;
         color: $white;
       }
     }
@@ -71,10 +71,10 @@
 
 .guest-login-container {
   text-align: center;
-  border: 1px solid $shadow;
+  border: 1px solid $black;
 
   .guest-title {
-    background: $shadow;
+    background: $black;
     font-weight: bold;
     padding: 10px;
   }
@@ -82,7 +82,7 @@
   .guest-content {
     padding: 40px;
 
-    & > div {
+    &>div {
       margin-bottom: 20px;
     }
   }

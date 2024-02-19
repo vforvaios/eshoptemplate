@@ -6,19 +6,21 @@
   }
 
   .MuiPaginationItem-root {
-    color: $color-6;
+    color: $black;
   }
 
   .MuiPaginationItem-page {
     &.Mui-selected {
-      background-color: $color-1 !important;
+      background-color: $black !important;
       color: $white !important;
+
       &:hover {
-        background-color: $color-1 !important;
+        background-color: $black !important;
       }
     }
+
     &:hover {
-      background-color: $shadow !important;
+      background-color: $black !important;
     }
   }
 }

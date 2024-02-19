@@ -53,10 +53,11 @@ const ProductPage = () => {
     touchMove: true,
   };
 
-  const allImgHrefs = imgHref
-    ?.substr(0, imgHref.lastIndexOf('#'))
-    .split('#')
-    ?.map((imag) => imag);
+  const allImgHrefs = imgHref.indexOf('#') !== -1
+    ? imgHref?.substr(0, imgHref.lastIndexOf('#'))
+      .split('#')
+      ?.map((imag) => imag)
+    : [imgHref];
 
   return (
     <div className="productPage content">
@@ -80,7 +81,8 @@ const ProductPage = () => {
                 {allImgHrefs?.map((myImage, index) => (
                   <img
                     key={`${myImage}_${index}`}
-                    src={`${process.env.REACT_APP_IMAGES_URL}/${myImage}`}
+                    // src={`${process.env.REACT_APP_IMAGES_URL}/${myImage}`}
+                    src={`${process.env.PUBLIC_URL}/${myImage}`}
                     alt={productTitle}
                     title={productTitle}
                   />
@@ -130,7 +132,7 @@ const ProductPage = () => {
                     e.preventDefault();
                     dispatch(addProductWishlist(id));
                   }}>
-                  <i className="icon-heart-empty"><img src={`${process.env.PUBLIC_URL}/heart.svg`} /></i>
+                  <i className="icon-heart-empty" />
                 </IconButton>
               </div>
             </Grid>
@@ -140,7 +142,7 @@ const ProductPage = () => {
       {productLargeDescription && (
         <div className="row">
           <div className="wrapper">
-            <div className="section-title">DESCRIPTION</div>
+            <div className="section-title-small">DESCRIPTION</div>
             <div
               dangerouslySetInnerHTML={{ __html: productLargeDescription }}
             />
@@ -149,7 +151,7 @@ const ProductPage = () => {
       )}
       <div className="row">
         <div className="wrapper">
-          <RelevantProducts title="RELEVANT PRODUCTS" products={relProducts} />
+          <RelevantProducts title="COLOR OPTIONS" products={relProducts} />
         </div>
       </div>
     </div>

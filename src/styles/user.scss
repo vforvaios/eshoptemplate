@@ -21,7 +21,7 @@
     padding: 0;
 
     li {
-      color: $color-1;
+      color: $black;
       font-size: 14px;
       font-weight: 700;
       line-height: 1;
@@ -39,12 +39,12 @@
         padding: 16px;
         font-size: 16px;
         color: $black;
-        background: $shadow;
+        background: $black;
         text-align: center;
         cursor: default;
 
         &:hover {
-          background: $shadow;
+          background: $black;
         }
       }
     }
