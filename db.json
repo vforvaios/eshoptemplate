@@ -215,7 +215,7 @@
     "data": {
       "name": "purse.jpg"
     },
-    "preview": "logo.png"
+    "preview": "logo2.jpg"
   },
   "staticcontentactive": {
     "data": [
@@ -314,7 +314,7 @@
     "productDescription": "This is the best bag ever!",
     "productSubHeader": "Sub Header 3",
     "stock": 160,
-    "imgHref": "purse.jpg#img_1.jpeg#",
+    "imgHref": "img_1.jpeg#img_1.jpeg#",
     "price": 40,
     "initialPrice": 50,
     "code": "fsd8fws2",

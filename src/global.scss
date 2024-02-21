@@ -58,6 +58,11 @@ ul {
   padding: 0;
 }
 
+.MuiSelect-select,
+.MuiList-root * {
+  font-family: 'Sackers Gothic Std' !important;
+}
+
 .row {
   width: 100%;
   margin-bottom: 50px;
@@ -137,6 +142,10 @@ ul {
   color: $black;
   letter-spacing: 1px;
   font-family: 'Cormorant', serif;
+}
+
+.withCursor {
+  cursor: pointer;
 }
 
 .page-title {
