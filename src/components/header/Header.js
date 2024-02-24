@@ -42,8 +42,10 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
     }
   }, [location.pathname]);
 
+  console.log(location.pathname);
+
   return (
-    <Grid container className="headerContainer">
+    <Grid container className={`headerContainer ${location.pathname === "/" ? 'home-page-header' : ''}`}>
       <Grid item sm={3}>
         <div className="menu-icon-align" onClick={setToggleValue('top', true)}>
           <i className="header-icon icon-menu" />
@@ -61,7 +63,7 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
           <img
             // TODO - REMOVE
             // src={logoImage?.preview}
-            src={`${process.env.PUBLIC_URL}/logo2.jpg`}
+            src={`${process.env.PUBLIC_URL}/${location.pathname === '/' ? 'white-logo.png' : 'black-logo.png'}`}
             alt={logoImage?.data?.name}
             className="logo-image"
           />
