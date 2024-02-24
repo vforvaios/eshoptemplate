@@ -68,10 +68,8 @@ const Catalog = () => {
       <div className="row catalog content">
         <div className="wrapper">
           <div className="grid-container catalog-container">
-            <section className="col-left filters">
-              <Filters />
-            </section>
             <section className="col-right products-section">
+              <Filters />
               {products?.length > 0 ? (
                 <>
                   <div className="sorting-section">

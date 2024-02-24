@@ -43,7 +43,7 @@ const Filters = () => {
           e.stopPropagation();
           handleToggle(true);
         }}
-        className="hidden button next filter-toggle">
+        className="button next filter-toggle">
         FILTERS
       </button>
       <div className={`filters-container ${toggleFilters ? 'open' : ''}`}>
@@ -54,7 +54,7 @@ const Filters = () => {
           }}>
           <div>
             <button
-              className="hidden button next filter-toggle"
+              className="button next filter-toggle"
               onClick={() => handleToggle(false)}>
               CLOSE
             </button>

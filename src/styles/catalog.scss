@@ -12,13 +12,13 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 
-  & > li {
+  &>li {
     flex-basis: 50%;
     max-width: 50%;
     padding: 0 4px;
     margin-bottom: 20px;
 
-    & > div {
+    &>div {
       width: 100%;
     }
   }
@@ -48,6 +48,7 @@
 
 .catalog-pagination {
   margin-right: 0;
+
   .MuiPagination-ul {
     display: flex;
   }

@@ -50,13 +50,7 @@
   max-width: 360px;
 }
 
-.filters-container {
-  position: static;
-  transform: none !important;
-  box-shadow: none;
-  max-width: unset;
-  padding: 0;
-}
+
 
 .catalog-container {
   flex-direction: row;
@@ -153,6 +147,13 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.catalog .products-grid>li {
+  flex-basis: 25%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 
 // CHECKOUT
 .checkout-stepper-container {
