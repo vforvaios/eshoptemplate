@@ -1,6 +1,10 @@
 .table {
   display: block;
 
+  * {
+    font-family: 'Sackers Gothic Std' !important;
+  }
+
   tr {
     display: block;
     position: relative;

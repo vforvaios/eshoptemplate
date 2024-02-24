@@ -51,6 +51,7 @@ img {
 
 .hidden {
   display: inline-block;
+  font-size: 10px;
 }
 
 ul {
@@ -61,6 +62,7 @@ ul {
 .MuiSelect-select,
 .MuiList-root * {
   font-family: 'Sackers Gothic Std' !important;
+  font-size: 12px !important;
 }
 
 .row {
@@ -149,7 +151,7 @@ ul {
 }
 
 .page-title {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 300;
   text-align: center;
   margin: 0 0 20px;

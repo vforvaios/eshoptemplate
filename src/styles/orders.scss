@@ -38,14 +38,19 @@
   h3 {
     margin: 0;
     margin-bottom: 12px;
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 
 .order-info {
   margin-bottom: 6px;
+  font-size: 12px;
 
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+h3 {
+  font-size: 14px;
 }

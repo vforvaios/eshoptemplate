@@ -39,7 +39,7 @@ const CheckoutSuccess = () => {
       <div className="row">
         <div className="wrapper">
           <div className="checkout-success">
-            <h2>ΣΥΓΧΑΡΗΤΗΡΙΑ!</h2>
+            <h2>GONGRATULATIONS!</h2>
             <div className="success-message">
               Your order has been completed. You will very soon get an email
               with all the relevant information. Thank you very much for

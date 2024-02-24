@@ -21,6 +21,27 @@
   }
 }
 
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="checkbox"],
+.billing-prefecture-label {
+  font-family: 'Sackers Gothic Std' !important;
+  font-size: 10px !important;
+}
+
+.MuiFormControlLabel-label {
+  font-size: 12px !important;
+}
+
+.shipping-methods,
+.payment-methods {
+  .MuiFormControlLabel-label {
+    font-size: 10px !important;
+  }
+}
+
 .MuiAutocomplete-inputRoot {
   background: none !important;
 }

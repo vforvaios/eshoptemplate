@@ -12,7 +12,7 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
   return (
     <div className="mini-cart-drawer-wrapper">
       <div>
-        <h1 className="page-title">My Cart</h1>
+        <h1 className="page-title">MY CART</h1>
         <i
           className="hidden"
           onClick={setToggleValue('right', false)}

@@ -59,7 +59,7 @@
 }
 
 .totalPrice {
-  font-size: 18px;
+  font-size: 14px;
   margin-right: 10px;
 }
 
@@ -117,9 +117,9 @@
 
 .cart-item-initial-price {
   margin-right: 10px;
-  font-size: 14px;
+  font-size: 10px;
   text-decoration: line-through;
-  color: $color-1;
+  color: $black;
 }
 
 .cart-totals-row-title {
@@ -200,7 +200,7 @@
   }
 
   .totalPrice {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .mini-cart-prices {

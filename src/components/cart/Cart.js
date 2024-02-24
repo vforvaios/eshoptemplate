@@ -22,7 +22,7 @@ const Cart = () => {
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
-            <h1 className="page-title">My Cart</h1>
+            <h1 className="page-title">MY CART</h1>
             <div className="total-cart-items">
               {myCart?.reduce((acc, curr) => {
                 acc = Number(acc) + Number(curr?.total);
