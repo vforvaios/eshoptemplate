@@ -63,7 +63,7 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
           <img
             // TODO - REMOVE
             // src={logoImage?.preview}
-            src={`${process.env.PUBLIC_URL}/${location.pathname === '/' ? 'white-logo.png' : 'black-logo.png'}`}
+            src={`${process.env.PUBLIC_URL}/${location.pathname === '/' ? 'black-logo.png' : 'black-logo.png'}`}
             alt={logoImage?.data?.name}
             className="logo-image"
           />
