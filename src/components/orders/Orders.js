@@ -63,13 +63,13 @@ const Orders = () => {
             <Table className="products-grid table">
               <TableHead>
                 <TableRow>
-                  <TableCell>CODE</TableCell>
-                  <TableCell>DATE</TableCell>
-                  <TableCell>NAME</TableCell>
-                  <TableCell>EMAIL</TableCell>
-                  <TableCell>PRICE</TableCell>
-                  <TableCell>QUANTITY</TableCell>
-                  <TableCell>STATUS</TableCell>
+                  <TableCell>Code</TableCell>
+                  <TableCell>Date</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>Price</TableCell>
+                  <TableCell>Quantity</TableCell>
+                  <TableCell>Status</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

@@ -69,7 +69,7 @@ const Login = () => {
           <div className="login-container">
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">USERNAME</InputLabel>
+                <InputLabel htmlFor="login-email">Username</InputLabel>
                 <Input
                   fullWidth
                   id="login-email"
@@ -85,7 +85,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">PASSWORD</InputLabel>
+                <InputLabel htmlFor="login-password">Password</InputLabel>
                 <Input
                   fullWidth
                   error={passwordError !== ''}
@@ -100,16 +100,18 @@ const Login = () => {
               </FormControl>
             </div>
             <div className="form-control">
-              <div className="actions">
+              <div className="actions login-actions separate">
                 <Link className="minor-link mrl12" to="/forgotpassword">
-                  FORGOT MY PASSWORD
+                  Forgot my password
                 </Link>
-                <button className="button next" onClick={submitLoginForm}>
-                  LOGIN
-                </button>
-                <Link className="button next mrl12" to="/register">
-                  REGISTER
-                </Link>
+                <div>
+                  <button className="button next" onClick={submitLoginForm}>
+                    Login
+                  </button>
+                  <Link className="button next mrl12" to="/register">
+                    Register
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

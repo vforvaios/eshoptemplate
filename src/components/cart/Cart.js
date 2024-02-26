@@ -23,14 +23,6 @@ const Cart = () => {
         <div className="wrapper">
           <div className="text-center">
             <h1 className="page-title">MY CART</h1>
-            <div className="total-cart-items">
-              {myCart?.reduce((acc, curr) => {
-                acc = Number(acc) + Number(curr?.total);
-
-                return acc;
-              }, 0)}{' '}
-              item(s) in my cart
-            </div>
           </div>
         </div>
       </div>
@@ -40,15 +32,15 @@ const Cart = () => {
             <div className="wrapper">
               <div className="actions separate">
                 <button className="button back">
-                  <Link to="/catalog">Back to catalog...</Link>
+                  <Link to="/catalog">Back to catalog</Link>
                 </button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="navigation next">
-                    CHECKOUT...
+                    Checkout
                   </Link>
                 ) : (
                   <Link to="/checkout/step2" className="navigation next">
-                    CHECKOUT...
+                    Checkout
                   </Link>
                 )}
               </div>
@@ -68,15 +60,15 @@ const Cart = () => {
             <div className="wrapper">
               <div className="actions separate">
                 <button className="button back">
-                  <Link to="/catalog">Back to catalog...</Link>
+                  <Link to="/catalog">Back to catalog</Link>
                 </button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="navigation next">
-                    CHECKOUT...
+                    Checkout
                   </Link>
                 ) : (
                   <Link to="/checkout/step2" className="navigation next">
-                    CHECKOUT...
+                    Checkout
                   </Link>
                 )}
               </div>

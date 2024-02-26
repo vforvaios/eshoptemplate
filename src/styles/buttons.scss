@@ -14,7 +14,7 @@
   }
 
   &.MuiButtonBase-root {
-    border: 1px solid #000;
+    border: 1px solid $color-3;
 
     &.green {
       background-color: green;
@@ -35,9 +35,9 @@
   }
 
   &.next {
-    background: $black !important;
-    border: 0 none;
-    color: $white;
+    background: $white !important;
+    border: 1px solid $color-3;
+    color: $black;
   }
 
   a {

@@ -32,6 +32,7 @@ const CartItem = ({ updateable, item }) => {
           </span>
           <span>{item.productTitle}</span>
         </div>
+        <div className="minor-text">* 3 days needed</div>
       </TableCell>
       <TableCell>
         <span className="hidden">QUANTITY</span>
@@ -65,7 +66,6 @@ const CartItem = ({ updateable, item }) => {
           <strong className="totalPrice">
             {formatMoney.format(item.price * item.total)}{' '}
           </strong>
-          {`(${item.total}x${item.price})`}
         </span>
         {!updateable && item.total === 0 && (
           <ToolTip title="This product is no longer available. Please remove it and proceed.">

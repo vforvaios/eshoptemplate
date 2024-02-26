@@ -84,7 +84,7 @@ const Register = () => {
           <div className="login-container">
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-username">USERNAME</InputLabel>
+                <InputLabel htmlFor="login-username">Username</InputLabel>
                 <Input
                   fullWidth
                   id="login-username"
@@ -100,7 +100,7 @@ const Register = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">EMAIL</InputLabel>
+                <InputLabel htmlFor="login-email">Email</InputLabel>
                 <Input
                   fullWidth
                   id="login-email"
@@ -116,7 +116,7 @@ const Register = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-password">PASSWORD</InputLabel>
+                <InputLabel htmlFor="login-password">Password</InputLabel>
                 <Input
                   fullWidth
                   error={passwordError !== ''}
@@ -133,7 +133,7 @@ const Register = () => {
             <div className="form-control">
               <FormControl fullWidth>
                 <InputLabel htmlFor="login-confirmpassword">
-                  CONFIRM PASSWORD
+                  Confirm password
                 </InputLabel>
                 <Input
                   fullWidth
@@ -151,10 +151,10 @@ const Register = () => {
             <div className="form-control">
               <div className="actions">
                 <button className="button next" onClick={submitRegisterForm}>
-                  REGISTER
+                  Register
                 </button>
                 <Link className="button next mrl12" to="/login">
-                  LOGIN
+                  Login
                 </Link>
               </div>
             </div>

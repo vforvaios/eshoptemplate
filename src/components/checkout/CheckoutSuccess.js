@@ -39,10 +39,10 @@ const CheckoutSuccess = () => {
       <div className="row">
         <div className="wrapper">
           <div className="checkout-success">
-            <h2>GONGRATULATIONS!</h2>
+            <h2>Thank you!</h2>
             <div className="success-message">
-              Your order has been completed. You will very soon get an email
-              with all the relevant information. Thank you very much for
+              Your order has been completed. You will soon get an email
+              with all the relevant information.<br />Thank you very much for
               choosing us.
             </div>
           </div>

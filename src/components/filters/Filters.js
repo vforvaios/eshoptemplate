@@ -44,7 +44,7 @@ const Filters = () => {
           handleToggle(true);
         }}
         className="button next filter-toggle">
-        FILTERS
+        Filters
       </button>
       <div className={`filters-container ${toggleFilters ? 'open' : ''}`}>
         <ClickAwayListener
@@ -54,9 +54,9 @@ const Filters = () => {
           }}>
           <div>
             <button
-              className="button next filter-toggle"
+              className="filter-toggle"
               onClick={() => handleToggle(false)}>
-              CLOSE
+              <i className="icon-cancel-circled" />
             </button>
             {(allFilters?.selectedCategory ||
               allFilters?.selectedSubCategory ||

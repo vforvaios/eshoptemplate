@@ -42,7 +42,7 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
               }),
             );
           }}>
-          CLOSE
+          Close
         </div>
         {itemsLength > 0 && (
           <div
@@ -58,7 +58,7 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
                 }),
               );
             }}>
-            PROCEED
+            Proceed
           </div>
         )}
       </div>

@@ -46,7 +46,7 @@
 .user-icon,
 .usermenu-container {
   i {
-    font-size: 28px;
+    font-size: 22px;
     color: $white;
     margin-left: 16px;
     transition: all 0.2s ease-in-out;
@@ -86,7 +86,7 @@
 }
 
 .cart-totals-container {
-  border: 1px solid $black;
+  border: 1px solid $color-3;
 }
 
 .cart-totals-row {
@@ -123,12 +123,13 @@
 }
 
 .cart-totals-row-title {
-  background: $black;
+  background: $white;
   margin-bottom: 0;
-  color: $white;
+  color: $black;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
+  border-bottom: 1px solid $color-3;
 }
 
 .icon-shopping-basket {
@@ -221,5 +222,13 @@
   * {
     cursor: pointer;
     font-size: 12px;
+  }
+}
+
+.cart-page {
+  a.navigation.next {
+    background: $white;
+    color: $black;
+    border: 1px solid $color-3;
   }
 }

@@ -46,12 +46,12 @@ const CheckoutEdit = () => {
         <div className="wrapper">
           <div className="actions separate">
             <button className="button back">
-              <Link to="/catalog">Back to catalog...</Link>
+              <Link to="/catalog">Back to catalog</Link>
             </button>
             <button
               className="button next"
               onClick={() => dispatch(checkOrderInfo())}>
-              CONFIRM ORDER
+              Confirm order
             </button>
           </div>
         </div>
@@ -75,12 +75,12 @@ const CheckoutEdit = () => {
         <div className="wrapper">
           <div className="actions separate">
             <button className="button back">
-              <Link to="/catalog">Back to catalog...</Link>
+              <Link to="/catalog">Back to catalog</Link>
             </button>
             <button
               className="button next"
               onClick={() => dispatch(checkOrderInfo())}>
-              CONFIRM ORDER
+              Confirm
             </button>
           </div>
         </div>

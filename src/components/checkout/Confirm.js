@@ -65,7 +65,7 @@ const Confirm = () => {
           <div className="wrapper">
             <div className="actions separate">
               <button className="button back">
-                <Link to="/checkout/step2">EDIT ORDER</Link>
+                <Link to="/checkout/step2">Edit order</Link>
               </button>
               {productsAreUpdated && (
                 <button
@@ -135,7 +135,7 @@ const Confirm = () => {
           <div className="wrapper">
             <div className="actions separate">
               <button className="button back">
-                <Link to="/checkout/step2">EDIT ORDER</Link>
+                <Link to="/checkout/step2">Edit order</Link>
               </button>
               <button
                 disabled={productsAreUpdated}
@@ -144,7 +144,7 @@ const Confirm = () => {
                   dispatch(sendOrder());
                 }}
                 className="button next">
-                COMPLETE ORDER
+                Complete order
               </button>
             </div>
           </div>

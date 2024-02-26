@@ -70,6 +70,9 @@
 
 .header-icon {
   fill: $black;
+  width: 20px;
+  height: 20px;
+  line-height: 16px;
 }
 
 .menuIcon {
@@ -104,5 +107,6 @@
     color: $black;
     font-size: 10px;
     font-family: 'Sackers Gothic Std';
+    margin-left: 4px;
   }
 }

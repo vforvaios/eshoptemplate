@@ -28,7 +28,7 @@ img {
 }
 
 .content {
-  margin-bottom: 60px;
+  margin-bottom: 150px;
   min-height: 600px;
 
   .content {
@@ -44,7 +44,7 @@ img {
   &.contact-page,
   &.productPage,
   &.catalog {
-    padding-top: 120px;
+    padding-top: 70px;
   }
 }
 
@@ -98,6 +98,11 @@ ul {
   box-shadow: none !important;
 }
 
+.minor-text {
+  color: $disabled;
+  font-size: 8px;
+}
+
 // ACTIONS
 .actions {
   display: flex;
@@ -108,6 +113,16 @@ ul {
   &.separate {
     justify-content: space-between;
   }
+
+  .minor-link.mrl12,
+  .button.next {
+    margin-left: 2px !important;
+  }
+
+  * {
+    margin-bottom: 6px;
+  }
+
 }
 
 // PADDINGS, MARGINS

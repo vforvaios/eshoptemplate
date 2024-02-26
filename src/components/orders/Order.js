@@ -35,23 +35,23 @@ const Order = ({ order, toggleOrder }) => {
           id !== orderId ? dispatch(setOrderId(id)) : dispatch(setOrderId(''));
         }}>
         <TableCell>
-          <span className="hidden">CODE</span>
+          <span className="hidden">Code</span>
           {order_code}
         </TableCell>
         <TableCell>
-          <span className="hidden">DATE</span>
+          <span className="hidden">Date</span>
           {new Date(dateCreated).toLocaleString()}
         </TableCell>
         <TableCell>
-          <span className="hidden">NAME</span>
+          <span className="hidden">Name</span>
           {paymentFirstName} {paymentLastName}
         </TableCell>
         <TableCell>
-          <span className="hidden">EMAIL</span>
+          <span className="hidden">Email</span>
           {paymentEmail}
         </TableCell>
         <TableCell>
-          <span className="hidden">PRICE</span>
+          <span className="hidden">Price</span>
           {formatMoney.format(
             Number(totalOrderPrice) +
             Number(paymentMethodCost) +
@@ -59,7 +59,7 @@ const Order = ({ order, toggleOrder }) => {
           )}
         </TableCell>
         <TableCell>
-          <span className="hidden">QUANTITY</span>
+          <span className="hidden">Quantity</span>
           {totalItems}
         </TableCell>
         <TableCell>

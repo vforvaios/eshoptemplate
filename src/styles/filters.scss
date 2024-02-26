@@ -4,7 +4,7 @@
 }
 
 .filter-box {
-  border: 1px solid $black;
+  border: 1px solid $color-3;
   margin-bottom: 16px;
 
   &:last-child {
@@ -14,8 +14,8 @@
 
 .filter-title {
   padding: 8px;
-  background: $black;
-  color: $white;
+  background: $white;
+  color: $black;
   font-size: 10px;
   font-weight: 900;
   text-align: center;
@@ -133,11 +133,18 @@
 }
 
 .filter-toggle {
-  font-weight: 800;
+  font-weight: 100;
   letter-spacing: 1px;
-  font-size: 12px;
-  width: 100%;
+  font-size: 16px;
   margin-bottom: 12px;
+  background: none !important;
+  border: 0 none;
+  padding: 0;
+  cursor: pointer;
+
+  &.button.next {
+    padding: 0 8px 4px;
+  }
 }
 
 .filters-container {
@@ -152,6 +159,7 @@
   padding: 12px;
   width: 100%;
   max-width: 300px;
+  overflow-y: auto;
 
   &.open {
     transform: translate(0, 0);

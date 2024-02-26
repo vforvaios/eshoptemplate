@@ -8,7 +8,7 @@ const GuestCheckout = () => {
       <div className="guest-content">
         <div>or proceed as a guest</div>
         <Link className="button next" to="/checkout/step2">
-          LOGIN
+          Login
         </Link>
       </div>
     </div>

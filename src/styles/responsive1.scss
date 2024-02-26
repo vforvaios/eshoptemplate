@@ -189,6 +189,14 @@
 // ACTIONS
 .actions {
   flex-direction: row;
+
+  .button.next {
+    margin-left: 12px !important;
+  }
+
+  * {
+    margin-bottom: 0px;
+  }
 }
 
 // FOOTER
@@ -225,7 +233,7 @@
 }
 
 .page-title {
-  font-size: 36px;
+  font-size: 32px;
 }
 
 // PAGINATION
