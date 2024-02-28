@@ -82,8 +82,7 @@ const ProductPage = () => {
                 {allImgHrefs?.map((myImage, index) => (
                   <img
                     key={`${myImage}_${index}`}
-                    // src={`${process.env.REACT_APP_IMAGES_URL}/${myImage}`}
-                    src={`${process.env.PUBLIC_URL}/${myImage}`}
+                    src={`${process.env.REACT_APP_IMAGES_URL}/${myImage}`}
                     alt={productTitle}
                     title={productTitle}
                   />

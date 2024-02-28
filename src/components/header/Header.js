@@ -42,8 +42,6 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
     }
   }, [location.pathname]);
 
-  console.log(location.pathname);
-
   return (
     <Grid container className={`headerContainer ${location.pathname === "/" ? 'home-page-header' : ''}`}>
       <Grid item sm={3}>
@@ -61,9 +59,7 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
       <Grid item sm={6} className="logo">
         <Link to="/">
           <img
-            // TODO - REMOVE
-            // src={logoImage?.preview}
-            src={`${process.env.PUBLIC_URL}/${location.pathname === '/' ? 'black-logo.png' : 'black-logo.png'}`}
+            src={logoImage?.preview}
             alt={logoImage?.data?.name}
             className="logo-image"
           />

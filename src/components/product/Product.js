@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { withStyles } from '@mui/styles';
 import formatMoney from 'library/formatMoney';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styles from './styles';
@@ -21,8 +19,6 @@ const Product = ({ classes, product, isWishlist }) => {
     isNew,
   } = product;
 
-  const dispatch = useDispatch();
-
   return (
     <Link className="navlink product" to={`/product/${productId}`}>
       <Card className={classes?.root}>
@@ -32,9 +28,7 @@ const Product = ({ classes, product, isWishlist }) => {
               <img
                 alt={productTitle}
                 title={productTitle}
-                // TODO - REMOVE
-                // src={`${process.env.REACT_APP_IMAGES_URL}/${
-                src={`${process.env.PUBLIC_URL}/${imgHref.indexOf('#') !== -1
+                src={`${process.env.REACT_APP_IMAGES_URL}/${imgHref.indexOf('#') !== -1
                   ? imgHref.substr(0, imgHref.indexOf('#'))
                   : imgHref
                   }`}
