@@ -59,7 +59,7 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
       <Grid item sm={6} className="logo">
         <Link to="/">
           <img
-            src={logoImage?.preview}
+            src={`${process.env.REACT_APP_API}/${logoImage?.data.name}`}
             alt={logoImage?.data?.name}
             className="logo-image"
           />
