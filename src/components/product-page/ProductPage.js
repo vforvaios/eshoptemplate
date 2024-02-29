@@ -54,7 +54,7 @@ const ProductPage = () => {
     touchMove: true,
   };
 
-  const allImgHrefs = imgHref.indexOf('#') !== -1
+  const allImgHrefs = imgHref?.indexOf('#') !== -1
     ? imgHref?.substr(0, imgHref.lastIndexOf('#'))
       .split('#')
       ?.map((imag) => imag)
