@@ -30,7 +30,7 @@ const MainMenu = ({ setToggleValue }) => {
     <div className="main-menu">
       <div className="main-menu-header">
         <img
-          src={logoImage?.preview}
+          src={`${process.env.REACT_APP_IMAGES_URL}/${logoImage?.data.name}`}
           alt={logoImage?.data?.name}
           className="logo-image"
         />
