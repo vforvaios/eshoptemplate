@@ -8,7 +8,7 @@ const HomeSlider = ({ banners }) => {
       <ul>
         {banners?.map((banner, index) => (
           <li key={banner.id} tabIndex={index} style={{
-            backgroundImage: `url('${process.env.PUBLIC_URL}/${banner.imgHref}')`, backgroundRepeat: 'no-repeat',
+            backgroundImage: `url('${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}')`, backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center center', backgroundSize: 'cover',
           }}>
             <div>
