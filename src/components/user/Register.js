@@ -154,7 +154,7 @@ const Register = () => {
                   Register
                 </button>
                 <Link className="button next mrl12" to="/login">
-                  Login
+                  Go To Login
                 </Link>
               </div>
             </div>

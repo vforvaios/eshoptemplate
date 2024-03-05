@@ -33,7 +33,7 @@ const Wishlist = () => {
       </div>
       <div className="row">
         <div className="wrapper">
-          <div className="grid-container catalog-container">
+          <div className="grid-container catalog">
             {products?.length > 0 ? (
               <div className="products">
                 <ul className="products-grid">
@@ -46,9 +46,7 @@ const Wishlist = () => {
               </div>
             ) : (
               <div className="products">
-                <h3 className="no-products">
-                  No favorites in the list!
-                </h3>
+                <h3 className="no-products">No favorites in the list!</h3>
               </div>
             )}
           </div>

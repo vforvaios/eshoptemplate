@@ -109,7 +109,7 @@ const Login = () => {
                     Login
                   </button>
                   <Link className="button next mrl12" to="/register">
-                    Register
+                    Go To Register
                   </Link>
                 </div>
               </div>
