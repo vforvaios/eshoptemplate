@@ -60,6 +60,16 @@ const OrderDetails = ({ id }) => {
                   },
                 }}
               />
+              {displayedOrder.orderNotes && (
+                <div className="billing-shipping-box">
+                  <h3>Notes</h3>
+                  <div className="order-infos">
+                    <div className="order-info">
+                      <span>{displayedOrder.orderNotes}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

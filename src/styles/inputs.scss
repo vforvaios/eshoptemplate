@@ -26,9 +26,18 @@ input[type="password"],
 input[type="email"],
 input[type="number"],
 input[type="checkbox"],
+textarea,
 .billing-prefecture-label {
   font-family: 'Sackers Gothic Std' !important;
   font-size: 10px !important;
+}
+
+.MuiInputBase-multiline {
+  padding: 6px !important
+}
+
+textarea {
+  padding: 0px !important;
 }
 
 .MuiFormControlLabel-label {

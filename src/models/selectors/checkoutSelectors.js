@@ -10,6 +10,7 @@ const billingInfo = ({ checkoutReducer }) => checkoutReducer.billingInfo;
 const shippingInfo = ({ checkoutReducer }) => checkoutReducer.shippingInfo;
 
 const sameAsBilling = ({ checkoutReducer }) => checkoutReducer.sameAsBilling;
+const notes = ({ checkoutReducer }) => checkoutReducer.notes;
 
 const countries = ({ checkoutReducer }) => checkoutReducer.countries;
 const prefectures = ({ checkoutReducer }) => checkoutReducer.prefectures;
@@ -35,4 +36,5 @@ export {
   updatedProducts,
   countries,
   prefectures,
+  notes,
 };

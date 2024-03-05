@@ -1,6 +1,9 @@
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
 import SEO from 'components/seo/SEO';
-import { checkOrderInfo } from 'models/actions/checkoutActions';
+import { checkOrderInfo, setNotes } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
+import { notes } from 'models/selectors/checkoutSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -15,6 +18,7 @@ const CheckoutEdit = () => {
   const navigate = useNavigate();
   const cartItems = useSelector(cart);
   const dispatch = useDispatch();
+  const checkoutNotes = useSelector(notes);
 
   useEffect(() => {
     if (cartItems?.length === 0) {
@@ -61,6 +65,20 @@ const CheckoutEdit = () => {
           <div className="billing-shipping-container">
             <Billing />
           </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="wrapper">
+          <FormControl fullWidth>
+            <TextField
+              placeholder="Notes"
+              multiline
+              id="notes"
+              rows={2}
+              value={checkoutNotes}
+              onChange={(e) => dispatch(setNotes(e.target.value))}
+            />
+          </FormControl>
         </div>
       </div>
       <div className="row">

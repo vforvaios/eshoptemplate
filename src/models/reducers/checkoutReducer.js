@@ -14,9 +14,11 @@ import {
   setCountries,
   setPrefectures,
   changedPrefecture,
+  setNotes,
 } from 'models/actions/checkoutActions';
 
 const initialState = {
+  notes: '',
   updatedProducts: false,
   billingErrors: [],
   shippingErrors: [],
@@ -63,6 +65,10 @@ const checkoutReducer = createReducer(initialState, (builder) => {
     .addCase(changedPrefecture, (state, action) => ({
       ...state,
       prefectureIsChanged: action.payload,
+    }))
+    .addCase(setNotes, (state, action) => ({
+      ...state,
+      notes: action.payload,
     }))
     .addCase(setPrefectures, (state, action) => ({
       ...state,

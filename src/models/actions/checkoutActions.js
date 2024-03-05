@@ -12,6 +12,7 @@ const setBillingInfo = createAction('checkout/setBillingInfo');
 const setShippingInfo = createAction('checkout/setShippingInfo');
 const setReceipt = createAction('checkout/setReceipt');
 const setSameAsBilling = createAction('checkout/setSameAsBilling');
+const setNotes = createAction('checkout/setNotes');
 
 const sendOrder = createAction('checkout/sendOrder');
 const navigateToSuccessCheckout = createAction(
@@ -65,4 +66,5 @@ export {
   setPrefectures,
   changedPrefecture,
   changedCountry,
+  setNotes,
 };

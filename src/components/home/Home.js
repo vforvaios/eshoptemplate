@@ -4,7 +4,6 @@ import { getHomePageData } from 'models/actions/homeActions';
 import { getKeyWords } from 'models/actions/staticActions';
 import {
   homeOffers,
-  homeSections,
   homeBanners,
 } from 'models/selectors/homeSelectors';
 import { keywords } from 'models/selectors/staticSelectors';

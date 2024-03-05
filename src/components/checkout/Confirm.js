@@ -13,6 +13,7 @@ import {
   billingInfo,
   shippingInfo,
   sameAsBilling,
+  notes,
 } from 'models/selectors/checkoutSelectors';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,6 +22,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Confirm = () => {
   const myCart = useSelector(cart);
+  const orderNotes = useSelector(notes);
   const myOrderOK = useSelector(orderOK);
   const productsAreUpdated = useSelector(updatedProducts);
   const myBillingInfo = useSelector(billingInfo);
@@ -128,6 +130,16 @@ const Confirm = () => {
                   },
                 }}
               />
+              {orderNotes && (
+                <div className="billing-shipping-box">
+                  <h3>Notes</h3>
+                  <div className="order-infos">
+                    <div className="order-info">
+                      <span>{orderNotes}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
