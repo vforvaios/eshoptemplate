@@ -34,7 +34,6 @@ const BillingShippingInputs = ({
     address,
     postCode,
     city,
-    region,
     country,
     prefecture,
   } = inputs;
@@ -171,19 +170,6 @@ const BillingShippingInputs = ({
             error={false}
             onChange={(e) =>
               dispatch(setInfo({ key: 'city', name: e.target.value }))
-            }
-          />
-        </FormControl>
-        <FormControl fullWidth>
-          <InputLabel htmlFor="region">AREA</InputLabel>
-          <Input
-            fullWidth
-            id="region"
-            type="text"
-            value={region}
-            error={false}
-            onChange={(e) =>
-              dispatch(setInfo({ key: 'region', name: e.target.value }))
             }
           />
         </FormControl>

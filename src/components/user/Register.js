@@ -2,6 +2,10 @@
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import SEO from 'components/seo/SEO';
 import { getKeyWords } from 'models/actions/staticActions';
 import { registerUser } from 'models/actions/userActions';
@@ -19,6 +23,7 @@ const Register = () => {
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [birthDate, setBirthDate] = useState(null);
   const dispatch = useDispatch();
   const pageKeywords = useSelector(keywords);
 
@@ -56,7 +61,15 @@ const Register = () => {
       confirmPassword !== '' &&
       password === confirmPassword
     ) {
-      dispatch(registerUser({ username, email, password, confirmPassword }));
+      dispatch(
+        registerUser({
+          username,
+          email,
+          password,
+          confirmPassword,
+          birthDate: birthDate || '',
+        }),
+      );
     }
   };
 
@@ -146,6 +159,20 @@ const Register = () => {
                 {confirmPasswordError !== '' && (
                   <span className="error-span">{confirmPasswordError}</span>
                 )}
+              </FormControl>
+            </div>
+            <div className="form-control">
+              <FormControl fullWidth>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <MobileDatePicker
+                    label="Birthdate"
+                    value={birthDate}
+                    onChange={(newValue) => {
+                      setBirthDate(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
               </FormControl>
             </div>
             <div className="form-control">

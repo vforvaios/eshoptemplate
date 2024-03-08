@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import SEO from 'components/seo/SEO';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import { clearOrder } from 'models/actions/checkoutActions';
 import { cart } from 'models/selectors/cartSelectors';
 import { canSeeSuccessPage } from 'models/selectors/checkoutSelectors';
@@ -15,6 +16,7 @@ const CheckoutSuccess = () => {
 
   const handleEventListener = () => {
     dispatch(clearOrder());
+    dispatch(setGeneralLoading(false));
   };
 
   useEffect(() => {
@@ -41,9 +43,10 @@ const CheckoutSuccess = () => {
           <div className="checkout-success">
             <h2>Thank you!</h2>
             <div className="success-message">
-              Your order has been completed. You will soon get an email
-              with all the relevant information.<br />Thank you very much for
-              choosing us.
+              Your order has been completed. You will soon get an email with all
+              the relevant information.
+              <br />
+              Thank you very much for choosing us.
             </div>
           </div>
         </div>
