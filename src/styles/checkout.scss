@@ -74,6 +74,7 @@
 .guest-login-container {
   text-align: center;
   border: 1px solid $color-3;
+  margin-top: -60px;
 
   .guest-title {
     background: $white;
@@ -86,7 +87,7 @@
   .guest-content {
     padding: 40px;
 
-    &>div {
+    & > div {
       margin-bottom: 20px;
     }
   }

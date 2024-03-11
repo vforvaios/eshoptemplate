@@ -29,11 +29,13 @@ const MainMenu = ({ setToggleValue }) => {
   return (
     <div className="main-menu">
       <div className="main-menu-header">
-        <img
-          src={`${process.env.REACT_APP_IMAGES_URL}/${logoImage?.data?.name}`}
-          alt={logoImage?.data?.name}
-          className="logo-image"
-        />
+        <div>
+          <img
+            src={`${process.env.REACT_APP_IMAGES_URL}/${logoImage?.data?.name}`}
+            alt={logoImage?.data?.name}
+            className="logo-image"
+          />
+        </div>
         <i
           className="icon-cancel-circled closeMenu"
           onClick={setToggleValue('top', false)}
@@ -71,16 +73,18 @@ const MainMenu = ({ setToggleValue }) => {
               {category?.subCategories?.length > 0 && (
                 <>
                   <span
-                    className={`submenu-item ${openSubMenu === category?.id && 'rotate'
-                      }`}>
+                    className={`submenu-item ${
+                      openSubMenu === category?.id && 'rotate'
+                    }`}>
                     <i
                       className="icon-down-dir"
                       onClick={() => setOpenSubMenu(category?.id)}
                     />
                   </span>
                   <div
-                    className={`submenu-container ${openSubMenu === category?.id && 'open'
-                      }`}>
+                    className={`submenu-container ${
+                      openSubMenu === category?.id && 'open'
+                    }`}>
                     {category?.subCategories?.map((subCategory) => (
                       <div
                         key={subCategory.id}

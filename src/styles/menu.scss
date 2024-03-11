@@ -5,7 +5,7 @@
   width: 100%;
   margin-top: 8px;
 
-  >* {
+  > * {
     color: $black;
     margin-bottom: 12px;
     font-size: 9px;
@@ -56,8 +56,6 @@
 }
 
 .MuiDrawer-paper {
-
-
   & .MuiSvgIcon-root {
     color: $white;
   }
@@ -67,7 +65,6 @@
   color: $black;
   font-size: 16px;
 }
-
 
 .main-menu {
   height: 100vh;
@@ -101,17 +98,22 @@
 
 .main-menu-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   position: absolute;
   top: 20px;
   right: 20px;
+  left: 20px;
 
   svg {
     cursor: pointer;
     width: 40px;
     height: 40px;
+  }
+
+  > div {
+    flex-grow: 1;
+    text-align: center;
   }
 }
 
@@ -125,8 +127,6 @@
   align-items: flex-start;
 }
 
-
-
 .main-menu-search-container {
   width: 280px;
   margin-top: -300px;
@@ -135,7 +135,7 @@
     font-family: 'Sackers Gothic Std' !important;
   }
 
-  >div {
+  > div {
     width: 100%;
     margin-bottom: 20px;
   }
@@ -158,7 +158,8 @@
     }
   }
 
-  .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root .MuiAutocomplete-inputRoot {
+  .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root
+    .MuiAutocomplete-inputRoot {
     padding-right: 60px;
   }
 
@@ -190,8 +191,6 @@
   &:hover {
     color: $color-1;
   }
-
-
 }
 
 .closeMenu {

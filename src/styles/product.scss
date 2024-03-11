@@ -94,7 +94,7 @@
     }
 
     &:hover {
-      .MuiCardMedia-root>div {
+      .MuiCardMedia-root > div {
         transform: scale(1.1);
       }
     }
@@ -136,13 +136,13 @@
   }
 
   &.for-product-page {
-    &>div {
+    & > div {
       justify-content: flex-start;
       width: auto;
     }
   }
 
-  &>div {
+  & > div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,7 +152,7 @@
     width: 100%;
     font-family: 'Sackers Gothic Std';
 
-    &>span {
+    & > span {
       margin-right: 4px;
       font-size: 7px;
       text-decoration: line-through;
@@ -209,18 +209,6 @@
       margin-bottom: 20px;
       padding: 0;
     }
-  }
-}
-
-.productPage .products-grid {
-  display: block;
-
-  .slick-list {
-    margin: 0 -10px;
-  }
-
-  .slick-slide>div {
-    padding: 0 10px;
   }
 }
 
@@ -284,7 +272,7 @@
     width: 100%;
   }
 
-  +div {
+  + div {
     padding-left: 0;
   }
 }
@@ -316,8 +304,6 @@
   box-orient: vertical;
   -webkit-box-orient: vertical;
   padding: 0;
-
-
 }
 
 .is-new {

@@ -54,11 +54,13 @@ const ProductPage = () => {
     touchMove: true,
   };
 
-  const allImgHrefs = imgHref?.indexOf('#') !== -1
-    ? imgHref?.substr(0, imgHref.lastIndexOf('#'))
-      .split('#')
-      ?.map((imag) => imag)
-    : [imgHref];
+  const allImgHrefs =
+    imgHref?.indexOf('#') !== -1
+      ? imgHref
+          ?.substr(0, imgHref.lastIndexOf('#'))
+          .split('#')
+          ?.map((imag) => imag)
+      : [imgHref];
 
   return (
     <div className="productPage content">
@@ -115,6 +117,11 @@ const ProductPage = () => {
               </Typography>
               <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
                 <span>{stock > 0 ? 'Available' : 'Not Available'}</span>
+                {stock > 0 ? (
+                  <span className="minor-text">(3 days needed)</span>
+                ) : (
+                  ''
+                )}
               </p>
               <div className="product-page-actions">
                 <button

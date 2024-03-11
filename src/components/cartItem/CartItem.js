@@ -21,18 +21,18 @@ const CartItem = ({ updateable, item }) => {
           <span>
             <img
               className="cart-item-image"
-              src={`${process.env.REACT_APP_IMAGES_URL}/${item?.imgHref?.indexOf('#') !== -1
-                ? item?.imgHref
-                  ?.substr(0, item?.imgHref.indexOf('#'))
-                  ?.split('#')?.[0]
-                : item?.imgHref
-                }`}
+              src={`${process.env.REACT_APP_IMAGES_URL}/${
+                item?.imgHref?.indexOf('#') !== -1
+                  ? item?.imgHref
+                      ?.substr(0, item?.imgHref.indexOf('#'))
+                      ?.split('#')?.[0]
+                  : item?.imgHref
+              }`}
               alt="product description"
             />
           </span>
           <span>{item.productTitle}</span>
         </div>
-        <div className="minor-text">* 3 days needed</div>
       </TableCell>
       <TableCell>
         <span className="hidden">QUANTITY</span>

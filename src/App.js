@@ -30,6 +30,8 @@ import { CookiesProvider } from 'react-cookie';
 import { HelmetProvider } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ScrollToTop from 'ScrollToTop';
+
 import 'fontello/css/fontello.css';
 
 const App = () => {
@@ -40,6 +42,7 @@ const App = () => {
     <CookiesProvider>
       <HelmetProvider>
         <Router>
+          <ScrollToTop />
           <Header />
           <Routes>
             <Route exact path="/" element={<Home />} />
