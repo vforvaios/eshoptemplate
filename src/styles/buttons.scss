@@ -87,6 +87,7 @@ a {
 .button.next[disabled] {
   cursor: default;
   pointer-events: none;
-  background: $black !important;
+  background: $color-3 !important;
   color: $disabled;
+  opacity: 0.5;
 }

@@ -9,8 +9,8 @@ const CookiesManagement = () => {
   return (
     <CookieConsent
       enableDeclineButton
-      buttonText="ΣΥΜΦΩΝΩ"
-      declineButtonText="ΔΕΝ ΣΥΜΦΩΝΩ"
+      buttonText="AGREE"
+      declineButtonText="REJECT"
       buttonClasses="button next"
       declineButtonClasses="button"
       buttonWrapperClasses="cookies-buttons"

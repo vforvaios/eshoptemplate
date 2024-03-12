@@ -5,16 +5,19 @@ import { getKeyWords } from 'models/actions/staticActions';
 import {
   homeOffers,
   homeBanners,
+  homeSections,
 } from 'models/selectors/homeSelectors';
 import { keywords } from 'models/selectors/staticSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import HomeOffersTabs from './home-offer-tabs/HomeOffersTabs';
+import HomeSections from './home-sections/HomeSections';
 import HomeSlider from './home-slider/HomeSlider';
 
 const Home = () => {
   const offers = useSelector(homeOffers);
+  const sections = useSelector(homeSections);
   const banners = useSelector(homeBanners);
   const pageKeywords = useSelector(keywords);
   const dispatch = useDispatch();
@@ -45,6 +48,7 @@ const Home = () => {
             </div>
           </div>
         )}
+        {sections?.length > 0 && <HomeSections sections={sections} />}
       </div>
     </>
   );

@@ -2,6 +2,10 @@
   .table tbody tr {
     cursor: pointer;
   }
+
+  td {
+    word-break: break-all;
+  }
 }
 
 .table tbody .order-details td:last-child {

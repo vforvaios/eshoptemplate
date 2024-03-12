@@ -40,22 +40,23 @@ const Catalog = () => {
   let concatedTitle = '';
   const category = allFilters?.selectedCategory
     ? categoriesFilters?.find((cat) => cat?.id === allFilters?.selectedCategory)
-      ?.name
+        ?.name
     : '';
 
   const subCategory = allFilters?.selectedSubCategory
     ? subCategoriesFilters?.find(
-      (subCat) => subCat?.id === allFilters?.selectedSubCategory,
-    )?.name
+        (subCat) => subCat?.id === allFilters?.selectedSubCategory,
+      )?.name
     : '';
 
   const brand = allFilters?.selectedBrand
     ? brandsFilters?.find((brand) => brand?.id === allFilters?.selectedBrand)
-      ?.name
+        ?.name
     : '';
 
-  concatedTitle = `${category !== '' ? category : ''} ${subCategory !== '' ? subCategory : ''
-    } ${brand !== '' ? brand : ''}`;
+  concatedTitle = `${category !== '' ? category : ''} ${
+    subCategory !== '' ? subCategory : ''
+  } ${brand !== '' ? brand : ''}`;
 
   return (
     <>

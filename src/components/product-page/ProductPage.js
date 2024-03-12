@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import RelevantProducts from 'components/relevant-products/RelevantProducts';
 import SEO from 'components/seo/SEO';
@@ -20,6 +21,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
+import spritesvg from 'sprite.svg';
 
 const ProductPage = () => {
   const dispatch = useDispatch();
@@ -130,7 +132,11 @@ const ProductPage = () => {
                     e.preventDefault();
                     dispatch(addToCart(product));
                   }}>
-                  BUY
+                  <Tooltip title="Add to cart">
+                    <svg className="header-icon">
+                      <use href={`${spritesvg}#cart`}></use>
+                    </svg>
+                  </Tooltip>
                 </button>
                 <IconButton
                   className="product-action"
@@ -139,7 +145,9 @@ const ProductPage = () => {
                     e.preventDefault();
                     dispatch(addProductWishlist(id));
                   }}>
-                  <i className="icon-heart-empty" />
+                  <Tooltip title="Add to favorites">
+                    <i className="icon-heart-empty" />
+                  </Tooltip>
                 </IconButton>
               </div>
             </Grid>

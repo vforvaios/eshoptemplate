@@ -3,9 +3,9 @@ import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
+import { DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import SEO from 'components/seo/SEO';
 import { getKeyWords } from 'models/actions/staticActions';
 import { registerUser } from 'models/actions/userActions';
@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
+  const [dateError, setDateError] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -164,10 +165,15 @@ const Register = () => {
             <div className="form-control">
               <FormControl fullWidth>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
+                  <DatePicker
                     label="Birthdate"
                     value={birthDate}
-                    onChange={(newValue) => {
+                    onChange={(newValue, context) => {
+                      if (context.validationError !== null) {
+                        setDateError(true);
+                      } else {
+                        setDateError(false);
+                      }
                       setBirthDate(newValue);
                     }}
                     renderInput={(params) => <TextField {...params} />}
@@ -177,7 +183,10 @@ const Register = () => {
             </div>
             <div className="form-control">
               <div className="actions">
-                <button className="button next" onClick={submitRegisterForm}>
+                <button
+                  disabled={dateError}
+                  className="button next"
+                  onClick={submitRegisterForm}>
                   Register
                 </button>
                 <Link className="button next mrl12" to="/login">
