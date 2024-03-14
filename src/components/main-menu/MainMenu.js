@@ -11,7 +11,7 @@ import { logo } from 'models/selectors/homeSelectors';
 import { staticPagesInMenu } from 'models/selectors/staticSelectors';
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MainMenu = ({ setToggleValue }) => {
   const allCategories = useSelector(categories);
@@ -30,11 +30,13 @@ const MainMenu = ({ setToggleValue }) => {
     <div className="main-menu">
       <div className="main-menu-header">
         <div>
-          <img
-            src={`${process.env.REACT_APP_IMAGES_URL}/${logoImage?.data?.name}`}
-            alt={logoImage?.data?.name}
-            className="logo-image"
-          />
+          <Link to="/" onClick={setToggleValue('top', false)}>
+            <img
+              src={`${process.env.REACT_APP_IMAGES_URL}/${logoImage?.data?.name}`}
+              alt={logoImage?.data?.name}
+              className="logo-image"
+            />
+          </Link>
         </div>
         <i
           className="icon-cancel-circled closeMenu"
