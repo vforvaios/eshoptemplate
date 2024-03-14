@@ -61,13 +61,13 @@ const Filters = () => {
             {(allFilters?.selectedCategory ||
               allFilters?.selectedSubCategory ||
               allFilters?.selectedBrand) && (
-                <CatalogSelectedFilter
-                  categories={categoriesFilters}
-                  subCategories={subCategoriesFilters}
-                  brands={brandsFilters}
-                  selectedFilters={allFilters}
-                />
-              )}
+              <CatalogSelectedFilter
+                categories={categoriesFilters}
+                subCategories={subCategoriesFilters}
+                brands={brandsFilters}
+                selectedFilters={allFilters}
+              />
+            )}
             <div className="filter-boxes">
               {/* PRICES */}
               <div className="filter-box">
@@ -122,42 +122,46 @@ const Filters = () => {
                           }),
                         );
                       }}
-                      className={`filter-option ${allFilters?.selectedCategory === category.id
-                        ? 'active'
-                        : ''
-                        }`}
+                      className={`filter-option ${
+                        allFilters?.selectedCategory === category.id
+                          ? 'active'
+                          : ''
+                      }`}
                       key={category?.id}>
                       {category?.name}
                     </li>
                   ))}
                 </ul>
               </div>
-
               {/* SUB CATEGORIES */}
-              <div className="filter-box">
-                <div className="filter-title">SUB-CATEGORIES</div>
-                <ul className="filter-list">
-                  {brandsFilters?.map((subCategory) => (
-                    <li
-                      onClick={() => {
-                        dispatch(setGeneralLoading(true));
-                        dispatch(
-                          setSelectedFilter({
-                            type: 'selectedBrand',
-                            value: subCategory?.id,
-                          }),
-                        );
-                      }}
-                      className={`filter-option ${allFilters?.selectedBrand === subCategory.id
-                        ? 'active'
-                        : ''
-                        }`}
-                      key={subCategory?.id}>
-                      {subCategory?.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {process.env.REACT_APP_ENABLE_SUBCATEGORIES &&
+                process.env.REACT_APP_ENABLE_SUBCATEGORIES === 'true' && (
+                  <div className="filter-box">
+                    <div className="filter-title">SUB-CATEGORIES</div>
+                    <ul className="filter-list">
+                      {brandsFilters?.map((subCategory) => (
+                        <li
+                          onClick={() => {
+                            dispatch(setGeneralLoading(true));
+                            dispatch(
+                              setSelectedFilter({
+                                type: 'selectedBrand',
+                                value: subCategory?.id,
+                              }),
+                            );
+                          }}
+                          className={`filter-option ${
+                            allFilters?.selectedBrand === subCategory.id
+                              ? 'active'
+                              : ''
+                          }`}
+                          key={subCategory?.id}>
+                          {subCategory?.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
             </div>
           </div>
         </ClickAwayListener>
