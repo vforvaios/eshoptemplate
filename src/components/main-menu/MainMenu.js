@@ -68,48 +68,50 @@ const MainMenu = ({ setToggleValue }) => {
                 }}>
                 {category?.name}
               </span>
-              {category?.subCategories?.length > 0 && (
-                <>
-                  <span
-                    className={`submenu-item ${
-                      openSubMenu === category?.id && 'rotate'
-                    }`}>
-                    <i
-                      className="icon-down-dir"
-                      onClick={() => setOpenSubMenu(category?.id)}
-                    />
-                  </span>
-                  <div
-                    className={`submenu-container ${
-                      openSubMenu === category?.id && 'open'
-                    }`}>
-                    {category?.subCategories?.map((subCategory) => (
-                      <div
-                        key={subCategory.id}
-                        onClick={() => {
-                          dispatch(setGeneralLoading(true));
-                          dispatch(
-                            setSelectedCategoryAndSubCategory({
-                              category: category?.id,
-                              subCategory: subCategory?.id,
-                            }),
-                          );
-                          navigate('./catalog');
-                          myCloseMenuBtn.current.dispatchEvent(
-                            new MouseEvent('click', {
-                              view: window,
-                              bubbles: true,
-                              cancelable: true,
-                              buttons: 1,
-                            }),
-                          );
-                        }}>
-                        {subCategory?.name}
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
+              {process.env.REACT_APP_SHOWSUBCATEGORIESMENU &&
+                process.env.REACT_APP_SHOWSUBCATEGORIESMENU === 'true' &&
+                category?.subCategories?.length > 0 && (
+                  <>
+                    <span
+                      className={`submenu-item ${
+                        openSubMenu === category?.id && 'rotate'
+                      }`}>
+                      <i
+                        className="icon-down-dir"
+                        onClick={() => setOpenSubMenu(category?.id)}
+                      />
+                    </span>
+                    <div
+                      className={`submenu-container ${
+                        openSubMenu === category?.id && 'open'
+                      }`}>
+                      {category?.subCategories?.map((subCategory) => (
+                        <div
+                          key={subCategory.id}
+                          onClick={() => {
+                            dispatch(setGeneralLoading(true));
+                            dispatch(
+                              setSelectedCategoryAndSubCategory({
+                                category: category?.id,
+                                subCategory: subCategory?.id,
+                              }),
+                            );
+                            navigate('./catalog');
+                            myCloseMenuBtn.current.dispatchEvent(
+                              new MouseEvent('click', {
+                                view: window,
+                                bubbles: true,
+                                cancelable: true,
+                                buttons: 1,
+                              }),
+                            );
+                          }}>
+                          {subCategory?.name}
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
             </li>
           ))}
           {staticPages?.map((page, index) => (
