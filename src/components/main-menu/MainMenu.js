@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Search from 'components/searchHeader/Search';
 import {
   setSelectedCategory,
   setGeneralLoading,
@@ -43,9 +42,6 @@ const MainMenu = ({ setToggleValue }) => {
           onClick={setToggleValue('top', false)}
           ref={myCloseMenuBtn}
         />
-      </div>
-      <div className="main-menu-search-container">
-        <Search />
       </div>
       <div>
         <ul className="menu-list">

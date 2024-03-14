@@ -3,6 +3,7 @@ import Drawer from '@mui/material/Drawer';
 import Grid from '@mui/material/Grid';
 import MiniCart from 'components/cart/MiniCart';
 import MainMenu from 'components/main-menu/MainMenu';
+import Search from 'components/searchHeader/Search';
 import UserMenu from 'components/usermenu/UserMenu';
 import { withToggle } from 'library';
 import { getLogo } from 'models/actions/homeActions';
@@ -43,7 +44,11 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
   }, [location.pathname]);
 
   return (
-    <Grid container className={`headerContainer ${location.pathname === "/" ? 'home-page-header' : ''}`}>
+    <Grid
+      container
+      className={`headerContainer ${
+        location.pathname === '/' ? 'home-page-header' : ''
+      }`}>
       <Grid item sm={3}>
         <div className="menu-icon-align" onClick={setToggleValue('top', true)}>
           <i className="header-icon icon-menu" />
@@ -67,6 +72,8 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
       </Grid>
       <Grid item sm={3}>
         <div className="headerActions">
+          <Search />
+
           <MiniCart />
           <UserMenu token={userToken} />
         </div>

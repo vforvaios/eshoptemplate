@@ -10,7 +10,6 @@
   backdrop-filter: blur(5px);
 
   &.home-page-header {
-
     .header-icon {
       fill: $black;
     }
@@ -26,7 +25,7 @@
     }
   }
 
-  &>div {
+  & > div {
     color: $white;
   }
 
@@ -109,4 +108,76 @@
     font-family: 'Sackers Gothic Std';
     margin-left: 4px;
   }
+}
+
+.icon-search {
+  font-size: 22px;
+  color: $black;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-relative-container {
+  position: relative;
+}
+
+.main-menu-search-container {
+  width: 280px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: $white;
+  padding: 12px;
+  border: 1px solid $color-3;
+
+  * {
+    font-family: 'Sackers Gothic Std' !important;
+  }
+
+  > div {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  & .MuiInputBase-root {
+    background: $white;
+  }
+
+  .MuiFormControl-root {
+    position: relative;
+
+    .minor-loading {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translate(0, -50%);
+      font-size: 8px;
+      margin-top: 6px;
+      z-index: 1;
+    }
+  }
+
+  .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1qqsdnr-MuiAutocomplete-root
+    .MuiAutocomplete-inputRoot {
+    padding-right: 60px;
+  }
+
+  label {
+    color: $color-3 !important;
+    z-index: 1;
+    left: 4px !important;
+    top: 0 !important;
+  }
+
+  .MuiInput-underline:after {
+    border-color: $black;
+  }
+
+  svg {
+    color: $color-3 !important;
+  }
+}
+
+.MuiAutocomplete-popper {
+  z-index: 100000 !important;
 }
