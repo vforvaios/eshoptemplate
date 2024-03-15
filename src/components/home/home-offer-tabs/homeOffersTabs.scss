@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
-
 }
 
 .tabPanel,
@@ -26,7 +25,8 @@
   flex-wrap: wrap;
 }
 
-.offers-bg {
+.offers-bg,
+.home-section {
   .wrapper.small {
     padding-left: 22px;
     padding-right: 22px;

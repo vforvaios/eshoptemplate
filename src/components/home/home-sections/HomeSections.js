@@ -12,12 +12,12 @@ const settings = {
   touchMove: true,
   responsive: [
     {
-      breakpoint: 961,
+      breakpoint: 769,
       settings: {
         slidesToShow: 2,
+        slidesToScroll: 2,
       },
     },
-
   ],
 };
 
