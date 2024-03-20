@@ -14,6 +14,7 @@ const initialState = {
   banners: {
     results: [],
   },
+  lastBanner: {},
 };
 const homeReducer = createReducer(initialState, (builder) => {
   builder
@@ -35,6 +36,7 @@ const homeReducer = createReducer(initialState, (builder) => {
         ...state.offers,
         results: action.payload?.banners,
       },
+      lastBanner: action.payload?.lastBanner[0],
     }));
 });
 

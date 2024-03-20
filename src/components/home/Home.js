@@ -6,11 +6,13 @@ import {
   homeOffers,
   homeBanners,
   homeSections,
+  homeLastBanner,
 } from 'models/selectors/homeSelectors';
 import { keywords } from 'models/selectors/staticSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import HomeLastBanner from './home-last-banner/HomeLastBanner';
 import HomeOffersTabs from './home-offer-tabs/HomeOffersTabs';
 import HomeSections from './home-sections/HomeSections';
 import HomeSlider from './home-slider/HomeSlider';
@@ -19,6 +21,7 @@ const Home = () => {
   const offers = useSelector(homeOffers);
   const sections = useSelector(homeSections);
   const banners = useSelector(homeBanners);
+  const lastBanner = useSelector(homeLastBanner);
   const pageKeywords = useSelector(keywords);
   const dispatch = useDispatch();
 
@@ -49,6 +52,7 @@ const Home = () => {
           </div>
         )}
         {sections?.length > 0 && <HomeSections sections={sections} />}
+        {lastBanner && <HomeLastBanner banner={lastBanner} />}
       </div>
     </>
   );
