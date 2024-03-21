@@ -7,6 +7,7 @@ import SortingCatalog from 'components/sortingCatalog/SortingCatalog';
 import {
   getInitialCatalog,
   setGeneralLoading,
+  setInitialCatalogCategory,
 } from 'models/actions/catalogActions';
 import { getKeyWords } from 'models/actions/staticActions';
 import {
@@ -20,6 +21,7 @@ import {
 import { keywords } from 'models/selectors/staticSelectors';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -30,10 +32,13 @@ const Catalog = () => {
   const products = useSelector(catalogProducts);
   const pageKeywords = useSelector(keywords);
   const pagination = useSelector(catalogPagination);
+  const [searchParams] = useSearchParams();
+  const categoryParam = searchParams.get('category');
 
   useEffect(() => {
     dispatch(setGeneralLoading(true));
     dispatch(getKeyWords('catalog'));
+    dispatch(setInitialCatalogCategory(Number(categoryParam)));
     dispatch(getInitialCatalog());
   }, []);
 

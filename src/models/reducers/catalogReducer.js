@@ -18,6 +18,7 @@ import {
   setFilterSubCategories,
   setSearchedProducts,
   setSearchLoading,
+  setInitialCatalogCategory,
 } from 'models/actions/catalogActions';
 
 const initialState = {
@@ -78,6 +79,22 @@ const catalogReducer = createReducer(initialState, (builder) => {
       filters: {
         ...state.filters,
         [action.payload.type]: action.payload.value,
+      },
+      catalog: {
+        ...state.catalog,
+        pagination: {
+          ...state.catalog.pagination,
+          currentPage: 1,
+          total: 0,
+        },
+      },
+    }))
+    .addCase(setInitialCatalogCategory, (state, action) => ({
+      ...state,
+      filters: {
+        ...state.filters,
+        selectedCategory: action.payload,
+        selectedSubCategory: null,
       },
       catalog: {
         ...state.catalog,
