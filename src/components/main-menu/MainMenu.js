@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
-  setSelectedCategory,
   setGeneralLoading,
   setSelectedCategoryAndSubCategory,
 } from 'models/actions/catalogActions';
@@ -50,13 +49,7 @@ const MainMenu = ({ setToggleValue }) => {
               <span
                 className="menu-item-category"
                 onClick={() => {
-                  dispatch(setGeneralLoading(true));
-                  dispatch(
-                    setSelectedCategory({
-                      category: category?.id,
-                    }),
-                  );
-                  navigate('./catalog');
+                  navigate(`./catalog?category=${category?.id}`);
                   myCloseMenuBtn.current.dispatchEvent(
                     new MouseEvent('click', {
                       view: window,

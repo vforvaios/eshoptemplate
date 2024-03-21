@@ -40,7 +40,7 @@ const Catalog = () => {
     dispatch(getKeyWords('catalog'));
     dispatch(setInitialCatalogCategory(Number(categoryParam)));
     dispatch(getInitialCatalog());
-  }, []);
+  }, [categoryParam]);
 
   let concatedTitle = '';
   const category = allFilters?.selectedCategory

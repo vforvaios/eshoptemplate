@@ -4,6 +4,7 @@ import {
 } from 'models/actions/catalogActions';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const CatalogSelectedFilter = ({
   selectedFilters,
@@ -12,6 +13,7 @@ const CatalogSelectedFilter = ({
   brands,
 }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div className="filter-box">
@@ -21,6 +23,7 @@ const CatalogSelectedFilter = ({
           <li
             className="selected-filter-option"
             onClick={() => {
+              navigate(`/catalog`);
               dispatch(setGeneralLoading(true));
               dispatch(removeSelectedFilter({ type: 'selectedCategory' }));
             }}>

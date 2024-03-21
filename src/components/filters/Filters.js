@@ -16,6 +16,7 @@ import {
 } from 'models/selectors/catalogSelectors';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import CatalogSelectedFilter from './CatalogSelectedFilter';
 
@@ -23,6 +24,7 @@ const valuetext = (value) => `${value}€`;
 
 const Filters = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const categoriesFilters = useSelector(filterCategories);
   const subCategoriesFilters = useSelector(filterSubCategories);
   const brandsFilters = useSelector(filterBrands);
@@ -114,6 +116,7 @@ const Filters = () => {
                   {categoriesFilters?.map((category) => (
                     <li
                       onClick={() => {
+                        navigate(`/catalog?category=${category?.id}`);
                         dispatch(setGeneralLoading(true));
                         dispatch(
                           setSelectedFilter({
