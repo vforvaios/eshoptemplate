@@ -19,10 +19,12 @@ import {
   setSearchedProducts,
   setSearchLoading,
   setInitialCatalogCategory,
+  setColorProducts,
 } from 'models/actions/catalogActions';
 
 const initialState = {
   relatedProducts: [],
+  colorOptions: [],
   singleProduct: {},
   filterCategories: [],
   filterSubCategories: [],
@@ -65,6 +67,10 @@ const catalogReducer = createReducer(initialState, (builder) => {
     .addCase(setRelatedProducts, (state, action) => ({
       ...state,
       relatedProducts: action.payload,
+    }))
+    .addCase(setColorProducts, (state, action) => ({
+      ...state,
+      colorOptions: action.payload,
     }))
     .addCase(setFilterCategories, (state, action) => ({
       ...state,

@@ -22,6 +22,8 @@ import {
   getSearchRelatedProducts,
   setSearchedProducts,
   setSearchLoading,
+  getColorProducts,
+  setColorProducts,
 } from 'models/actions/catalogActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
@@ -55,6 +57,20 @@ const getRelatedProductsEpic = (action$) =>
       from(makeRequest(`products/${payload}/related`, 'GET', '')).pipe(
         concatMap((payload) => [
           setRelatedProducts(payload),
+          toggleShowAlert({ message: '', show: false, type: 'error' }),
+        ]),
+        catchErrorOperator(false),
+      ),
+    ),
+  );
+
+const getColorProductsEpic = (action$) =>
+  action$.pipe(
+    ofType(getColorProducts.type),
+    mergeMap(({ payload }) =>
+      from(makeRequest(`products/${payload}/coloroptions`, 'GET', '')).pipe(
+        concatMap((payload) => [
+          setColorProducts(payload),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
         catchErrorOperator(false),
@@ -213,6 +229,7 @@ const getSearchRelatedProductsEpic = (action$) =>
 export {
   getProductDetailsEpic,
   getRelatedProductsEpic,
+  getColorProductsEpic,
   getFilterCategoriesEpic,
   getCatalogEpic,
   getFilterBrandsEpic,
@@ -224,6 +241,7 @@ export {
 const epics = combineEpics(
   getProductDetailsEpic,
   getRelatedProductsEpic,
+  getColorProductsEpic,
   getFilterCategoriesEpic,
   getCatalogEpic,
   getFilterBrandsEpic,

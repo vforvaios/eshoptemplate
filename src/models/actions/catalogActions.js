@@ -2,8 +2,10 @@ import { createAction } from '@reduxjs/toolkit';
 
 const getProductDetails = createAction('catalog/getProductDetails');
 const getRelatedProducts = createAction('catalog/getRelatedProducts');
+const getColorProducts = createAction('catalog/getColorProducts');
 const setProductPage = createAction('catalog/setProductPage');
 const setRelatedProducts = createAction('catalog/setRelatedProducts');
+const setColorProducts = createAction('catalog/setColorProducts');
 const getFilterCategories = createAction('catalog/getFilterCategories');
 const setFilterCategories = createAction('catalog/setFilterCategories');
 const setSelectedFilter = createAction('catalog/setSelectedFilter');
@@ -62,4 +64,6 @@ export {
   setSearchedProducts,
   setSearchLoading,
   setInitialCatalogCategory,
+  getColorProducts,
+  setColorProducts,
 };

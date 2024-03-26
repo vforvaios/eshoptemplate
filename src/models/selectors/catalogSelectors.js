@@ -3,6 +3,7 @@ const catalogPagination = ({ catalogReducer }) =>
   catalogReducer.catalog.pagination;
 const singleProduct = ({ catalogReducer }) => catalogReducer.singleProduct;
 const relatedProducts = ({ catalogReducer }) => catalogReducer.relatedProducts;
+const colorOptions = ({ catalogReducer }) => catalogReducer.colorOptions;
 const filters = ({ catalogReducer }) => catalogReducer.filters;
 const catalogIsLoading = ({ catalogReducer }) => catalogReducer.loading;
 const filterPricesRange = ({ catalogReducer }) =>
@@ -31,4 +32,5 @@ export {
   filterSubCategories,
   searchedResults,
   searchLoading,
+  colorOptions,
 };

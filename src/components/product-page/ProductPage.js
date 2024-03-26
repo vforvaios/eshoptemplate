@@ -11,11 +11,13 @@ import { addToCart } from 'models/actions/cartActions';
 import {
   getProductDetails,
   getRelatedProducts,
+  getColorProducts,
 } from 'models/actions/catalogActions';
 import { addProductWishlist } from 'models/actions/wishlistActions';
 import {
   singleProduct,
   relatedProducts,
+  colorOptions,
 } from 'models/selectors/catalogSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,6 +30,7 @@ const ProductPage = () => {
   const { id } = useParams();
   const product = useSelector(singleProduct);
   const relProducts = useSelector(relatedProducts);
+  const colOptions = useSelector(colorOptions);
 
   const {
     productTitle,
@@ -44,6 +47,7 @@ const ProductPage = () => {
   useEffect(() => {
     dispatch(getProductDetails(id));
     dispatch(getRelatedProducts(id));
+    dispatch(getColorProducts(id));
   }, [id]);
 
   const settings = {
@@ -164,11 +168,23 @@ const ProductPage = () => {
           </div>
         </div>
       )}
-      <div className="row">
-        <div className="wrapper">
-          <RelevantProducts title="COLOR OPTIONS" products={relProducts} />
+      {colOptions.length > 0 && (
+        <div className="row">
+          <div className="wrapper">
+            <RelevantProducts title="COLOR OPTIONS" products={colOptions} />
+          </div>
         </div>
-      </div>
+      )}
+      {relProducts.length > 0 && (
+        <div className="row">
+          <div className="wrapper">
+            <RelevantProducts
+              title="RELATIVE PRODUCTS"
+              products={relProducts}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
