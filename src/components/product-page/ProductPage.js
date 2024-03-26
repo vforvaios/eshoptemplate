@@ -168,14 +168,14 @@ const ProductPage = () => {
           </div>
         </div>
       )}
-      {colOptions.length > 0 && (
+      {colOptions?.length > 0 && (
         <div className="row">
           <div className="wrapper">
             <RelevantProducts title="COLOR OPTIONS" products={colOptions} />
           </div>
         </div>
       )}
-      {relProducts.length > 0 && (
+      {relProducts?.length > 0 && (
         <div className="row">
           <div className="wrapper">
             <RelevantProducts
