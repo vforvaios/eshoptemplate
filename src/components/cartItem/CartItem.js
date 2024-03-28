@@ -60,9 +60,11 @@ const CartItem = ({ updateable, item }) => {
       <TableCell className={!updateable ? 'not-updateable' : null}>
         <span className="hidden">PRICE</span>
         <span>
-          <span className="cart-item-initial-price">
-            {formatMoney.format(item.initialPrice)}
-          </span>
+          {item.initialPrice !== 'undefined' && item.initialPrice > 0 && (
+            <span className="cart-item-initial-price">
+              {formatMoney.format(item.initialPrice)}
+            </span>
+          )}
           <strong className="totalPrice">
             {formatMoney.format(item.price * item.total)}{' '}
           </strong>

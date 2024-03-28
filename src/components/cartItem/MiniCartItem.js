@@ -19,12 +19,13 @@ const MiniCartItem = ({ item, setToggleValue }) => {
           <span>
             <img
               className="cart-item-image"
-              src={`${process.env.REACT_APP_IMAGES_URL}/${item?.imgHref?.indexOf('#') !== -1
+              src={`${process.env.REACT_APP_IMAGES_URL}/${
+                item?.imgHref?.indexOf('#') !== -1
                   ? item?.imgHref
-                    ?.substr(0, item?.imgHref.indexOf('#'))
-                    ?.split('#')?.[0]
+                      ?.substr(0, item?.imgHref.indexOf('#'))
+                      ?.split('#')?.[0]
                   : item?.imgHref
-                }`}
+              }`}
               alt="product description"
             />
           </span>
@@ -51,9 +52,11 @@ const MiniCartItem = ({ item, setToggleValue }) => {
       </div>
       <div className="mini-cart-prices">
         <div>
-          <div className="cart-item-initial-price">
-            {formatMoney.format(item.initialPrice)}
-          </div>
+          {item.initialPrice !== 'undefined' && item.initialPrice > 0 && (
+            <div className="cart-item-initial-price">
+              {formatMoney.format(item.initialPrice)}
+            </div>
+          )}
           <div className="totalPrice">
             {formatMoney.format(item.price * item.total)}{' '}
           </div>
