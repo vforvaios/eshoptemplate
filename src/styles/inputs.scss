@@ -21,19 +21,19 @@
   }
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="number"],
-input[type="checkbox"],
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='number'],
+input[type='checkbox'],
 textarea,
 .billing-prefecture-label {
   font-family: 'Sackers Gothic Std' !important;
-  font-size: 10px !important;
+  font-size: 0.7rem !important;
 }
 
 .MuiInputBase-multiline {
-  padding: 6px !important
+  padding: 6px !important;
 }
 
 textarea {
@@ -41,13 +41,13 @@ textarea {
 }
 
 .MuiFormControlLabel-label {
-  font-size: 12px !important;
+  font-size: 0.85rem !important;
 }
 
 .shipping-methods,
 .payment-methods {
   .MuiFormControlLabel-label {
-    font-size: 10px !important;
+    font-size: 0.7rem !important;
   }
 }
 

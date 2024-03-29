@@ -11,6 +11,7 @@ img {
 
 body {
   font-family: 'Sackers Gothic Std';
+  font-size: 14px;
   margin: 0;
   padding: 0;
 
@@ -57,7 +58,7 @@ img {
 
 .hidden {
   display: inline-block;
-  font-size: 10px;
+  font-size: 0.8rem;
 }
 
 ul {
@@ -68,7 +69,7 @@ ul {
 .MuiSelect-select,
 .MuiList-root * {
   font-family: 'Sackers Gothic Std' !important;
-  font-size: 12px !important;
+  font-size: 0.9rem !important;
 }
 
 .row {
@@ -107,7 +108,7 @@ ul {
 
 .minor-text {
   color: $disabled;
-  font-size: 8px;
+  font-size: 0.6rem;
 }
 
 // ACTIONS
@@ -147,7 +148,7 @@ ul {
 }
 
 .section-title {
-  font-size: 36px;
+  font-size: 2.6rem;
   font-weight: 300;
   text-align: left;
   margin: 0 0 20px;
@@ -157,7 +158,7 @@ ul {
 }
 
 .section-title-small {
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: 300;
   text-align: left;
   margin: 0 0 20px;
@@ -171,7 +172,7 @@ ul {
 }
 
 .page-title {
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: 300;
   text-align: center;
   margin: 0 0 20px;

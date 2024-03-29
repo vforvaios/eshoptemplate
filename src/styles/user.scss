@@ -5,7 +5,7 @@
 
   label,
   input {
-    font-size: 12px;
+    font-size: 0.85rem;
   }
 }
 
@@ -14,7 +14,7 @@
 }
 
 .error-span {
-  font-size: 12px;
+  font-size: 0.85rem;
   color: $alert;
   margin-top: 8px;
 }
@@ -27,7 +27,7 @@
 
     li {
       color: $black;
-      font-size: 14px;
+      font-size: 1rem;
       font-weight: 700;
       line-height: 1;
       padding: 0;
@@ -42,7 +42,7 @@
 
       &:first-child {
         padding: 16px;
-        font-size: 16px;
+        font-size: 1.1rem;
         color: $white;
         background: $black;
         text-align: center;

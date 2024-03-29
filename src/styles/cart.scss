@@ -18,7 +18,7 @@
 
   span {
     position: absolute;
-    font-size: 8px;
+    font-size: 0.6rem;
     width: 14px;
     height: 14px;
     border-radius: 50%;
@@ -42,7 +42,7 @@
 .user-icon,
 .usermenu-container {
   i {
-    font-size: 22px;
+    font-size: 1.6rem;
     color: $white;
     margin-left: 16px;
     transition: all 0.2s ease-in-out;
@@ -55,7 +55,7 @@
 }
 
 .totalPrice {
-  font-size: 14px;
+  font-size: 1rem;
   margin-right: 10px;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .removeCancel {
-  font-size: 20px;
+  font-size: 1.4rem;
   color: $alert;
   cursor: pointer;
   margin-left: 12px;
@@ -91,7 +91,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 12px;
+  font-size: 0.9rem;
 
   &.bold {
     font-weight: 700;
@@ -99,7 +99,7 @@
 
   &:last-child {
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: 1.1rem;
   }
 }
 
@@ -113,7 +113,7 @@
 
 .cart-item-initial-price {
   margin-right: 10px;
-  font-size: 10px;
+  font-size: 0.7rem;
   text-decoration: line-through;
   color: $black;
 }
@@ -122,14 +122,14 @@
   background: $white;
   margin-bottom: 0;
   color: $black;
-  font-size: 12px;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 1px;
   border-bottom: 1px solid $color-3;
 }
 
 .icon-shopping-basket {
-  font-size: 26px;
+  font-size: 1.85rem;
   color: $white;
   transition: all 0.2s ease-in-out;
 
@@ -185,7 +185,7 @@
     align-items: center;
 
     span {
-      font-size: 14px;
+      font-size: 1rem;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -193,11 +193,11 @@
   }
 
   .cart-item-initial-price {
-    font-size: 10px;
+    font-size: 0.7rem;
   }
 
   .totalPrice {
-    font-size: 12px;
+    font-size: 0.9rem;
   }
 
   .mini-cart-prices {
@@ -217,7 +217,7 @@
 
   * {
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.9rem;
   }
 }
 

@@ -104,14 +104,14 @@
 
   span {
     color: $black;
-    font-size: 10px;
+    font-size: 0.7rem;
     font-family: 'Sackers Gothic Std';
     margin-left: 4px;
   }
 }
 
 .icon-search {
-  font-size: 22px;
+  font-size: 1.6rem;
   color: $black;
   padding: 10px;
   cursor: pointer;
@@ -151,7 +151,7 @@
       right: 20px;
       top: 50%;
       transform: translate(0, -50%);
-      font-size: 8px;
+      font-size: 0.6rem;
       margin-top: 6px;
       z-index: 1;
     }

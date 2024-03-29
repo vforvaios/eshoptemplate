@@ -22,7 +22,7 @@
 }
 
 .icon-heart-empty {
-  font-size: 18px;
+  font-size: 1.3rem;
 }
 
 .product {
@@ -85,7 +85,7 @@
       }
 
       &.product-code {
-        font-size: 11px;
+        font-size: 0.8rem;
         font-weight: 300;
         display: block;
         min-height: unset;
@@ -120,7 +120,7 @@
   background: none;
   color: $black;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -150,7 +150,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
+    font-size: 0.7rem;
     font-weight: bold;
     color: $black;
     width: 100%;
@@ -158,7 +158,7 @@
 
     & > span {
       margin-right: 4px;
-      font-size: 7px;
+      font-size: 0.5rem;
       text-decoration: line-through;
       color: $black;
       font-family: 'Sackers Gothic Std';
@@ -167,7 +167,7 @@
 
   .discount {
     color: $alert;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: bold;
     padding: 0 4px;
     background: $black;
@@ -182,7 +182,7 @@
       background: $success;
       color: $white;
       margin-left: 0;
-      font-size: 12px;
+      font-size: 0.85rem;
       box-shadow: 0px 0px 6px 0px $black;
     }
   }
@@ -208,7 +208,7 @@
     .headerTitle {
       text-align: left;
       font-weight: 700 !important;
-      font-size: 30px !important;
+      font-size: 2.1rem !important;
       margin: 0;
       margin-bottom: 20px;
       padding: 0;
@@ -235,7 +235,7 @@
     text-align: left;
     padding: 0;
     display: block;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 700;
 
     span {
@@ -294,7 +294,7 @@
 }
 
 .headerTitle {
-  font-size: 12px;
+  font-size: 0.85rem;
   font-family: 'Sackers Gothic Std' !important;
   font-weight: 300 !important;
   color: $black;
@@ -313,7 +313,7 @@
 .is-new {
   font-weight: 700;
   font-family: 'Sackers Gothic Std' !important;
-  font-size: 10px;
+  font-size: 0.7rem;
   color: $black;
   background-color: $white;
   position: absolute;
@@ -326,7 +326,7 @@
 }
 
 .subHeader {
-  font-size: 12px !important;
+  font-size: 0.85rem !important;
   color: $black !important;
   text-align: left;
   margin-bottom: 12px;

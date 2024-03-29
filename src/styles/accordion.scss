@@ -10,22 +10,18 @@ $text-offset: $a-height - 90;
   overflow: hidden;
 
   .about {
-
     text-align: center;
-    font-size: 12px;
+    font-size: 0.9rem;
     color: #666;
 
     a {
-
       color: blue;
       text-decoration: none;
 
       &:hover {
         text-decoration: underline;
       }
-
     }
-
   }
 
   ul {
@@ -62,7 +58,6 @@ $text-offset: $a-height - 90;
           transition: all 200ms ease;
 
           * {
-
             opacity: 1;
             margin: 0;
             width: 100%;
@@ -75,12 +70,11 @@ $text-offset: $a-height - 90;
 
             -webkit-transition: all 400ms ease;
             transition: all 400ms ease;
-
           }
 
           h2 {
             text-overflow: clip;
-            font-size: 34px;
+            font-size: 2.5rem;
             margin: 0 auto;
             display: flex;
             height: 100%;
@@ -90,23 +84,15 @@ $text-offset: $a-height - 90;
             font-family: 'Cormorant', serif;
             white-space: break-spaces;
             max-width: 300px;
-
           }
 
           p {
-
             top: $text-offset;
-            font-size: 13.5px;
-
+            font-size: 1rem;
           }
-
         }
-
       }
-
     }
-
-
 
     &:hover li,
     &:focus-within li {
@@ -114,7 +100,6 @@ $text-offset: $a-height - 90;
 
       @media screen and (max-width: 600px) {
         width: 100%;
-
       }
     }
 
@@ -126,7 +111,6 @@ $text-offset: $a-height - 90;
     // allow users to tab through active slides
     li:focus,
     &:focus-within li:focus {
-
       width: 60%;
 
       @media screen and (max-width: 600px) {
@@ -134,19 +118,14 @@ $text-offset: $a-height - 90;
       }
 
       a {
-
-        background: rgba(0, 0, 0, .4);
+        background: rgba(0, 0, 0, 0.4);
 
         * {
-
           opacity: 1;
           -webkit-transform: translateX(0);
           transform: translateX(0);
-
         }
-
       }
-
     }
 
     &:hover li {
@@ -169,27 +148,20 @@ $text-offset: $a-height - 90;
       }
 
       a {
-
-        background: rgba(0, 0, 0, .4);
+        background: rgba(0, 0, 0, 0.4);
 
         * {
-
           opacity: 1 !important;
           -webkit-transform: translateX(0);
           transform: translateX(0);
-
         }
-
       }
     }
-
   }
-
 }
 
 // Stack items
 @media screen and (max-width: 600px) {
-
   .accordion {
     height: auto;
 
@@ -199,15 +171,12 @@ $text-offset: $a-height - 90;
       height: auto;
 
       li {
-
         position: relative;
         display: block;
         width: 100%;
         height: 140px;
       }
-
     }
-
   }
 
   .accordion ul li div a {
@@ -219,7 +188,6 @@ $text-offset: $a-height - 90;
   }
 
   .accordion ul li div a h2 {
-    font-size: 20px;
+    font-size: 1.4rem;
   }
-
 }
