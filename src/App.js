@@ -95,7 +95,9 @@ const App = () => {
           <Footer />
         </Router>
         <Alert />
-        <CookiesManagement />
+        {!document.cookie.match(
+          /^(.*;)?\s*CookieConsent\s*=\s*[^;]+(.*)?$/,
+        ) && <CookiesManagement />}
 
         {loading && <GeneralLoading />}
       </HelmetProvider>
