@@ -1,18 +1,11 @@
 import Product from 'components/product/Product';
-import React, { useState } from 'react';
 
 const RelevantProducts = ({ title, products }) => {
-  const [productsOpen, setProductsOpen] = useState(false);
-
   return (
     <div className="relevant-products">
-      <h2
-        className="section-title-small withCursor"
-        onClick={() => setProductsOpen(!productsOpen)}>
-        {title} {!productsOpen ? '+' : '-'}
-      </h2>
+      <h2 className="section-title-small">{title}</h2>
 
-      <div className={`products ${!productsOpen ? 'hidden' : ''}`}>
+      <div className="products">
         <ul className="products-grid">
           {products?.map((product) => (
             <li key={product.productId}>
