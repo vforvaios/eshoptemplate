@@ -71,6 +71,7 @@ const getColorProductsEpic = (action$) =>
       from(makeRequest(`products/${payload}/coloroptions`, 'GET', '')).pipe(
         concatMap((payload) => [
           setColorProducts(payload),
+          setGeneralLoading(false),
           toggleShowAlert({ message: '', show: false, type: 'error' }),
         ]),
         catchErrorOperator(false),

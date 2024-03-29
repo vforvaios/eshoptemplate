@@ -12,6 +12,7 @@ import {
   getProductDetails,
   getRelatedProducts,
   getColorProducts,
+  setGeneralLoading,
 } from 'models/actions/catalogActions';
 import { addProductWishlist } from 'models/actions/wishlistActions';
 import {
@@ -45,6 +46,7 @@ const ProductPage = () => {
   } = product;
 
   useEffect(() => {
+    dispatch(setGeneralLoading(true));
     dispatch(getProductDetails(id));
     dispatch(getRelatedProducts(id));
     dispatch(getColorProducts(id));
