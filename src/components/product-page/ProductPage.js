@@ -177,7 +177,11 @@ const ProductPage = () => {
       {colOptions?.length > 0 && (
         <div className="row">
           <div className="wrapper">
-            <RelevantProducts title="COLOR OPTIONS" products={colOptions} />
+            <RelevantProducts
+              expandable
+              title="COLOR OPTIONS"
+              products={colOptions}
+            />
           </div>
         </div>
       )}
@@ -185,6 +189,7 @@ const ProductPage = () => {
         <div className="row">
           <div className="wrapper">
             <RelevantProducts
+              expandable={false}
               title="RELATIVE PRODUCTS"
               products={relProducts}
             />
