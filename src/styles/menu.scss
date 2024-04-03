@@ -53,6 +53,7 @@
   color: $black;
   font-size: 1.1rem;
   padding: 6px 0;
+  text-align: center;
   cursor: pointer;
 }
 
@@ -79,6 +80,7 @@
   justify-content: center;
   align-items: center;
   padding-left: 20px;
+  padding-right: 20px;
   flex-direction: column;
   background-color: rgba(249, 249, 249, 1);
 
@@ -119,6 +121,7 @@
   > div {
     flex-grow: 1;
     text-align: center;
+    padding-left: 40px;
   }
 }
 

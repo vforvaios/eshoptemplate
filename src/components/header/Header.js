@@ -49,7 +49,7 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
       className={`headerContainer ${
         location.pathname === '/' ? 'home-page-header' : ''
       }`}>
-      <Grid item sm={3}>
+      <Grid item xs={3}>
         <div className="menu-icon-align" onClick={setToggleValue('top', true)}>
           <i className="header-icon icon-menu" />
           <span>Menu</span>
@@ -61,7 +61,7 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
           <MainMenu setToggleValue={setToggleValue} />
         </Drawer>
       </Grid>
-      <Grid item sm={6} className="logo">
+      <Grid item xs={6} className="logo">
         <Link to="/">
           <img
             src={`${process.env.REACT_APP_IMAGES_URL}/${logoImage?.data?.name}`}
@@ -70,7 +70,7 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
           />
         </Link>
       </Grid>
-      <Grid item sm={3}>
+      <Grid item xs={3}>
         <div className="headerActions">
           <Search />
 
