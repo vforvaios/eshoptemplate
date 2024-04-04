@@ -68,6 +68,7 @@ const Billing = () => {
       <div className="flex-billing-shipping">
         <div className="billing-inputs">
           <BillingShippingInputs
+            isReceipt={myReceipt}
             billing
             countries={allCountries}
             prefectures={myBillingInfo?.prefectures}

@@ -1,4 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { TextField } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
 import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -16,6 +18,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 const BillingShippingInputs = ({
+  isReceipt,
   billing,
   inputs,
   setInfo,
@@ -28,6 +31,9 @@ const BillingShippingInputs = ({
   const {
     name,
     lastName,
+    afm,
+    doy,
+    eponymia,
     email,
     phone,
     mobile,
@@ -54,6 +60,53 @@ const BillingShippingInputs = ({
               />
             }
           />
+        </>
+      )}
+      {billing && isReceipt === 'invoice' && (
+        <>
+          <FormControl
+            fullWidth
+            className={errors?.includes('afm') ? 'error' : ''}>
+            <InputLabel htmlFor="afm">AFM</InputLabel>
+            <Input
+              fullWidth
+              id="afm"
+              type="text"
+              value={afm}
+              error={false}
+              onChange={(e) =>
+                dispatch(setInfo({ key: 'afm', name: e.target.value }))
+              }
+            />
+          </FormControl>
+          <FormControl
+            fullWidth
+            className={errors?.includes('eponymia') ? 'error' : ''}>
+            <InputLabel htmlFor="eponymia">EPONYMIA</InputLabel>
+            <Input
+              fullWidth
+              id="eponymia"
+              type="text"
+              value={eponymia}
+              error={false}
+              onChange={(e) =>
+                dispatch(setInfo({ key: 'eponymia', name: e.target.value }))
+              }
+            />
+          </FormControl>
+          <FormControl
+            fullWidth
+            className={errors?.includes('doy') ? 'error' : ''}>
+            <Autocomplete
+              disablePortal
+              id="doy"
+              options={[
+                { label: 'The Godfather', id: 1 },
+                { label: 'Pulp Fiction', id: 2 },
+              ]}
+              renderInput={(params) => <TextField {...params} label="DOY" />}
+            />
+          </FormControl>
         </>
       )}
       <div className={`${!billing && sameAsBilling ? 'same-as-billing' : ''}`}>
