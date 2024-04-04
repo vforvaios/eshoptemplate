@@ -17,6 +17,7 @@ const prefectures = ({ checkoutReducer }) => checkoutReducer.prefectures;
 const billingErrors = ({ checkoutReducer }) => checkoutReducer.billingErrors;
 const shippingErrors = ({ checkoutReducer }) => checkoutReducer.shippingErrors;
 const orderOK = ({ checkoutReducer }) => checkoutReducer.orderOK;
+const doys = ({ checkoutReducer }) => checkoutReducer.doys;
 const canSeeSuccessPage = ({ checkoutReducer }) =>
   checkoutReducer.canSeeSuccessPage;
 const updatedProducts = ({ checkoutReducer }) =>
@@ -32,6 +33,7 @@ export {
   billingErrors,
   shippingErrors,
   orderOK,
+  doys,
   canSeeSuccessPage,
   updatedProducts,
   countries,

@@ -25,6 +25,8 @@ import {
   getShippingMethods,
   getPrefecturesPerCountryForBilling,
   getPrefecturesPerCountryForShipping,
+  getDOY,
+  setDOY,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
@@ -38,6 +40,23 @@ import {
 
 import catchErrorOperator from './operators/catchErrorOperator';
 
+const getDOYEpic = (action$) =>
+  action$.pipe(
+    ofType(getDOY.type),
+    mergeMap(() =>
+      from(makeRequest('doys', 'GET', '')).pipe(
+        concatMap((payload) => {
+          const newPayload = payload?.map((doy) => ({
+            ...doy,
+            label: doy?.name,
+          }));
+
+          return [setDOY(newPayload)];
+        }),
+        catchErrorOperator(true),
+      ),
+    ),
+  );
 const getCountriesEpic = (action$) =>
   action$.pipe(
     ofType(getCountries.type),
@@ -180,7 +199,8 @@ const getShippingMethodsEpic = (action$, state$) =>
       ]) =>
         from(
           makeRequest(
-            `shippingmethods?prefecture=${sameAsBilling ? billingInfo?.prefecture : shippingInfo?.prefecture
+            `shippingmethods?prefecture=${
+              sameAsBilling ? billingInfo?.prefecture : shippingInfo?.prefecture
             }`,
             'GET',
             '',
@@ -402,16 +422,16 @@ const checkOrderInfoEpic = (action$, state$) =>
         const shippingErrors = sameAsBilling
           ? []
           : requiredFields
-            .reduce(
-              (acc, curr) => [
-                ...acc,
-                shippingInfo[curr] === '' || !shippingInfo[curr]
-                  ? curr
-                  : null,
-              ],
-              [],
-            )
-            .filter((x) => x !== null);
+              .reduce(
+                (acc, curr) => [
+                  ...acc,
+                  shippingInfo[curr] === '' || !shippingInfo[curr]
+                    ? curr
+                    : null,
+                ],
+                [],
+              )
+              .filter((x) => x !== null);
 
         if (billingErrors.length === 0 && shippingErrors.length === 0) {
           return [
@@ -464,9 +484,9 @@ const updateCartProductsEpic = (action$, state$) =>
                   : product?.stock <
                     cart?.find((pr) => pr?.productId === product?.productId)
                       ?.total
-                    ? cart?.find((pr) => pr?.productId === product?.productId)
+                  ? cart?.find((pr) => pr?.productId === product?.productId)
                       ?.total
-                    : 1,
+                  : 1,
             }));
 
             return [
@@ -477,7 +497,7 @@ const updateCartProductsEpic = (action$, state$) =>
                 show: true,
               }),
               newCart?.filter((pr) => pr?.total === 0)?.length === 0 &&
-              setUpdatedProducts(false),
+                setUpdatedProducts(false),
             ];
           }),
           catchErrorOperator(false),
@@ -507,6 +527,7 @@ export {
   getCountriesEpic,
   getPrefecturesPerCountryForBillingEpic,
   getPrefecturesPerCountryForShippingEpic,
+  getDOYEpic,
 };
 
 const epics = combineEpics(
@@ -523,6 +544,7 @@ const epics = combineEpics(
   getCountriesEpic,
   getPrefecturesPerCountryForBillingEpic,
   getPrefecturesPerCountryForShippingEpic,
+  getDOYEpic,
 );
 
 export default epics;

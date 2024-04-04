@@ -11,6 +11,7 @@ import {
   setSameAsBilling,
   getCountries,
   getPrefecturesPerCountryForBilling,
+  getDOY,
 } from 'models/actions/checkoutActions';
 import {
   billingInfo,
@@ -38,6 +39,7 @@ const Billing = () => {
 
   useEffect(() => {
     dispatch(setGeneralLoading(true));
+    dispatch(getDOY());
     dispatch(getCountries());
     dispatch(getPrefecturesPerCountryForBilling(myBillingInfo.country));
   }, []);

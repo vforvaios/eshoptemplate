@@ -14,8 +14,9 @@ import {
   getPrefecturesPerCountryForBilling,
   getShippingMethods,
 } from 'models/actions/checkoutActions';
+import { doys } from 'models/selectors/checkoutSelectors';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const BillingShippingInputs = ({
   isReceipt,
@@ -45,6 +46,7 @@ const BillingShippingInputs = ({
   } = inputs;
 
   const dispatch = useDispatch();
+  const allDoys = useSelector(doys);
 
   return (
     <div>
@@ -100,10 +102,7 @@ const BillingShippingInputs = ({
             <Autocomplete
               disablePortal
               id="doy"
-              options={[
-                { label: 'The Godfather', id: 1 },
-                { label: 'Pulp Fiction', id: 2 },
-              ]}
+              options={allDoys}
               renderInput={(params) => <TextField {...params} label="DOY" />}
             />
           </FormControl>

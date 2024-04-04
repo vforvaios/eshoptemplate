@@ -19,6 +19,8 @@ const navigateToSuccessCheckout = createAction(
   'checkout/navigateToSuccessCheckout',
 );
 const clearOrder = createAction('checkout/clearOrder');
+const getDOY = createAction('checkout/getDOY');
+const setDOY = createAction('checkout/setDOY');
 const checkOrderInfo = createAction('checkout/checkOrderInfo');
 const setCheckoutError = createAction('checkout/setCheckoutError');
 const navigateToConfirmPage = createAction('checkout/navigateToConfirmPage');
@@ -67,4 +69,6 @@ export {
   changedPrefecture,
   changedCountry,
   setNotes,
+  getDOY,
+  setDOY,
 };
