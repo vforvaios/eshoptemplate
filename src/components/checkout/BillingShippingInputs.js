@@ -102,6 +102,10 @@ const BillingShippingInputs = ({
             <Autocomplete
               disablePortal
               id="doy"
+              onChange={(e, values) => {
+                dispatch(setInfo({ key: 'doy', name: e.target.value?.id }));
+              }}
+              value={doy ? doy : null}
               options={allDoys}
               renderInput={(params) => <TextField {...params} label="DOY" />}
             />

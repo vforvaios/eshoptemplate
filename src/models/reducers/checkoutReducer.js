@@ -29,6 +29,9 @@ const initialState = {
   doys: [],
   prefectureIsChanged: false,
   billingInfo: {
+    afm: '',
+    doy: null,
+    eponymia: '',
     name: '',
     lastName: '',
     email: '',

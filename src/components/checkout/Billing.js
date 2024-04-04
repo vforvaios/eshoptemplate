@@ -52,7 +52,14 @@ const Billing = () => {
             row
             aria-labelledby="receipt-or-invoice"
             value={myReceipt}
-            onChange={(e) => dispatch(setReceipt(e.target.value))}
+            onChange={(e) => {
+              dispatch(setReceipt(e.target.value));
+              if (e.target.value === 'receipt') {
+                dispatch(setBillingInfo({ key: 'doy', name: null }));
+                dispatch(setBillingInfo({ key: 'afm', name: '' }));
+                dispatch(setBillingInfo({ key: 'eponymia', name: '' }));
+              }
+            }}
             name="receipt-buttons-group">
             <FormControlLabel
               value="receipt"
