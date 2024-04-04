@@ -114,6 +114,11 @@ ul {
   font-size: 0.6rem;
 }
 
+.MuiAutocomplete-root .MuiFormControl-root {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 // ACTIONS
 .actions {
   display: flex;

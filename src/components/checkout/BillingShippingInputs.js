@@ -64,55 +64,56 @@ const BillingShippingInputs = ({
           />
         </>
       )}
-      {billing && isReceipt === 'invoice' && (
-        <>
-          <FormControl
-            fullWidth
-            className={errors?.includes('afm') ? 'error' : ''}>
-            <InputLabel htmlFor="afm">AFM</InputLabel>
-            <Input
-              fullWidth
-              id="afm"
-              type="text"
-              value={afm}
-              error={false}
-              onChange={(e) =>
-                dispatch(setInfo({ key: 'afm', name: e.target.value }))
-              }
-            />
-          </FormControl>
-          <FormControl
-            fullWidth
-            className={errors?.includes('eponymia') ? 'error' : ''}>
-            <InputLabel htmlFor="eponymia">EPONYMIA</InputLabel>
-            <Input
-              fullWidth
-              id="eponymia"
-              type="text"
-              value={eponymia}
-              error={false}
-              onChange={(e) =>
-                dispatch(setInfo({ key: 'eponymia', name: e.target.value }))
-              }
-            />
-          </FormControl>
-          <FormControl
-            fullWidth
-            className={errors?.includes('doy') ? 'error' : ''}>
-            <Autocomplete
-              disablePortal
-              id="doy"
-              onChange={(e, values) => {
-                dispatch(setInfo({ key: 'doy', name: e.target.value?.id }));
-              }}
-              value={doy ? doy : null}
-              options={allDoys}
-              renderInput={(params) => <TextField {...params} label="DOY" />}
-            />
-          </FormControl>
-        </>
-      )}
+
       <div className={`${!billing && sameAsBilling ? 'same-as-billing' : ''}`}>
+        {billing && isReceipt === 'invoice' && (
+          <div className="invoice-container-fields">
+            <FormControl
+              fullWidth
+              className={errors?.includes('afm') ? 'error' : ''}>
+              <InputLabel htmlFor="afm">AFM</InputLabel>
+              <Input
+                fullWidth
+                id="afm"
+                type="text"
+                value={afm}
+                error={false}
+                onChange={(e) =>
+                  dispatch(setInfo({ key: 'afm', name: e.target.value }))
+                }
+              />
+            </FormControl>
+            <FormControl
+              fullWidth
+              className={errors?.includes('eponymia') ? 'error' : ''}>
+              <InputLabel htmlFor="eponymia">EPONYMIA</InputLabel>
+              <Input
+                fullWidth
+                id="eponymia"
+                type="text"
+                value={eponymia}
+                error={false}
+                onChange={(e) =>
+                  dispatch(setInfo({ key: 'eponymia', name: e.target.value }))
+                }
+              />
+            </FormControl>
+            <FormControl
+              fullWidth
+              className={errors?.includes('doy') ? 'error' : ''}>
+              <Autocomplete
+                disablePortal
+                id="doy"
+                onChange={(e, values) => {
+                  dispatch(setInfo({ key: 'doy', name: values }));
+                }}
+                value={doy ? doy : null}
+                options={allDoys}
+                renderInput={(params) => <TextField {...params} label="DOY" />}
+              />
+            </FormControl>
+          </div>
+        )}
         <FormControl
           fullWidth
           className={errors?.includes('name') ? 'error' : ''}>

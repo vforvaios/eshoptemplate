@@ -33,10 +33,16 @@
   flex-direction: column;
 }
 
+.invoice-container-fields {
+  padding: 6px;
+  background: $color-3;
+  border: 12px solid $white;
+}
+
 .billing-inputs {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   max-width: 100%;
   flex-direction: column;
 
