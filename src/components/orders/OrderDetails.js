@@ -4,7 +4,9 @@ import TableRow from '@mui/material/TableRow';
 import CartTotals from 'components/cart/CartTotals';
 import MyCart from 'components/cart/MyCart';
 import { setGeneralLoading } from 'models/actions/catalogActions';
+import { getDOY } from 'models/actions/checkoutActions';
 import { getOrderDetails } from 'models/actions/userActions';
+import { doys } from 'models/selectors/checkoutSelectors';
 import { orderDetails } from 'models/selectors/userSelector';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,12 +15,14 @@ import BillingShippingInfos from './BillingShippingInfos';
 
 const OrderDetails = ({ id }) => {
   const displayedOrder = useSelector(orderDetails);
+  const myDoys = useSelector(doys);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (id !== '') {
       dispatch(setGeneralLoading(true));
+      dispatch(getDOY());
       dispatch(getOrderDetails(id));
     }
   }, [id]);
@@ -50,6 +54,11 @@ const OrderDetails = ({ id }) => {
                     address: displayedOrder?.order?.piAddress || '',
                     phone: displayedOrder?.order?.piPhone || '',
                     postCode: displayedOrder?.order?.piPostCode || '',
+                    afm: displayedOrder?.order?.piAfm || '',
+                    eponymia: displayedOrder?.order?.piEponymia || '',
+                    doy: myDoys?.find(
+                      (doy) => doy?.id === Number(displayedOrder?.order?.piDoy),
+                    ),
                   },
                   shipping: {
                     firstName: displayedOrder?.order?.siFirstName || '',

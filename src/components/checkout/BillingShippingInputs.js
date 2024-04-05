@@ -98,9 +98,7 @@ const BillingShippingInputs = ({
                 }
               />
             </FormControl>
-            <FormControl
-              fullWidth
-              className={errors?.includes('doy') ? 'error' : ''}>
+            <FormControl fullWidth>
               <Autocomplete
                 disablePortal
                 id="doy"
@@ -109,7 +107,14 @@ const BillingShippingInputs = ({
                 }}
                 value={doy ? doy : null}
                 options={allDoys}
-                renderInput={(params) => <TextField {...params} label="DOY" />}
+                renderInput={(params) => (
+                  <TextField
+                    error={false}
+                    className={errors?.includes('doy') ? 'error' : ''}
+                    {...params}
+                    label="DOY"
+                  />
+                )}
               />
             </FormControl>
           </div>

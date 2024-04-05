@@ -48,6 +48,25 @@ const BillingShippingInfos = ({ options }) => (
         </div>
       </div>
     </div>
+    {options?.billing?.afm && (
+      <div className="billing-shipping-box">
+        <h3>Invoice Details</h3>
+        <div className="order-infos">
+          <div className="order-info">
+            <span>Afm: </span>
+            <strong>{options?.billing?.afm}</strong>
+          </div>
+          <div className="order-info">
+            <span>Eponymia: </span>
+            <strong>{options?.billing?.eponymia}</strong>
+          </div>
+          <div className="order-info">
+            <span>Doy: </span>
+            <strong>{options?.billing?.doy?.label}</strong>
+          </div>
+        </div>
+      </div>
+    )}
   </>
 );
 

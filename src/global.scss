@@ -117,6 +117,10 @@ ul {
 .MuiAutocomplete-root .MuiFormControl-root {
   padding-left: 0 !important;
   padding-right: 0 !important;
+
+  &.error > div {
+    border: 2px solid $alert;
+  }
 }
 
 // ACTIONS

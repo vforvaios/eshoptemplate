@@ -396,18 +396,37 @@ const checkOrderInfoEpic = (action$, state$) =>
       ([
         ,
         {
-          checkoutReducer: { billingInfo, shippingInfo, sameAsBilling },
+          checkoutReducer: {
+            billingInfo,
+            shippingInfo,
+            sameAsBilling,
+            receipt,
+          },
         },
       ]) => {
-        const requiredFields = [
-          'name',
-          'lastName',
-          'mobile',
-          'address',
-          'email',
-          'postCode',
-          'prefecture',
-        ];
+        const requiredFields =
+          receipt === 'receipt'
+            ? [
+                'name',
+                'lastName',
+                'mobile',
+                'address',
+                'email',
+                'postCode',
+                'prefecture',
+              ]
+            : [
+                'name',
+                'lastName',
+                'mobile',
+                'address',
+                'email',
+                'postCode',
+                'prefecture',
+                'afm',
+                'eponymia',
+                'doy',
+              ];
 
         const billingErrors = requiredFields
           .reduce(
@@ -422,6 +441,7 @@ const checkOrderInfoEpic = (action$, state$) =>
         const shippingErrors = sameAsBilling
           ? []
           : requiredFields
+              .filter((f) => f !== 'afm' && f !== 'doy' && f !== 'eponymia')
               .reduce(
                 (acc, curr) => [
                   ...acc,

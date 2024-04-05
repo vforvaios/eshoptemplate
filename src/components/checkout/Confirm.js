@@ -110,6 +110,9 @@ const Confirm = () => {
                     address: myBillingInfo.address,
                     phone: myBillingInfo.phone,
                     postCode: myBillingInfo.postCode,
+                    afm: myBillingInfo.afm,
+                    eponymia: myBillingInfo.eponymia,
+                    doy: myBillingInfo.doy,
                   },
                   shipping: {
                     firstName: !sameShipping
