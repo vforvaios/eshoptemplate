@@ -12,7 +12,7 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
   return (
     <div className="mini-cart-drawer-wrapper">
       <div>
-        <h1 className="page-title">MY CART</h1>
+        <h1 className="section-title-small">MY CART</h1>
         <i
           className="hidden"
           onClick={setToggleValue('right', false)}
@@ -22,12 +22,12 @@ const MiniCartDrawer = ({ itemsLength, setToggleValue }) => {
       <div className="mini-cart-drawer-items">
         {itemsLength > 0
           ? myCart?.map((item, index) => (
-            <MiniCartItem
-              setToggleValue={setToggleValue}
-              key={`${item?.productId}_${index}`}
-              item={item}
-            />
-          ))
+              <MiniCartItem
+                setToggleValue={setToggleValue}
+                key={`${item?.productId}_${index}`}
+                item={item}
+              />
+            ))
           : 'Your cart is empty.'}
       </div>
       <div className="mini-cart-actions">
