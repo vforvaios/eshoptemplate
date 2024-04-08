@@ -344,6 +344,7 @@
   transition: all 0.2s ease-in-out;
   position: relative;
   height: 180px;
+  filter: blur(0.4px);
 
   img {
     width: 100%;
