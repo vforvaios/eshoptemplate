@@ -16,6 +16,10 @@
   border: 0 none;
   cursor: pointer;
 
+  i {
+    line-height: 1;
+  }
+
   span {
     position: absolute;
     font-size: 0.6rem;
@@ -37,6 +41,10 @@
     height: 30px;
     vertical-align: baseline;
   }
+}
+
+.user-icon i {
+  margin-left: 6px !important;
 }
 
 .user-icon,
