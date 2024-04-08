@@ -7,6 +7,7 @@ import {
   homeBanners,
   homeSections,
   homeLastBanner,
+  offersTitle,
 } from 'models/selectors/homeSelectors';
 import { keywords } from 'models/selectors/staticSelectors';
 import React, { useEffect } from 'react';
@@ -19,6 +20,7 @@ import HomeSlider from './home-slider/HomeSlider';
 
 const Home = () => {
   const offers = useSelector(homeOffers);
+  const myOffersTitle = useSelector(offersTitle);
   const sections = useSelector(homeSections);
   const banners = useSelector(homeBanners);
   const lastBanner = useSelector(homeLastBanner);
@@ -47,7 +49,7 @@ const Home = () => {
         {offers?.length > 0 && (
           <div className="row offers-bg">
             <div className="wrapper small">
-              <HomeOffersTabs offers={offers} />
+              <HomeOffersTabs offers={offers} title={myOffersTitle} />
             </div>
           </div>
         )}

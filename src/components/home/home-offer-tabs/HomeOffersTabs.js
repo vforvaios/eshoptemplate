@@ -27,10 +27,10 @@ const settings = {
   ],
 };
 
-const HomeOffersTabs = ({ handleChange, value, offers }) => {
+const HomeOffersTabs = ({ handleChange, value, offers, title }) => {
   return (
     <>
-      <h2 className="section-title">OFFERS</h2>
+      <h2 className="section-title">{title}</h2>
       <div className="tabsContainer">
         <Tabs
           value={value}

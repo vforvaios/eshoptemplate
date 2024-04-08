@@ -3,5 +3,13 @@ const homeSections = ({ homeReducer }) => homeReducer.sections.results;
 const homeBanners = ({ homeReducer }) => homeReducer.banners.results;
 const homeLastBanner = ({ homeReducer }) => homeReducer.lastBanner;
 const logo = ({ homeReducer }) => homeReducer.logo;
+const offersTitle = ({ homeReducer }) => homeReducer.offersTitle;
 
-export { homeOffers, homeBanners, homeSections, logo, homeLastBanner };
+export {
+  homeOffers,
+  homeBanners,
+  homeSections,
+  logo,
+  homeLastBanner,
+  offersTitle,
+};

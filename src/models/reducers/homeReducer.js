@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { setHomePageData, setLogo } from 'models/actions/homeActions';
 
 const initialState = {
+  offersTitle: '',
   logo: {},
   homeSlider: [],
   offers: {
@@ -24,6 +25,7 @@ const homeReducer = createReducer(initialState, (builder) => {
     }))
     .addCase(setHomePageData, (state, action) => ({
       ...state,
+      offersTitle: action.payload.offersTitle,
       offers: {
         ...state.offers,
         results: action.payload.tabsOffers,
