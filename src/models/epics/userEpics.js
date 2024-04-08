@@ -17,6 +17,7 @@ import {
   navigateToLogin,
   sendNewUserPassword,
   changeUserPassword,
+  unsubscribe,
 } from 'models/actions/userActions';
 import { token, currentOrderPage } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
@@ -43,6 +44,39 @@ const getOrdersStatusesEpic = (action$, state$) =>
           }
 
           return [setOrderStatuses(payload?.data), getMyOrders()];
+        }),
+        catchErrorOperator(true),
+      ),
+    ),
+  );
+
+const unsubscribeEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(unsubscribe.type),
+    mergeMap(({ payload }) =>
+      from(
+        makeRequest('users/unsubscribe', 'POST', JSON.stringify(payload), ''),
+      ).pipe(
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              toggleShowAlert({
+                message: `${payload?.error}`,
+                show: true,
+                type: 'error',
+              }),
+              setGeneralLoading(false),
+            ];
+          }
+
+          return [
+            toggleShowAlert({
+              message: payload?.message,
+              show: true,
+              type: 'success',
+            }),
+            setGeneralLoading(false),
+          ];
         }),
         catchErrorOperator(true),
       ),
@@ -329,6 +363,7 @@ export {
   addNewsletterUserEpic,
   getMyOrdersEpic,
   getOrdersStatusesEpic,
+  unsubscribeEpic,
   getOrderDetailsEpic,
   navigateToLoginEpic,
   sendNewUserPasswordEpic,
@@ -342,6 +377,7 @@ const epics = combineEpics(
   addNewsletterUserEpic,
   getMyOrdersEpic,
   getOrdersStatusesEpic,
+  unsubscribeEpic,
   getOrderDetailsEpic,
   navigateToLoginEpic,
   sendNewUserPasswordEpic,

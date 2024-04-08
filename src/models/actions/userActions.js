@@ -18,6 +18,7 @@ const resetState = createAction('user/resetState');
 const navigateToLogin = createAction('user/navigateToLogin');
 const sendNewUserPassword = createAction('user/sendNewUserPassword');
 const changeUserPassword = createAction('user/changeUserPassword');
+const unsubscribe = createAction('user/unsubscribe');
 
 export {
   setLoggedInUser,
@@ -37,4 +38,5 @@ export {
   navigateToLogin,
   sendNewUserPassword,
   changeUserPassword,
+  unsubscribe,
 };

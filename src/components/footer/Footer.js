@@ -28,9 +28,7 @@ const Footer = () => {
               <div className="title">NEWSLETTER</div>
               <div>
                 <FormControl fullWidth className="newsletter-form">
-                  <InputLabel htmlFor="newsletter">
-                    Your email
-                  </InputLabel>
+                  <InputLabel htmlFor="newsletter">Your email</InputLabel>
                   <Input
                     fullWidth
                     id="newsletter"
@@ -54,7 +52,6 @@ const Footer = () => {
         <div className="row">
           <div className="wrapper">
             <div className="footer-row">
-
               <div className="footer-columns">
                 <div>
                   <p className="title">ABOUT US</p>
@@ -64,8 +61,12 @@ const Footer = () => {
                         <Link to={`/static/${page?.id}`}>{page?.title}</Link>
                       </li>
                     ))}
-                    <li><Link to="/">Working Hours: 9:00 - 17:00</Link></li>
-                    <li><Link to="/">Phone: 1234567890</Link></li>
+                    <li>
+                      <Link to="/">Working Hours: 9:00 - 17:00</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Phone: 1234567890</Link>
+                    </li>
                   </ul>
                 </div>
                 <div>
@@ -92,30 +93,33 @@ const Footer = () => {
                   <p className="title">FIND US</p>
                   <ul className="footer-links">
                     <li>
-                      <Link to="/contact">Contact Us</Link>
+                      <Link to="/contact">Contact Form</Link>
                     </li>
 
-                    <li><Link to="/">Instagram</Link></li>
-                    <li><Link to="/">X - Twitter</Link></li>
-                    <li><Link to="/">Facebook</Link></li>
-
+                    <li>
+                      <Link to="/">Instagram</Link>
+                    </li>
+                    <li>
+                      <Link to="/">X - Twitter</Link>
+                    </li>
+                    <li>
+                      <Link to="/">Facebook</Link>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
         <div className="row">
           <div className="wrapper wrapper-copyright">
             <div className="footer-row">
               <div className="copyright"> (C) Tierra 2024</div>
-
             </div>
           </div>
         </div>
       </div>
-    </footer >
+    </footer>
   );
 };
 

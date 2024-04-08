@@ -154,14 +154,14 @@
     font-weight: bold;
     color: $black;
     width: 100%;
-    font-family: 'Sackers Gothic Std';
+    font-family: 'Quicksand';
 
     & > span {
       margin-right: 4px;
       font-size: 0.5rem;
       text-decoration: line-through;
       color: $black;
-      font-family: 'Sackers Gothic Std';
+      font-family: 'Quicksand';
     }
   }
 
@@ -227,7 +227,7 @@
 .mainProductRightSection {
   .product-description {
     margin-bottom: 16px;
-    font-family: 'Sackers Gothic Std';
+    font-family: 'Quicksand';
   }
 
   .in-stock {
@@ -295,7 +295,7 @@
 
 .headerTitle {
   font-size: 0.85rem;
-  font-family: 'Sackers Gothic Std' !important;
+  font-family: 'Quicksand' !important;
   font-weight: 300 !important;
   color: $black;
   text-align: left;
@@ -312,7 +312,7 @@
 
 .is-new {
   font-weight: 700;
-  font-family: 'Sackers Gothic Std' !important;
+  font-family: 'Quicksand' !important;
   font-size: 0.7rem;
   color: $black;
   background-color: $white;

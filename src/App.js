@@ -20,6 +20,7 @@ import PageNotFound from 'components/pagenotfound/PageNotFound';
 import ProductPage from 'components/product-page/ProductPage';
 import ProtectedRoute from 'components/protected-route/ProtectedRoute';
 import StaticPage from 'components/static/StaticPage';
+import UnSubscribeNewsletter from 'components/unsubscribe/UnSubscribeNewsletter';
 import Login from 'components/user/Login';
 import Register from 'components/user/Register';
 import Wishlist from 'components/wishlist/Wishlist';
@@ -90,6 +91,7 @@ const App = () => {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/unsubscribe" element={<UnSubscribeNewsletter />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
           <Footer />

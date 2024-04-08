@@ -14,17 +14,17 @@ html {
 }
 
 body {
-  font-family: 'Sackers Gothic Std';
+  font-family: 'Quicksand';
   margin: 0;
   padding: 0;
 
   * {
-    font-family: 'Sackers Gothic Std';
+    font-family: 'Quicksand';
   }
 }
 
 .MuiInputLabel-root {
-  font-family: 'Sackers Gothic Std' !important;
+  font-family: 'Quicksand' !important;
 }
 
 img {
@@ -48,7 +48,8 @@ img {
   &.contact-page,
   &.productPage,
   &.catalog,
-  &.notfound {
+  &.notfound,
+  &.unsubscribe {
     padding-top: 70px;
   }
 }
@@ -71,7 +72,7 @@ ul {
 
 .MuiSelect-select,
 .MuiList-root * {
-  font-family: 'Sackers Gothic Std' !important;
+  font-family: 'Quicksand' !important;
   font-size: 0.9rem !important;
 }
 
@@ -156,7 +157,7 @@ ul {
 
 // TITLES
 .MuiTypography-root {
-  font-family: 'Sackers Gothic Std' !important;
+  font-family: 'Quicksand' !important;
 }
 
 .section-title {
@@ -166,7 +167,7 @@ ul {
   margin: 0 0 20px;
   color: $black;
   letter-spacing: 1px;
-  font-family: 'Cormorant', serif;
+  font-family: 'Tenor Sans', serif;
 }
 
 .section-title-small {
@@ -176,7 +177,7 @@ ul {
   margin: 0 0 20px;
   color: $black;
   letter-spacing: 1px;
-  font-family: 'Cormorant', serif;
+  font-family: 'Tenor Sans', serif;
 }
 
 .withCursor {
@@ -190,7 +191,7 @@ ul {
   margin: 0 0 20px;
   color: $black;
   letter-spacing: 2px;
-  font-family: 'Cormorant', serif;
+  font-family: 'Tenor Sans', serif;
 }
 
 // LOADER
