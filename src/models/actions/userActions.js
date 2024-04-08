@@ -19,6 +19,7 @@ const navigateToLogin = createAction('user/navigateToLogin');
 const sendNewUserPassword = createAction('user/sendNewUserPassword');
 const changeUserPassword = createAction('user/changeUserPassword');
 const unsubscribe = createAction('user/unsubscribe');
+const sendContactForm = createAction('user/sendContactForm');
 
 export {
   setLoggedInUser,
@@ -39,4 +40,5 @@ export {
   sendNewUserPassword,
   changeUserPassword,
   unsubscribe,
+  sendContactForm,
 };

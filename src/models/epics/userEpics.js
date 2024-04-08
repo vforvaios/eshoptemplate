@@ -1,6 +1,7 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
+import { sendContactForm } from 'models/actions/userActions';
 import {
   loginUser,
   setLoggedInUser,
@@ -124,6 +125,37 @@ const addNewsletterUserEpic = (action$) =>
           JSON.stringify({ email: payload }),
         ),
       ).pipe(
+        concatMap((payload) => {
+          if (payload?.error) {
+            return [
+              setGeneralLoading(false),
+              toggleShowAlert({
+                message: `${payload.error}`,
+                type: 'error',
+                show: true,
+              }),
+            ];
+          }
+
+          return [
+            setGeneralLoading(false),
+            toggleShowAlert({
+              message: `${payload.message}`,
+              type: 'success',
+              show: true,
+            }),
+          ];
+        }),
+        catchErrorOperator(true),
+      ),
+    ),
+  );
+
+const sendContactFormEpic = (action$) =>
+  action$.pipe(
+    ofType(sendContactForm.type),
+    mergeMap(({ payload }) =>
+      from(makeRequest('users/contact', 'POST', JSON.stringify(payload))).pipe(
         concatMap((payload) => {
           if (payload?.error) {
             return [
@@ -368,6 +400,7 @@ export {
   navigateToLoginEpic,
   sendNewUserPasswordEpic,
   changeUserPasswordEpic,
+  sendContactFormEpic,
 };
 
 const epics = combineEpics(
@@ -382,6 +415,7 @@ const epics = combineEpics(
   navigateToLoginEpic,
   sendNewUserPasswordEpic,
   changeUserPasswordEpic,
+  sendContactFormEpic,
 );
 
 export default epics;
