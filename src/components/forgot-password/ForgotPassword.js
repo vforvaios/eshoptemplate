@@ -38,9 +38,9 @@ const ForgotPassword = () => {
   return (
     <div className="content user">
       <SEO
-        title="Shoppy forgot password"
-        description="Shoppy forgot password page"
-        name="Shoppy"
+        title="Forgot password"
+        description="Forgot password page"
+        name="Tierra"
         type="article"
       />
       <div className="row">
@@ -55,9 +55,7 @@ const ForgotPassword = () => {
           <div className="login-container">
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">
-                  USERNAME/EMAIL
-                </InputLabel>
+                <InputLabel htmlFor="login-email">USERNAME/EMAIL</InputLabel>
                 <Input
                   fullWidth
                   id="login-email"

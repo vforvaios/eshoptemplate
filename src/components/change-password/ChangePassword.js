@@ -40,9 +40,9 @@ const ChangePassword = () => {
   return (
     <div className="content user">
       <SEO
-        title="Shoppy register"
-        description="Shoppy register page"
-        name="Shoppy"
+        title="Register"
+        description="Register page"
+        name="Tierra"
         type="article"
       />
       <div className="row">

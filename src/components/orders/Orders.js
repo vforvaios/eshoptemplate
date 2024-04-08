@@ -38,9 +38,9 @@ const Orders = () => {
   return (
     <div className="content orders-page">
       <SEO
-        title="Shoppy my orders"
-        description="Shoppy my orders page"
-        name="Shoppy"
+        title="My orders"
+        description="My orders page"
+        name="Tierra"
         type="article"
       />
       <div className="row">
@@ -74,7 +74,7 @@ const Orders = () => {
               </TableHead>
               <TableBody>
                 {orders?.map((order) => (
-                  <Order order={order} key={order?.id} toggleOrder={() => { }} />
+                  <Order order={order} key={order?.id} toggleOrder={() => {}} />
                 ))}
               </TableBody>
             </Table>

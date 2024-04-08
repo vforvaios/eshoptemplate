@@ -46,9 +46,9 @@ const Confirm = () => {
     <>
       <div className="content checkout step3">
         <SEO
-          title="Shoppy checkout step 3"
-          description="Shoppy checkout step 3 page"
-          name="Shoppy"
+          title="Checkout step 3"
+          description="Checkout step 3 page"
+          name="Tierra"
           type="article"
         />
         <div className="row">

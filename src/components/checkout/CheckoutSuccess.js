@@ -33,9 +33,9 @@ const CheckoutSuccess = () => {
   return (
     <div className="content checkout step4">
       <SEO
-        title="Shoppy checkout step 4"
-        description="Shoppy checkout step 4 page"
-        name="Shoppy"
+        title="Checkout step 4"
+        description="Checkout step 4 page"
+        name="Tierra"
         type="article"
       />
       <div className="row">

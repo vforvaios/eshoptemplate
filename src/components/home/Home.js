@@ -33,7 +33,7 @@ const Home = () => {
   return (
     <>
       <SEO
-        title={`${process.env.REACT_APP_WEBSITE_NAME} ${pageKeywords}`}
+        title={`${process.env.REACT_APP_WEBSITE_NAME}`}
         description={pageKeywords}
         name={process.env.REACT_APP_WEBSITE_NAME}
         type="article"

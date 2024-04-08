@@ -7,9 +7,9 @@ const CategoriesLanding = () => {
   return (
     <div className="content categories-page">
       <SEO
-        title="Shoppy categories landing"
-        description="Shoppy categories landing page"
-        name="Shoppy"
+        title="Categories landing"
+        description="Categories landing page"
+        name="Tierra"
         type="article"
       />
       <div className="row">

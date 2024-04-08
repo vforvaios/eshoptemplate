@@ -19,9 +19,9 @@ const Wishlist = () => {
   return (
     <div className="content wishlist">
       <SEO
-        title="Shoppy wishlist"
-        description="Shoppy wishlist page"
-        name="Shoppy"
+        title="Wishlist"
+        description="Wishlist page"
+        name="Tierra"
         type="article"
       />
       <div className="row">

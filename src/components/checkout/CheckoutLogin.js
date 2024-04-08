@@ -9,9 +9,9 @@ const CheckoutLogin = () => {
   return (
     <div className="content checkout step1">
       <SEO
-        title="Shoppy checkout step 1"
-        description="Shoppy checkout step 1 page"
-        name="Shoppy"
+        title="Checkout step 1"
+        description="Checkout step 1 page"
+        name="Tierra"
         type="article"
       />
       <div className="row">

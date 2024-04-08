@@ -6,9 +6,9 @@ const PageNotFound = () => {
   return (
     <div className="notfound content">
       <SEO
-        title="Shoppy not-found"
-        description="Shoppy not-found page"
-        name="Shoppy"
+        title="Not-found"
+        description="Not-found page"
+        name="Tierra"
         type="article"
       />
       <div className="row">

@@ -13,12 +13,7 @@ const Cart = () => {
 
   return (
     <div className="content cart-page">
-      <SEO
-        title="Shoppy cart"
-        description="Shoppy cart page"
-        name="Shoppy"
-        type="article"
-      />
+      <SEO title="Cart" description="Cart page" name="Tierra" type="article" />
       <div className="row">
         <div className="wrapper">
           <div className="text-center">
