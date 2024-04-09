@@ -45,14 +45,10 @@ const ForgotPassword = () => {
       />
       <div className="row">
         <div className="wrapper">
-          <div className=" text-center">
-            <h1 className="page-title">RESET PASSWORD</h1>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="wrapper">
           <div className="login-container">
+            <div className=" text-center">
+              <h1 className="page-title">RESET PASSWORD</h1>
+            </div>
             <div className="form-control">
               <FormControl fullWidth>
                 <InputLabel htmlFor="login-email">USERNAME/EMAIL</InputLabel>

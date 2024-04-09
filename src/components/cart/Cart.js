@@ -26,8 +26,8 @@ const Cart = () => {
           <div className="row">
             <div className="wrapper">
               <div className="actions separate">
-                <button className="button back">
-                  <Link to="/catalog">Back to catalog</Link>
+                <button className="button next">
+                  <Link to="/catalog">Back</Link>
                 </button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="navigation next">
@@ -54,8 +54,8 @@ const Cart = () => {
           <div className="row">
             <div className="wrapper">
               <div className="actions separate">
-                <button className="button back">
-                  <Link to="/catalog">Back to catalog</Link>
+                <button className="button next">
+                  <Link to="/catalog">Back</Link>
                 </button>
                 {!userToken ? (
                   <Link to="/checkout/step1" className="navigation next">

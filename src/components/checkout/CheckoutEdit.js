@@ -49,8 +49,8 @@ const CheckoutEdit = () => {
       <div className="row">
         <div className="wrapper">
           <div className="actions separate">
-            <button className="button back">
-              <Link to="/catalog">Back to catalog</Link>
+            <button className="button next">
+              <Link to="/catalog">Back</Link>
             </button>
             <button
               className="button next"
@@ -92,8 +92,8 @@ const CheckoutEdit = () => {
       <div className="row">
         <div className="wrapper">
           <div className="actions separate">
-            <button className="button back">
-              <Link to="/catalog">Back to catalog</Link>
+            <button className="button next">
+              <Link to="/catalog">Back</Link>
             </button>
             <button
               className="button next"

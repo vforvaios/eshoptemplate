@@ -66,7 +66,7 @@ const Confirm = () => {
         <div className="row">
           <div className="wrapper">
             <div className="actions separate">
-              <button className="button back">
+              <button className="button next">
                 <Link to="/checkout/step2">Edit order</Link>
               </button>
               {productsAreUpdated && (
@@ -149,7 +149,7 @@ const Confirm = () => {
         <div className="row">
           <div className="wrapper">
             <div className="actions separate">
-              <button className="button back">
+              <button className="button next">
                 <Link to="/checkout/step2">Edit order</Link>
               </button>
               <button

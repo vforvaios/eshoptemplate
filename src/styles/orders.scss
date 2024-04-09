@@ -3,6 +3,13 @@
     cursor: pointer;
   }
 
+  .table tbody td:last-child {
+    padding: 0;
+    & .MuiChip-label {
+      font-size: 0.6rem;
+    }
+  }
+
   td {
     word-break: break-all;
   }

@@ -13,7 +13,9 @@ const StaticPage = () => {
     <div className="content static-content">
       <div className="row">
         <div className="wrapper">
-          <div className="page-title">{pageRequested?.title}</div>
+          <div className="page-title">
+            {pageRequested?.title?.toUpperCase()}
+          </div>
         </div>
       </div>
       <div className="row">

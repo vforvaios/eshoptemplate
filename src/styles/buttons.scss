@@ -38,6 +38,10 @@
     background: $white !important;
     border: 1px solid $color-3;
     color: $black;
+
+    a {
+      font-weight: 400;
+    }
   }
 
   a {

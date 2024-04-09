@@ -151,7 +151,7 @@
     justify-content: center;
     align-items: center;
     font-size: 0.7rem;
-    font-weight: bold;
+    font-weight: 500;
     color: $black;
     width: 100%;
     font-family: 'Quicksand';
@@ -344,7 +344,7 @@
   transition: all 0.2s ease-in-out;
   position: relative;
   height: 180px;
-  filter: blur(0.4px);
+  filter: blur(0.47px);
 
   img {
     width: 100%;

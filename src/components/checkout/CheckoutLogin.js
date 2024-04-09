@@ -16,13 +16,6 @@ const CheckoutLogin = () => {
       />
       <div className="row">
         <div className="wrapper">
-          <div className="text-center">
-            <h1 className="page-title">LOGIN</h1>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="wrapper">
           <CheckoutStepper step="1" />
         </div>
       </div>
