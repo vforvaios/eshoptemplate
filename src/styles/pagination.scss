@@ -2,11 +2,14 @@
   margin: 0 0 20px;
 
   .MuiPagination-ul {
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .MuiPaginationItem-root {
     color: $black;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
   }
 
   .MuiPaginationItem-page {

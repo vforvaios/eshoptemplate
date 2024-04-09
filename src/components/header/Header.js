@@ -51,7 +51,11 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
       }`}>
       <Grid item xs={3}>
         <div className="menu-icon-align" onClick={setToggleValue('top', true)}>
-          <i className="header-icon icon-menu" />
+          <span className="header-icon">
+            <i />
+            <i />
+            <i />
+          </span>
           <span>Menu</span>
         </div>
         <Drawer

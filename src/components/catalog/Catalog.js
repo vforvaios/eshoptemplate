@@ -79,8 +79,8 @@ const Catalog = () => {
               {products?.length > 0 ? (
                 <>
                   <div className="sorting-section">
-                    <CatalogPagination pagination={pagination} />
                     <SortingCatalog />
+                    <CatalogPagination pagination={pagination} />
                   </div>
                   <div className="products">
                     <ul className="products-grid">

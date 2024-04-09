@@ -6,3 +6,11 @@
   max-width: 60% !important;
   margin: 0 auto !important;
 }
+
+.pagination {
+  .MuiPaginationItem-root {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+}

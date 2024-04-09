@@ -22,7 +22,7 @@
 
   span {
     position: absolute;
-    font-size: 0.5rem;
+    font-size: 0.48rem;
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -32,6 +32,7 @@
     top: 0;
     right: -2px;
     border: 1px solid $black;
+    line-height: 0.9;
   }
 }
 
@@ -57,7 +58,7 @@
   i {
     font-size: 1.3rem;
     color: $white;
-    margin-left: 12px;
+    margin-left: 6px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 
@@ -87,8 +88,9 @@
   }
 
   i svg {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
+    margin-top: 5px;
   }
 }
 
