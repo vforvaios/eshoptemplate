@@ -22,7 +22,7 @@
 }
 
 .icon-heart-empty {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .product {
@@ -283,13 +283,18 @@
 
 .product-page-actions {
   display: flex;
-  gap: 10px;
+  gap: 4px;
   align-items: center;
   justify-content: flex-start;
   margin-top: 20px;
 
   .add-to-cart {
     width: auto;
+
+    .header-icon {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 
