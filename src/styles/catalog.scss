@@ -37,6 +37,7 @@
   min-width: 200px;
   margin-bottom: 0px;
   display: flex;
+  flex-grow: 1;
 
   & .MuiFormControl-root {
     display: flex;
