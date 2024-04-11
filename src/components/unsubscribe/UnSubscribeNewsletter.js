@@ -28,14 +28,8 @@ const UnSubscribeNewsletter = () => {
     <div className="content unsubscribe">
       <div className="row">
         <div className="wrapper">
-          <div className=" text-center">
-            <h1 className="page-title">UNSUBSCRIBE NEWSLETTER</h1>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="wrapper">
           <div className="login-container">
+            <h1 className="page-title">UNSUBSCRIBE NEWSLETTER</h1>
             <div className="form-control">
               <FormControl fullWidth>
                 <InputLabel htmlFor="unsubscribe-email">EMAIL</InputLabel>

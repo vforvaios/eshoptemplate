@@ -128,9 +128,9 @@ const ProductPage = () => {
                 {productDescription}
               </Typography>
               <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
-                <span>{stock > 0 ? 'Available' : 'Not Available'}</span>
+                <span>{stock > 0 ? 'Available' : 'Out of stock'}</span>
                 {stock > 0 ? (
-                  <span className="minor-text">(3 days needed)</span>
+                  <span className="minor-text">({stock} more left)</span>
                 ) : (
                   ''
                 )}
