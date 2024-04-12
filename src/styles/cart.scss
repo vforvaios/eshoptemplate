@@ -114,7 +114,7 @@
   font-size: 0.9rem;
 
   &.bold {
-    font-weight: 700;
+    font-weight: 500;
   }
 
   &:last-child {
@@ -128,7 +128,7 @@
 }
 
 .cart-totals-value {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .cart-item-initial-price {
@@ -143,7 +143,7 @@
   margin-bottom: 0;
   color: $black;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 1px;
   border-bottom: 1px solid $color-3;
 }

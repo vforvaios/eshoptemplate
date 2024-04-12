@@ -128,11 +128,17 @@ ul {
   }
 }
 
+h3,
+h1,
+h2,
+strong {
+  font-weight: 500;
+}
+
 // ACTIONS
 .actions {
   display: flex;
   justify-content: flex-end;
-  flex-direction: column;
   align-items: center;
 
   &.separate {
@@ -142,6 +148,10 @@ ul {
   .minor-link.mrl12,
   .button.next {
     margin-left: 2px !important;
+  }
+
+  &.login-actions {
+    flex-direction: column;
   }
 
   * {

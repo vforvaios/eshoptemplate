@@ -92,7 +92,7 @@
 
     th {
       display: table-cell;
-      font-weight: bold;
+      font-weight: 500;
       font-size: 1.3rem;
       text-align: center;
       border-color: $black;
@@ -195,6 +195,10 @@
 // ACTIONS
 .actions {
   flex-direction: row;
+
+  &.login-actions {
+    flex-direction: row;
+  }
 
   .button.next {
     margin-left: 12px !important;

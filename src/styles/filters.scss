@@ -17,7 +17,7 @@
   background: $white;
   color: $black;
   font-size: 0.7rem;
-  font-weight: 900;
+  font-weight: 500;
   text-align: center;
   letter-spacing: 1px;
 
@@ -116,7 +116,7 @@
     padding-right: 14px;
     font-size: 0.7rem;
     line-height: 1;
-    font-weight: 700;
+    font-weight: 500;
 
     &:after {
       content: 'x';
@@ -127,7 +127,7 @@
       transform: translate(0, -50%);
       font-size: 0.7rem;
       color: $alert;
-      font-weight: 900;
+      font-weight: 500;
     }
   }
 }
