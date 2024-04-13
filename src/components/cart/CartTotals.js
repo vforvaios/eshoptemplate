@@ -17,21 +17,21 @@ const CartTotals = ({ cart, order }) => {
   if (!order || Object.keys(order)?.length === 0) {
     smCost = mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost
       ? parseFloat(
-        mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost,
-      )
+          mySmCost?.find((shippingmethod) => shippingmethod.checked)?.cost,
+        )
       : Number(0);
     pmCost = myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost
       ? parseFloat(
-        myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost,
-      )
+          myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost,
+        )
       : Number(0);
   }
 
-  if (!smCost) {
+  if (Number.isNaN(smCost)) {
     smCost = parseFloat(order?.shippingMethodCost);
   }
 
-  if (!pmCost) {
+  if (Number.isNaN(pmCost)) {
     pmCost = parseFloat(order?.paymentMethodCost);
   }
 
@@ -63,12 +63,13 @@ const CartTotals = ({ cart, order }) => {
       <div className="cart-totals-row bold">
         <span className="cart-totals-name">Total:</span>
         <span className="cart-totals-value">
-          {smCost || pmCost
+          {(smCost && smCost !== 'NaN' && Number(smCost) > 0) ||
+          (pmCost && pmCost !== 'NaN' && Number(pmCost) > 0)
             ? formatMoney.format(
-              parseFloat(smCost) +
-              parseFloat(pmCost) +
-              parseFloat(getCartTotals(cart)),
-            )
+                parseFloat(smCost) +
+                  parseFloat(pmCost) +
+                  parseFloat(getCartTotals(cart)),
+              )
             : formatMoney.format(getCartTotals(cart))}
         </span>
       </div>
