@@ -51,6 +51,28 @@ textarea {
   }
 }
 
+[overlayclassname='info-popover'] {
+  .MuiPaper-root {
+    padding: 12px;
+    font-size: 1rem;
+    max-width: 300px;
+    box-shadow: 0px 0px 20px -6px $black;
+  }
+}
+
+.payment-methods {
+  h3 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .info-icon {
+    margin-left: 4px;
+    cursor: pointer;
+  }
+}
+
 .MuiAutocomplete-inputRoot {
   background: none !important;
 }
