@@ -56,6 +56,13 @@ const Footer = () => {
                 <div>
                   <p className="title">ABOUT US</p>
                   <ul className="footer-links">
+                    {allPages
+                      ?.filter((page) => page?.isFooter)
+                      ?.map((p) => (
+                        <li key={p?.id}>
+                          <Link to={`/static/${p?.id}`}>{p?.title}</Link>
+                        </li>
+                      ))}
                     <li>
                       <div>Working Hours: 9:00 - 17:00</div>
                     </li>
@@ -67,11 +74,13 @@ const Footer = () => {
                 <div>
                   <p className="title">WHAT TO KNOW</p>
                   <ul className="footer-links">
-                    {allPages?.map((page) => (
-                      <li key={page?.id}>
-                        <Link to={`/static/${page?.id}`}>{page?.title}</Link>
-                      </li>
-                    ))}
+                    {allPages
+                      ?.filter((p) => !p?.isFooter)
+                      ?.map((page) => (
+                        <li key={page?.id}>
+                          <Link to={`/static/${page?.id}`}>{page?.title}</Link>
+                        </li>
+                      ))}
                   </ul>
                 </div>
                 <div>
