@@ -56,37 +56,22 @@ const Footer = () => {
                 <div>
                   <p className="title">ABOUT US</p>
                   <ul className="footer-links">
+                    <li>
+                      <div>Working Hours: 9:00 - 17:00</div>
+                    </li>
+                    <li>
+                      <a href="tel:6977137837">Phone: 6977137837</a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="title">WHAT TO KNOW</p>
+                  <ul className="footer-links">
                     {allPages?.map((page) => (
                       <li key={page?.id}>
                         <Link to={`/static/${page?.id}`}>{page?.title}</Link>
                       </li>
                     ))}
-                    <li>
-                      <Link to="/">Working Hours: 9:00 - 17:00</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Phone: 1234567890</Link>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="title">POPULAR</p>
-                  <ul className="footer-links">
-                    <li>
-                      <Link to="/">Link 1</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Link 2</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Link 3</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Link 4</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Link 5</Link>
-                    </li>
                   </ul>
                 </div>
                 <div>
@@ -95,15 +80,29 @@ const Footer = () => {
                     <li>
                       <Link to="/contact">Contact Form</Link>
                     </li>
-
                     <li>
-                      <Link to="/">Instagram</Link>
+                      <a
+                        rel="noreferrer"
+                        href="https://www.instagram.com/tierra_purses/"
+                        target="_blank">
+                        Instagram
+                      </a>
                     </li>
                     <li>
-                      <Link to="/">X - Twitter</Link>
+                      <a
+                        rel="noreferrer"
+                        href="https://www.tiktok.com/@tierra_purses"
+                        target="_blank">
+                        Tik-Tok
+                      </a>
                     </li>
                     <li>
-                      <Link to="/">Facebook</Link>
+                      <a
+                        rel="noreferrer"
+                        href="https://www.facebook.com/tierrapurses"
+                        target="_blank">
+                        Facebook
+                      </a>
                     </li>
                   </ul>
                 </div>
