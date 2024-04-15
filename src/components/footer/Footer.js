@@ -3,20 +3,32 @@ import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import { setGeneralLoading } from 'models/actions/catalogActions';
-import { getStaticContent } from 'models/actions/staticActions';
+import {
+  getStaticContent,
+  getBusinessDetails,
+  getSocialLinks,
+} from 'models/actions/staticActions';
 import { addNewsletterUser } from 'models/actions/userActions';
-import { pages } from 'models/selectors/staticSelectors';
+import {
+  pages,
+  businessdetails,
+  socialLinks,
+} from 'models/selectors/staticSelectors';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const allPages = useSelector(pages);
+  const social = useSelector(socialLinks);
+  const allBusinessdetails = useSelector(businessdetails);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getStaticContent());
+    dispatch(getBusinessDetails());
+    dispatch(getSocialLinks());
   }, []);
 
   return (
@@ -64,10 +76,12 @@ const Footer = () => {
                         </li>
                       ))}
                     <li>
-                      <div>Working Hours: 9:00 - 17:00</div>
+                      <div>Working Hours: {allBusinessdetails?.hours}</div>
                     </li>
                     <li>
-                      <a href="tel:6977137837">Phone: 6977137837</a>
+                      <a href={`tel:${allBusinessdetails?.phone}`}>
+                        Phone: {allBusinessdetails?.phone}
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -89,30 +103,13 @@ const Footer = () => {
                     <li>
                       <Link to="/contact">Contact Form</Link>
                     </li>
-                    <li>
-                      <a
-                        rel="noreferrer"
-                        href="https://www.instagram.com/tierra_purses/"
-                        target="_blank">
-                        Instagram
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        rel="noreferrer"
-                        href="https://www.tiktok.com/@tierra_purses"
-                        target="_blank">
-                        Tik-Tok
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        rel="noreferrer"
-                        href="https://www.facebook.com/tierrapurses"
-                        target="_blank">
-                        Facebook
-                      </a>
-                    </li>
+                    {social?.map((netw) => (
+                      <li key={netw?.id}>
+                        <a rel="noreferrer" href={netw?.link} target="_blank">
+                          {netw?.name}
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

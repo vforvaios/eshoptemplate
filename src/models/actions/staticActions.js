@@ -7,6 +7,14 @@ const setStaticPagesInMenu = createAction(
 );
 const getKeyWords = createAction('staticContentPages/getKeyWords');
 const setKeyWords = createAction('staticContentPages/setKeyWords');
+const setBusinessDetails = createAction(
+  'staticContentPages/setBusinessDetails',
+);
+const getBusinessDetails = createAction(
+  'staticContentPages/getBusinessDetails',
+);
+const setSocialLinks = createAction('staticContentPages/setSocialLinks');
+const getSocialLinks = createAction('staticContentPages/getSocialLinks');
 
 export {
   getStaticContent,
@@ -14,4 +22,8 @@ export {
   setStaticPagesInMenu,
   getKeyWords,
   setKeyWords,
+  getBusinessDetails,
+  setBusinessDetails,
+  setSocialLinks,
+  getSocialLinks,
 };

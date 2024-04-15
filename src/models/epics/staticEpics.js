@@ -5,6 +5,10 @@ import {
   setStaticContent,
   getKeyWords,
   setKeyWords,
+  getBusinessDetails,
+  setBusinessDetails,
+  getSocialLinks,
+  setSocialLinks,
 } from 'models/actions/staticActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
@@ -49,8 +53,41 @@ const getStaticContentEpic = (action$, state$) =>
     ),
   );
 
-export { getStaticContentEpic, getKeyWordsEpic };
+const getBusinessDetailsEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getBusinessDetails.type),
+    mergeMap(() =>
+      from(makeRequest('staticcontent/businessdetails', 'GET', '')).pipe(
+        concatMap((payload) => [
+          setBusinessDetails(payload.data),
+          toggleShowAlert({ message: '', show: false, type: 'error' }),
+        ]),
+        catchErrorOperator(false),
+      ),
+    ),
+  );
 
-const epics = combineEpics(getStaticContentEpic, getKeyWordsEpic);
+const getSocialLinksEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(getSocialLinks.type),
+    mergeMap(() =>
+      from(makeRequest('staticcontent/sociallinks', 'GET', '')).pipe(
+        concatMap((payload) => [
+          setSocialLinks(payload.data),
+          toggleShowAlert({ message: '', show: false, type: 'error' }),
+        ]),
+        catchErrorOperator(false),
+      ),
+    ),
+  );
+
+export { getStaticContentEpic, getKeyWordsEpic, getBusinessDetailsEpic };
+
+const epics = combineEpics(
+  getStaticContentEpic,
+  getKeyWordsEpic,
+  getBusinessDetailsEpic,
+  getSocialLinksEpic,
+);
 
 export default epics;
