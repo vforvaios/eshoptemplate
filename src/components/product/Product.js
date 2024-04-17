@@ -7,13 +7,14 @@ import { withStyles } from '@mui/styles';
 import formatMoney from 'library/formatMoney';
 import { addToCart } from 'models/actions/cartActions';
 import { removeProductWishlist } from 'models/actions/wishlistActions';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styles from './styles';
 
 const Product = ({ classes, product, isWishlist }) => {
+  const [imageShown, setImageShown] = useState(false);
   const dispatch = useDispatch();
   const {
     productId,
@@ -24,12 +25,17 @@ const Product = ({ classes, product, isWishlist }) => {
     isNew,
   } = product;
 
+  const onImageLoad = () => {
+    debugger;
+    setImageShown(true);
+  };
+
   return (
     <Link className="navlink product" to={`/product/${productId}`}>
       <Card className={classes?.root}>
         <CardMedia className={classes.media} title={productTitle}>
           {imgHref?.length > 1 ? (
-            <div className="productImage">
+            <div className={`productImage ${imageShown ? 'show' : ''}`}>
               <img
                 alt={productTitle}
                 title={productTitle}
@@ -38,6 +44,7 @@ const Product = ({ classes, product, isWishlist }) => {
                     ? imgHref.substr(0, imgHref.indexOf('#'))
                     : imgHref
                 }`}
+                onLoad={onImageLoad}
               />
             </div>
           ) : (
