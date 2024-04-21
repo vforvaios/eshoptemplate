@@ -70,6 +70,13 @@ textarea {
   .info-icon {
     margin-left: 4px;
     cursor: pointer;
+    width: 18px;
+    height: 18px;
+    line-height: 16px;
+    border-radius: 50%;
+    border: 1px solid $disabled;
+    font-size: 1rem;
+    text-align: center;
   }
 }
 

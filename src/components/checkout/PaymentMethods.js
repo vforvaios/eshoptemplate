@@ -35,7 +35,7 @@ const PaymentMethods = () => {
       <h3>
         PAYMENT METHODS{' '}
         <span className="info-icon" onClick={handlePaymentInfoClicked}>
-          &#128712;
+          i
         </span>
         <Popover
           overlayClassName="info-popover"
