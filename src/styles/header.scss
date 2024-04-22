@@ -115,7 +115,7 @@
   span {
     color: $black;
     font-size: 0.8rem;
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', 'Open Sans';
     margin-left: 4px;
     font-weight: 500;
   }
@@ -154,7 +154,7 @@
   border: 1px solid $color-3;
 
   * {
-    font-family: 'Quicksand' !important;
+    font-family: 'Quicksand', 'Open Sans' !important;
   }
 
   > div {

@@ -154,14 +154,14 @@
     font-weight: 500;
     color: $black;
     width: 100%;
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', 'Open Sans';
 
     & > span {
       margin-right: 4px;
       font-size: 0.5rem;
       text-decoration: line-through;
       color: $black;
-      font-family: 'Quicksand';
+      font-family: 'Quicksand', 'Open Sans';
     }
   }
 
@@ -232,7 +232,7 @@
 .mainProductRightSection {
   .product-description {
     margin-bottom: 16px;
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', 'Open Sans';
   }
 
   .in-stock {
@@ -305,7 +305,7 @@
 
 .headerTitle {
   font-size: 0.85rem;
-  font-family: 'Quicksand' !important;
+  font-family: 'Quicksand', 'Open Sans' !important;
   font-weight: 300 !important;
   color: $black;
   text-align: left;
@@ -322,7 +322,7 @@
 
 .is-new {
   font-weight: 500;
-  font-family: 'Quicksand' !important;
+  font-family: 'Quicksand', 'Open Sans' !important;
   font-size: 0.7rem;
   color: $black;
   background-color: $white;

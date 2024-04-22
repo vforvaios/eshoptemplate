@@ -14,17 +14,17 @@ html {
 }
 
 body {
-  font-family: 'Quicksand';
+  font-family: 'Quicksand', 'Open Sans';
   margin: 0;
   padding: 0;
 
   * {
-    font-family: 'Quicksand';
+    font-family: 'Quicksand', 'Open Sans';
   }
 }
 
 .MuiInputLabel-root {
-  font-family: 'Quicksand' !important;
+  font-family: 'Quicksand', 'Open Sans' !important;
 }
 
 img {
@@ -72,7 +72,7 @@ ul {
 
 .MuiSelect-select,
 .MuiList-root * {
-  font-family: 'Quicksand' !important;
+  font-family: 'Quicksand', 'Open Sans' !important;
   font-size: 0.9rem !important;
 }
 
@@ -171,7 +171,7 @@ strong {
 
 // TITLES
 .MuiTypography-root {
-  font-family: 'Quicksand' !important;
+  font-family: 'Quicksand', 'Open Sans' !important;
 }
 
 .section-title {
