@@ -9,18 +9,36 @@ const HomeLastBanner = ({ banner }) => {
         {banner.link ? (
           <Link to={banner.link}>
             <Tooltip title={banner.description}>
-              <img
-                alt={banner.description}
-                src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
-              />
+              {!banner.isVideo ? (
+                <img
+                  alt={banner.description}
+                  src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
+                />
+              ) : (
+                <video autoPlay loop muted>
+                  <source
+                    type="video/mp4"
+                    src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
+                  />
+                </video>
+              )}
             </Tooltip>
           </Link>
         ) : (
           <Tooltip title={banner.description}>
-            <img
-              alt={banner.description}
-              src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
-            />
+            {!banner.isVideo ? (
+              <img
+                alt={banner.description}
+                src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
+              />
+            ) : (
+              <video autoPlay loop muted>
+                <source
+                  type="video/mp4"
+                  src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
+                />
+              </video>
+            )}
           </Tooltip>
         )}
       </div>
