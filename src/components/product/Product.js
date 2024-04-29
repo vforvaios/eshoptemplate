@@ -26,7 +26,6 @@ const Product = ({ classes, product, isWishlist }) => {
   } = product;
 
   const onImageLoad = () => {
-    debugger;
     setImageShown(true);
   };
 

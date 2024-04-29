@@ -22,6 +22,19 @@ const HomeSlider = ({ banners }) => {
             </div>
           </li>
         ))}
+        <li className="videoLi">
+          <div>
+            <video autoPlay loop muted>
+              <source
+                type="video/mp4"
+                src="http://api.tierrapurses.gr/images/samplevideo.mp4"
+              />
+            </video>
+            <Link to="/">
+              <h2>Hi</h2>
+            </Link>
+          </div>
+        </li>
       </ul>
     </div>
   );
