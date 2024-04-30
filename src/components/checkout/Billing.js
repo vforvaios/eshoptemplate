@@ -63,14 +63,15 @@ const Billing = () => {
             name="receipt-buttons-group">
             <FormControlLabel
               value="receipt"
+              checked
               control={<Radio />}
               label="Receipt"
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               value="invoice"
               control={<Radio />}
               label="Invoice"
-            />
+            /> */}
           </RadioGroup>
         </FormControl>
       </div>
