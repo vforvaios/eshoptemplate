@@ -10,18 +10,13 @@ import {
   getAvailableCoupons,
   setAvailableCoupons,
   applyCouponInCart,
+  setValidityOfCoupon,
 } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import { setUpdatedProducts } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
-import {
-  mergeMap,
-  concatMap,
-  map,
-  withLatestFrom,
-  ignoreElements,
-} from 'rxjs/operators';
+import { mergeMap, concatMap, map, withLatestFrom } from 'rxjs/operators';
 
 import catchErrorOperator from './operators/catchErrorOperator';
 
@@ -42,10 +37,12 @@ const getAvailableCouponsEpic = (action$) =>
 const applyCouponInCartEpic = (action$) =>
   action$.pipe(
     ofType(applyCouponInCart.type),
-    map(() => {
-      debugger;
-    }),
-    ignoreElements(),
+    mergeMap(({ payload }) =>
+      from(makeRequest(`availableCoupons/validity/${payload}`, 'GET', '')).pipe(
+        concatMap(({ validCoupon }) => [setValidityOfCoupon(validCoupon)]),
+        catchErrorOperator(true),
+      ),
+    ),
   );
 
 // TODO - NOT USED AT THE MOMENT

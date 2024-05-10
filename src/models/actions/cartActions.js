@@ -10,6 +10,7 @@ const navigateBackToCart = createAction('alert/navigateBackToCart');
 const getAvailableCoupons = createAction('alert/getAvailableCoupons');
 const setAvailableCoupons = createAction('alert/setAvailableCoupons');
 const applyCouponInCart = createAction('alert/applyCouponInCart');
+const setValidityOfCoupon = createAction('alert/setValidityOfCoupon');
 
 export {
   getCart,
@@ -21,4 +22,5 @@ export {
   getAvailableCoupons,
   setAvailableCoupons,
   applyCouponInCart,
+  setValidityOfCoupon,
 };
