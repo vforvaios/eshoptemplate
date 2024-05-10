@@ -7,13 +7,46 @@ import {
   removeItemFromCart,
   updateCartItemTotal,
   navigateBackToCart,
+  getAvailableCoupons,
+  setAvailableCoupons,
+  applyCouponInCart,
 } from 'models/actions/cartActions';
+import { setGeneralLoading } from 'models/actions/catalogActions';
 import { setUpdatedProducts } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
-import { mergeMap, concatMap, map, withLatestFrom } from 'rxjs/operators';
+import {
+  mergeMap,
+  concatMap,
+  map,
+  withLatestFrom,
+  ignoreElements,
+} from 'rxjs/operators';
 
 import catchErrorOperator from './operators/catchErrorOperator';
+
+const getAvailableCouponsEpic = (action$) =>
+  action$.pipe(
+    ofType(getAvailableCoupons.type),
+    mergeMap(() =>
+      from(makeRequest('availablecoupons', 'GET', '')).pipe(
+        concatMap((payload) => [
+          setAvailableCoupons(payload),
+          setGeneralLoading(false),
+        ]),
+        catchErrorOperator(true),
+      ),
+    ),
+  );
+
+const applyCouponInCartEpic = (action$) =>
+  action$.pipe(
+    ofType(applyCouponInCart.type),
+    map(() => {
+      debugger;
+    }),
+    ignoreElements(),
+  );
 
 // TODO - NOT USED AT THE MOMENT
 const getCartEpic = (action$) =>
@@ -74,15 +107,15 @@ const addToCartEpic = (action$, state$) =>
             return cartItem.productId !== productId
               ? { ...cartItem }
               : {
-                ...cartItem,
-                price,
-                imgHref,
-                initialPrice,
-                total: Number(Number(cartItem.total) + 1),
-                totalPrice: Number(
-                  (Number(cartItem?.total) + 1) * Number(cartItem?.price),
-                ),
-              };
+                  ...cartItem,
+                  price,
+                  imgHref,
+                  initialPrice,
+                  total: Number(Number(cartItem.total) + 1),
+                  totalPrice: Number(
+                    (Number(cartItem?.total) + 1) * Number(cartItem?.price),
+                  ),
+                };
           });
         }
 
@@ -165,6 +198,8 @@ export {
   addToCartEpic,
   removeItemFromCartEpic,
   updateCartItemTotalEpic,
+  getAvailableCouponsEpic,
+  applyCouponInCartEpic,
 };
 
 const epics = combineEpics(
@@ -172,6 +207,8 @@ const epics = combineEpics(
   addToCartEpic,
   removeItemFromCartEpic,
   updateCartItemTotalEpic,
+  getAvailableCouponsEpic,
+  applyCouponInCartEpic,
 );
 
 export default epics;

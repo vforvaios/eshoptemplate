@@ -7,6 +7,9 @@ const removeItemFromCart = createAction('alert/removeItemFromCart');
 
 const updateCartItemTotal = createAction('alert/updateCartItemTotal');
 const navigateBackToCart = createAction('alert/navigateBackToCart');
+const getAvailableCoupons = createAction('alert/getAvailableCoupons');
+const setAvailableCoupons = createAction('alert/setAvailableCoupons');
+const applyCouponInCart = createAction('alert/applyCouponInCart');
 
 export {
   getCart,
@@ -15,4 +18,7 @@ export {
   removeItemFromCart,
   updateCartItemTotal,
   navigateBackToCart,
+  getAvailableCoupons,
+  setAvailableCoupons,
+  applyCouponInCart,
 };

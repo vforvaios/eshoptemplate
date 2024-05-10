@@ -6,7 +6,9 @@ import TableRow from '@mui/material/TableRow';
 import CartItem from 'components/cartItem/CartItem';
 import React from 'react';
 
-const MyCart = ({ cart, updateable }) => (
+import AvailableCouponsForm from './AvailableCouponsForm';
+
+const MyCart = ({ cart, updateable, availableCoupons }) => (
   <div className="cart-content">
     <Table className="table">
       <TableHead>
@@ -23,6 +25,9 @@ const MyCart = ({ cart, updateable }) => (
         ))}
       </TableBody>
     </Table>
+    {availableCoupons && (
+      <AvailableCouponsForm availableCoupons={availableCoupons} />
+    )}
   </div>
 );
 

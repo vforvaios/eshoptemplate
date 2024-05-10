@@ -256,3 +256,22 @@
     font-weight: 400;
   }
 }
+
+.coupon-form {
+  padding: 12px 110px 0 0;
+  margin-top: 12px;
+  position: relative;
+  max-width: 320px;
+
+  input,
+  div {
+    width: 100%;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
