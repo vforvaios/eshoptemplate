@@ -11,6 +11,7 @@ import {
   setAvailableCoupons,
   applyCouponInCart,
   setValidityOfCoupon,
+  invalidateExpiredCoupons,
 } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import { setUpdatedProducts } from 'models/actions/checkoutActions';
@@ -40,6 +41,17 @@ const applyCouponInCartEpic = (action$) =>
     mergeMap(({ payload }) =>
       from(makeRequest(`availableCoupons/validity/${payload}`, 'GET', '')).pipe(
         concatMap(({ validCoupon }) => [setValidityOfCoupon(validCoupon)]),
+        catchErrorOperator(true),
+      ),
+    ),
+  );
+
+const invalidateExpiredCouponsEpic = (action$) =>
+  action$.pipe(
+    ofType(invalidateExpiredCoupons.type),
+    mergeMap(() =>
+      from(makeRequest(`availableCoupons/expire`, 'POST', '')).pipe(
+        concatMap(() => [getAvailableCoupons()]),
         catchErrorOperator(true),
       ),
     ),
@@ -197,6 +209,7 @@ export {
   updateCartItemTotalEpic,
   getAvailableCouponsEpic,
   applyCouponInCartEpic,
+  invalidateExpiredCouponsEpic,
 };
 
 const epics = combineEpics(
@@ -206,6 +219,7 @@ const epics = combineEpics(
   updateCartItemTotalEpic,
   getAvailableCouponsEpic,
   applyCouponInCartEpic,
+  invalidateExpiredCouponsEpic,
 );
 
 export default epics;

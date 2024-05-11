@@ -1,24 +1,16 @@
 import CartTotals from 'components/cart/CartTotals';
 import MyCart from 'components/cart/MyCart';
 import SEO from 'components/seo/SEO';
-import { getAvailableCoupons } from 'models/actions/cartActions';
-import { setGeneralLoading } from 'models/actions/catalogActions';
 import { cart, availableCoupons } from 'models/selectors/cartSelectors';
 import { token } from 'models/selectors/userSelector';
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-  const dispatch = useDispatch();
   const myCart = useSelector(cart);
   const userToken = useSelector(token);
   const allAvailableCoupons = useSelector(availableCoupons);
-
-  useEffect(() => {
-    dispatch(setGeneralLoading(true));
-    dispatch(getAvailableCoupons());
-  }, []);
 
   return (
     <div className="content cart-page">

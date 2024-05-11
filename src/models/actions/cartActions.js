@@ -11,6 +11,7 @@ const getAvailableCoupons = createAction('alert/getAvailableCoupons');
 const setAvailableCoupons = createAction('alert/setAvailableCoupons');
 const applyCouponInCart = createAction('alert/applyCouponInCart');
 const setValidityOfCoupon = createAction('alert/setValidityOfCoupon');
+const invalidateExpiredCoupons = createAction('alert/invalidateExpiredCoupons');
 
 export {
   getCart,
@@ -23,4 +24,5 @@ export {
   setAvailableCoupons,
   applyCouponInCart,
   setValidityOfCoupon,
+  invalidateExpiredCoupons,
 };

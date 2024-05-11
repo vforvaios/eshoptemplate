@@ -6,6 +6,7 @@ import MainMenu from 'components/main-menu/MainMenu';
 import Search from 'components/searchHeader/Search';
 import UserMenu from 'components/usermenu/UserMenu';
 import { withToggle } from 'library';
+import { invalidateExpiredCoupons } from 'models/actions/cartActions';
 import { getLogo } from 'models/actions/homeActions';
 import { logo } from 'models/selectors/homeSelectors';
 import { token } from 'models/selectors/userSelector';
@@ -27,6 +28,7 @@ const Header = ({ cookies, toggleValue, setToggleValue }) => {
 
   useEffect(() => {
     dispatch(getLogo());
+    dispatch(invalidateExpiredCoupons());
   }, []);
 
   useEffect(() => {
