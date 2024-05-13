@@ -292,7 +292,7 @@ const sendOrderEpic = (action$, state$) =>
         ,
         {
           checkoutReducer,
-          cartReducer: { cart },
+          cartReducer: { cart, couponUsed },
           userReducer: { user },
         },
       ]) => {
@@ -341,6 +341,7 @@ const sendOrderEpic = (action$, state$) =>
                 receipt,
                 sameAsBilling,
               },
+              couponUsed,
               user,
             }),
           ),

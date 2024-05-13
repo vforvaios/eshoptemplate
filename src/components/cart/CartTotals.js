@@ -27,6 +27,9 @@ const CartTotals = ({ cart, order }) => {
           myPmCost?.find((paymentmethod) => paymentmethod.checked)?.cost,
         )
       : Number(0);
+  } else {
+    smCost = parseFloat(order?.shippingMethodCost);
+    pmCost = parseFloat(order?.paymentMethodCost);
   }
 
   if (Number.isNaN(smCost)) {
@@ -36,7 +39,6 @@ const CartTotals = ({ cart, order }) => {
   if (Number.isNaN(pmCost)) {
     pmCost = parseFloat(order?.paymentMethodCost);
   }
-
   const totalPayment =
     (smCost && smCost !== 'NaN' && Number(smCost) > 0) ||
     (pmCost && pmCost !== 'NaN' && Number(pmCost) > 0)

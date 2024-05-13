@@ -25,6 +25,7 @@ const Order = ({ order, toggleOrder }) => {
     paymentMethodCost,
     shippingMethodCost,
     statusId,
+    couponDiscount,
   } = order;
 
   return (
@@ -53,9 +54,11 @@ const Order = ({ order, toggleOrder }) => {
         <TableCell>
           <span className="hidden">Price</span>
           {formatMoney.format(
-            Number(totalOrderPrice) +
-            Number(paymentMethodCost) +
-            Number(shippingMethodCost),
+            ((Number(totalOrderPrice) +
+              Number(paymentMethodCost) +
+              Number(shippingMethodCost)) *
+              (100 - Number(couponDiscount))) /
+              100,
           )}
         </TableCell>
         <TableCell>
