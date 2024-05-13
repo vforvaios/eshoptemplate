@@ -18,7 +18,7 @@ const AvailableCouponsForm = ({ availableCoupons }) => {
         placeholder={
           !myCouponUsed?.code ? 'Do you have a coupon?' : myCouponUsed?.code
         }
-        readOnly={myCouponUsed?.code}
+        readOnly={Boolean(myCouponUsed?.code)}
         onChange={(e) => setCouponValue(e.target.value)}
         value={couponValue}
       />

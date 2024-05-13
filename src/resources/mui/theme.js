@@ -18,8 +18,6 @@ if (
   process.env.NODE_ENV === 'development' &&
   process.env.NODE_ENV !== 'test'
 ) {
-  /* eslint-disable no-console */
-  console.log('--- THEME ---', theme);
 }
 
 export default theme;
