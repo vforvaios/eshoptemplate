@@ -3,6 +3,7 @@ import {
   setCart,
   setAvailableCoupons,
   setValidityOfCoupon,
+  removeCouponFromCart,
 } from 'models/actions/cartActions';
 import { clearOrder } from 'models/actions/checkoutActions';
 
@@ -24,6 +25,10 @@ const cartReducer = createReducer(initialState, (builder) => {
     .addCase(setValidityOfCoupon, (state, action) => ({
       ...state,
       couponUsed: Object.keys(action.payload).length > 0 ? action.payload : {},
+    }))
+    .addCase(removeCouponFromCart, (state, action) => ({
+      ...state,
+      couponUsed: {},
     }))
     .addCase(clearOrder, (state, action) => ({
       ...initialState,

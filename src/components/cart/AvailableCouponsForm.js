@@ -1,5 +1,8 @@
 import { Input } from '@mui/material';
-import { applyCouponInCart } from 'models/actions/cartActions';
+import {
+  applyCouponInCart,
+  removeCouponFromCart,
+} from 'models/actions/cartActions';
 import { couponUsed } from 'models/selectors/cartSelectors';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +15,10 @@ const AvailableCouponsForm = ({ availableCoupons }) => {
   return (
     <div className="coupon-form">
       <Input
-        placeholder="Do you have a coupon?"
+        placeholder={
+          !myCouponUsed?.code ? 'Do you have a coupon?' : myCouponUsed?.code
+        }
+        readOnly={myCouponUsed?.code}
         onChange={(e) => setCouponValue(e.target.value)}
         value={couponValue}
       />
@@ -25,11 +31,13 @@ const AvailableCouponsForm = ({ availableCoupons }) => {
         </button>
       )}
       {Object.keys(myCouponUsed).length > 0 && (
-        <button
-          onClick={() => dispatch(applyCouponInCart(couponValue))}
-          className="button next">
-          Remove Coupon
-        </button>
+        <>
+          <button
+            onClick={() => dispatch(removeCouponFromCart())}
+            className="button next">
+            Remove Coupon
+          </button>
+        </>
       )}
     </div>
   );

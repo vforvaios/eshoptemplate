@@ -1,6 +1,7 @@
 import formatMoney from 'library/formatMoney';
 import getCartTotals from 'library/getCartTotals';
 import getCartTotalsDiscount from 'library/getCartTotalsDiscount';
+import { couponUsed } from 'models/selectors/cartSelectors';
 import {
   shippingMethods,
   paymentMethods,
@@ -11,6 +12,7 @@ import { useSelector } from 'react-redux';
 const CartTotals = ({ cart, order }) => {
   const mySmCost = useSelector(shippingMethods);
   const myPmCost = useSelector(paymentMethods);
+  const couponDiscount = useSelector(couponUsed);
   let smCost;
   let pmCost;
 
@@ -35,13 +37,42 @@ const CartTotals = ({ cart, order }) => {
     pmCost = parseFloat(order?.paymentMethodCost);
   }
 
+  const totalPayment =
+    (smCost && smCost !== 'NaN' && Number(smCost) > 0) ||
+    (pmCost && pmCost !== 'NaN' && Number(pmCost) > 0)
+      ? formatMoney.format(
+          parseFloat(smCost) +
+            parseFloat(pmCost) +
+            parseFloat(getCartTotals(cart)),
+        )
+      : formatMoney.format(getCartTotals(cart));
+
+  const couponFromDiscount =
+    Object?.keys(couponDiscount).length === 0
+      ? 0
+      : (couponDiscount.discount *
+          parseFloat(
+            totalPayment.substring(0, totalPayment?.indexOf('€') - 1),
+          )) /
+        100;
+
   return (
     <div className="cart-totals-container">
       <div className="cart-totals-row cart-totals-row-title">TOTALS</div>
+      {Object?.keys(couponDiscount).length > 0 && (
+        <div className="cart-totals-row">
+          <span className="cart-totals-name">Coupon discount:</span>
+          <span className="cart-totals-value">
+            {formatMoney.format(couponFromDiscount)}
+          </span>
+        </div>
+      )}
       <div className="cart-totals-row">
         <span className="cart-totals-name">Total discount:</span>
         <span className="cart-totals-value">
-          {formatMoney.format(getCartTotalsDiscount(cart))}
+          {formatMoney.format(
+            getCartTotalsDiscount(cart) + parseFloat(couponFromDiscount),
+          )}
         </span>
       </div>
       {Number(smCost) > Number(0) && (
@@ -63,14 +94,11 @@ const CartTotals = ({ cart, order }) => {
       <div className="cart-totals-row bold">
         <span className="cart-totals-name">Total:</span>
         <span className="cart-totals-value">
-          {(smCost && smCost !== 'NaN' && Number(smCost) > 0) ||
-          (pmCost && pmCost !== 'NaN' && Number(pmCost) > 0)
-            ? formatMoney.format(
-                parseFloat(smCost) +
-                  parseFloat(pmCost) +
-                  parseFloat(getCartTotals(cart)),
-              )
-            : formatMoney.format(getCartTotals(cart))}
+          {formatMoney.format(
+            parseFloat(
+              totalPayment.substring(0, totalPayment?.indexOf('€') - 1),
+            ) - parseFloat(couponFromDiscount),
+          )}
         </span>
       </div>
     </div>
