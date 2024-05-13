@@ -24,7 +24,7 @@ const cartReducer = createReducer(initialState, (builder) => {
     }))
     .addCase(setValidityOfCoupon, (state, action) => ({
       ...state,
-      couponUsed: Object.keys(action.payload).length > 0 ? action.payload : {},
+      couponUsed: Object?.keys(action.payload).length > 0 ? action.payload : {},
     }))
     .addCase(removeCouponFromCart, (state, action) => ({
       ...state,

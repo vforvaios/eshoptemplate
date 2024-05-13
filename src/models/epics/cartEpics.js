@@ -40,7 +40,20 @@ const applyCouponInCartEpic = (action$) =>
     ofType(applyCouponInCart.type),
     mergeMap(({ payload }) =>
       from(makeRequest(`availableCoupons/validity/${payload}`, 'GET', '')).pipe(
-        concatMap(({ validCoupon }) => [setValidityOfCoupon(validCoupon)]),
+        concatMap(({ validCoupon }) => {
+          if (Object?.keys(validCoupon)?.length === 0) {
+            return [
+              setValidityOfCoupon({}),
+              toggleShowAlert({
+                message: 'Coupon is not valid',
+                show: true,
+                type: 'error',
+              }),
+            ];
+          }
+
+          return [setValidityOfCoupon(validCoupon)];
+        }),
         catchErrorOperator(true),
       ),
     ),
