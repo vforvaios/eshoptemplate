@@ -94,7 +94,9 @@ const Register = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-username">Username</InputLabel>
+                <InputLabel htmlFor="login-username">
+                  Username (no empty spaces between)
+                </InputLabel>
                 <Input
                   fullWidth
                   id="login-username"

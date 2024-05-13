@@ -13,6 +13,7 @@ const setShippingInfo = createAction('checkout/setShippingInfo');
 const setReceipt = createAction('checkout/setReceipt');
 const setSameAsBilling = createAction('checkout/setSameAsBilling');
 const setNotes = createAction('checkout/setNotes');
+const handleSendOrder = createAction('checkout/handleSendOrder');
 
 const sendOrder = createAction('checkout/sendOrder');
 const navigateToSuccessCheckout = createAction(
@@ -39,6 +40,9 @@ const getPrefecturesPerCountryForShipping = createAction(
 const setPrefectures = createAction('checkout/setPrefectures');
 const changedCountry = createAction('checkout/changedCountry');
 const changedPrefecture = createAction('checkout/changedPrefecture');
+const setCannotSeeSuccessPage = createAction(
+  'checkout/setCannotSeeSuccessPage',
+);
 
 export {
   getPaymentMethods,
@@ -65,10 +69,12 @@ export {
   setCountries,
   getPrefecturesPerCountryForBilling,
   getPrefecturesPerCountryForShipping,
+  setCannotSeeSuccessPage,
   setPrefectures,
   changedPrefecture,
   changedCountry,
   setNotes,
   getDOY,
   setDOY,
+  handleSendOrder,
 };

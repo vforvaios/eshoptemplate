@@ -27,6 +27,8 @@ import {
   getPrefecturesPerCountryForShipping,
   getDOY,
   setDOY,
+  handleSendOrder,
+  setCannotSeeSuccessPage,
 } from 'models/actions/checkoutActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
@@ -39,6 +41,37 @@ import {
 } from 'rxjs/operators';
 
 import catchErrorOperator from './operators/catchErrorOperator';
+
+const handleSendOrderEpic = (action$) =>
+  action$.pipe(
+    ofType(handleSendOrder.type),
+    mergeMap(({ payload }) =>
+      from(
+        makeRequest(
+          `availablecoupons/iscouponvalid/${payload?.code}`,
+          'GET',
+          '',
+        ),
+      ).pipe(
+        concatMap(({ couponIsStillActive }) => {
+          if (couponIsStillActive) {
+            return [sendOrder()];
+          }
+
+          return [
+            setCannotSeeSuccessPage(),
+            toggleShowAlert({
+              message: 'Coupon is now inactive. Please remove it from cart',
+              show: true,
+              type: 'error',
+            }),
+            setGeneralLoading(false),
+          ];
+        }),
+        catchErrorOperator(true),
+      ),
+    ),
+  );
 
 const getDOYEpic = (action$) =>
   action$.pipe(
@@ -549,6 +582,7 @@ export {
   getPrefecturesPerCountryForBillingEpic,
   getPrefecturesPerCountryForShippingEpic,
   getDOYEpic,
+  handleSendOrderEpic,
 };
 
 const epics = combineEpics(
@@ -566,6 +600,7 @@ const epics = combineEpics(
   getPrefecturesPerCountryForBillingEpic,
   getPrefecturesPerCountryForShippingEpic,
   getDOYEpic,
+  handleSendOrderEpic,
 );
 
 export default epics;

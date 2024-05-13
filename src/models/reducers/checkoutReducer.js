@@ -16,6 +16,7 @@ import {
   changedPrefecture,
   setNotes,
   setDOY,
+  setCannotSeeSuccessPage,
 } from 'models/actions/checkoutActions';
 
 const initialState = {
@@ -140,6 +141,11 @@ const checkoutReducer = createReducer(initialState, (builder) => {
     .addCase(setCanSeeSuccessPage, (state, action) => ({
       ...state,
       canSeeSuccessPage: true,
+    }))
+    .addCase(setCannotSeeSuccessPage, (state, action) => ({
+      ...state,
+      canSeeSuccessPage: false,
+      orderOK: false,
     }));
 });
 
