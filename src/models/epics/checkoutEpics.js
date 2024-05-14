@@ -495,7 +495,14 @@ const checkOrderInfoEpic = (action$, state$) =>
           ];
         }
 
-        return [setCheckoutError({ billingErrors, shippingErrors })];
+        return [
+          setCheckoutError({ billingErrors, shippingErrors }),
+          toggleShowAlert({
+            message: `You have to fill all necessary fields.`,
+            type: 'error',
+            show: true,
+          }),
+        ];
       },
     ),
   );
@@ -546,7 +553,7 @@ const updateCartProductsEpic = (action$, state$) =>
             return [
               setCart(newCart),
               toggleShowAlert({
-                message: `Ενημερώθηκαν οι τιμές και τα stock των items.`,
+                message: `Items and stock amounts have been updated.`,
                 type: 'success',
                 show: true,
               }),
