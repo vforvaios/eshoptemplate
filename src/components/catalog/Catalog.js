@@ -73,6 +73,13 @@ const Catalog = () => {
       />
       <div className="row catalog content">
         <div className="wrapper">
+          <div className="product-title">
+            <h1 className="headerTitle small">
+              {category !== '' ? concatedTitle : 'ALL PRODUCTS'}
+            </h1>
+          </div>
+        </div>
+        <div className="wrapper">
           <div className="grid-container catalog-container">
             <section className="col-right products-section">
               <Filters />
