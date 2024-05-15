@@ -47,10 +47,13 @@ img {
   &.orders-page,
   &.contact-page,
   &.productPage,
-  &.catalog,
   &.notfound,
   &.unsubscribe {
     padding-top: 110px;
+  }
+
+  &.catalog {
+    padding-top: 60px;
   }
 }
 
