@@ -19,6 +19,7 @@ const CatalogPagination = ({ pagination }) => {
           showFirstButton
           showLastButton
           onChange={(e, value) => {
+            window.scrollTo(0, 0);
             dispatch(setGeneralLoading(true));
             dispatch(setCurrentCatalogPage(Number(value)));
           }}

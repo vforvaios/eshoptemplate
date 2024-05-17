@@ -25,6 +25,7 @@ const Orders = () => {
   const count = Math.ceil(pagination.total / process.env.REACT_APP_PER_PAGE);
 
   const handleOrderPageChange = (e, value) => {
+    window.scrollTo(0, 0);
     dispatch(setGeneralLoading(true));
     dispatch(setCurrentOrdersPage(Number(value)));
   };
