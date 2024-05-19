@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import FormControl from '@mui/material/FormControl';
+import Icon from '@mui/material/Icon';
+import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
@@ -15,6 +17,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [email, setEmail] = useState('');
   const [dateError, setDateError] = useState(false);
   const [username, setUsername] = useState('');
@@ -133,8 +138,18 @@ const Register = () => {
                   fullWidth
                   error={passwordError !== ''}
                   id="login-password"
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   value={password}
+                  endAdornment={
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end">
+                      <Icon>
+                        {showPassword ? 'visibility_off' : 'visibility'}
+                      </Icon>
+                    </IconButton>
+                  }
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 {passwordError !== '' && (
@@ -151,8 +166,20 @@ const Register = () => {
                   fullWidth
                   error={confirmPasswordError !== ''}
                   id="login-confirmpassword"
-                  type="password"
+                  type={!showConfirmPassword ? 'password' : 'text'}
                   value={confirmPassword}
+                  endAdornment={
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      edge="end">
+                      <Icon>
+                        {showConfirmPassword ? 'visibility_off' : 'visibility'}
+                      </Icon>
+                    </IconButton>
+                  }
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 {confirmPasswordError !== '' && (
