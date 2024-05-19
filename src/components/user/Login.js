@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import FormControl from '@mui/material/FormControl';
+import Icon from '@mui/material/Icon';
+import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import SEO from 'components/seo/SEO';
@@ -15,6 +17,7 @@ import { useNavigate, Link } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const dispatch = useDispatch();
@@ -65,7 +68,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <FormControl fullWidth>
-                <InputLabel htmlFor="login-email">Username</InputLabel>
+                <InputLabel htmlFor="login-email">Email</InputLabel>
                 <Input
                   fullWidth
                   id="login-email"
@@ -86,8 +89,18 @@ const Login = () => {
                   fullWidth
                   error={passwordError !== ''}
                   id="login-password"
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   value={password}
+                  endAdornment={
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end">
+                      <Icon>
+                        {showPassword ? 'visibility_off' : 'visibility'}
+                      </Icon>
+                    </IconButton>
+                  }
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 {passwordError !== '' && (
