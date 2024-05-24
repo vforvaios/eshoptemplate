@@ -19,6 +19,7 @@ import {
   sendNewUserPassword,
   changeUserPassword,
   unsubscribe,
+  setNewsletterCoupon,
 } from 'models/actions/userActions';
 import { token, currentOrderPage } from 'models/selectors/userSelector';
 import { ofType, combineEpics } from 'redux-observable';
@@ -137,6 +138,17 @@ const addNewsletterUserEpic = (action$) =>
             ];
           }
 
+          // IF NEWSLETTER COUPON IS ACTIVE
+          if (payload?.newsletterCoupon) {
+            return [
+              setGeneralLoading(false),
+              setNewsletterCoupon(payload.newsletterCoupon),
+            ];
+          }
+
+          debugger;
+
+          // ELSE
           return [
             setGeneralLoading(false),
             toggleShowAlert({

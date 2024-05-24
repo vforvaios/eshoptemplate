@@ -8,6 +8,7 @@ const currentOrderPage = ({ userReducer }) =>
 const ordersPagination = ({ userReducer }) => userReducer.myOrders.pagination;
 const orderIdVisible = ({ userReducer }) => userReducer.orderId;
 const orderDetails = ({ userReducer }) => userReducer.orderDetails;
+const newsletterCoupon = ({ userReducer }) => userReducer.newsletterCoupon;
 
 export {
   user,
@@ -17,5 +18,6 @@ export {
   currentOrderPage,
   ordersPagination,
   orderIdVisible,
+  newsletterCoupon,
   orderDetails,
 };

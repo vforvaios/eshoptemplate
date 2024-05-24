@@ -1,28 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import { setGeneralLoading } from 'models/actions/catalogActions';
+
 import {
   getStaticContent,
   getBusinessDetails,
   getSocialLinks,
 } from 'models/actions/staticActions';
-import { addNewsletterUser } from 'models/actions/userActions';
 import {
   pages,
   businessdetails,
   socialLinks,
 } from 'models/selectors/staticSelectors';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import Newsletter from './Newsletter';
 
 const Footer = () => {
   const allPages = useSelector(pages);
   const social = useSelector(socialLinks);
   const allBusinessdetails = useSelector(businessdetails);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,29 +33,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="row">
           <div className="wrapper newsletter">
-            <div className="footer-newsletter">
-              <div className="title">NEWSLETTER</div>
-              <div>
-                <FormControl fullWidth className="newsletter-form">
-                  <InputLabel htmlFor="newsletter">Your email</InputLabel>
-                  <Input
-                    fullWidth
-                    id="newsletter"
-                    type="email"
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                  />
-                  <button
-                    className="button"
-                    onClick={() => {
-                      dispatch(setGeneralLoading(true));
-                      dispatch(addNewsletterUser(newsletterEmail));
-                    }}>
-                    Subscribe
-                  </button>
-                </FormControl>
-              </div>
-            </div>
+            <Newsletter />
           </div>
         </div>
         <div className="row">

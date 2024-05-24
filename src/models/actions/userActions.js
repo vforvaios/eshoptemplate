@@ -20,6 +20,7 @@ const sendNewUserPassword = createAction('user/sendNewUserPassword');
 const changeUserPassword = createAction('user/changeUserPassword');
 const unsubscribe = createAction('user/unsubscribe');
 const sendContactForm = createAction('user/sendContactForm');
+const setNewsletterCoupon = createAction('user/setNewsletterCoupon');
 
 export {
   setLoggedInUser,
@@ -41,4 +42,5 @@ export {
   changeUserPassword,
   unsubscribe,
   sendContactForm,
+  setNewsletterCoupon,
 };

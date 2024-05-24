@@ -7,6 +7,7 @@ import {
   setOrderDetails,
   setCurrentOrdersPage,
   logoutUser,
+  setNewsletterCoupon,
 } from 'models/actions/userActions';
 
 const initialState = {
@@ -22,10 +23,15 @@ const initialState = {
   statuses: [],
   orderId: '',
   orderDetails: {},
+  newsletterCoupon: { discount: 10, code: 'NEWSLETTER10' },
 };
 
 const userReducer = createReducer(initialState, (builder) => {
   builder
+    .addCase(setNewsletterCoupon, (state, action) => ({
+      ...state,
+      newsletterCoupon: action.payload,
+    }))
     .addCase(setLoggedInUser, (state, action) => ({
       ...state,
       user: action.payload,
