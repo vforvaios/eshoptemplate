@@ -35,7 +35,7 @@ const Newsletter = () => {
   return (
     <div className="footer-newsletter">
       <Modal
-        open={Object.keys(myNewsletterCoupon).length > 0}
+        open={Object.keys(myNewsletterCoupon || {}).length > 0}
         onClose={() => dispatch(setNewsletterCoupon({}))}
         closeAfterTransition
         aria-labelledby="transition-modal-title"
@@ -46,7 +46,7 @@ const Newsletter = () => {
             timeout: 500,
           },
         }}>
-        <Fade in={Object.keys(myNewsletterCoupon).length > 0}>
+        <Fade in={Object.keys(myNewsletterCoupon || {}).length > 0}>
           <Box sx={style}>
             <Box
               display="flex"
@@ -71,9 +71,9 @@ const Newsletter = () => {
               </Box>
               <Typography id="transition-modal-description" sx={{ mt: 2 }}>
                 You have just been awarded a
-                <strong> {myNewsletterCoupon.discount}% </strong>
+                <strong> {myNewsletterCoupon?.discount}% </strong>
                 discount for your next purchase! Just add items in your cart and
-                add <strong>{myNewsletterCoupon.code} </strong> as your coupon
+                add <strong>{myNewsletterCoupon?.code} </strong> as your coupon
                 code.
               </Typography>
             </Box>
