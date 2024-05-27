@@ -23,7 +23,7 @@ const initialState = {
   statuses: [],
   orderId: '',
   orderDetails: {},
-  newsletterCoupon: { discount: 10, code: 'NEWSLETTER10' },
+  newsletterCoupon: {},
 };
 
 const userReducer = createReducer(initialState, (builder) => {
