@@ -2,15 +2,20 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   setCart,
   setAvailableCoupons,
-  setValidityOfCoupon,
+  setCouponInCart,
   removeCouponFromCart,
+  leaveCartAsIs,
+  setCouponDiscount,
+  setCouponEmail,
 } from 'models/actions/cartActions';
 import { clearOrder } from 'models/actions/checkoutActions';
 
 const initialState = {
   cart: [],
   availableCoupons: [],
-  couponUsed: {},
+  couponUsed: '',
+  couponDiscount: 0,
+  couponEmail: '',
 };
 const cartReducer = createReducer(initialState, (builder) => {
   builder
@@ -18,17 +23,28 @@ const cartReducer = createReducer(initialState, (builder) => {
       ...state,
       cart: action.payload,
     }))
+    .addCase(leaveCartAsIs, (state, action) => ({
+      ...state,
+    }))
     .addCase(setAvailableCoupons, (state, action) => ({
       ...state,
       availableCoupons: action.payload,
     }))
-    .addCase(setValidityOfCoupon, (state, action) => ({
+    .addCase(setCouponInCart, (state, action) => ({
       ...state,
-      couponUsed: Object?.keys(action.payload).length > 0 ? action.payload : {},
+      couponUsed: action.payload,
+    }))
+    .addCase(setCouponEmail, (state, action) => ({
+      ...state,
+      couponEmail: action.payload,
     }))
     .addCase(removeCouponFromCart, (state, action) => ({
       ...state,
-      couponUsed: {},
+      couponUsed: '',
+    }))
+    .addCase(setCouponDiscount, (state, action) => ({
+      ...state,
+      couponDiscount: action.payload,
     }))
     .addCase(clearOrder, (state, action) => ({
       ...initialState,

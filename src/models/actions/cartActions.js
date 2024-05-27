@@ -13,6 +13,11 @@ const applyCouponInCart = createAction('alert/applyCouponInCart');
 const setValidityOfCoupon = createAction('alert/setValidityOfCoupon');
 const invalidateExpiredCoupons = createAction('alert/invalidateExpiredCoupons');
 const removeCouponFromCart = createAction('alert/removeCouponFromCart');
+const leaveCartAsIs = createAction('alert/leaveCartAsIs');
+const setCouponInCart = createAction('alert/setCouponInCart');
+const setCouponDiscount = createAction('alert/setCouponDiscount');
+const setCouponEmail = createAction('alert/setCouponEmail');
+const expireNewsletterCoupon = createAction('alert/expireNewsletterCoupon');
 
 export {
   getCart,
@@ -27,4 +32,9 @@ export {
   setValidityOfCoupon,
   invalidateExpiredCoupons,
   removeCouponFromCart,
+  leaveCartAsIs,
+  setCouponInCart,
+  setCouponDiscount,
+  setCouponEmail,
+  expireNewsletterCoupon,
 };

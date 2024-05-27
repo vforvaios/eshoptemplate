@@ -25,9 +25,7 @@ const MyCart = ({ cart, updateable, availableCoupons }) => (
         ))}
       </TableBody>
     </Table>
-    {availableCoupons && (
-      <AvailableCouponsForm availableCoupons={availableCoupons} />
-    )}
+    {availableCoupons && <AvailableCouponsForm />}
   </div>
 );
 

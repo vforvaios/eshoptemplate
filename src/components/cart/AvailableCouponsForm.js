@@ -1,45 +1,38 @@
 import { Input } from '@mui/material';
-import {
-  applyCouponInCart,
-  removeCouponFromCart,
-} from 'models/actions/cartActions';
+import { setCouponInCart } from 'models/actions/cartActions';
 import { couponUsed } from 'models/selectors/cartSelectors';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const AvailableCouponsForm = ({ availableCoupons }) => {
+const AvailableCouponsForm = () => {
   const dispatch = useDispatch();
   const myCouponUsed = useSelector(couponUsed);
   const [couponValue, setCouponValue] = useState('');
 
   return (
-    <div className="coupon-form">
-      <Input
-        placeholder={
-          !myCouponUsed?.code ? 'Do you have a coupon?' : myCouponUsed?.code
-        }
-        readOnly={Boolean(myCouponUsed?.code)}
-        onChange={(e) => setCouponValue(e.target.value)}
-        value={couponValue}
-      />
-      {Object.keys(myCouponUsed).length === 0 && (
+    <>
+      <div className="coupon-form">
+        <Input
+          placeholder="Do you have a coupon?"
+          onChange={(e) => setCouponValue(e.target.value)}
+          value={couponValue}
+        />
         <button
-          disabled={!couponValue}
-          onClick={() => dispatch(applyCouponInCart(couponValue))}
+          onClick={() => {
+            dispatch(setCouponInCart(couponValue ? couponValue : ''));
+            setCouponValue('');
+          }}
           className="button next">
-          Apply Coupon
+          {myCouponUsed === '' ? 'Apply Coupon' : 'Remove Coupon'}
         </button>
+      </div>
+      {myCouponUsed !== '' && (
+        <div className="coupon-used">
+          Coupon will be evaluated through the checkout process and you will be
+          informed. ({myCouponUsed})
+        </div>
       )}
-      {Object.keys(myCouponUsed).length > 0 && (
-        <>
-          <button
-            onClick={() => dispatch(removeCouponFromCart())}
-            className="button next">
-            Remove Coupon
-          </button>
-        </>
-      )}
-    </div>
+    </>
   );
 };
 

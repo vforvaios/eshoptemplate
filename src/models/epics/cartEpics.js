@@ -12,6 +12,9 @@ import {
   applyCouponInCart,
   setValidityOfCoupon,
   invalidateExpiredCoupons,
+  leaveCartAsIs,
+  setCouponDiscount,
+  setCouponEmail,
 } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import { setUpdatedProducts } from 'models/actions/checkoutActions';
@@ -35,27 +38,45 @@ const getAvailableCouponsEpic = (action$) =>
     ),
   );
 
-const applyCouponInCartEpic = (action$) =>
+const applyCouponInCartEpic = (action$, state$) =>
   action$.pipe(
     ofType(applyCouponInCart.type),
-    mergeMap(({ payload }) =>
-      from(makeRequest(`availableCoupons/validity/${payload}`, 'GET', '')).pipe(
-        concatMap(({ validCoupon }) => {
-          if (Object?.keys(validCoupon)?.length === 0) {
-            return [
-              setValidityOfCoupon({}),
-              toggleShowAlert({
-                message: 'Coupon is not valid',
-                show: true,
-                type: 'error',
-              }),
-            ];
-          }
+    withLatestFrom(state$),
+    mergeMap(
+      ([
+        ,
+        {
+          cartReducer: { couponUsed },
+          checkoutReducer: {
+            billingInfo: { email },
+          },
+        },
+      ]) =>
+        from(
+          makeRequest(
+            `availableCoupons/validity?code=${couponUsed}&email=${email}`,
+            'GET',
+            '',
+          ),
+        ).pipe(
+          concatMap(({ validCoupon, couponDiscount, email }) => {
+            if (!validCoupon) {
+              return [
+                setValidityOfCoupon({}),
+                setCouponDiscount(0),
+                setCouponEmail(email),
+                toggleShowAlert({
+                  message: 'Coupon is not valid',
+                  show: true,
+                  type: 'error',
+                }),
+              ];
+            }
 
-          return [setValidityOfCoupon(validCoupon)];
-        }),
-        catchErrorOperator(true),
-      ),
+            return [leaveCartAsIs(), setCouponDiscount(couponDiscount)];
+          }),
+          catchErrorOperator(true),
+        ),
     ),
   );
 

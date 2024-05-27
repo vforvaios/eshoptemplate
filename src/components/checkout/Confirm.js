@@ -4,13 +4,14 @@ import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
 import BillingShippingInfos from 'components/orders/BillingShippingInfos';
 import SEO from 'components/seo/SEO';
+import { applyCouponInCart } from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   handleSendOrder,
   updateCartProducts,
   sendOrder,
 } from 'models/actions/checkoutActions';
-import { cart, couponUsed } from 'models/selectors/cartSelectors';
+import { cart, couponEmail, couponUsed } from 'models/selectors/cartSelectors';
 import {
   orderOK,
   updatedProducts,
@@ -29,6 +30,7 @@ const Confirm = () => {
   const orderNotes = useSelector(notes);
   const myOrderOK = useSelector(orderOK);
   const myCouponUsed = useSelector(couponUsed);
+  const myCouponEmail = useSelector(couponEmail);
   const productsAreUpdated = useSelector(updatedProducts);
   const myBillingInfo = useSelector(billingInfo);
   const myShippingInfo = useSelector(shippingInfo);
@@ -39,6 +41,7 @@ const Confirm = () => {
 
   useEffect(() => {
     dispatch(setGeneralLoading(false));
+    dispatch(applyCouponInCart());
     if (myCart?.length === 0) {
       navigate('/');
     }
@@ -165,8 +168,13 @@ const Confirm = () => {
                 disabled={productsAreUpdated}
                 onClick={() => {
                   dispatch(setGeneralLoading(true));
-                  if (Object?.keys(myCouponUsed).length > 0) {
-                    dispatch(handleSendOrder({ code: myCouponUsed?.code }));
+                  if (myCouponUsed !== '') {
+                    dispatch(
+                      handleSendOrder({
+                        code: myCouponUsed,
+                        email: myCouponEmail,
+                      }),
+                    );
                   } else {
                     dispatch(sendOrder());
                   }

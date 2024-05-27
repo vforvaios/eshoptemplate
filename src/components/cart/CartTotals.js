@@ -1,7 +1,7 @@
 import formatMoney from 'library/formatMoney';
 import getCartTotals from 'library/getCartTotals';
 import getCartTotalsDiscount from 'library/getCartTotalsDiscount';
-import { couponUsed } from 'models/selectors/cartSelectors';
+import { couponDiscount } from 'models/selectors/cartSelectors';
 import {
   shippingMethods,
   paymentMethods,
@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 const CartTotals = ({ cart, order }) => {
   const mySmCost = useSelector(shippingMethods);
   const myPmCost = useSelector(paymentMethods);
-  const couponDiscount = useSelector(couponUsed);
+  const myCouponDiscount = useSelector(couponDiscount);
   let smCost;
   let pmCost;
 
@@ -50,9 +50,9 @@ const CartTotals = ({ cart, order }) => {
       : formatMoney.format(getCartTotals(cart));
 
   const couponFromDiscount =
-    Object?.keys(couponDiscount).length === 0
+    myCouponDiscount === 0
       ? 0
-      : (couponDiscount.discount *
+      : (myCouponDiscount *
           parseFloat(
             totalPayment.substring(0, totalPayment?.indexOf('€') - 1),
           )) /
@@ -61,7 +61,7 @@ const CartTotals = ({ cart, order }) => {
   return (
     <div className="cart-totals-container">
       <div className="cart-totals-row cart-totals-row-title">TOTALS</div>
-      {Object?.keys(couponDiscount).length > 0 && (
+      {myCouponDiscount > 0 && (
         <div className="cart-totals-row">
           <span className="cart-totals-name">Coupon discount:</span>
           <span className="cart-totals-value">

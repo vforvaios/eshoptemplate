@@ -1,6 +1,13 @@
 import makeRequest from 'library/makeRequest';
 import { toggleShowAlert } from 'models/actions/alertActions';
-import { setCart, navigateBackToCart } from 'models/actions/cartActions';
+import {
+  setCart,
+  navigateBackToCart,
+  expireNewsletterCoupon,
+  setCouponInCart,
+  setCouponDiscount,
+  setCouponEmail,
+} from 'models/actions/cartActions';
 import { setGeneralLoading } from 'models/actions/catalogActions';
 import {
   setPaymentMethods,
@@ -48,14 +55,18 @@ const handleSendOrderEpic = (action$) =>
     mergeMap(({ payload }) =>
       from(
         makeRequest(
-          `availablecoupons/iscouponvalid/${payload?.code}`,
+          `availablecoupons/validity?code=${payload?.code}&email=${payload?.email}`,
           'GET',
           '',
         ),
       ).pipe(
-        concatMap(({ couponIsStillActive }) => {
-          if (couponIsStillActive) {
-            return [sendOrder()];
+        concatMap(({ validCoupon, email }) => {
+          if (validCoupon) {
+            if (email !== '') {
+              return [expireNewsletterCoupon(email)];
+            } else {
+              return [sendOrder()];
+            }
           }
 
           return [
@@ -68,6 +79,23 @@ const handleSendOrderEpic = (action$) =>
             setGeneralLoading(false),
           ];
         }),
+        catchErrorOperator(true),
+      ),
+    ),
+  );
+
+const expireNewsletterCouponEpic = (action$) =>
+  action$.pipe(
+    ofType(expireNewsletterCoupon.type),
+    mergeMap(({ payload }) =>
+      from(
+        makeRequest(
+          `availablecoupons/expirenewslettercoupon?email=${payload}`,
+          'POST',
+          JSON.stringify({ email: payload }),
+        ),
+      ).pipe(
+        concatMap(() => [sendOrder()]),
         catchErrorOperator(true),
       ),
     ),
@@ -406,6 +434,9 @@ const sendOrderEpic = (action$, state$) =>
             return [
               setGeneralLoading(false),
               setCanSeeSuccessPage(),
+              setCouponInCart(''),
+              setCouponDiscount(0),
+              setCouponEmail(''),
               navigateToSuccessCheckout(),
             ];
           }),
@@ -590,6 +621,7 @@ export {
   getPrefecturesPerCountryForShippingEpic,
   getDOYEpic,
   handleSendOrderEpic,
+  expireNewsletterCouponEpic,
 };
 
 const epics = combineEpics(
@@ -608,6 +640,7 @@ const epics = combineEpics(
   getPrefecturesPerCountryForShippingEpic,
   getDOYEpic,
   handleSendOrderEpic,
+  expireNewsletterCouponEpic,
 );
 
 export default epics;
