@@ -1,4 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Tooltip from '@mui/material/Tooltip';
 import CartTotals from 'components/cart/CartTotals';
 import MyCart from 'components/cart/MyCart';
 import CheckoutStepper from 'components/checkout/CheckoutStepper';
@@ -20,7 +23,7 @@ import {
   sameAsBilling,
   notes,
 } from 'models/selectors/checkoutSelectors';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -35,13 +38,17 @@ const Confirm = () => {
   const myBillingInfo = useSelector(billingInfo);
   const myShippingInfo = useSelector(shippingInfo);
   const sameShipping = useSelector(sameAsBilling);
+
+  const [agreeTerms, setAgreeTerms] = useState(false);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(setGeneralLoading(false));
-    dispatch(applyCouponInCart());
+    if (myCouponUsed) {
+      dispatch(applyCouponInCart());
+    }
     if (myCart?.length === 0) {
       navigate('/');
     }
@@ -85,25 +92,46 @@ const Confirm = () => {
                   Refresh Products
                 </button>
               )}
-              <button
-                disabled={productsAreUpdated}
-                onClick={() => {
-                  dispatch(setGeneralLoading(true));
-                  if (Object?.keys(myCouponUsed).length > 0) {
-                    dispatch(handleSendOrder({ code: myCouponUsed?.code }));
-                  } else {
-                    dispatch(sendOrder());
-                  }
-                }}
-                className="button next">
-                Complete Order
-              </button>
+              <Tooltip
+                title={`${
+                  !agreeTerms
+                    ? 'You have to agree to the Terms and Conditions before continuing.'
+                    : 'Complete Order'
+                }`}>
+                <button
+                  disabled={productsAreUpdated || !agreeTerms}
+                  onClick={() => {
+                    dispatch(setGeneralLoading(true));
+                    if (myCouponUsed !== '') {
+                      dispatch(handleSendOrder({ code: myCouponUsed }));
+                    } else {
+                      dispatch(sendOrder());
+                    }
+                  }}
+                  className="button next">
+                  Complete Order
+                </button>
+              </Tooltip>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="wrapper">
             <MyCart cart={myCart} updateable={false} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="wrapper">
+            <FormControlLabel
+              label="Agree with terms"
+              control={
+                <Checkbox
+                  required
+                  checked={agreeTerms}
+                  onChange={() => setAgreeTerms(!agreeTerms)}
+                />
+              }
+            />
           </div>
         </div>
         <div className="row">
@@ -164,24 +192,31 @@ const Confirm = () => {
               <button className="button next">
                 <Link to="/checkout/step2">Edit order</Link>
               </button>
-              <button
-                disabled={productsAreUpdated}
-                onClick={() => {
-                  dispatch(setGeneralLoading(true));
-                  if (myCouponUsed !== '') {
-                    dispatch(
-                      handleSendOrder({
-                        code: myCouponUsed,
-                        email: myCouponEmail,
-                      }),
-                    );
-                  } else {
-                    dispatch(sendOrder());
-                  }
-                }}
-                className="button next">
-                Complete order
-              </button>
+              <Tooltip
+                title={`${
+                  !agreeTerms
+                    ? 'You have to agree to the Terms and Conditions before continuing.'
+                    : 'Complete Order'
+                }`}>
+                <button
+                  disabled={productsAreUpdated || !agreeTerms}
+                  onClick={() => {
+                    dispatch(setGeneralLoading(true));
+                    if (myCouponUsed !== '') {
+                      dispatch(
+                        handleSendOrder({
+                          code: myCouponUsed,
+                          email: myCouponEmail,
+                        }),
+                      );
+                    } else {
+                      dispatch(sendOrder());
+                    }
+                  }}
+                  className="button next">
+                  Complete order
+                </button>
+              </Tooltip>
             </div>
           </div>
         </div>
