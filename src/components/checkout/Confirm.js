@@ -28,6 +28,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+const AgreeComponent = () => {
+  return (
+    <div>
+      Agree with terms and conditions described in{' '}
+      <Link target="_blank" to="/static/1">
+        Privacy Policy
+      </Link>{' '}
+      page
+    </div>
+  );
+};
+
 const Confirm = () => {
   const myCart = useSelector(cart);
   const orderNotes = useSelector(notes);
@@ -95,7 +107,7 @@ const Confirm = () => {
               <Tooltip
                 title={`${
                   !agreeTerms
-                    ? 'You have to agree to the Terms and Conditions before continuing.'
+                    ? 'You have to agree to the terms and conditions described in Privacy Policy before continuing.'
                     : 'Complete Order'
                 }`}>
                 <button
@@ -123,7 +135,7 @@ const Confirm = () => {
         <div className="row">
           <div className="wrapper">
             <FormControlLabel
-              label="Agree with terms"
+              label={<AgreeComponent />}
               control={
                 <Checkbox
                   required
