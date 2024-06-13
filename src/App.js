@@ -15,6 +15,7 @@ import ForgotPassword from 'components/forgot-password/ForgotPassword';
 import Header from 'components/header/Header';
 import Home from 'components/home/Home';
 import GeneralLoading from 'components/loader/GeneralLoading';
+import ModalNewsletter from 'components/modal-newsletter/ModalNewsletter';
 import Orders from 'components/orders/Orders';
 import PageNotFound from 'components/pagenotfound/PageNotFound';
 import ProductPage from 'components/product-page/ProductPage';
@@ -45,6 +46,7 @@ const App = () => {
         <Router>
           <ScrollToTop />
           <Header />
+          <ModalNewsletter />
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
