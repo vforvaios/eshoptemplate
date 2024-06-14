@@ -3,7 +3,7 @@ import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
+import NewsletterForm from 'components/footer/NewsletterForm';
 import { newsletterCoupon } from 'models/selectors/userSelector';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -13,7 +13,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: '94%',
+  maxWidth: 500,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -37,7 +38,8 @@ const ModalNewsletter = () => {
 
   return (
     <Modal
-      open={showModal && Object.keys(myNewsletterCoupon)?.length > 0}
+      // open={showModal && Object.keys(myNewsletterCoupon)?.length > 0}
+      open={showModal}
       onClose={() => closeModal()}
       closeAfterTransition
       aria-labelledby="transition-modal-title"
@@ -48,24 +50,23 @@ const ModalNewsletter = () => {
           timeout: 500,
         },
       }}>
-      <Fade in={showModal && Object.keys(myNewsletterCoupon)?.length > 0}>
+      {/* <Fade in={showModal && Object.keys(myNewsletterCoupon)?.length > 0}> */}
+      <Fade in={showModal}>
         <Box sx={style}>
           <Grid container alignItems="center">
             <Grid item sm={6}>
-              <div>
-                <Typography id="transition-modal-description">
-                  Coupon
-                </Typography>
+              <div className="p2">
+                <NewsletterForm />
                 <i
                   className="icon-cancel-circled pointercursor"
-                  onClick={() => setShowModal(false)}
+                  onClick={() => closeModal()}
                 />
               </div>
             </Grid>
-            <Grid item sm={6}>
+            <Grid item sm={6} flexGrow={1}>
               <div
                 style={{
-                  minHeight: '200px',
+                  minHeight: '300px',
                   backgroundImage: `url(
                     https://api.tierrapurses.com/images/IMG_0541.jpg
                   )`,

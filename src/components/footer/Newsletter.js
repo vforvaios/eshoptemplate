@@ -1,18 +1,12 @@
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import { setGeneralLoading } from 'models/actions/catalogActions';
-import {
-  addNewsletterUser,
-  setNewsletterCoupon,
-} from 'models/actions/userActions';
+import NewsletterForm from 'components/footer/NewsletterForm';
+import { setNewsletterCoupon } from 'models/actions/userActions';
 import { newsletterCoupon } from 'models/selectors/userSelector';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const style = {
@@ -30,7 +24,6 @@ const style = {
 const Newsletter = () => {
   const dispatch = useDispatch();
   const myNewsletterCoupon = useSelector(newsletterCoupon);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
 
   return (
     <div className="footer-newsletter">
@@ -80,27 +73,7 @@ const Newsletter = () => {
           </Box>
         </Fade>
       </Modal>
-      <div className="title">NEWSLETTER</div>
-      <div>
-        <FormControl fullWidth className="newsletter-form">
-          <InputLabel htmlFor="newsletter">Your email</InputLabel>
-          <Input
-            fullWidth
-            id="newsletter"
-            type="email"
-            value={newsletterEmail}
-            onChange={(e) => setNewsletterEmail(e.target.value)}
-          />
-          <button
-            className="button"
-            onClick={() => {
-              dispatch(setGeneralLoading(true));
-              dispatch(addNewsletterUser(newsletterEmail));
-            }}>
-            Subscribe
-          </button>
-        </FormControl>
-      </div>
+      <NewsletterForm />
     </div>
   );
 };
