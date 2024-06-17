@@ -21,18 +21,21 @@ const style = {
 
 const ModalNewsletter = () => {
   const [showModal, setShowModal] = useState(false);
-  const [couponIsActive, setCouponIsActive] = useState(true);
+  const [couponIsActive, setCouponIsActive] = useState({
+    newsletterCouponIsActive: false,
+    coupon: {},
+  });
 
   const isNewsletterCoupon = async () => {
     const resp = await fetch(
       `${process.env.REACT_APP_API}/newsletter/couponIsActive`,
     );
 
-    const isActive = await resp.json();
+    const newslettercoupon = await resp.json();
 
-    setCouponIsActive(isActive);
+    setCouponIsActive({ ...newslettercoupon });
     if (
-      isActive &&
+      newslettercoupon?.newsletterCouponIsActive &&
       !window.sessionStorage.getItem('showNewsletterModalToSubscribe')
     ) {
       window.sessionStorage.setItem('showNewsletterModalToSubscribe', true);
@@ -69,6 +72,7 @@ const ModalNewsletter = () => {
           <Grid container alignItems="center">
             <Grid item sm={6}>
               <div className="p2">
+                {couponIsActive?.newsletterCouponIsActive && <div></div>}
                 <NewsletterForm />
                 <i
                   className="icon-cancel-circled pointercursor"
