@@ -4,9 +4,7 @@ import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import NewsletterForm from 'components/footer/NewsletterForm';
-import { newsletterCoupon } from 'models/selectors/userSelector';
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 const style = {
   position: 'absolute',
@@ -23,23 +21,39 @@ const style = {
 
 const ModalNewsletter = () => {
   const [showModal, setShowModal] = useState(false);
-  const myNewsletterCoupon = useSelector(newsletterCoupon);
+  const [couponIsActive, setCouponIsActive] = useState(true);
+
+  const isNewsletterCoupon = async () => {
+    const resp = await fetch(
+      `${process.env.REACT_APP_API}/newsletter/couponIsActive`,
+    );
+
+    const isActive = await resp.json();
+
+    setCouponIsActive(isActive);
+    if (
+      isActive &&
+      !window.sessionStorage.getItem('showNewsletterModalToSubscribe')
+    ) {
+      window.sessionStorage.setItem('showNewsletterModalToSubscribe', true);
+      setShowModal(
+        window.sessionStorage.getItem('showNewsletterModalToSubscribe'),
+      );
+    }
+  };
 
   useEffect(() => {
-    setShowModal(
-      window.sessionStorage.getItem('showNewsletterModalToSubscribe'),
-    );
+    isNewsletterCoupon();
   }, []);
 
   const closeModal = () => {
-    window.sessionStorage.removeItem('showNewsletterModalToSubscribe');
+    window.sessionStorage.setItem('showNewsletterModalToSubscribe', false);
     setShowModal(false);
   };
 
   return (
     <Modal
-      // open={showModal && Object.keys(myNewsletterCoupon)?.length > 0}
-      open={showModal}
+      open={showModal && couponIsActive}
       onClose={() => closeModal()}
       closeAfterTransition
       aria-labelledby="transition-modal-title"
@@ -50,8 +64,7 @@ const ModalNewsletter = () => {
           timeout: 500,
         },
       }}>
-      {/* <Fade in={showModal && Object.keys(myNewsletterCoupon)?.length > 0}> */}
-      <Fade in={showModal}>
+      <Fade in={showModal && couponIsActive}>
         <Box sx={style}>
           <Grid container alignItems="center">
             <Grid item sm={6}>

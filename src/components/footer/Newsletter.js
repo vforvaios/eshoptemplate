@@ -23,6 +23,7 @@ const style = {
 
 const Newsletter = () => {
   const dispatch = useDispatch();
+
   const myNewsletterCoupon = useSelector(newsletterCoupon);
 
   return (
