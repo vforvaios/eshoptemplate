@@ -70,6 +70,18 @@
   }
 }
 
+.modal-newsletter-text {
+  margin-bottom: 16px;
+  h4 {
+    margin-top: 0;
+  }
+
+  span,
+  strong {
+    font-size: 0.8rem;
+  }
+}
+
 .newsletterpopupicon {
   color: $success;
   font-size: 3rem;

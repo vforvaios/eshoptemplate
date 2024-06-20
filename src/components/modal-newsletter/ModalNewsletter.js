@@ -34,14 +34,16 @@ const ModalNewsletter = () => {
     const newslettercoupon = await resp.json();
 
     setCouponIsActive({ ...newslettercoupon });
+
     if (
       newslettercoupon?.newsletterCouponIsActive &&
-      !window.sessionStorage.getItem('showNewsletterModalToSubscribe')
+      (window.sessionStorage.getItem('showNewsletterModalToSubscribe') ===
+        null ||
+        window.sessionStorage.getItem('showNewsletterModalToSubscribe') ===
+          'true')
     ) {
       window.sessionStorage.setItem('showNewsletterModalToSubscribe', true);
-      setShowModal(
-        window.sessionStorage.getItem('showNewsletterModalToSubscribe'),
-      );
+      setShowModal(true);
     }
   };
 
@@ -72,7 +74,21 @@ const ModalNewsletter = () => {
           <Grid container alignItems="center">
             <Grid item sm={6}>
               <div className="p2">
-                {couponIsActive?.newsletterCouponIsActive && <div></div>}
+                {couponIsActive?.newsletterCouponIsActive && (
+                  <div className="p2 modal-newsletter-text">
+                    <div>
+                      <h4>Buy and Earn</h4>
+                    </div>
+                    <div>
+                      <span>Code: </span>
+                      <strong>{couponIsActive?.coupon?.code}</strong>
+                    </div>
+                    <div>
+                      <span>Discount: </span>
+                      <strong>{couponIsActive?.coupon?.discount}%</strong>
+                    </div>
+                  </div>
+                )}
                 <NewsletterForm />
                 <i
                   className="icon-cancel-circled pointercursor"
