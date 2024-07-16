@@ -146,8 +146,6 @@ const addNewsletterUserEpic = (action$) =>
             ];
           }
 
-          debugger;
-
           // ELSE
           return [
             setGeneralLoading(false),
