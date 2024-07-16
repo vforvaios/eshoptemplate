@@ -75,17 +75,18 @@ const ModalNewsletter = () => {
             <Grid item sm={6}>
               <div className="p2">
                 {couponIsActive?.newsletterCouponIsActive && (
-                  <div className="p2 modal-newsletter-text">
+                  <div className="modal-newsletter-text">
                     <div>
-                      <h4>Buy and Earn</h4>
+                      <h4>
+                        Subscribe & Get {couponIsActive?.coupon?.discount}% OFF!{' '}
+                      </h4>
                     </div>
                     <div>
-                      <span>Code: </span>
-                      <strong>{couponIsActive?.coupon?.code}</strong>
-                    </div>
-                    <div>
-                      <span>Discount: </span>
-                      <strong>{couponIsActive?.coupon?.discount}%</strong>
+                      <span>
+                        Join our newsletter and get{' '}
+                        <strong>{couponIsActive?.coupon?.discount}%</strong>{' '}
+                        discount on your first order!
+                      </span>
                     </div>
                   </div>
                 )}
