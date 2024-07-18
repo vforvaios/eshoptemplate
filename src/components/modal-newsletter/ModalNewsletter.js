@@ -72,7 +72,7 @@ const ModalNewsletter = () => {
       <Fade in={showModal && couponIsActive}>
         <Box sx={style}>
           <Grid container alignItems="center">
-            <Grid item sm={6}>
+            <Grid item md={6} sm={12} flexGrow={1}>
               <div className="p2">
                 {couponIsActive?.newsletterCouponIsActive && (
                   <div className="modal-newsletter-text">
@@ -97,10 +97,10 @@ const ModalNewsletter = () => {
                 />
               </div>
             </Grid>
-            <Grid item sm={6} flexGrow={1}>
+            <Grid item md={6}>
               <div
+                className="minHeightForNewsletter"
                 style={{
-                  minHeight: '300px',
                   backgroundImage: `url(
                     https://api.tierrapurses.com/images/IMG_0541.jpg
                   )`,
