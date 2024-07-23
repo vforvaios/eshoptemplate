@@ -52,11 +52,13 @@ const MiniCartItem = ({ item, setToggleValue }) => {
       </div>
       <div className="mini-cart-prices">
         <div>
-          {item.initialPrice !== 'undefined' && item.initialPrice > 0 && (
-            <div className="cart-item-initial-price">
-              {formatMoney.format(item.initialPrice)}
-            </div>
-          )}
+          {item.initialPrice !== 'undefined' &&
+            item.initialPrice > 0 &&
+            item.initialPrice !== item.price && (
+              <div className="cart-item-initial-price">
+                {formatMoney.format(item.initialPrice)}
+              </div>
+            )}
           <div className="totalPrice">
             {formatMoney.format(item.price * item.total)}{' '}
           </div>

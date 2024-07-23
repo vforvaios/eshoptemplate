@@ -54,9 +54,11 @@ const Product = ({ classes, product, isWishlist }) => {
           <div className="headerTitle">{productTitle}</div>
           <div className="price-container">
             <div>
-              {initialPrice !== 'undefined' && initialPrice > 0 && (
-                <span>{formatMoney.format(initialPrice)}</span>
-              )}
+              {initialPrice !== 'undefined' &&
+                initialPrice > 0 &&
+                initialPrice !== price && (
+                  <span>{formatMoney.format(initialPrice)}</span>
+                )}
               {formatMoney.format(price)}
             </div>
           </div>

@@ -83,13 +83,15 @@ const ProductPage = () => {
           <Grid container>
             <Grid item sm={6} xs={12} className="mainProductPhotosContainer">
               {isNew ? <div className="is-new">NEW</div> : null}
-              {initialPrice !== 'undefined' && initialPrice > 0 && (
-                <div className="price-container">
-                  <span className="discount absolute">
-                    {getPercentage(initialPrice, price)}%
-                  </span>
-                </div>
-              )}
+              {initialPrice !== 'undefined' &&
+                initialPrice > 0 &&
+                initialPrice !== price && (
+                  <div className="price-container">
+                    <span className="discount absolute">
+                      {getPercentage(initialPrice, price)}%
+                    </span>
+                  </div>
+                )}
               <Slider {...settings}>
                 {allImgHrefs?.map((myImage, index) => (
                   <img
@@ -114,9 +116,11 @@ const ProductPage = () => {
 
               <div className="price-container for-product-page">
                 <div>
-                  {initialPrice !== 'undefined' && initialPrice > 0 && (
-                    <span>{formatMoney.format(initialPrice)}</span>
-                  )}
+                  {initialPrice !== 'undefined' &&
+                    initialPrice > 0 &&
+                    initialPrice !== price && (
+                      <span>{formatMoney.format(initialPrice)}</span>
+                    )}
                   {formatMoney.format(price)}
                 </div>
               </div>
