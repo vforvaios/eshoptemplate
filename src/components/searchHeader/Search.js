@@ -63,6 +63,7 @@ const Search = () => {
                     variant="standard"
                     label="Search..."
                     placeholder="Select"
+                    className="max-font-size"
                   />
                 )}
               />

@@ -32,6 +32,10 @@ textarea,
   font-size: 0.9rem !important;
 }
 
+.max-font-size input[type='text'] {
+  font-size: 16px !important; // used for not zooming in apple devices
+}
+
 .MuiInputBase-multiline {
   padding: 6px !important;
 }
