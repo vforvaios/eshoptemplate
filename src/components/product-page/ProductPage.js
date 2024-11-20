@@ -13,12 +13,14 @@ import {
   getRelatedProducts,
   getColorProducts,
   setGeneralLoading,
+  setProductPage,
 } from 'models/actions/catalogActions';
 import { addProductWishlist } from 'models/actions/wishlistActions';
 import {
   singleProduct,
   relatedProducts,
   colorOptions,
+  catalogIsLoading,
 } from 'models/selectors/catalogSelectors';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,9 +28,12 @@ import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import spritesvg from 'sprite.svg';
 
+import ProductPageSkeleton from '../skeletons/ProductPageSkeleton';
+
 const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const isLoading = useSelector(catalogIsLoading);
   const product = useSelector(singleProduct);
   const relProducts = useSelector(relatedProducts);
   const colOptions = useSelector(colorOptions);
@@ -47,6 +52,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     dispatch(setGeneralLoading(true));
+    dispatch(setProductPage({}));
     dispatch(getProductDetails(id));
     dispatch(getRelatedProducts(id));
     dispatch(getColorProducts(id));
@@ -78,96 +84,101 @@ const ProductPage = () => {
         name={process.env.REACT_APP_WEBSITE_NAME}
         type="article"
       />
-      <div className="row">
-        <div className="wrapper">
-          <Grid container>
-            <Grid item sm={6} xs={12} className="mainProductPhotosContainer">
-              {isNew ? <div className="is-new">NEW</div> : null}
-              {initialPrice !== 'undefined' &&
-                initialPrice > 0 &&
-                initialPrice !== price && (
-                  <div className="price-container">
-                    <span className="discount absolute">
-                      {getPercentage(initialPrice, price)}%
-                    </span>
-                  </div>
-                )}
-              <Slider {...settings}>
-                {allImgHrefs?.map((myImage, index) => (
-                  <img
-                    key={`${myImage}_${index}`}
-                    src={`${process.env.REACT_APP_IMAGES_URL}/${myImage}`}
-                    alt={productTitle}
-                    title={productTitle}
-                  />
-                ))}
-              </Slider>
-            </Grid>
-            <Grid item sm={6} xs={12} className="pr0 mainProductRightSection">
-              <div className="product-title">
-                <h1 className="headerTitle">{productTitle}</h1>
-              </div>
-              <Typography
-                variant="body2"
-                component="p"
-                className="product-code">
-                <span>Code: {code}</span>
-              </Typography>
-
-              <div className="price-container for-product-page">
-                <div>
-                  {initialPrice !== 'undefined' &&
-                    initialPrice > 0 &&
-                    initialPrice !== price && (
-                      <span>{formatMoney.format(initialPrice)}</span>
-                    )}
-                  {formatMoney.format(price)}
+      {!isLoading ? (
+        <div className="row">
+          <div className="wrapper">
+            <Grid container>
+              <Grid item sm={6} xs={12} className="mainProductPhotosContainer">
+                {isNew ? <div className="is-new">NEW</div> : null}
+                {initialPrice !== 'undefined' &&
+                  initialPrice > 0 &&
+                  initialPrice !== price && (
+                    <div className="price-container">
+                      <span className="discount absolute">
+                        {getPercentage(initialPrice, price)}%
+                      </span>
+                    </div>
+                  )}
+                <Slider {...settings}>
+                  {allImgHrefs?.map((myImage, index) => (
+                    <img
+                      key={`${myImage}_${index}`}
+                      src={`${process.env.REACT_APP_IMAGES_URL}/${myImage}`}
+                      alt={productTitle}
+                      title={productTitle}
+                    />
+                  ))}
+                </Slider>
+              </Grid>
+              <Grid item sm={6} xs={12} className="pr0 mainProductRightSection">
+                <div className="product-title">
+                  <h1 className="headerTitle">{productTitle}</h1>
                 </div>
-              </div>
+                <Typography
+                  variant="body2"
+                  component="p"
+                  className="product-code">
+                  <span>Code: {code}</span>
+                </Typography>
 
-              <Typography
-                className="product-description"
-                component="p"
-                variant="body1">
-                {productDescription}
-              </Typography>
-              <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
-                <span>{stock > 0 ? 'Available' : 'Out of stock'}</span>
-                {stock > 0 ? (
-                  <span className="minor-text">({stock} more left)</span>
-                ) : (
-                  ''
-                )}
-              </p>
-              <div className="product-page-actions">
-                <button
-                  className="add-to-cart"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(addToCart(product));
-                  }}>
-                  <Tooltip title="Add to cart">
-                    <svg className="header-icon">
-                      <use href={`${spritesvg}#cart`}></use>
-                    </svg>
-                  </Tooltip>
-                </button>
-                <IconButton
-                  className="product-action"
-                  aria-label="add to favorites"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(addProductWishlist(id));
-                  }}>
-                  <Tooltip title="Add to favorites">
-                    <i className="icon-heart-empty" />
-                  </Tooltip>
-                </IconButton>
-              </div>
+                <div className="price-container for-product-page">
+                  <div>
+                    {initialPrice !== 'undefined' &&
+                      initialPrice > 0 &&
+                      initialPrice !== price && (
+                        <span>{formatMoney.format(initialPrice)}</span>
+                      )}
+                    {formatMoney.format(price)}
+                  </div>
+                </div>
+
+                <Typography
+                  className="product-description"
+                  component="p"
+                  variant="body1">
+                  {productDescription}
+                </Typography>
+                <p className={`in-stock ${stock === 0 ? 'not' : ''}`}>
+                  <span>{stock > 0 ? 'Available' : 'Out of stock'}</span>
+                  {stock > 0 ? (
+                    <span className="minor-text">({stock} more left)</span>
+                  ) : (
+                    ''
+                  )}
+                </p>
+                <div className="product-page-actions">
+                  <button
+                    className="add-to-cart"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(addToCart(product));
+                    }}>
+                    <Tooltip title="Add to cart">
+                      <svg className="header-icon">
+                        <use href={`${spritesvg}#cart`}></use>
+                      </svg>
+                    </Tooltip>
+                  </button>
+                  <IconButton
+                    className="product-action"
+                    aria-label="add to favorites"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(addProductWishlist(id));
+                    }}>
+                    <Tooltip title="Add to favorites">
+                      <i className="icon-heart-empty" />
+                    </Tooltip>
+                  </IconButton>
+                </div>
+              </Grid>
             </Grid>
-          </Grid>
+          </div>
         </div>
-      </div>
+      ) : (
+        <ProductPageSkeleton />
+      )}
+
       {productLargeDescription && (
         <div className="row">
           <div className="wrapper">
