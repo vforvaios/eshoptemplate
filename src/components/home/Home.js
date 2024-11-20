@@ -1,6 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import SEO from 'components/seo/SEO';
-import { getHomePageData } from 'models/actions/homeActions';
+import {
+  getHomePageData,
+  setEmptyHomePageSliders,
+} from 'models/actions/homeActions';
 import { getKeyWords } from 'models/actions/staticActions';
 import {
   homeOffers,
@@ -28,9 +31,10 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setEmptyHomePageSliders());
     dispatch(getKeyWords('home'));
     dispatch(getHomePageData());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

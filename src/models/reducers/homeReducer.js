@@ -1,6 +1,10 @@
 /* eslint-disable max-len */
 import { createReducer } from '@reduxjs/toolkit';
-import { setHomePageData, setLogo } from 'models/actions/homeActions';
+import {
+  setHomePageData,
+  setLogo,
+  setEmptyHomePageSliders,
+} from 'models/actions/homeActions';
 
 const initialState = {
   offersTitle: '',
@@ -19,6 +23,10 @@ const initialState = {
 };
 const homeReducer = createReducer(initialState, (builder) => {
   builder
+    .addCase(setEmptyHomePageSliders, (state, action) => ({
+      ...state,
+      banners: [],
+    }))
     .addCase(setLogo, (state, action) => ({
       ...state,
       logo: action.payload,
