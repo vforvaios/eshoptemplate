@@ -15,7 +15,7 @@ const HomeLastBanner = ({ banner }) => {
                   src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
                 />
               ) : (
-                <video autoPlay loop muted>
+                <video autoPlay loop muted playsInline>
                   <source
                     type="video/mp4"
                     src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
@@ -32,7 +32,7 @@ const HomeLastBanner = ({ banner }) => {
                 src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
               />
             ) : (
-              <video autoPlay loop muted>
+              <video autoPlay loop muted playsInline>
                 <source
                   type="video/mp4"
                   src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}

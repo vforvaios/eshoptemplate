@@ -25,7 +25,7 @@ const HomeSlider = ({ banners }) => {
           ) : (
             <li className="videoLi" key={banner.id}>
               <div>
-                <video autoPlay loop>
+                <video autoPlay loop muted playsInline>
                   <source
                     type="video/mp4"
                     src={`${process.env.REACT_APP_IMAGES_URL}/${banner.imgHref}`}
