@@ -1,3 +1,5 @@
+@use '@/styles/colors.scss' as colors;
+
 .page-not-found-countainer {
   max-width: 600px;
   margin: 0 auto;
@@ -8,11 +10,11 @@
 .page-not-found-title {
   text-align: center;
   font-size: 2.85rem;
-  color: $disabled;
+  color: colors.$disabled;
 }
 
 .page-not-found-subtext {
   font-size: 0.85rem;
-  color: $disabled;
+  color: colors.$disabled;
   margin-bottom: 30px;
 }

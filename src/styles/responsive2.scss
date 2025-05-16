@@ -1,21 +1,23 @@
-.productImage {
-  height: 340px;
-}
-
-.mainProductPhotosContainer {
-  max-width: 60% !important;
-  margin: 0 auto !important;
-}
-
-.pagination {
-  .MuiPaginationItem-root {
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    font-size: 0.8rem;
+@mixin responsive-layout-s {
+  .productImage {
+    height: 340px;
   }
-}
 
-.minHeightForNewsletter {
-  min-height: 300px;
+  .mainProductPhotosContainer {
+    max-width: 60% !important;
+    margin: 0 auto !important;
+  }
+
+  .pagination {
+    .MuiPaginationItem-root {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      font-size: 0.8rem;
+    }
+  }
+
+  .minHeightForNewsletter {
+    min-height: 300px;
+  }
 }

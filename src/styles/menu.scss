@@ -1,12 +1,14 @@
+@use '@/styles/colors.scss' as colors;
+
 .submenu-container {
   display: none;
   padding: 8px;
-  background: $white;
+  background: colors.$white;
   width: 100%;
   margin-top: 8px;
 
   > * {
-    color: $black;
+    color: colors.$black;
     margin-bottom: 12px;
     font-size: 9px;
     cursor: pointer;
@@ -23,13 +25,13 @@
 
 .submenu-item {
   cursor: pointer;
-  color: $white;
+  color: colors.$white;
   flex-direction: row;
   text-align: right;
   flex-basis: 50%;
 
   i {
-    color: $black;
+    color: colors.$black;
   }
 
   &.rotate {
@@ -50,7 +52,7 @@
 }
 
 .menu-item {
-  color: $black;
+  color: colors.$black;
   font-size: 1.1rem;
   padding: 10px 0;
   text-align: center;
@@ -63,12 +65,12 @@
 
 .MuiDrawer-paper {
   & .MuiSvgIcon-root {
-    color: $white;
+    color: colors.$white;
   }
 }
 
 .icon-menu:before {
-  color: $black;
+  color: colors.$black;
   font-size: 1.1rem;
 }
 
@@ -89,7 +91,7 @@
   }
 
   a {
-    color: $black;
+    color: colors.$black;
     font-size: 0.85rem;
   }
 }
@@ -97,7 +99,7 @@
 .MuiDrawer-paperAnchorLeft {
   right: auto !important;
   padding: 20px;
-  background-color: $black !important;
+  background-color: colors.$black !important;
   width: 100%;
   max-width: 340px;
   z-index: 1000000 !important;
@@ -141,17 +143,17 @@
 
 .menuIcon {
   font-size: 1.85rem;
-  color: $white;
+  color: colors.$white;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: $color-1;
+    color: colors.$color-1;
   }
 }
 
 .closeMenu {
   font-size: 1.85rem;
-  color: $black;
+  color: colors.$black;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }

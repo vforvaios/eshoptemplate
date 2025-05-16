@@ -1,4 +1,4 @@
-@import 'src/styles/colors.scss';
+@use '@/styles/colors.scss' as colors;
 
 .tabsContainer {
   display: flex;

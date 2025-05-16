@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   setCart,
   setAvailableCoupons,
@@ -7,8 +8,8 @@ import {
   leaveCartAsIs,
   setCouponDiscount,
   setCouponEmail,
-} from 'models/actions/cartActions';
-import { clearOrder } from 'models/actions/checkoutActions';
+} from '@/models/actions/cartActions';
+import { clearOrder } from '@/models/actions/checkoutActions';
 
 const initialState = {
   cart: [],

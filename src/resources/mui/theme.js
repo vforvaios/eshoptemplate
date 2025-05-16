@@ -15,8 +15,8 @@ const theme = {
 
 if (
   typeof window !== 'undefined' &&
-  process.env.NODE_ENV === 'development' &&
-  process.env.NODE_ENV !== 'test'
+  import.meta.env.NODE_ENV === 'development' &&
+  import.meta.env.NODE_ENV !== 'test'
 ) {
 }
 

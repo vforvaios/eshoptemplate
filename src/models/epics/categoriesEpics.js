@@ -1,15 +1,16 @@
-import makeRequest from 'library/makeRequest';
-import { toggleShowAlert } from 'models/actions/alertActions';
-import {
-  getCategoriesMenu,
-  setCategoriesMenu,
-} from 'models/actions/categoriesActions';
-import { setStaticPagesInMenu } from 'models/actions/staticActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
 import { mergeMap, concatMap } from 'rxjs/operators';
 
 import catchErrorOperator from './operators/catchErrorOperator';
+
+import makeRequest from '@/library/makeRequest';
+import { toggleShowAlert } from '@/models/actions/alertActions';
+import {
+  getCategoriesMenu,
+  setCategoriesMenu,
+} from '@/models/actions/categoriesActions';
+import { setStaticPagesInMenu } from '@/models/actions/staticActions';
 
 const getCategoriesMenuEpic = (action$) =>
   action$.pipe(

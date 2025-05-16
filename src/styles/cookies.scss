@@ -1,16 +1,18 @@
+@use '@/styles/colors.scss' as colors;
+
 .CookieConsent {
   align-items: center !important;
-  background: $black !important;
+  background: colors.$black !important;
 }
 
 .cookies-buttons {
   button {
-    color: $white !important;
+    color: colors.$white !important;
     border-radius: 4px !important;
     font-size: 0.85rem;
 
     &.next {
-      background: $success !important;
+      background: colors.$success !important;
     }
   }
 }

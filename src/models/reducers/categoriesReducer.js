@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setCategoriesMenu } from 'models/actions/categoriesActions';
+
+import { setCategoriesMenu } from '@/models/actions/categoriesActions';
 
 const initialState = {
   categories: [],

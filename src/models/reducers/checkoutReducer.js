@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   setPaymentMethods,
   setShippingMethods,
@@ -17,7 +18,7 @@ import {
   setNotes,
   setDOY,
   setCannotSeeSuccessPage,
-} from 'models/actions/checkoutActions';
+} from '@/models/actions/checkoutActions';
 
 const initialState = {
   notes: '',

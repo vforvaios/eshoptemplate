@@ -1,5 +1,11 @@
-import makeRequest from 'library/makeRequest';
-import { toggleShowAlert } from 'models/actions/alertActions';
+import { ofType, combineEpics } from 'redux-observable';
+import { from } from 'rxjs';
+import { mergeMap, concatMap, map, withLatestFrom } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
+
+import makeRequest from '@/library/makeRequest';
+import { toggleShowAlert } from '@/models/actions/alertActions';
 import {
   getCart,
   setCart,
@@ -15,14 +21,9 @@ import {
   leaveCartAsIs,
   setCouponDiscount,
   setCouponEmail,
-} from 'models/actions/cartActions';
-import { setGeneralLoading } from 'models/actions/catalogActions';
-import { setUpdatedProducts } from 'models/actions/checkoutActions';
-import { ofType, combineEpics } from 'redux-observable';
-import { from } from 'rxjs';
-import { mergeMap, concatMap, map, withLatestFrom } from 'rxjs/operators';
-
-import catchErrorOperator from './operators/catchErrorOperator';
+} from '@/models/actions/cartActions';
+import { setGeneralLoading } from '@/models/actions/catalogActions';
+import { setUpdatedProducts } from '@/models/actions/checkoutActions';
 
 const getAvailableCouponsEpic = (action$) =>
   action$.pipe(

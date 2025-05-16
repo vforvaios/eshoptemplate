@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { toggleShowAlert } from 'models/actions/alertActions';
+
+import { toggleShowAlert } from '@/models/actions/alertActions';
 
 const initialState = {
   message: 'Alert',

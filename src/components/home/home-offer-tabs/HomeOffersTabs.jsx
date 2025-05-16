@@ -1,0 +1,63 @@
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import Product from '@/components/product/Product';
+import TabPanel from '@/components/tab-panel/TabPanel';
+import { withActiveTab } from '@/library';
+import React from 'react';
+import Slider from 'react-slick';
+
+import './homeOffersTabs.scss';
+
+const settings = {
+  dots: true,
+  arrows: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  touchMove: true,
+  responsive: [
+    {
+      breakpoint: 769,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+  ],
+};
+
+const HomeOffersTabs = ({ handleChange, value, offers, title }) => {
+  return (
+    <>
+      <h2 className="section-title">{title}</h2>
+      <div className="tabsContainer">
+        <Tabs
+          value={value}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={handleChange}
+          aria-label="disabled tabs example">
+          {offers?.map((offer) => (
+            <Tab className="white" key={offer.id} label={offer.title} />
+          ))}
+        </Tabs>
+      </div>
+      <div className="offers">
+        {offers?.map((offer) => (
+          <TabPanel key={offer?.id} value={value} index={offer?.index}>
+            <Slider {...settings}>
+              {offer?.products?.map((product) => (
+                <div className="slider-product" key={product.productId}>
+                  <Product product={product} />
+                </div>
+              ))}
+            </Slider>
+          </TabPanel>
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default withActiveTab(HomeOffersTabs);

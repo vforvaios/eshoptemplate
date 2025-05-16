@@ -1,7 +1,8 @@
-import { toggleShowAlert } from 'models/actions/alertActions';
-import { setGeneralLoading } from 'models/actions/catalogActions';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { toggleShowAlert } from '@/models/actions/alertActions';
+import { setGeneralLoading } from '@/models/actions/catalogActions';
 
 const catchErrorOperator = (flag) =>
   catchError((error) => {

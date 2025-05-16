@@ -1,5 +1,16 @@
-import makeRequest from 'library/makeRequest';
-import { toggleShowAlert } from 'models/actions/alertActions';
+import { ofType, combineEpics } from 'redux-observable';
+import { from } from 'rxjs';
+import {
+  mergeMap,
+  concatMap,
+  withLatestFrom,
+  debounceTime,
+} from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
+
+import makeRequest from '@/library/makeRequest';
+import { toggleShowAlert } from '@/models/actions/alertActions';
 import {
   getProductDetails,
   setProductPage,
@@ -24,17 +35,7 @@ import {
   setSearchLoading,
   getColorProducts,
   setColorProducts,
-} from 'models/actions/catalogActions';
-import { ofType, combineEpics } from 'redux-observable';
-import { from } from 'rxjs';
-import {
-  mergeMap,
-  concatMap,
-  withLatestFrom,
-  debounceTime,
-} from 'rxjs/operators';
-
-import catchErrorOperator from './operators/catchErrorOperator';
+} from '@/models/actions/catalogActions';
 
 const getProductDetailsEpic = (action$) =>
   action$.pipe(

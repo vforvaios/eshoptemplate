@@ -1,3 +1,5 @@
+@use '@/styles/colors.scss' as colors;
+
 .login-container {
   width: 100%;
   max-width: 600px;
@@ -15,7 +17,7 @@
 
 .error-span {
   font-size: 0.85rem;
-  color: $alert;
+  color: colors.$alert;
   margin-top: 8px;
 }
 
@@ -30,7 +32,7 @@
     padding: 0;
 
     li {
-      color: $black;
+      color: colors.$black;
       font-size: 1rem;
       font-weight: 500;
       line-height: 1;
@@ -48,13 +50,13 @@
       &:first-child {
         padding: 16px;
         font-size: 1.1rem;
-        color: $white;
-        background: $black;
+        color: colors.$white;
+        background: colors.$black;
         text-align: center;
         cursor: default;
 
         &:hover {
-          background: $black;
+          background: colors.$black;
         }
       }
     }
@@ -62,24 +64,24 @@
 }
 
 .chip {
-  color: $white !important;
+  color: colors.$white !important;
   padding-top: 4px !important;
   padding-bottom: 4px !important;
 
   &.chip1 {
-    background: $registered;
+    background: colors.$registered;
   }
 
   &.chip2 {
-    background: $sent;
+    background: colors.$sent;
   }
 
   &.chip3 {
-    background: $completed;
+    background: colors.$completed;
   }
 
   &.chip4 {
-    background: $alert;
+    background: colors.$alert;
   }
 }
 

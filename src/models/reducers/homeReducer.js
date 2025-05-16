@@ -1,10 +1,11 @@
 /* eslint-disable max-len */
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   setHomePageData,
   setLogo,
   setEmptyHomePageSliders,
-} from 'models/actions/homeActions';
+} from '@/models/actions/homeActions';
 
 const initialState = {
   offersTitle: '',

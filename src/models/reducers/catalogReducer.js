@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   setProductPage,
   setRelatedProducts,
@@ -20,7 +21,7 @@ import {
   setSearchLoading,
   setInitialCatalogCategory,
   setColorProducts,
-} from 'models/actions/catalogActions';
+} from '@/models/actions/catalogActions';
 
 const initialState = {
   relatedProducts: [],
@@ -41,7 +42,7 @@ const initialState = {
     pagination: {
       total: 0,
       currentPage: 1,
-      perPage: process.env.REACT_APP_PER_PAGE,
+      perPage: import.meta.env.VITE_PER_PAGE,
     },
     results: [],
   },

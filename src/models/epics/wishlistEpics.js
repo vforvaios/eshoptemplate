@@ -1,20 +1,21 @@
-import makeRequest from 'library/makeRequest';
-import { toggleShowAlert } from 'models/actions/alertActions';
-import { setGeneralLoading } from 'models/actions/catalogActions';
+import { ofType, combineEpics } from 'redux-observable';
+import { from } from 'rxjs';
+import { mergeMap, concatMap, withLatestFrom } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
+
+import makeRequest from '@/library/makeRequest';
+import { toggleShowAlert } from '@/models/actions/alertActions';
+import { setGeneralLoading } from '@/models/actions/catalogActions';
 import {
   getWishlist,
   setWishlist,
   addProductWishlist,
   removeProductWishlist,
-} from 'models/actions/wishlistActions';
-import { token } from 'models/selectors/userSelector';
-import { wishlistProducts } from 'models/selectors/wishlistSelectors';
-import { ofType, combineEpics } from 'redux-observable';
-import { messages } from 'resources/constants';
-import { from } from 'rxjs';
-import { mergeMap, concatMap, withLatestFrom } from 'rxjs/operators';
-
-import catchErrorOperator from './operators/catchErrorOperator';
+} from '@/models/actions/wishlistActions';
+import { token } from '@/models/selectors/userSelector';
+import { wishlistProducts } from '@/models/selectors/wishlistSelectors';
+import { messages } from '@/resources/constants';
 
 const getWishlistEpic = (action$, state$) =>
   action$.pipe(

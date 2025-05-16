@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   setLoggedInUser,
   setMyOrders,
@@ -8,7 +9,7 @@ import {
   setCurrentOrdersPage,
   logoutUser,
   setNewsletterCoupon,
-} from 'models/actions/userActions';
+} from '@/models/actions/userActions';
 
 const initialState = {
   user: {},
@@ -16,7 +17,7 @@ const initialState = {
     pagination: {
       total: 0,
       currentPage: 1,
-      perPage: process.env.REACT_APP_PER_PAGE,
+      perPage: import.meta.env.VITE_PER_PAGE,
     },
     results: [],
   },
@@ -49,7 +50,7 @@ const userReducer = createReducer(initialState, (builder) => {
         pagination: {
           total: 0,
           currentPage: 1,
-          perPage: process.env.REACT_APP_PER_PAGE,
+          perPage: import.meta.env.VITE_PER_PAGE,
         },
         results: [],
       },

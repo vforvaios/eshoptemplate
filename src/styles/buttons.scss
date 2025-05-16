@@ -1,8 +1,10 @@
+@use '@/styles/colors.scss' as colors;
+
 .button {
   background: transparent;
   border: 0 none;
   font-size: 0.9rem;
-  color: $black;
+  color: colors.$black;
   transition: all 0.2s ease-in-out;
   font-family: 'Quicksand', 'Open Sans';
   padding: 8px;
@@ -14,7 +16,7 @@
   }
 
   &.MuiButtonBase-root {
-    border: 1px solid $color-3;
+    border: 1px solid colors.$color-3;
 
     &.green {
       background-color: green;
@@ -23,21 +25,21 @@
   }
 
   &.green {
-    background: $success;
+    background: colors.$success;
   }
 
   &.red {
-    background: $alert;
+    background: colors.$alert;
 
     &.refresh {
-      color: $white;
+      color: colors.$white;
     }
   }
 
   &.next {
-    background: $white !important;
-    border: 1px solid $color-3;
-    color: $black;
+    background: colors.$white !important;
+    border: 1px solid colors.$color-3;
+    color: colors.$black;
 
     a {
       font-weight: 400;
@@ -56,7 +58,7 @@ a {
   border: 0 none;
   font-size: 0.9rem;
   font-family: 'Quicksand', 'Open Sans';
-  color: $black;
+  color: colors.$black;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   padding: 4px;
@@ -69,18 +71,18 @@ a {
     }
 
     &.green {
-      background: $success;
+      background: colors.$success;
     }
 
     &.red {
-      background: $alert;
+      background: colors.$alert;
     }
 
     &.next {
-      color: $white;
+      color: colors.$white;
       border: 0 none;
       font-size: 0.9rem;
-      background: $black;
+      background: colors.$black;
       border-radius: 4px;
       padding: 8px;
       min-width: 150px;
@@ -90,7 +92,7 @@ a {
 
 .button.next[disabled] {
   cursor: default;
-  background: $color-3 !important;
-  color: $disabled;
+  background: colors.$color-3 !important;
+  color: colors.$disabled;
   opacity: 0.5;
 }

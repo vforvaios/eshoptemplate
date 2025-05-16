@@ -1,4 +1,32 @@
-@import 'src/styles/colors.scss';
+@use '@/styles/colors.scss' as colors;
+@use '@/styles/buttons.scss';
+@use '@/styles/tabs.scss';
+@use '@/styles/slick.scss';
+@use '@/styles/table.scss';
+@use '@/styles/cart.scss';
+@use '@/styles/catalog.scss';
+@use '@/styles/product.scss';
+@use '@/styles/contact.scss';
+@use '@/styles/categories.scss';
+@use '@/styles/checkout.scss';
+@use '@/styles/user.scss';
+@use '@/styles/alert.scss';
+@use '@/styles/loader.scss';
+@use '@/styles/header.scss';
+@use '@/styles/menu.scss';
+@use '@/styles/inputs.scss';
+@use '@/styles/footer.scss';
+@use '@/styles/notfound.scss';
+@use '@/styles/filters.scss';
+@use '@/styles/pagination.scss';
+@use '@/styles/wishlist.scss';
+@use '@/styles/orders.scss';
+@use '@/styles/static.scss';
+@use '@/styles/cookies.scss';
+@use '@/styles/accordion.scss';
+
+@use '@/styles/responsive2.scss' as responsive2;
+@use '@/styles/responsive1.scss' as responsive1;
 
 * {
   box-sizing: border-box;
@@ -126,7 +154,7 @@ ul {
 }
 
 .minor-text {
-  color: $disabled;
+  color: colors.$disabled;
   font-size: 0.8rem;
 
   &:before {
@@ -139,7 +167,7 @@ ul {
   padding-right: 0 !important;
 
   &.error > div {
-    border: 2px solid $alert;
+    border: 2px solid colors.$alert;
   }
 }
 
@@ -202,7 +230,7 @@ strong {
   font-weight: 300;
   text-align: left;
   margin: 0 0 20px;
-  color: $black;
+  color: colors.$black;
   letter-spacing: 1px;
   font-family: 'Tenor Sans', serif;
 }
@@ -212,7 +240,7 @@ strong {
   font-weight: 300;
   text-align: left;
   margin: 0 0 20px;
-  color: $black;
+  color: colors.$black;
   letter-spacing: 1px;
   font-family: 'Tenor Sans', serif;
 }
@@ -226,7 +254,7 @@ strong {
   font-weight: 300;
   text-align: left;
   margin: 0 0 20px;
-  color: $black;
+  color: colors.$black;
   letter-spacing: 2px;
   font-family: 'Tenor Sans', serif;
 }
@@ -249,8 +277,8 @@ strong {
   span {
     padding: 16px;
     border-radius: 6px;
-    background: $white;
-    box-shadow: 0px 0px 24px -12px $black;
+    background: colors.$white;
+    box-shadow: 0px 0px 24px -12px colors.$black;
   }
 }
 
@@ -259,11 +287,11 @@ strong {
 .MuiSlider-thumb,
 .MuiSlider-mark,
 .MuiSlider-valueLabel {
-  background: $black !important;
+  background: colors.$black !important;
 }
 
 .MuiSlider-track {
-  background: $black !important;
+  background: colors.$black !important;
 }
 
 .mr0 {
@@ -278,35 +306,10 @@ strong {
   margin-bottom: 0 !important;
 }
 
-@import 'src/styles/buttons.scss';
-@import 'src/styles/tabs.scss';
-@import 'src/styles/slick.scss';
-@import 'src/styles/table.scss';
-@import 'src/styles/cart.scss';
-@import 'src/styles/catalog.scss';
-@import 'src/styles/product.scss';
-@import 'src/styles/contact.scss';
-@import 'src/styles/categories.scss';
-@import 'src/styles/checkout.scss';
-@import 'src/styles/user.scss';
-@import 'src/styles/alert.scss';
-@import 'src/styles/loader.scss';
-@import 'src/styles/header.scss';
-@import 'src/styles/menu.scss';
-@import 'src/styles/inputs.scss';
-@import 'src/styles/footer.scss';
-@import 'src/styles/notfound.scss';
-@import 'src/styles/filters.scss';
-@import 'src/styles/pagination.scss';
-@import 'src/styles/wishlist.scss';
-@import 'src/styles/orders.scss';
-@import 'src/styles/static.scss';
-@import 'src/styles/cookies.scss';
-@import 'src/styles/accordion.scss';
 @media only screen and (min-width: 469px) {
-  @import 'src/styles/responsive2.scss';
+  @include responsive2.responsive-layout-s;
 }
 
 @media only screen and (min-width: 769px) {
-  @import 'src/styles/responsive1.scss';
+  @include responsive1.responsive-layout-m;
 }

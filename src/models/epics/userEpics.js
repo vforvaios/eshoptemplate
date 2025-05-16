@@ -1,7 +1,13 @@
-import makeRequest from 'library/makeRequest';
-import { toggleShowAlert } from 'models/actions/alertActions';
-import { setGeneralLoading } from 'models/actions/catalogActions';
-import { sendContactForm } from 'models/actions/userActions';
+import { ofType, combineEpics } from 'redux-observable';
+import { from } from 'rxjs';
+import { mergeMap, concatMap, map, tap, ignoreElements } from 'rxjs/operators';
+
+import catchErrorOperator from './operators/catchErrorOperator';
+
+import makeRequest from '@/library/makeRequest';
+import { toggleShowAlert } from '@/models/actions/alertActions';
+import { setGeneralLoading } from '@/models/actions/catalogActions';
+import { sendContactForm } from '@/models/actions/userActions';
 import {
   loginUser,
   setLoggedInUser,
@@ -20,13 +26,8 @@ import {
   changeUserPassword,
   unsubscribe,
   setNewsletterCoupon,
-} from 'models/actions/userActions';
-import { token, currentOrderPage } from 'models/selectors/userSelector';
-import { ofType, combineEpics } from 'redux-observable';
-import { from } from 'rxjs';
-import { mergeMap, concatMap, map, tap, ignoreElements } from 'rxjs/operators';
-
-import catchErrorOperator from './operators/catchErrorOperator';
+} from '@/models/actions/userActions';
+import { token, currentOrderPage } from '@/models/selectors/userSelector';
 
 const getOrdersStatusesEpic = (action$, state$) =>
   action$.pipe(

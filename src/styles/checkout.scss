@@ -1,3 +1,5 @@
+@use '@/styles/colors.scss' as colors;
+
 .checkout-stepper-container {
   display: flex;
   justify-content: center;
@@ -19,8 +21,8 @@
       font-size: 0.7rem;
 
       &.active {
-        background-color: $black;
-        color: $white;
+        background-color: colors.$black;
+        color: colors.$white;
       }
     }
   }
@@ -45,8 +47,8 @@
 
 .invoice-container-fields {
   padding: 6px;
-  background: $color-3;
-  border: 12px solid $white;
+  background: colors.$color-3;
+  border: 12px solid colors.$white;
 }
 
 .billing-inputs {
@@ -89,15 +91,15 @@
 
 .guest-login-container {
   text-align: center;
-  border: 1px solid $color-3;
+  border: 1px solid colors.$color-3;
   margin-top: -60px;
 
   .guest-title {
-    background: $white;
+    background: colors.$white;
     font-weight: 500;
     padding: 10px;
-    color: $black;
-    border-bottom: 1px solid $color-3;
+    color: colors.$black;
+    border-bottom: 1px solid colors.$color-3;
   }
 
   .guest-content {

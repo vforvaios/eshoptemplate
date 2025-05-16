@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { createReducer } from '@reduxjs/toolkit';
-import { setWishlist } from 'models/actions/wishlistActions';
+
+import { setWishlist } from '@/models/actions/wishlistActions';
 
 const initialState = {
   wishlist: [],

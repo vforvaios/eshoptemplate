@@ -1,17 +1,18 @@
-import makeRequest from 'library/makeRequest';
-import { toggleShowAlert } from 'models/actions/alertActions';
-import { setGeneralLoading } from 'models/actions/catalogActions';
-import {
-  getHomePageData,
-  setHomePageData,
-  getLogo,
-  setLogo,
-} from 'models/actions/homeActions';
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
 import { mergeMap, concatMap } from 'rxjs/operators';
 
 import catchErrorOperator from './operators/catchErrorOperator';
+
+import makeRequest from '@/library/makeRequest';
+import { toggleShowAlert } from '@/models/actions/alertActions';
+import { setGeneralLoading } from '@/models/actions/catalogActions';
+import {
+  getHomePageData,
+  setHomePageData,
+  getLogo,
+  setLogo,
+} from '@/models/actions/homeActions';
 
 const getLogoEpic = (action$) =>
   action$.pipe(

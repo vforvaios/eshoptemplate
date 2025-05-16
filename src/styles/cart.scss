@@ -1,3 +1,5 @@
+@use '@/styles/colors.scss' as colors;
+
 .cart-description {
   display: flex;
   justify-content: flex-start;
@@ -26,12 +28,12 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    color: $black;
+    color: colors.$black;
     text-align: center;
     line-height: 1.05;
     top: 0;
     right: -2px;
-    border: 1px solid $black;
+    border: 1px solid colors.$black;
   }
 }
 
@@ -56,13 +58,13 @@
 
   i {
     font-size: 1.3rem;
-    color: $white;
+    color: colors.$white;
     margin-left: 6px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 
     &:hover {
-      color: $color-1;
+      color: colors.$color-1;
     }
   }
 }
@@ -81,7 +83,7 @@
     height: 8px;
     width: 8px;
     border-radius: 20px;
-    background: $success;
+    background: colors.$success;
     top: 0;
     right: 0;
   }
@@ -95,13 +97,13 @@
 
 .removeCancel {
   font-size: 1.4rem;
-  color: $alert;
+  color: colors.$alert;
   cursor: pointer;
   margin-left: 12px;
 }
 
 .cart-totals-container {
-  border: 1px solid $color-3;
+  border: 1px solid colors.$color-3;
 }
 
 .cart-totals-row {
@@ -134,26 +136,26 @@
   margin-right: 10px;
   font-size: 0.7rem;
   text-decoration: line-through;
-  color: $black;
+  color: colors.$black;
 }
 
 .cart-totals-row-title {
-  background: $white;
+  background: colors.$white;
   margin-bottom: 0;
-  color: $black;
+  color: colors.$black;
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 1px;
-  border-bottom: 1px solid $color-3;
+  border-bottom: 1px solid colors.$color-3;
 }
 
 .icon-shopping-basket {
   font-size: 1.85rem;
-  color: $white;
+  color: colors.$white;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: $color-1;
+    color: colors.$color-1;
   }
 }
 
@@ -249,9 +251,9 @@
 
 .cart-page {
   a.navigation.next {
-    background: $white;
-    color: $black;
-    border: 1px solid $color-3;
+    background: colors.$white;
+    color: colors.$black;
+    border: 1px solid colors.$color-3;
     font-weight: 400;
   }
 }

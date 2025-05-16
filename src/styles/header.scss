@@ -1,3 +1,5 @@
+@use '@/styles/colors.scss' as colors;
+
 .headerContainer {
   justify-content: space-between;
   align-items: center;
@@ -11,31 +13,31 @@
 
   &.home-page-header {
     .header-icon {
-      fill: $black;
+      fill: colors.$black;
     }
 
     .mini-cart span {
-      color: $black;
-      border-color: $black;
+      color: colors.$black;
+      border-color: colors.$black;
       line-height: 1.05;
     }
 
     .menu-icon-align span,
     .icon-menu:before {
-      color: $black;
+      color: colors.$black;
     }
   }
 
   & > div {
-    color: $white;
+    color: colors.$white;
   }
 
   & .MuiInputBase-root .MuiSvgIcon-root {
-    fill: $white;
+    fill: colors.$white;
   }
 
   & .MuiInputAdornment-root {
-    background-color: $black;
+    background-color: colors.$black;
     height: 100%;
     border-radius: 4px;
     padding: 1px;
@@ -48,7 +50,7 @@
   }
 
   & .MuiInput-underline:before {
-    border-color: $white;
+    border-color: colors.$white;
   }
 
   & .MuiInput-underline:after {
@@ -56,20 +58,20 @@
   }
 
   label {
-    color: $white;
+    color: colors.$white;
   }
 
   & .MuiFormLabel-root.Mui-focused {
-    color: $white;
+    color: colors.$white;
   }
 
   & .MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-color: $black;
+    border-color: colors.$black;
   }
 }
 
 .header-icon {
-  fill: $black;
+  fill: colors.$black;
   width: 16px;
   height: 16px;
   line-height: 16px;
@@ -114,7 +116,7 @@
   }
 
   span {
-    color: $black;
+    color: colors.$black;
     font-size: 0.8rem;
     font-family: 'Quicksand', 'Open Sans';
     margin-left: 4px;
@@ -124,7 +126,7 @@
   i {
     height: 1px;
     width: 16px;
-    background: $black;
+    background: colors.$black;
     display: block;
     margin-bottom: 4px;
 
@@ -136,7 +138,7 @@
 
 .icon-search {
   font-size: 1.2rem;
-  color: $black;
+  color: colors.$black;
   padding: 10px 2px;
   cursor: pointer;
 }
@@ -150,9 +152,9 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background: $white;
+  background: colors.$white;
   padding: 12px;
-  border: 1px solid $color-3;
+  border: 1px solid colors.$color-3;
 
   * {
     font-family: 'Quicksand', 'Open Sans' !important;
@@ -164,7 +166,7 @@
   }
 
   & .MuiInputBase-root {
-    background: $white;
+    background: colors.$white;
   }
 
   .MuiFormControl-root {
@@ -187,18 +189,18 @@
   }
 
   label {
-    color: $color-3 !important;
+    color: colors.$color-3 !important;
     z-index: 1;
     left: 4px !important;
     top: 0 !important;
   }
 
   .MuiInput-underline:after {
-    border-color: $black;
+    border-color: colors.$black;
   }
 
   svg {
-    color: $color-3 !important;
+    color: colors.$color-3 !important;
   }
 }
 

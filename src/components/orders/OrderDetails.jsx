@@ -1,0 +1,90 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import CartTotals from '@/components/cart/CartTotals';
+import MyCart from '@/components/cart/MyCart';
+import { setGeneralLoading } from '@/models/actions/catalogActions';
+import { getDOY } from '@/models/actions/checkoutActions';
+import { getOrderDetails } from '@/models/actions/userActions';
+import { doys } from '@/models/selectors/checkoutSelectors';
+import { orderDetails } from '@/models/selectors/userSelector';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import BillingShippingInfos from './BillingShippingInfos';
+
+const OrderDetails = ({ id }) => {
+  const displayedOrder = useSelector(orderDetails);
+  const myDoys = useSelector(doys);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (id !== '') {
+      dispatch(setGeneralLoading(true));
+      dispatch(getDOY());
+      dispatch(getOrderDetails(id));
+    }
+  }, [id]);
+
+  return (
+    <TableRow className="order-details">
+      <TableCell colSpan={7}>
+        <div className="row">
+          <div className="wrapper">
+            <MyCart cart={displayedOrder?.products || []} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="wrapper">
+            <CartTotals
+              cart={displayedOrder?.products || []}
+              order={displayedOrder?.order || {}}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="wrapper">
+            <div className="billing-shipping-order-container">
+              <BillingShippingInfos
+                options={{
+                  billing: {
+                    firstName: displayedOrder?.order?.piFirstName || '',
+                    lastName: displayedOrder?.order?.piLastName || '',
+                    address: displayedOrder?.order?.piAddress || '',
+                    phone: displayedOrder?.order?.piPhone || '',
+                    postCode: displayedOrder?.order?.piPostCode || '',
+                    afm: displayedOrder?.order?.piAfm || '',
+                    eponymia: displayedOrder?.order?.piEponymia || '',
+                    doy: myDoys?.find(
+                      (doy) => doy?.id === Number(displayedOrder?.order?.piDoy),
+                    ),
+                  },
+                  shipping: {
+                    firstName: displayedOrder?.order?.siFirstName || '',
+                    lastName: displayedOrder?.order?.siLastName || '',
+                    address: displayedOrder?.order?.siAddress || '',
+                    phone: displayedOrder?.order?.siPhone || '',
+                    postCode: displayedOrder?.order?.siPostCode || '',
+                  },
+                }}
+              />
+              {displayedOrder.orderNotes && (
+                <div className="billing-shipping-box">
+                  <h3>Notes</h3>
+                  <div className="order-infos">
+                    <div className="order-info">
+                      <span>{displayedOrder.orderNotes}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </TableCell>
+    </TableRow>
+  );
+};
+
+export default OrderDetails;

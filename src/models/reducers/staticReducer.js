@@ -1,11 +1,12 @@
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   setStaticContent,
   setStaticPagesInMenu,
   setKeyWords,
   setBusinessDetails,
   setSocialLinks,
-} from 'models/actions/staticActions';
+} from '@/models/actions/staticActions';
 
 const initialState = {
   keywords: '',

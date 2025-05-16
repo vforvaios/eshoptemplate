@@ -1,8 +1,10 @@
+@use '@/styles/colors.scss' as colors;
+
 .footer-container {
-  background: $white;
+  background: colors.$white;
   padding: 20px 0px 6px;
-  color: $black;
-  border-top: 1px solid $color-1;
+  color: colors.$black;
+  border-top: 1px solid colors.$color-1;
 
   .title {
     font-weight: 500;
@@ -10,7 +12,7 @@
     padding: 0 0 10px 0;
     margin: 0;
     letter-spacing: 1px;
-    color: $black;
+    color: colors.$black;
   }
 
   .row {
@@ -29,7 +31,7 @@
 }
 
 .wrapper.wrapper-copyright {
-  border-top: 1px solid $color-1;
+  border-top: 1px solid colors.$color-1;
 }
 
 .footer-columns {
@@ -55,7 +57,7 @@
   a,
   div {
     text-decoration: none;
-    color: $black;
+    color: colors.$black;
     display: block;
     transition: all 0.2s ease-in-out;
     text-align: left;
@@ -85,7 +87,7 @@
 }
 
 .newsletterpopupicon {
-  color: $success;
+  color: colors.$success;
   font-size: 3rem;
   align-self: center;
   margin-bottom: 20px;
@@ -93,7 +95,7 @@
 
 .wrapper.newsletter {
   margin-bottom: 20px;
-  border-bottom: 1px solid $color-1;
+  border-bottom: 1px solid colors.$color-1;
 }
 
 .footer-newsletter {
@@ -103,32 +105,32 @@
 
   input {
     background: transparent;
-    color: $black;
+    color: colors.$black;
     padding-right: 70px;
   }
 
   .MuiInput-underline:before {
-    border-color: $black;
+    border-color: colors.$black;
   }
 
   & .MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-color: $black;
+    border-color: colors.$black;
   }
 
   label {
-    color: $black;
+    color: colors.$black;
     z-index: 1;
     left: 4px;
     font-size: 1rem;
     top: 1px;
 
     &.MuiFormLabel-root.Mui-focused {
-      color: $black;
+      color: colors.$black;
     }
   }
 
   .MuiInput-underline:after {
-    border-color: $black;
+    border-color: colors.$black;
     border-width: 1px;
   }
 }
@@ -149,10 +151,10 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background: $black;
+  background: colors.$black;
   display: inline-block;
   vertical-align: middle;
-  color: $white;
+  color: colors.$white;
   text-align: center;
   line-height: 36px;
   font-size: 1.4rem;
@@ -177,9 +179,9 @@
     right: 0;
     font-size: 0.7rem;
     border-radius: 0;
-    background: $white;
-    color: $black;
-    border: 1px solid $black;
+    background: colors.$white;
+    color: colors.$black;
+    border: 1px solid colors.$black;
   }
 
   label {

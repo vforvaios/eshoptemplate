@@ -1,18 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rootEpics from 'models/epics/rootEpics';
-import alertReducer from 'models/reducers/alertReducer';
-import cartReducer from 'models/reducers/cartReducer';
-import catalogReducer from 'models/reducers/catalogReducer';
-import categoriesReducer from 'models/reducers/categoriesReducer';
-import checkoutReducer from 'models/reducers/checkoutReducer';
-import homeReducer from 'models/reducers/homeReducer';
-import staticReducer from 'models/reducers/staticReducer';
-import userReducer from 'models/reducers/userReducer';
-import wishlistReducer from 'models/reducers/wishlistReducer';
 import { combineReducers } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+import rootEpics from '@/models/epics/rootEpics';
+import alertReducer from '@/models/reducers/alertReducer';
+import cartReducer from '@/models/reducers/cartReducer';
+import catalogReducer from '@/models/reducers/catalogReducer';
+import categoriesReducer from '@/models/reducers/categoriesReducer';
+import checkoutReducer from '@/models/reducers/checkoutReducer';
+import homeReducer from '@/models/reducers/homeReducer';
+import staticReducer from '@/models/reducers/staticReducer';
+import userReducer from '@/models/reducers/userReducer';
+import wishlistReducer from '@/models/reducers/wishlistReducer';
 
 const persistConfig = {
   key: 'state',
@@ -39,7 +40,7 @@ const epicMiddleWare = createEpicMiddleware();
 const store = configureStore({
   reducer: persistedReducer,
   middleware: [epicMiddleWare],
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: import.meta.env.NODE_ENV !== 'production',
 });
 
 epicMiddleWare.run(rootEpics);

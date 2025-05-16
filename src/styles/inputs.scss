@@ -1,3 +1,5 @@
+@use '@/styles/colors.scss' as colors;
+
 .MuiFormControl-root.error .MuiInput-root {
   border-bottom: 2px solid red;
 
@@ -17,7 +19,7 @@
 
 .MuiRadio-root {
   svg {
-    color: $black;
+    color: colors.$black;
   }
 }
 
@@ -60,7 +62,7 @@ textarea {
     padding: 24px;
     font-size: 1rem;
     max-width: 300px;
-    box-shadow: 0px 0px 20px -6px $black;
+    box-shadow: 0px 0px 20px -6px colors.$black;
   }
 }
 
@@ -78,7 +80,7 @@ textarea {
     height: 18px;
     line-height: 16px;
     border-radius: 50%;
-    border: 1px solid $disabled;
+    border: 1px solid colors.$disabled;
     font-size: 1rem;
     text-align: center;
   }

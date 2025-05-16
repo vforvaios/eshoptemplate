@@ -1,5 +1,5 @@
 const makeRequest = (url, method, extraBody, token = '') =>
-  fetch(`${process.env.REACT_APP_API}/${url}`, {
+  fetch(`${import.meta.env.VITE_API}/${url}`, {
     method,
     headers: {
       'Content-Type': 'application/json',

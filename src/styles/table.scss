@@ -1,3 +1,5 @@
+@use '@/styles/colors.scss' as colors;
+
 .table {
   display: block;
 
@@ -8,7 +10,7 @@
   tr {
     display: block;
     position: relative;
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid colors.$black;
     margin-bottom: 10px;
     transition: all 0.2s ease-in-out;
   }
@@ -46,7 +48,7 @@
     }
 
     tr:hover {
-      background: $color-2;
+      background: colors.$color-2;
     }
   }
 

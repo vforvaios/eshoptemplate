@@ -1,3 +1,5 @@
+@use '@/styles/colors.scss' as colors;
+
 .card-actions {
   align-items: center !important;
   justify-content: space-between;
@@ -47,7 +49,7 @@
       box-orient: vertical;
       margin-bottom: 10px;
       text-align: left;
-      color: $black !important;
+      color: colors.$black !important;
 
       &.in-stock {
         margin: 8px 0 0;
@@ -74,13 +76,13 @@
             left: 0;
             top: 50%;
             margin-top: -3px;
-            background: $success;
+            background: colors.$success;
             border-radius: 20px;
           }
         }
 
         &.not span:before {
-          background: $alert;
+          background: colors.$alert;
         }
       }
 
@@ -91,7 +93,7 @@
         min-height: unset;
         line-clamp: unset;
         overflow: auto;
-        color: $black !important;
+        color: colors.$black !important;
         margin-bottom: 0;
         padding-right: 4px;
       }
@@ -110,7 +112,7 @@
 
   &.MuiIconButton-root {
     padding: 6px;
-    color: $black;
+    color: colors.$black;
   }
 }
 
@@ -118,7 +120,7 @@
   border: none;
   padding: 2px;
   background: none;
-  color: $black;
+  color: colors.$black;
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
@@ -152,7 +154,7 @@
     align-items: center;
     font-size: 0.7rem;
     font-weight: 500;
-    color: $black;
+    color: colors.$black;
     width: 100%;
     font-family: 'Quicksand', 'Open Sans';
 
@@ -160,17 +162,17 @@
       margin-right: 4px;
       font-size: 0.5rem;
       text-decoration: line-through;
-      color: $black;
+      color: colors.$black;
       font-family: 'Quicksand', 'Open Sans';
     }
   }
 
   .discount {
-    color: $alert;
+    color: colors.$alert;
     font-size: 1rem;
     font-weight: 500;
     padding: 0 4px;
-    background: $black;
+    background: colors.$black;
     margin-left: 10px;
 
     &.absolute {
@@ -179,11 +181,11 @@
       left: 6px;
       padding: 3px;
       z-index: 1;
-      background: $black;
-      color: $white;
+      background: colors.$black;
+      color: colors.$white;
       margin-left: 0;
       font-size: 0.85rem;
-      box-shadow: 0px 0px 6px 0px $black;
+      box-shadow: 0px 0px 6px 0px colors.$black;
     }
   }
 }
@@ -204,7 +206,7 @@
 
   .MuiGrid-container .product-code {
     margin-bottom: 20px;
-    color: $black;
+    color: colors.$black;
     font-weight: 300;
   }
 }
@@ -264,7 +266,7 @@
         left: 0;
         top: 50%;
         margin-top: -3px;
-        background: $success;
+        background: colors.$success;
         border-radius: 20px;
       }
     }
@@ -315,7 +317,7 @@
   font-size: 0.85rem;
   font-family: 'Quicksand', 'Open Sans' !important;
   font-weight: 300 !important;
-  color: $black;
+  color: colors.$black;
   text-align: left;
   margin-bottom: 12px;
   line-clamp: 1;
@@ -332,8 +334,8 @@
   font-weight: 500;
   font-family: 'Quicksand', 'Open Sans' !important;
   font-size: 0.7rem;
-  color: $black;
-  background-color: $white;
+  color: colors.$black;
+  background-color: colors.$white;
   position: absolute;
   z-index: 1;
   padding: 7px 6px 9px;
@@ -345,7 +347,7 @@
 
 .subHeader {
   font-size: 0.85rem !important;
-  color: $black !important;
+  color: colors.$black !important;
   text-align: left;
   margin-bottom: 12px;
   -webkit-line-clamp: 1;
@@ -399,7 +401,7 @@
 .product-description {
   margin-bottom: 10px;
   text-align: left;
-  color: $black !important;
+  color: colors.$black !important;
 }
 
 .navlink.product {
