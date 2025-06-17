@@ -31,7 +31,7 @@ const initialState = {
   filterSubCategories: [],
   filterBrands: [],
   filterPricesRange: {},
-  sorting: 1, // price asc, then price desc equals 2
+  sorting: 'createdAt-DESC',
   filters: {
     selectedCategory: null,
     selectedSubCategory: null,
